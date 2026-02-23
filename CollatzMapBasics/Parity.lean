@@ -48,14 +48,6 @@ def Precedes (v1 v2 : ParityVector) : Prop :=
 
 infix:50 " ≼ " => Precedes
 
-instance : PartialOrder ParityVector where
-  le := Precedes
-  le_refl := fun _ => Relation.ReflTransGen.refl
-  le_trans := fun _ _ _ hab hbc => Relation.ReflTransGen.trans hab hbc
-  le_antisymm := by
-    -- Placeholder for the antisymmetric proof which is long
-    sorry
-
 end ParityVector
 
 end CollatzMapBasics
