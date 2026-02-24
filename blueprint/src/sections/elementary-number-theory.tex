@@ -1,0 +1,29 @@
+\begin{lemma}\label{lemma:pow_two_mod_three}\lean{pow_two_mod_three}\leanok
+Let $k \ge 1$ be a natural number. Then
+\begin{equation}
+    2^k \pmod 3 =
+    \begin{cases}
+        1 & \text{if } k \text{ is even}, \\
+        2 & \text{if } k \text{ is odd}.
+    \end{cases}
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $k$.
+For the base case $k = 1$, we have $2^1 = 2 \pmod 3$. Since $1$ is odd, the formula gives $2$, which matches.
+Suppose the statement holds for some $n \ge 1$. We consider two cases based on the parity of $n$:
+
+If $n$ is even, then by the induction hypothesis, $2^n \equiv 1 \pmod 3$. We then have
+\begin{equation}
+    2^{n+1} = 2 \cdot 2^n \equiv 2 \cdot 1 = 2 \pmod 3.
+\end{equation}
+Since $n$ is even, $n+1$ is odd, and the formula correctly yields $2$.
+
+If $n$ is odd, then by the induction hypothesis, $2^n \equiv 2 \pmod 3$. We then have
+\begin{equation}
+    2^{n+1} = 2 \cdot 2^n \equiv 2 \cdot 2 = 4 \equiv 1 \pmod 3.
+\end{equation}
+Since $n$ is odd, $n+1$ is even, and the formula correctly yields $1$.
+
+This completes the induction step and the proof.
+\end{proof}
