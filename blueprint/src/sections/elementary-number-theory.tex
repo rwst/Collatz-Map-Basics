@@ -1,5 +1,4 @@
 \begin{lemma}\label{lemma:pow_two_mod_three}\lean{pow_two_mod_three}\leanok
-Let $k \ge 1$ be a natural number. Then
 \begin{equation}
     2^k \pmod 3 =
     \begin{cases}
@@ -9,21 +8,63 @@ Let $k \ge 1$ be a natural number. Then
 \end{equation}
 \end{lemma}
 \begin{proof}\leanok
-We proceed by induction on $k$.
-For the base case $k = 1$, we have $2^1 = 2 \pmod 3$. Since $1$ is odd, the formula gives $2$, which matches.
-Suppose the statement holds for some $n \ge 1$. We consider two cases based on the parity of $n$:
+Trivial by induction on $k$.
+\end{proof}
 
-If $n$ is even, then by the induction hypothesis, $2^n \equiv 1 \pmod 3$. We then have
+\begin{lemma}\label{lemma:exists_predecessor_of_odd}\lean{exists_predecessor_of_odd}\leanok
+Let $y$ be an odd natural number such that $y \pmod 3 \neq 0$. Then there exist natural numbers $x$
+and $k$ such that $x$ is odd and
 \begin{equation}
-    2^{n+1} = 2 \cdot 2^n \equiv 2 \cdot 1 = 2 \pmod 3.
+    3x + 1 = 2^k y.
 \end{equation}
-Since $n$ is even, $n+1$ is odd, and the formula correctly yields $2$.
+\end{lemma}
+\begin{proof}\leanok
+Since $y \pmod 3 \neq 0$, we have either $y \equiv 1 \pmod 3$ or $y \equiv 2 \pmod 3$. We consider
+these two cases:
 
-If $n$ is odd, then by the induction hypothesis, $2^n \equiv 2 \pmod 3$. We then have
+If $y \equiv 1 \pmod 3$, we choose $x = (4y - 1)/3$ and $k = 2$.
+If $y \equiv 2 \pmod 3$, we choose $x = (2y - 1)/3$ and $k = 1$.
+
+In both cases, it is straightforward to verify that $x$ is an odd natural number and $3x+1=2^k y$.
+\end{proof}
+
+\begin{lemma}\label{lemma:no_odd_predecessor_for_div3}\lean{no_odd_predecessor_for_div3}\leanok
+Let $y$ be a natural number such that $y \equiv 0 \pmod 3$. Then for all natural numbers $n$ and $k$,
 \begin{equation}
-    2^{n+1} = 2 \cdot 2^n \equiv 2 \cdot 2 = 4 \equiv 1 \pmod 3.
+    3n + 1 \neq 2^k y.
 \end{equation}
-Since $n$ is odd, $n+1$ is even, and the formula correctly yields $1$.
+\end{lemma}
+\begin{proof}\leanok
+Suppose for contradiction that $3n + 1 = 2^k y$ for some natural numbers $n$ and $k$.
+Taking both sides modulo $3$, the left-hand side reduces to $1 \pmod 3$.
+Since $y \equiv 0 \pmod 3$, the right-hand side is a multiple of $3$, which reduces to $0 \pmod 3$.
+This yields $1 \equiv 0 \pmod 3$, a contradiction.
+\end{proof}
 
-This completes the induction step and the proof.
+\begin{lemma}\label{lemma:exists_predecessor_gt_one_mod1}\lean{exists_predecessor_gt_one_mod1}\leanok
+Let $y > 1$ be a natural number such that $y \equiv 1 \pmod 6$. Then there exists an odd natural
+number $x > 1$ such that
+\begin{equation}
+    3x + 1 = 4 y.
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+We choose $x = (4y - 1)/3$. Since $y \equiv 1 \pmod 6$, it follows that $4y - 1$ is an odd multiple
+of $3$, so $x$ is an odd integer.
+Furthermore, since $y > 1$, we have $x > 1$.
+It is straightforward to verify that $3x + 1 = 4y = 2^2 y$.
+\end{proof}
+
+\begin{lemma}\label{lemma:exists_predecessor_gt_one_mod5}\lean{exists_predecessor_gt_one_mod5}\leanok
+Let $y$ be a natural number such that $y \equiv 5 \pmod 6$. Then there exists an odd natural
+number $x > 1$ such that
+\begin{equation}
+    3x + 1 = 2y.
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+We choose $x = (2y - 1)/3$. Since $y \equiv 5 \pmod 6$, it follows that $2y - 1$ is an odd multiple
+of $3$, so $x$ is an odd integer.
+Furthermore, since $y \equiv 5 \pmod 6$, we have $y \ge 5$, which implies $x \ge 3 > 1$.
+It is straightforward to verify that $3x + 1 = 2y$.
 \end{proof}

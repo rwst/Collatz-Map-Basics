@@ -1,79 +1,16 @@
 import Mathlib
 
 -- 2^k mod 3 is 1 if k is even (and k > 0), 2 if k is odd
-lemma pow_two_mod_three (k : ℕ) (hk : k ≥ 1) : 2^k % 3 = if k % 2 = 0 then 1 else 2 := by
-  induction k with
-  | zero => omega
-  | succ n ih =>
-    by_cases hn : n = 0
-    · simp [hn]
-    · have hn' : n ≥ 1 := Nat.one_le_iff_ne_zero.mpr hn
-      simp only [Nat.pow_succ]
-      rw [Nat.mul_mod, ih hn']
-      by_cases hparity : n % 2 = 0
-      · simp only [hparity, ↓reduceIte]
-        have : (n + 1) % 2 = 1 := by omega
-        simp [this]
-      · have hnodd : n % 2 = 1 := by omega
-        simp only [hnodd]
-        have : (n + 1) % 2 = 0 := by omega
-        simp [this]
+lemma pow_two_mod_three (k : ℕ) : 2^k % 3 = if k % 2 = 0 then 1 else 2 := by
+  induction k with | zero => rfl | succ k ih =>
+  rw [Nat.pow_succ, Nat.mul_mod, ih]
+  rcases Nat.mod_two_eq_zero_or_one k with h0 | h1 <;> simp [*] at * <;> omega
 
 lemma exists_predecessor_of_odd (y : ℕ) (h_odd : y % 2 = 1) (h_not_div3 : y % 3 ≠ 0) :
   ∃ x k : ℕ, x % 2 = 1 ∧ (3 * x + 1) = 2^k * y := by
-  have hy_mod3 : y % 3 = 1 ∨ y % 3 = 2 := by omega
-  have hy_pos : y ≥ 1 := by omega
-  rcases hy_mod3 with hy1 | hy2
-  · use (2^2 * y - 1) / 3, 2
-    constructor
-    · have hy6 : y % 6 = 1 := by omega
-      have hmod6 : (4 * y - 1) % 6 = 3 := by omega
-      have hform : ∃ q, 4 * y - 1 = 6 * q + 3 := by
-        use (4 * y - 1) / 6
-        have := Nat.div_add_mod (4 * y - 1) 6
-        omega
-      obtain ⟨q, hq⟩ := hform
-      have hdiv_eq : (4 * y - 1) / 3 = 2 * q + 1 := by
-        rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-        exact Nat.mul_div_cancel_left (2 * q + 1) (by norm_num : 0 < 3)
-      show (2^2 * y - 1) / 3 % 2 = 1
-      have h4 : 2^2 * y = 4 * y := by ring
-      rw [h4, hdiv_eq]
-      omega
-    · have hdiv : 3 ∣ (2^2 * y - 1) := by
-        have h1 : 2^2 * y % 3 = 1 := by
-          rw [Nat.mul_mod, Nat.pow_mod]; simp [hy1]
-        omega
-      have hge : 2^2 * y ≥ 1 := by omega
-      have : 3 * ((2^2 * y - 1) / 3) + 1 = 2^2 * y := by
-        have := Nat.div_add_mod (2^2 * y - 1) 3
-        have hmod : (2^2 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv
-        omega
-      exact this
-  · use (2^1 * y - 1) / 3, 1
-    constructor
-    · have hy6 : y % 6 = 5 := by omega
-      have hge2y : 2 * y ≥ 1 := by omega
-      have hmod6 : (2 * y - 1) % 6 = 3 := by omega
-      have hform : ∃ q, 2 * y - 1 = 6 * q + 3 := by
-        use (2 * y - 1) / 6
-        have := Nat.div_add_mod (2 * y - 1) 6
-        omega
-      obtain ⟨q, hq⟩ := hform
-      have hdiv_eq : (2 * y - 1) / 3 = 2 * q + 1 := by
-        rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-        exact Nat.mul_div_cancel_left (2 * q + 1) (by norm_num : 0 < 3)
-      rw [show 2^1 * y = 2 * y by ring, hdiv_eq]
-      omega
-    · have hdiv : 3 ∣ (2 * y - 1) := by
-        have h1 : 2 * y % 3 = 1 := by rw [Nat.mul_mod]; omega
-        omega
-      have hge : 2 * y ≥ 1 := by omega
-      have : 3 * ((2 * y - 1) / 3) + 1 = 2 * y := by
-        have := Nat.div_add_mod (2 * y - 1) 3
-        have hmod : (2 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv
-        omega
-      simpa only [pow_one]
+  obtain h | h : y % 3 = 1 ∨ y % 3 = 2 := by omega
+  · exact ⟨(4 * y - 1) / 3, 2, by omega, by omega⟩
+  · exact ⟨(2 * y - 1) / 3, 1, by omega, by omega⟩
 
 /--
 If `y` is a multiple of 3, it implies there is no number `n`
@@ -81,226 +18,23 @@ If `y` is a multiple of 3, it implies there is no number `n`
 -/
 lemma no_odd_predecessor_for_div3 (y : ℕ) (h_div3 : y % 3 = 0) :
   ∀ n k : ℕ, 3 * n + 1 ≠ y * 2^k := by
-  intro n k h_eq
-  have lhs_mod : (3 * n + 1) % 3 = 1 := by
-    simp [Nat.add_mod]
-  have rhs_mod : (y * 2^k) % 3 = 0 := by
-    rw [Nat.mul_mod, h_div3]
-    simp
-  rw [h_eq] at lhs_mod
-  rw [rhs_mod] at lhs_mod
-  contradiction
+  intro n k h
+  have := congrArg (· % 3) h
+  simp [Nat.add_mod, Nat.mul_mod, h_div3] at this
 
 /-- For y ≡ 1 (mod 6), there exists x > 1 odd such that 3x+1 = 4y -/
 lemma exists_predecessor_gt_one_mod1 (y : ℕ) (hy_mod6 : y % 6 = 1) (hy_gt : y > 1) :
     ∃ x : ℕ, x % 2 = 1 ∧ x > 1 ∧ (3 * x + 1) = 2^2 * y := by
   use (4 * y - 1) / 3
-  have hy_pos : y ≥ 1 := by omega
-  have h4y_ge : 4 * y ≥ 4 := by omega
-  have hdiv3 : 3 ∣ (4 * y - 1) := by
-    have : (4 * y) % 3 = 1 := by
-      have hy_mod3 : y % 3 = 1 := by omega
-      simp [Nat.mul_mod, hy_mod3]
-    omega
-  -- Show it's odd
-  have hmod6 : (4 * y - 1) % 6 = 3 := by omega
-  have hform : ∃ q, 4 * y - 1 = 6 * q + 3 := by
-    use (4 * y - 1) / 6
-    have := Nat.div_add_mod (4 * y - 1) 6
-    omega
-  obtain ⟨q, hq⟩ := hform
-  have hdiv_eq : (4 * y - 1) / 3 = 2 * q + 1 := by
-    rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-    exact Nat.mul_div_cancel_left (2 * q + 1) (by norm_num : 0 < 3)
-  refine ⟨by rw [hdiv_eq]; omega, ?_, ?_⟩
-  · rw [hdiv_eq]
-    have : 4 * y - 1 ≥ 7 := by omega
-    rw [hq] at this; omega
-  · have : 3 * ((4 * y - 1) / 3) + 1 = 4 * y := by
-      have := Nat.div_add_mod (4 * y - 1) 3
-      have hmod : (4 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv3
-      omega
-    simp only [show (2:ℕ)^2 = 4 from by norm_num]; exact this
+  have : 3 * ((4 * y - 1) / 3) = 4 * y - 1 := Nat.mul_div_cancel' (by omega)
+  refine ⟨by omega, by omega, by omega⟩
 
 /-- For y ≡ 5 (mod 6), there exists x > 1 odd such that 3x+1 = 2y -/
 lemma exists_predecessor_gt_one_mod5 (y : ℕ) (hy_mod6 : y % 6 = 5) :
     ∃ x : ℕ, x % 2 = 1 ∧ x > 1 ∧ (3 * x + 1) = 2^1 * y := by
   use (2 * y - 1) / 3
-  have hy_pos : y ≥ 5 := by omega
-  have h2y_ge : 2 * y ≥ 10 := by omega
-  have hdiv3 : 3 ∣ (2 * y - 1) := by
-    have : (2 * y) % 3 = 1 := by
-      have hy_mod3 : y % 3 = 2 := by omega
-      simp [Nat.mul_mod, hy_mod3]
-    omega
-  -- Show it's odd
-  have hmod6 : (2 * y - 1) % 6 = 3 := by omega
-  have hform : ∃ q, 2 * y - 1 = 6 * q + 3 := by
-    use (2 * y - 1) / 6
-    have := Nat.div_add_mod (2 * y - 1) 6
-    omega
-  obtain ⟨q, hq⟩ := hform
-  have hdiv_eq : (2 * y - 1) / 3 = 2 * q + 1 := by
-    rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-    exact Nat.mul_div_cancel_left (2 * q + 1) (by norm_num : 0 < 3)
-  refine ⟨by rw [hdiv_eq]; omega, ?_, ?_⟩
-  · rw [hdiv_eq]
-    have : 2 * y - 1 ≥ 9 := by omega
-    rw [hq] at this; omega
-  · have : 3 * ((2 * y - 1) / 3) + 1 = 2 * y := by
-      have := Nat.div_add_mod (2 * y - 1) 3
-      have hmod : (2 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv3
-      omega
-    simpa only [pow_one]
-
-/-- Main helper: for odd y not div by 3 and y > 1, exists x > 1 odd with 3x+1 = 2^k * y -/
-lemma exists_predecessor_of_odd_gt_one (y : ℕ) (h_odd : y % 2 = 1) (h_not_div3 : y % 3 ≠ 0) (h_gt : y > 1) :
-    ∃ x k : ℕ, x % 2 = 1 ∧ x > 1 ∧ (3 * x + 1) = 2^k * y := by
-  have hy_mod6 : y % 6 = 1 ∨ y % 6 = 5 := by omega
-  rcases hy_mod6 with h1 | h5
-  · obtain ⟨x, hx_odd, hx_gt, hx_eq⟩ := exists_predecessor_gt_one_mod1 y h1 h_gt
-    exact ⟨x, 2, hx_odd, hx_gt, hx_eq⟩
-  · obtain ⟨x, hx_odd, hx_gt, hx_eq⟩ := exists_predecessor_gt_one_mod5 y h5
-    exact ⟨x, 1, hx_odd, hx_gt, hx_eq⟩
-
-/-- For odd y > 1 with y % 3 ≠ 0, exists x > 1 odd with x % 3 ≠ 0 and 3x+1 = 2^k * y -/
-lemma exists_predecessor_not_div3 (y : ℕ) (h_odd : y % 2 = 1) (h_not_div3 : y % 3 ≠ 0) (h_gt : y > 1) :
-    ∃ x k : ℕ, x % 2 = 1 ∧ x > 1 ∧ x % 3 ≠ 0 ∧ (3 * x + 1) = 2^k * y := by
-  -- The idea: try k values until we find one where x % 3 ≠ 0
-  -- Since 2^k mod 9 cycles with period 6, we will find a valid k
-  have hy_mod6 : y % 6 = 1 ∨ y % 6 = 5 := by omega
-  rcases hy_mod6 with h1 | h5
-  · -- y ≡ 1 (mod 6), so y ≡ 1 (mod 3)
-    -- Try k = 2, 4, 6 (even k so that 2^k ≡ 1 mod 3)
-    -- For k = 2: x = (4y - 1)/3
-    -- For k = 4: x = (16y - 1)/3
-    -- For k = 6: x = (64y - 1)/3
-    -- x mod 3 depends on (2^k * y) mod 9
-    -- 2^2 = 4, 2^4 = 16 ≡ 7, 2^6 = 64 ≡ 1 (mod 9)
-    -- If y ≡ 1 (mod 9): 4y ≡ 4, 16y ≡ 7, 64y ≡ 1 (mod 9)
-    --   k=2: (4-1)/3 mod 3 = 1 ✓
-    -- If y ≡ 4 (mod 9): 4y ≡ 7, 16y ≡ 1, 64y ≡ 4 (mod 9)
-    --   k=2: (7-1)/3 = 2 mod 3 ✓
-    -- If y ≡ 7 (mod 9): 4y ≡ 1, 16y ≡ 4, 64y ≡ 7 (mod 9)
-    --   k=4: (4-1)/3 = 1 mod 3 ✓
-    -- So k = 2 or k = 4 always works for y ≡ 1 (mod 6)
-    by_cases hy9 : y % 9 = 7
-    · -- Use k = 4
-      use (16 * y - 1) / 3, 4
-      have hdiv3 : 3 ∣ (16 * y - 1) := by
-        have : (16 * y) % 3 = 1 := by omega
-        omega
-      have hmod6_val : (16 * y - 1) % 6 = 3 := by omega
-      refine ⟨?_, ?_, ?_, ?_⟩
-      · -- odd: (16y-1) % 6 = 3 means (16y-1)/3 is odd
-        have : ∃ q, 16 * y - 1 = 6 * q + 3 := ⟨(16 * y - 1) / 6, by omega⟩
-        obtain ⟨q, hq⟩ := this
-        have heq : (16 * y - 1) / 3 = 2 * q + 1 := by
-          rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-          exact Nat.mul_div_cancel_left _ (by norm_num : 0 < 3)
-        omega
-      · -- > 1
-        have : 16 * y - 1 ≥ 15 := by omega
-        omega
-      · -- % 3 ≠ 0: 16y ≡ 16*7 = 112 ≡ 4 (mod 9), so (16y-1)/3 ≡ 1 (mod 3)
-        have h16y_mod9 : (16 * y) % 9 = 4 := by omega
-        have h16ym1_mod9 : (16 * y - 1) % 9 = 3 := by omega
-        omega
-      · -- 3x + 1 = 16y
-        have := Nat.div_add_mod (16 * y - 1) 3
-        have hmod : (16 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv3
-        simp only [pow_succ, pow_zero, one_mul]; omega
-    · -- Use k = 2
-      use (4 * y - 1) / 3, 2
-      have hdiv3 : 3 ∣ (4 * y - 1) := by
-        have : (4 * y) % 3 = 1 := by omega
-        omega
-      refine ⟨?_, ?_, ?_, ?_⟩
-      · -- odd
-        have hmod6_val : (4 * y - 1) % 6 = 3 := by omega
-        have : ∃ q, 4 * y - 1 = 6 * q + 3 := ⟨(4 * y - 1) / 6, by omega⟩
-        obtain ⟨q, hq⟩ := this
-        have heq : (4 * y - 1) / 3 = 2 * q + 1 := by
-          rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-          exact Nat.mul_div_cancel_left _ (by norm_num : 0 < 3)
-        omega
-      · -- > 1
-        have : 4 * y - 1 ≥ 7 := by omega
-        omega
-      · -- % 3 ≠ 0
-        have hy_mod9 : y % 9 = 1 ∨ y % 9 = 4 := by omega
-        rcases hy_mod9 with h1' | h4'
-        · have : (4 * y - 1) % 9 = 3 := by omega
-          omega
-        · have : (4 * y - 1) % 9 = 6 := by omega
-          omega
-      · -- 3x + 1 = 4y
-        have := Nat.div_add_mod (4 * y - 1) 3
-        have hmod : (4 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv3
-        simp only [pow_succ, pow_zero, one_mul]; omega
-  · -- y ≡ 5 (mod 6), so y ≡ 2 (mod 3)
-    -- Try k = 1, 3, 5 (odd k so that 2^k ≡ 2 mod 3)
-    -- 2^1 = 2, 2^3 = 8 ≡ 8, 2^5 = 32 ≡ 5 (mod 9)
-    -- If y ≡ 2 (mod 9): 2y ≡ 4, 8y ≡ 7, 32y ≡ 1 (mod 9)
-    --   k=1: (4-1)/3 = 1 mod 3 ✓
-    -- If y ≡ 5 (mod 9): 2y ≡ 1, 8y ≡ 4, 32y ≡ 7 (mod 9)
-    --   k=3: (4-1)/3 = 1 mod 3 ✓
-    -- If y ≡ 8 (mod 9): 2y ≡ 7, 8y ≡ 1, 32y ≡ 4 (mod 9)
-    --   k=1: (7-1)/3 = 2 mod 3 ✓
-    by_cases hy9 : y % 9 = 5
-    · -- Use k = 3
-      use (8 * y - 1) / 3, 3
-      have hdiv3 : 3 ∣ (8 * y - 1) := by
-        have : (8 * y) % 3 = 1 := by omega
-        omega
-      refine ⟨?_, ?_, ?_, ?_⟩
-      · -- odd
-        have hmod6_val : (8 * y - 1) % 6 = 3 := by omega
-        have : ∃ q, 8 * y - 1 = 6 * q + 3 := ⟨(8 * y - 1) / 6, by omega⟩
-        obtain ⟨q, hq⟩ := this
-        have heq : (8 * y - 1) / 3 = 2 * q + 1 := by
-          rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-          exact Nat.mul_div_cancel_left _ (by norm_num : 0 < 3)
-        omega
-      · -- > 1
-        have : 8 * y - 1 ≥ 39 := by omega
-        omega
-      · -- % 3 ≠ 0: 8y ≡ 8*5 = 40 ≡ 4 (mod 9)
-        have h8y_mod9 : (8 * y) % 9 = 4 := by omega
-        have h8ym1_mod9 : (8 * y - 1) % 9 = 3 := by omega
-        omega
-      · -- 3x + 1 = 8y
-        have := Nat.div_add_mod (8 * y - 1) 3
-        have hmod : (8 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv3
-        simp only [pow_succ, pow_zero, one_mul]; omega
-    · -- Use k = 1
-      use (2 * y - 1) / 3, 1
-      have hdiv3 : 3 ∣ (2 * y - 1) := by
-        have : (2 * y) % 3 = 1 := by omega
-        omega
-      refine ⟨?_, ?_, ?_, ?_⟩
-      · -- odd
-        have hmod6_val : (2 * y - 1) % 6 = 3 := by omega
-        have : ∃ q, 2 * y - 1 = 6 * q + 3 := ⟨(2 * y - 1) / 6, by omega⟩
-        obtain ⟨q, hq⟩ := this
-        have heq : (2 * y - 1) / 3 = 2 * q + 1 := by
-          rw [hq, show 6 * q + 3 = 3 * (2 * q + 1) by ring]
-          exact Nat.mul_div_cancel_left _ (by norm_num : 0 < 3)
-        omega
-      · -- > 1
-        have : 2 * y - 1 ≥ 9 := by omega
-        omega
-      · -- % 3 ≠ 0
-        have hy_mod9 : y % 9 = 2 ∨ y % 9 = 8 := by omega
-        rcases hy_mod9 with h2' | h8'
-        · have : (2 * y - 1) % 9 = 3 := by omega
-          omega
-        · have : (2 * y - 1) % 9 = 6 := by omega
-          omega
-      · -- 3x + 1 = 2y
-        have := Nat.div_add_mod (2 * y - 1) 3
-        have hmod : (2 * y - 1) % 3 = 0 := Nat.dvd_iff_mod_eq_zero.mp hdiv3
-        simp only [pow_one]; omega
+  have : 3 * ((2 * y - 1) / 3) = 2 * y - 1 := Nat.mul_div_cancel' (by omega)
+  refine ⟨by omega, by omega, by omega⟩
 
 
 /-- do a single collatz-step. `collatz_step n` returns 1 if `n < 2`, otherwise `n/2` if `n` is even, otherwise `3 * n + 1`-/
@@ -611,16 +345,42 @@ lemma exists_n_with_m_odd_steps_not_div3 (m : ℕ) :
       have hm_prev_pos : m_prev > 0 := Nat.pos_of_ne_zero hm_prev
       have ⟨hy_odd, hy_gt1⟩ := hy_odd_gt1 hm_prev_pos
       -- Find predecessor with x % 3 ≠ 0
-      obtain ⟨x, k, hx_odd, hx_gt1, hx_not_div3, hx_eq⟩ :=
-        exists_predecessor_not_div3 y hy_odd hy_not_div3 hy_gt1
-      use x
-      refine ⟨?_, hx_not_div3, fun _ => ⟨hx_odd, hx_gt1⟩⟩
-      apply CollatzOddSteps.odd hx_odd hx_gt1
-      rw [hx_eq]
-      by_cases hk : k = 0
-      · simp [hk]; exact hy
-      · have hk_pos : k ≥ 1 := Nat.one_le_iff_ne_zero.mpr hk
-        exact CollatzOddSteps_mul_pow_two y m_prev k hy hk_pos
+      obtain ⟨x, k, hx_odd, hx_eq⟩ :=
+        exists_predecessor_of_odd y hy_odd hy_not_div3
+      -- First build CollatzOddSteps x (m_prev + 1)
+      have hx_gt1 : x > 1 := by
+        -- x is odd, so x ≥ 1; if x = 1 then 4 = 2^k * y, but y is odd and > 1
+        rcases Nat.eq_or_lt_of_le (show x ≥ 1 by omega) with rfl | h
+        · -- x = 1 → 4 = 2^k * y
+          have h4 : 2 ^ k * y = 4 := by omega
+          have hk2 : k ≤ 2 := by
+            by_contra hk; push_neg at hk
+            have : 2 ^ k ≥ 8 := le_trans (by norm_num : (8 : ℕ) ≤ 2^3) (Nat.pow_le_pow_right (by omega) hk)
+            nlinarith [show y ≥ 1 from by omega]
+          interval_cases k <;> omega
+        · omega
+      have hx_steps : CollatzOddSteps x (m_prev + 1) := by
+        apply CollatzOddSteps.odd hx_odd hx_gt1
+        rw [hx_eq]
+        by_cases hk : k = 0
+        · simp [hk]; exact hy
+        · exact CollatzOddSteps_mul_pow_two y m_prev k hy (Nat.one_le_iff_ne_zero.mpr hk)
+      -- Now handle x % 3 ≠ 0
+      by_cases hx3 : x % 3 ≠ 0
+      · exact ⟨x, hx_steps, hx3, fun _ => ⟨hx_odd, hx_gt1⟩⟩
+      · -- x % 3 = 0: use 4*x + 1 instead (inline CollatzOddSteps_4n_add_1)
+        push_neg at hx3
+        use 4 * x + 1
+        refine ⟨?_, by omega, fun _ => ⟨by omega, by omega⟩⟩
+        -- Prove CollatzOddSteps (4*x+1) (m_prev + 1)
+        -- Since x is odd and > 1, hx_steps uses the odd constructor
+        cases hx_steps with
+        | even h_ev _ _ => omega
+        | @odd _ m' _ _ h_next =>
+          apply CollatzOddSteps.odd (by omega) (by omega)
+          apply CollatzOddSteps.even (by omega) (by omega)
+          apply CollatzOddSteps.even (by omega) (by omega)
+          convert h_next using 1; omega
 
 /-- Main Lemma -/
 lemma exists_n_with_m_odd_steps (m : ℕ) : ∃ n : ℕ, CollatzOddSteps n m := by
@@ -775,7 +535,7 @@ lemma infinitely_many_not_div3 (m : ℕ) : ∀ B, ∃ n, n > B ∧ CollatzOddSte
   · -- (2^(B+1) * n₀) % 3 ≠ 0
     rw [Nat.mul_mod]
     have h2k : 2 ^ (B + 1) % 3 = 1 ∨ 2 ^ (B + 1) % 3 = 2 := by
-      have := pow_two_mod_three (B + 1) (by omega)
+      have := pow_two_mod_three (B + 1)
       split_ifs at this <;> omega
     have hn0 : n₀ % 3 = 1 ∨ n₀ % 3 = 2 := by
       have := Nat.mod_lt n₀ (show (0 : ℕ) < 3 by omega)
