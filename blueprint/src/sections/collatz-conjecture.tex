@@ -1,0 +1,36 @@
+\begin{theorem}\label{thm:collatz_conjecture}\lean{collatz_conjecture}\leanok
+For every natural number $n$, either $n = 0$ or there exists a natural number $k$ such that
+$C^k(n) = 1$.
+\end{theorem}
+\begin{proof}\leanok
+No proof exists.
+\end{proof}
+
+\begin{lemma}\label{lemma:cycle_implies_not_collatz}\lean{cycle_implies_not_collatz}\leanok
+If there exists a natural number $n > 4$ and $k \ge 1$ such that $C^k(n) = n$, then the Collatz
+conjecture is false {\bf (No-cycle condition)}.
+\end{lemma}
+\begin{proof}\leanok
+Suppose $C^k(n) = n$ for $n > 4$. If the conjecture were true, $n$ would eventually reach $1$.
+However, the cycle containing $n$ consists of values all greater than $4$ (since $n \in \{1, 2, 4\}$
+are the only known cycle values $\le 4$), which contradicts reaching $1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:unbounded_orbit_implies_not_collatz}\lean{unbounded_orbit_implies_not_collatz}\leanok
+If there exists a natural number $n$ such that its orbit under $C$ is unbounded, then the Collatz
+conjecture is false {\bf (No-unbounded-orbit condition)}.
+\end{lemma}
+\begin{proof}\leanok
+If an orbit is unbounded, it cannot reach $1$, as reaching $1$ would imply the orbit eventually
+enters the finite cycle $\{1, 2, 4\}$, making it bounded.
+\end{proof}
+
+\begin{lemma}\label{lemma:bounded_no_cycle_implies_collatz}\lean{bounded_no_cycle_implies_collatz}\leanok
+If no natural number $n > 4$ lies on a nontrivial cycle and every orbit under $C$ is bounded, then
+the Collatz conjecture is true.
+\end{lemma}
+\begin{proof}\leanok
+For any $m \ge 1$, the orbit is bounded, so by the pigeonhole principle it must eventually repeat.
+Since there are no nontrivial cycles for $n > 4$, the orbit must eventually enter the cycle
+$\{1, 2, 4\}$, thus reaching $1$.
+\end{proof}

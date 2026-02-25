@@ -118,6 +118,9 @@ lemma collatz_iter_mem_124 (i n : ℕ) (hn : n = 1 ∨ n = 2 ∨ n = 4) :
 lemma collatz_iter_one_le_four (i : ℕ) : collatz_iter i 1 ≤ 4 := by
   rcases collatz_iter_mem_124 i 1 (Or.inl rfl) with h | h | h <;> omega
 
+theorem collatz_conjecture : ∀ (n : ℕ), n = 0 ∨ ∃ k, collatz_iter k n = 1 :=
+  sorry
+
 /-- If some number greater than 4 is a fixed point of `collatz_iter k` (i.e., it lies on a
 nontrivial cycle), then the Collatz conjecture fails: not every positive natural number
 eventually reaches 1. -/
@@ -182,8 +185,6 @@ lemma bounded_no_cycle_implies_collatz
   -- Compose: m reaches c in i steps, c reaches 1 in j' steps
   exact ⟨j' + i, by rw [collatz_iter_add, hj']⟩
 
-theorem collatz_conjecture : ∀ (n : ℕ), n = 0 ∨ ∃ k, collatz_iter k n = 1 :=
-  sorry
 
 /--
 Relation asserting that `n` reaches 1 with exactly `m` steps of the form `3n+1`.
