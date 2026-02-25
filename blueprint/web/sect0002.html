@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Collatz Map Basics: Elementary Number Theory</title>
+<link rel="next" href="sect0003.html" title="The Collatz Map" />
+<link rel="prev" href="sect0001.html" title="The Collatz Conjecture" />
+<link rel="up" href="sect0001.html" title="The Collatz Conjecture" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Collatz Map Basics</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class=" active">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">The Collatz Conjecture</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class=" active current">
+  <a href="sect0002.html"><span class="toc_ref">1.1</span> <span class="toc_entry">Elementary Number Theory</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">1.2</span> <span class="toc_entry">The Collatz Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">2</span> <span class="toc_entry">The Terras Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Connection to Collatz Map</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000003">1.1 Elementary Number Theory</h1>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:pow_two_mod_three">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">1</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#lemma:pow_two_mod_three">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000008"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L4" class="lean_decl">pow_two_mod_three</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<div class="equation" id="a0000000009">
+<p>
+  <div class="equation_content">
+    \begin{equation}  2^k \pmod3 = \begin{cases}  1 &  \text{if } k \text{ is even}, \\ 2 &  \text{if } k \text{ is odd}. \end{cases} \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000008">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Trivial by induction on \(k\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:exists_predecessor_of_odd">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#lemma:exists_predecessor_of_odd">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000010"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L9" class="lean_decl">exists_predecessor_of_odd</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(y\) be an odd natural number such that \(y \pmod3 \neq 0\). Then there exist natural numbers \(x\) and \(k\) such that \(x\) is odd and </p>
+<div class="equation" id="a0000000011">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3x + 1 = 2^k y. \end{equation}
+  </div>
+  <span class="equation_label">4</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000010">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(y \pmod3 \neq 0\), we have either \(y \equiv 1 \pmod3\) or \(y \equiv 2 \pmod3\). We consider these two cases: </p>
+<p>If \(y \equiv 1 \pmod3\), we choose \(x = (4y - 1)/3\) and \(k = 2\). If \(y \equiv 2 \pmod3\), we choose \(x = (2y - 1)/3\) and \(k = 1\). </p>
+<p>In both cases, it is straightforward to verify that \(x\) is an odd natural number and \(3x+1=2^k y\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:no_odd_predecessor_for_div3">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#lemma:no_odd_predecessor_for_div3">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000012"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L19" class="lean_decl">no_odd_predecessor_for_div3</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(y\) be a natural number such that \(y \equiv 0 \pmod3\). Then for all natural numbers \(n\) and \(k\), </p>
+<div class="equation" id="a0000000013">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3n + 1 \neq 2^k y. \end{equation}
+  </div>
+  <span class="equation_label">5</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000012">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Suppose for contradiction that \(3n + 1 = 2^k y\) for some natural numbers \(n\) and \(k\). Taking both sides modulo \(3\), the left-hand side reduces to \(1 \pmod3\). Since \(y \equiv 0 \pmod3\), the right-hand side is a multiple of \(3\), which reduces to \(0 \pmod3\). This yields \(1 \equiv 0 \pmod3\), a contradiction. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:exists_predecessor_gt_one_mod1">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#lemma:exists_predecessor_gt_one_mod1">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000014"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L26" class="lean_decl">exists_predecessor_gt_one_mod1</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(y {\gt} 1\) be a natural number such that \(y \equiv 1 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
+<div class="equation" id="a0000000015">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3x + 1 = 4 y. \end{equation}
+  </div>
+  <span class="equation_label">6</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000014">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We choose \(x = (4y - 1)/3\). Since \(y \equiv 1 \pmod6\), it follows that \(4y - 1\) is an odd multiple of \(3\), so \(x\) is an odd integer. Furthermore, since \(y {\gt} 1\), we have \(x {\gt} 1\). It is straightforward to verify that \(3x + 1 = 4y = 2^2 y\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:exists_predecessor_gt_one_mod5">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#lemma:exists_predecessor_gt_one_mod5">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000016"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L33" class="lean_decl">exists_predecessor_gt_one_mod5</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(y\) be a natural number such that \(y \equiv 5 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
+<div class="equation" id="a0000000017">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3x + 1 = 2y. \end{equation}
+  </div>
+  <span class="equation_label">7</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000016">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We choose \(x = (2y - 1)/3\). Since \(y \equiv 5 \pmod6\), it follows that \(2y - 1\) is an odd multiple of \(3\), so \(x\) is an odd integer. Furthermore, since \(y \equiv 5 \pmod6\), we have \(y \ge 5\), which implies \(x \ge 3 {\gt} 1\). It is straightforward to verify that \(3x + 1 = 2y\). </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0001.html" title="The Collatz Conjecture"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="sect0001.html" title="The Collatz Conjecture"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0003.html" title="The Collatz Map"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

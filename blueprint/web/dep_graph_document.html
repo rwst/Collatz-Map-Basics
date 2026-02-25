@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-white.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/extra_styles.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="def:collatz_iter_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:collatz_iter" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">7</span></div>
+    <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the Collatz map \(C^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
+<div class="equation" id="a0000000019">
+<p>
+  <div class="equation_content">
+    \begin{equation}  C^0(n) = n \end{equation}
+  </div>
+  <span class="equation_label">11</span>
+</p>
+</div>
+<p> and </p>
+<div class="equation" id="a0000000020">
+<p>
+  <div class="equation_content">
+    \begin{equation}  C^{k+1}(n) = C^k(C(n)). \end{equation}
+  </div>
+  <span class="equation_label">12</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0003.html#def:collatz_iter">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L48" class="lean_decl">collatz_iter</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:collatz_step_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:collatz_step" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">6</span></div>
+    <div class="thm_thmcontent"><p>The Collatz map \(C: \mathbb {N} \to \mathbb {N}\) is defined by </p>
+<div class="equation" id="a0000000018">
+<p>
+  <div class="equation_content">
+    \begin{equation}  C(n) = \begin{cases}  n/2 &  \text{if } n \text{ is even}, \\ 3n + 1 &  \text{if } n \text{ is odd}. \end{cases} \end{equation}
+  </div>
+  <span class="equation_label">8</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0003.html#def:collatz_step">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L41" class="lean_decl">collatz_step</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:bounded_no_cycle_implies_collatz_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:bounded_no_cycle_implies_collatz" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">23</span></div>
+    <div class="thm_thmcontent"><p>If no natural number \(n {\gt} 4\) lies on a nontrivial cycle and every orbit under \(C\) is bounded, then the Collatz conjecture is true. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#lemma:bounded_no_cycle_implies_collatz">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L157" class="lean_decl">bounded_no_cycle_implies_collatz</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_add_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_add" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">16</span></div>
+    <div class="thm_thmcontent"><p>For all \(a, b, n \in \mathbb {N}\), \(C^{a+b}(n) = C^a(C^b(n))\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_add">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L97" class="lean_decl">collatz_iter_add</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_mem_124_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_mem_124" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">18</span></div>
+    <div class="thm_thmcontent"><p>If \(n \in \{ 1, 2, 4\} \), then for all \(i \in \mathbb {N}\), \(C^i(n) \in \{ 1, 2, 4\} \). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_mem_124">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L109" class="lean_decl">collatz_iter_mem_124</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_mul_cycle_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_mul_cycle" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">17</span></div>
+    <div class="thm_thmcontent"><p>If \(C^k(n) = n\), then for all \(m \in \mathbb {N}\), \(C^{m \cdot k}(n) = n\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_mul_cycle">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L103" class="lean_decl">collatz_iter_mul_cycle</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_one_le_four_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_one_le_four" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">19</span></div>
+    <div class="thm_thmcontent"><p>For all \(i \in \mathbb {N}\), \(C^i(1) \le 4\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_one_le_four">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L118" class="lean_decl">collatz_iter_one_le_four</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_pos_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_pos" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">11</span></div>
+    <div class="thm_thmcontent"><p>If \(n \ge 1\), then for all \(k \in \mathbb {N}\), \(C^k(n) \ge 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_pos">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L68" class="lean_decl">collatz_iter_pos</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_pow_two_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_pow_two" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">13</span></div>
+    <div class="thm_thmcontent"><p>For all \(l \in \mathbb {N}\), \(C^l(2^l) = 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_pow_two">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L78" class="lean_decl">collatz_iter_pow_two</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_pow_two_ne_one_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_pow_two_ne_one" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">14</span></div>
+    <div class="thm_thmcontent"><p>For all \(k {\lt} l\), \(C^k(2^l) \neq 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_pow_two_ne_one">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L83" class="lean_decl">collatz_iter_pow_two_ne_one</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_iter_zero_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_iter_zero" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">9</span></div>
+    <div class="thm_thmcontent"><p>For all \(k \in \mathbb {N}\), \(C^k(0) = 0\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_iter_zero">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L54" class="lean_decl">collatz_iter_zero</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_step_pos_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_step_pos" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10</span></div>
+    <div class="thm_thmcontent"><p>If \(n \ge 1\), then \(C(n) \ge 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_step_pos">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L60" class="lean_decl">collatz_step_pos</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_step_pow_two_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_step_pow_two" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12</span></div>
+    <div class="thm_thmcontent"><p>For all \(k \ge 1\), \(C(2^k) = 2^{k-1}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_step_pow_two">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L73" class="lean_decl">collatz_step_pow_two</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:collatz_step_zero_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:collatz_step_zero" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8</span></div>
+    <div class="thm_thmcontent"><p>\(C(0) = 0\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:collatz_step_zero">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=collatz_step_zero#doc" class="lean_decl">collatz_step_zero</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:cycle_implies_not_collatz_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:cycle_implies_not_collatz" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">21</span></div>
+    <div class="thm_thmcontent"><p>If there exists a natural number \(n {\gt} 4\) and \(k \ge 1\) such that \(C^k(n) = n\), then the Collatz conjecture is false <b class="bf">(No-cycle condition)</b>. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#lemma:cycle_implies_not_collatz">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L127" class="lean_decl">cycle_implies_not_collatz</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:exists_collatz_reverse_strict_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:exists_collatz_reverse_strict" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">15</span></div>
+    <div class="thm_thmcontent"><p>For all \(l \in \mathbb {N}\), there exists \(n \in \mathbb {N}\) such that \(C^l(n) = 1\) and for all \(k {\lt} l\), \(C^k(n) \neq 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lemma:exists_collatz_reverse_strict">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L91" class="lean_decl">exists_collatz_reverse_strict</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:exists_predecessor_gt_one_mod1_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:exists_predecessor_gt_one_mod1" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">4</span></div>
+    <div class="thm_thmcontent"><p>Let \(y {\gt} 1\) be a natural number such that \(y \equiv 1 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
+<div class="equation" id="a0000000015">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3x + 1 = 4 y. \end{equation}
+  </div>
+  <span class="equation_label">6</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:exists_predecessor_gt_one_mod1">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L26" class="lean_decl">exists_predecessor_gt_one_mod1</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:exists_predecessor_gt_one_mod5_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:exists_predecessor_gt_one_mod5" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">5</span></div>
+    <div class="thm_thmcontent"><p>Let \(y\) be a natural number such that \(y \equiv 5 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
+<div class="equation" id="a0000000017">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3x + 1 = 2y. \end{equation}
+  </div>
+  <span class="equation_label">7</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:exists_predecessor_gt_one_mod5">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L33" class="lean_decl">exists_predecessor_gt_one_mod5</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:exists_predecessor_of_odd_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:exists_predecessor_of_odd" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2</span></div>
+    <div class="thm_thmcontent"><p>Let \(y\) be an odd natural number such that \(y \pmod3 \neq 0\). Then there exist natural numbers \(x\) and \(k\) such that \(x\) is odd and </p>
+<div class="equation" id="a0000000011">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3x + 1 = 2^k y. \end{equation}
+  </div>
+  <span class="equation_label">4</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:exists_predecessor_of_odd">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L9" class="lean_decl">exists_predecessor_of_odd</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:no_odd_predecessor_for_div3_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:no_odd_predecessor_for_div3" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">3</span></div>
+    <div class="thm_thmcontent"><p>Let \(y\) be a natural number such that \(y \equiv 0 \pmod3\). Then for all natural numbers \(n\) and \(k\), </p>
+<div class="equation" id="a0000000013">
+<p>
+  <div class="equation_content">
+    \begin{equation}  3n + 1 \neq 2^k y. \end{equation}
+  </div>
+  <span class="equation_label">5</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:no_odd_predecessor_for_div3">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L19" class="lean_decl">no_odd_predecessor_for_div3</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:pow_two_mod_three_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:pow_two_mod_three" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">1</span></div>
+    <div class="thm_thmcontent">
+<div class="equation" id="a0000000009">
+<p>
+  <div class="equation_content">
+    \begin{equation}  2^k \pmod3 = \begin{cases}  1 &  \text{if } k \text{ is even}, \\ 2 &  \text{if } k \text{ is odd}. \end{cases} \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:pow_two_mod_three">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L4" class="lean_decl">pow_two_mod_three</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:unbounded_orbit_implies_not_collatz_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:unbounded_orbit_implies_not_collatz" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">22</span></div>
+    <div class="thm_thmcontent"><p>If there exists a natural number \(n\) such that its orbit under \(C\) is unbounded, then the Collatz conjecture is false <b class="bf">(No-unbounded-orbit condition)</b>. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#lemma:unbounded_orbit_implies_not_collatz">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L138" class="lean_decl">unbounded_orbit_implies_not_collatz</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:collatz_conjecture_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:collatz_conjecture" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">20</span></div>
+    <div class="thm_thmcontent"><p>For every natural number \(n\), either \(n = 0\) or there exists a natural number \(k\) such that \(C^k(n) = 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:collatz_conjecture">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L121" class="lean_decl">collatz_conjecture</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"lemma:no_odd_predecessor_for_div3"	[color=green,		fillcolor="#1CAC78",		label=no_odd_predecessor_for_div3,		shape=ellipse,		style=filled];	"lemma:collatz_step_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pow_two,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_of_odd"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_of_odd,		shape=ellipse,		style=filled];	"lemma:pow_two_mod_three"	[color=green,		fillcolor="#1CAC78",		label=pow_two_mod_three,		shape=ellipse,		style=filled];	"lemma:exists_collatz_reverse_strict"	[color=green,		fillcolor="#1CAC78",		label=exists_collatz_reverse_strict,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mul_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mul_cycle,		shape=ellipse,		style=filled];	"thm:collatz_conjecture"	[color=green,		fillcolor="#1CAC78",		label=collatz_conjecture,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two_ne_one"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two_ne_one,		shape=ellipse,		style=filled];	"def:collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=collatz_step,		shape=box,		style=filled];	"lemma:collatz_iter_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_zero,		shape=ellipse,		style=filled];	"lemma:collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two,		shape=ellipse,		style=filled];	"lemma:collatz_iter_add"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_add,		shape=ellipse,		style=filled];	"lemma:collatz_iter_one_le_four"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_one_le_four,		shape=ellipse,		style=filled];	"lemma:cycle_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=cycle_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mem_124"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mem_124,		shape=ellipse,		style=filled];	"def:collatz_iter"	[color=green,		fillcolor="#B0ECA3",		label=collatz_iter,		shape=box,		style=filled];	"lemma:exists_predecessor_gt_one_mod5"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod5,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pos,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod1"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod1,		shape=ellipse,		style=filled];	"lemma:unbounded_orbit_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=unbounded_orbit_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:bounded_no_cycle_implies_collatz"	[color=green,		fillcolor="#1CAC78",		label=bounded_no_cycle_implies_collatz,		shape=ellipse,		style=filled];	"lemma:collatz_step_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_zero,		shape=ellipse,		style=filled];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>
