@@ -1,0 +1,22 @@
+\begin{definition}\label{def:collatz_step}\lean{collatz_step}\leanok
+The Collatz map $C: \mathbb{N} \to \mathbb{N}$ is defined by
+\begin{equation}
+    T(n) =
+    \begin{cases}
+        n/2 & \text{if } n \text{ is even}, \\
+        3n + 1 & \text{if } n \text{ is odd}.
+    \end{cases}
+\end{equation}
+\end{definition}
+
+\begin{definition}\label{def:collatz_iter}\lean{collatz_iter}\leanok
+For any $k \in \mathbb{N}$, the $k$-fold iteration of the Collatz map $C^k: \mathbb{N} \to
+\mathbb{N}$ is defined recursively by
+\begin{equation}
+    C^0(n) = n
+\end{equation}
+and
+\begin{equation}
+    C^{k+1}(n) = C^k(C(n)).
+\end{equation}
+\end{definition}
