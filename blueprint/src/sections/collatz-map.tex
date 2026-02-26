@@ -104,3 +104,23 @@ For all $i \in \mathbb{N}$, $C^i(1) \le 4$.
 \begin{proof}\leanok
 Since $1 \in \{1, 2, 4\}$, we have $C^i(1) \in \{1, 2, 4\}$ by Lemma~\ref{lemma:collatz_iter_mem_124}, so $C^i(1) \le 4$.
 \end{proof}
+
+\begin{lemma}\label{lemma:collatz_step_closed_form}\lean{collatz_step_closed_form}\leanok
+The Collatz map $C(n)$ has the closed form
+\begin{equation}
+    C(n) = \frac{(7n + 2) - (5n + 2)(-1)^n}{4}
+\end{equation}
+for all $n \in \mathbb{N}$.
+\end{lemma}
+\begin{proof}\leanok
+We split into cases based on the parity of $n$.
+If $n$ is even, then $(-1)^n = 1$, so
+\begin{equation}
+    \frac{(7n + 2) - (5n + 2)(1)}{4} = \frac{2n}{4} = \frac{n}{2} = C(n).
+\end{equation}
+If $n$ is odd, then $(-1)^n = -1$, so
+\begin{equation}
+    \frac{(7n + 2) - (5n + 2)(-1)}{4} = \frac{12n + 4}{4} = 3n + 1 = C(n).
+\end{equation}
+In both cases, the formula yields $C(n)$.
+\end{proof}

@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1772036617.3426 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772036617.97612 0
+["pdflatex"] 1772117994.96558 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772117995.60284 0
   "/etc/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772036617.93368 2628 e13b6c50bd1966514c152ca8632ddfde "pdflatex"
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772036617.93368 951 fdee977f7b59f8a79b3066a54e178580 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772117995.56296 2695 a681e251a4aa57c68c0f5bf6a80b9448 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772117995.56296 951 fdee977f7b59f8a79b3066a54e178580 "pdflatex"
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -88,8 +88,8 @@
   "macros/common.tex" 1771787663.61047 826 2468ad0b6614f40a29d7ec803ebc006e ""
   "macros/print.tex" 1771787663.61047 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1771787663.61247 1133 4fae2f63dc1d7fe374dbc5fc881a291e ""
-  "sections/collatz-conjecture.tex" 1772036516.77169 1712 2ef29f4a57bd942d093e42f073eb10eb ""
-  "sections/collatz-map.tex" 1772034632.97443 3695 8b050e90c9b229338200aa70a4b1088a ""
+  "sections/collatz-conjecture.tex" 1772106325.02966 3959 9ad47523366e61ef0a331b30d6677e9d ""
+  "sections/collatz-map.tex" 1772117916.2135 4360 1c2cccc3710402bb4ab000569a76f484 ""
   "sections/elementary-number-theory.tex" 1771959186.27257 2748 b20e01a5c06b60cebb7625b10a6e9c1d ""
   (generated)
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux"

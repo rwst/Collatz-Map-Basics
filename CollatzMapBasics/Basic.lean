@@ -118,6 +118,27 @@ lemma collatz_iter_mem_124 (i n : ℕ) (hn : n = 1 ∨ n = 2 ∨ n = 4) :
 lemma collatz_iter_one_le_four (i : ℕ) : collatz_iter i 1 ≤ 4 := by
   rcases collatz_iter_mem_124 i 1 (Or.inl rfl) with h | h | h <;> omega
 
+/-- The Collatz function `C(n)` has the closed form `((7n+2) - (5n+2)(-1)^n) / 4`. -/
+lemma collatz_step_closed_form (n : ℕ) :
+    (collatz_step n : ℤ) = (7 * (n : ℤ) + 2 - (5 * (n : ℤ) + 2) * (-1 : ℤ)^n) / 4 := by
+  rcases Nat.mod_two_eq_zero_or_one n with h | h
+  · have h_pow : (-1 : ℤ)^n = 1 := by
+      obtain ⟨k, hk⟩ : ∃ k, n = 2 * k := ⟨n / 2, by omega⟩
+      rw [hk, pow_mul]
+      norm_num
+      exact one_pow k
+    unfold collatz_step
+    simp [h, h_pow]
+    omega
+  · have h_pow : (-1 : ℤ)^n = -1 := by
+      obtain ⟨k, hk⟩ : ∃ k, n = 2 * k + 1 := ⟨n / 2, by omega⟩
+      rw [hk, pow_add, pow_mul]
+      norm_num
+      exact one_pow k
+    unfold collatz_step
+    simp [h, h_pow]
+    omega
+
 theorem collatz_conjecture : ∀ (n : ℕ), n = 0 ∨ ∃ k, collatz_iter k n = 1 :=
   sorry
 
@@ -213,38 +234,17 @@ inductive CollatzOddSteps : ℕ → ℕ → Prop where
 /-- CollatzOddSteps is preserved under multiplication by powers of 2 -/
 lemma CollatzOddSteps_mul_pow_two (y m k : ℕ) (hy : CollatzOddSteps y m) (hk : k ≥ 1) :
     CollatzOddSteps (2^k * y) m := by
-  have hy_pos : y ≥ 1 := by
-    cases hy with
-    | base => simp
-    | even _ hn _ => omega
-    | odd _ hn _ => omega
+  have hy_pos : y ≥ 1 := by cases hy <;> omega
   induction k with
   | zero => omega
-  | succ k' ih =>
-    by_cases hk' : k' = 0
-    · simp only [hk', zero_add, pow_one]
-      apply CollatzOddSteps.even
-      · simp only [Nat.mul_mod_right]
-      · omega
-      · simp only [ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, mul_div_cancel_left₀]; exact hy
-    · have hk'' : k' ≥ 1 := Nat.one_le_iff_ne_zero.mpr hk'
-      have ih' := ih hk''
-      apply CollatzOddSteps.even
-      · have : 2^(k' + 1) * y = 2 * (2^k' * y) := by ring
-        rw [this]; simp
-      · -- 2^(k'+1) * y ≠ 0
-        have hpow : 2^k' ≥ 1 := Nat.one_le_pow k' 2 (by omega)
-        have : 2^(k' + 1) * y ≥ 2 := by
-          calc 2^(k' + 1) * y = 2 * 2^k' * y := by ring
-            _ ≥ 2 * 1 * 1 := by nlinarith
-            _ = 2 := by ring
-        omega
-      · have hdiv : 2^(k' + 1) * y / 2 = 2^k' * y := by
-          have : 2^(k' + 1) * y = 2 * (2^k' * y) := by ring
-          rw [this]
-          exact Nat.mul_div_cancel_left _ (by omega)
-        rw [hdiv]
-        exact ih'
+  | succ k ih =>
+    have : 2^(k + 1) * y = 2 * (2^k * y) := by ring
+    rw [this]
+    apply CollatzOddSteps.even (by omega) (by positivity)
+    rw [Nat.mul_div_right _ (by omega)]
+    obtain rfl | hk' := Nat.eq_zero_or_pos k
+    · simp [hy]
+    · exact ih hk'
 
 /-- Numbers reachable via CollatzOddSteps are positive -/
 lemma CollatzOddSteps_pos (n m : ℕ) (h : CollatzOddSteps n m) : n ≥ 1 := by

@@ -73,17 +73,15 @@
     <span class="theorem_thmcaption">
     Theorem
     </span>
-    <span class="theorem_thmlabel">20</span>
+    <span class="theorem_thmlabel">21</span>
     <div class="thm_header_extras">
 
-    
-    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0004.html#thm:collatz_conjecture">#</a>
     
-    <a class="icon proof" href="sect0004.html#a0000000033"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0004.html#a0000000037"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -92,7 +90,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L121" class="lean_decl">collatz_conjecture</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/b78a33911c7ba9ca783cf2c31cf31fe11bd41d39/CollatzMapBasics/Basic.lean#L142" class="lean_decl">collatz_conjecture</a></li>
           
         </ul>
     </div>
@@ -104,7 +102,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000033">
+<div class="proof_wrapper" id="a0000000037">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -121,7 +119,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">21</span>
+    <span class="lemma_thmlabel">22</span>
     <div class="thm_header_extras">
 
     
@@ -131,7 +129,7 @@
 
     <a class="icon proof" href="sect0004.html#lemma:cycle_implies_not_collatz">#</a>
     
-    <a class="icon proof" href="sect0004.html#a0000000034"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0004.html#a0000000038"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -140,7 +138,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L127" class="lean_decl">cycle_implies_not_collatz</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/b78a33911c7ba9ca783cf2c31cf31fe11bd41d39/CollatzMapBasics/Basic.lean#L148" class="lean_decl">cycle_implies_not_collatz</a></li>
           
         </ul>
     </div>
@@ -152,7 +150,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000034">
+<div class="proof_wrapper" id="a0000000038">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -160,59 +158,11 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Suppose \(C^k(n) = n\) for \(n {\gt} 4\). If the conjecture were true, \(n\) would eventually reach \(1\). However, the cycle containing \(n\) consists of values all greater than \(4\) (since \(n \in \{ 1, 2, 4\} \) are the only known cycle values \(\le 4\)), which contradicts reaching \(1\). </p>
+  <p>Suppose for the sake of contradiction that the Collatz conjecture is true, which would imply every positive natural number eventually reaches \(1\). Since \(n {\gt} 4 \ge 1\), there exists some \(j \ge 0\) such that \(C^j(n) = 1\). Because \(n\) is part of a cycle of length \(k \ge 1\), we have \(C^{j \cdot k}(n) = n\). Since \(j \cdot k \ge j\), we can write \(j \cdot k = (j \cdot k - j) + j\), allowing us to decompose the iteration: \(n = C^{j \cdot k}(n) = C^{j \cdot k - j}(C^j(n)) = C^{j \cdot k - j}(1)\). However, it is a known property of the Collatz map that iterating starting from \(1\) only yields values in the set \(\{ 1, 2, 4\} \). Thus, \(C^{j \cdot k - j}(1) \le 4\), which implies \(n \le 4\). This contradicts our initial assumption that \(n {\gt} 4\), so the conjecture must be false. </p>
 
   </div>
 </div>
 <div class="lemma_thmwrapper theorem-style-plain" id="lemma:unbounded_orbit_implies_not_collatz">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">22</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0004.html#lemma:unbounded_orbit_implies_not_collatz">#</a>
-    
-    <a class="icon proof" href="sect0004.html#a0000000035"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L138" class="lean_decl">unbounded_orbit_implies_not_collatz</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If there exists a natural number \(n\) such that its orbit under \(C\) is unbounded, then the Collatz conjecture is false <b class="bf">(No-unbounded-orbit condition)</b>. </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000035">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>If an orbit is unbounded, it cannot reach \(1\), as reaching \(1\) would imply the orbit eventually enters the finite cycle \(\{ 1, 2, 4\} \), making it bounded. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:bounded_no_cycle_implies_collatz">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
@@ -225,9 +175,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0004.html#lemma:bounded_no_cycle_implies_collatz">#</a>
+    <a class="icon proof" href="sect0004.html#lemma:unbounded_orbit_implies_not_collatz">#</a>
     
-    <a class="icon proof" href="sect0004.html#a0000000036"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0004.html#a0000000039"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -236,7 +186,55 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/220efa1eab71a7ff8992991950bc0894ec4cfa2a/CollatzMapBasics/Basic.lean#L157" class="lean_decl">bounded_no_cycle_implies_collatz</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/b78a33911c7ba9ca783cf2c31cf31fe11bd41d39/CollatzMapBasics/Basic.lean#L159" class="lean_decl">unbounded_orbit_implies_not_collatz</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If there exists a natural number \(n\) such that its orbit under \(C\) is unbounded, then the Collatz conjecture is false <b class="bf">(No-unbounded-orbit condition)</b>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000039">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Suppose for the sake of contradiction that the Collatz conjecture is true, meaning every positive integer reaches \(1\). For our starting value \(n \ge 1\), there must exist some index \(j \ge 0\) such that \(C^j(n) = 1\). Let \(M\) be the maximum value reached in the first \(j\) steps of the orbit, that is, \(M = \max _{0 \le i \le j} C^i(n)\). Because the orbit of \(n\) is unbounded, there exists some index \(k\) such that \(C^k(n) {\gt} M + 4\). If we had \(k \le j\), then \(C^k(n) \le M {\lt} M + 4\), which is a contradiction. Therefore, we must have \(k {\gt} j\). We can then decompose the iteration as \(C^k(n) = C^{k-j}(C^j(n)) = C^{k-j}(1)\). Since iterating the Collatz map from \(1\) only produces values in \(\{ 1, 2, 4\} \), we have \(C^{k-j}(1) \le 4\). This implies \(C^k(n) \le 4\), which contradicts \(C^k(n) {\gt} M + 4 \ge 4\). Thus, the assumption that the conjecture is true must be false. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:bounded_no_cycle_implies_collatz">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">24</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0004.html#lemma:bounded_no_cycle_implies_collatz">#</a>
+    
+    <a class="icon proof" href="sect0004.html#a0000000040"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/b78a33911c7ba9ca783cf2c31cf31fe11bd41d39/CollatzMapBasics/Basic.lean#L178" class="lean_decl">bounded_no_cycle_implies_collatz</a></li>
           
         </ul>
     </div>
@@ -248,7 +246,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000036">
+<div class="proof_wrapper" id="a0000000040">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -256,7 +254,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>For any \(m \ge 1\), the orbit is bounded, so by the pigeonhole principle it must eventually repeat. Since there are no nontrivial cycles for \(n {\gt} 4\), the orbit must eventually enter the cycle \(\{ 1, 2, 4\} \), thus reaching \(1\). </p>
+  <p>Let \(m\) be an arbitrary natural number. If \(m = 0\), the conjecture trivially holds. Assume \(m \ge 1\). By the boundedness assumption, there exists some bound \(B\) such that \(C^k(m) \le B\) for all \(k \ge 0\). Because the infinite sequence \((C^k(m))_{k=0}^\infty \) only takes values in the finite set \(\{ 1, 2, \ldots , B\} \), the Pigeonhole Principle implies that there must be a collision. That is, there exist indices \(i {\lt} j\) such that \(C^i(m) = C^j(m)\). Let \(c = C^i(m)\). Then \(C^{j-i}(c) = C^j(m) = C^i(m) = c\), meaning \(c\) is part of a cycle of length \(j-i \ge 1\). By our no-cycle assumption, no number strictly greater than \(4\) can be part of a cycle, so we must have \(c \le 4\). Since \(m \ge 1\), all of its iterates are strictly positive, giving \(c \in \{ 1, 2, 3, 4\} \). We can verify that every number in this set eventually reaches \(1\): \(C^0(1) = 1\), \(C^1(2) = 1\), \(C^7(3) = 1\) (since \(3 \mapsto 10 \mapsto 5 \mapsto 16 \mapsto 8 \mapsto 4 \mapsto 2 \mapsto 1\)), and \(C^2(4) = 1\). In all cases, there exists some \(j'\) such that \(C^{j'}(c) = 1\). Therefore, starting from \(m\), after \(i\) steps we reach \(c\), and after \(j'\) more steps we reach \(1\), yielding \(C^{i+j'}(m) = 1\). Thus, the Collatz conjecture is true. </p>
 
   </div>
 </div>

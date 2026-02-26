@@ -2,7 +2,7 @@
 For every natural number $n$, either $n = 0$ or there exists a natural number $k$ such that
 $C^k(n) = 1$.
 \end{theorem}
-\begin{proof}\leanok
+\begin{proof}
 No proof exists.
 \end{proof}
 
@@ -11,9 +11,14 @@ If there exists a natural number $n > 4$ and $k \ge 1$ such that $C^k(n) = n$, t
 conjecture is false {\bf (No-cycle condition)}.
 \end{lemma}
 \begin{proof}\leanok
-Suppose $C^k(n) = n$ for $n > 4$. If the conjecture were true, $n$ would eventually reach $1$.
-However, the cycle containing $n$ consists of values all greater than $4$ (since $n \in \{1, 2, 4\}$
-are the only known cycle values $\le 4$), which contradicts reaching $1$.
+Suppose for the sake of contradiction that the Collatz conjecture is true, which would imply every positive natural number eventually reaches $1$.
+Since $n > 4 \ge 1$, there exists some $j \ge 0$ such that $C^j(n) = 1$.
+Because $n$ is part of a cycle of length $k \ge 1$, we have $C^{j \cdot k}(n) = n$.
+Since $j \cdot k \ge j$, we can write $j \cdot k = (j \cdot k - j) + j$, allowing us to decompose the iteration:
+$n = C^{j \cdot k}(n) = C^{j \cdot k - j}(C^j(n)) = C^{j \cdot k - j}(1)$.
+However, it is a known property of the Collatz map that iterating starting from $1$ only yields values in the set $\{1, 2, 4\}$.
+Thus, $C^{j \cdot k - j}(1) \le 4$, which implies $n \le 4$.
+This contradicts our initial assumption that $n > 4$, so the conjecture must be false.
 \end{proof}
 
 \begin{lemma}\label{lemma:unbounded_orbit_implies_not_collatz}\lean{unbounded_orbit_implies_not_collatz}\leanok
@@ -21,8 +26,16 @@ If there exists a natural number $n$ such that its orbit under $C$ is unbounded,
 conjecture is false {\bf (No-unbounded-orbit condition)}.
 \end{lemma}
 \begin{proof}\leanok
-If an orbit is unbounded, it cannot reach $1$, as reaching $1$ would imply the orbit eventually
-enters the finite cycle $\{1, 2, 4\}$, making it bounded.
+Suppose for the sake of contradiction that the Collatz conjecture is true, meaning every positive integer reaches $1$.
+For our starting value $n \ge 1$, there must exist some index $j \ge 0$ such that $C^j(n) = 1$.
+Let $M$ be the maximum value reached in the first $j$ steps of the orbit, that is, $M = \max_{0 \le i \le j} C^i(n)$.
+Because the orbit of $n$ is unbounded, there exists some index $k$ such that $C^k(n) > M + 4$.
+If we had $k \le j$, then $C^k(n) \le M < M + 4$, which is a contradiction.
+Therefore, we must have $k > j$.
+We can then decompose the iteration as $C^k(n) = C^{k-j}(C^j(n)) = C^{k-j}(1)$.
+Since iterating the Collatz map from $1$ only produces values in $\{1, 2, 4\}$, we have $C^{k-j}(1) \le 4$.
+This implies $C^k(n) \le 4$, which contradicts $C^k(n) > M + 4 \ge 4$.
+Thus, the assumption that the conjecture is true must be false.
 \end{proof}
 
 \begin{lemma}\label{lemma:bounded_no_cycle_implies_collatz}\lean{bounded_no_cycle_implies_collatz}\leanok
@@ -30,7 +43,16 @@ If no natural number $n > 4$ lies on a nontrivial cycle and every orbit under $C
 the Collatz conjecture is true.
 \end{lemma}
 \begin{proof}\leanok
-For any $m \ge 1$, the orbit is bounded, so by the pigeonhole principle it must eventually repeat.
-Since there are no nontrivial cycles for $n > 4$, the orbit must eventually enter the cycle
-$\{1, 2, 4\}$, thus reaching $1$.
+Let $m$ be an arbitrary natural number. If $m = 0$, the conjecture trivially holds.
+Assume $m \ge 1$. By the boundedness assumption, there exists some bound $B$ such that $C^k(m) \le B$ for all $k \ge 0$.
+Because the infinite sequence $(C^k(m))_{k=0}^\infty$ only takes values in the finite set $\{1, 2, \ldots, B\}$, the Pigeonhole Principle implies that there must be a collision.
+That is, there exist indices $i < j$ such that $C^i(m) = C^j(m)$. Let $c = C^i(m)$.
+Then $C^{j-i}(c) = C^j(m) = C^i(m) = c$, meaning $c$ is part of a cycle of length $j-i \ge 1$.
+By our no-cycle assumption, no number strictly greater than $4$ can be part of a cycle, so we must have $c \le 4$.
+Since $m \ge 1$, all of its iterates are strictly positive, giving $c \in \{1, 2, 3, 4\}$.
+We can verify that every number in this set eventually reaches $1$:
+$C^0(1) = 1$, $C^1(2) = 1$, $C^7(3) = 1$ (since $3 \mapsto 10 \mapsto 5 \mapsto 16 \mapsto 8 \mapsto 4 \mapsto 2 \mapsto 1$), and $C^2(4) = 1$.
+In all cases, there exists some $j'$ such that $C^{j'}(c) = 1$.
+Therefore, starting from $m$, after $i$ steps we reach $c$, and after $j'$ more steps we reach $1$, yielding $C^{i+j'}(m) = 1$.
+Thus, the Collatz conjecture is true.
 \end{proof}

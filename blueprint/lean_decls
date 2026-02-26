@@ -17,6 +17,7 @@ collatz_iter_add
 collatz_iter_mul_cycle
 collatz_iter_mem_124
 collatz_iter_one_le_four
+collatz_step_closed_form
 collatz_conjecture
 cycle_implies_not_collatz
 unbounded_orbit_implies_not_collatz
