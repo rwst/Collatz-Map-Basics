@@ -207,333 +207,133 @@ lemma bounded_no_cycle_implies_collatz
   exact ⟨j' + i, by rw [collatz_iter_add, hj']⟩
 
 
-/--
-Relation asserting that `n` reaches 1 with exactly `m` steps of the form `3n+1`.
-Any number of `n/2` steps are allowed and do not contribute to the count `m`.
--/
-inductive CollatzOddSteps : ℕ → ℕ → Prop where
-  -- Base case: We are at 1. We have used 0 odd steps.
-  | base : CollatzOddSteps 1 0
+/-- The reduced Collatz map `R` maps an odd natural number `n` to the odd part of `3n + 1`. -/
+def reduced_collatz_step (n : ℕ) : ℕ := ordCompl[2] (3 * n + 1)
 
-  -- Even step: If n is even, divide by 2.
-  -- The count 'm' passes through unchanged.
-  | even {n m : ℕ} :
-      n % 2 = 0 →
-      n ≠ 0 →            -- safety to prevent 0 loop
-      CollatzOddSteps (n / 2) m →
-      CollatzOddSteps n m
+def R_iter : ℕ → ℕ → ℕ
+| 0, n     => n
+| (k + 1), n => R_iter k (reduced_collatz_step n)
 
-  -- Odd step: If n is odd (and not 1), do 3n+1.
-  -- The count increases to 'm + 1'.
-  | odd {n m : ℕ} :
-      n % 2 = 1 →
-      n > 1 →            -- prevent stepping away from 1
-      CollatzOddSteps (3 * n + 1) m →
-      CollatzOddSteps n (m + 1)
+@[simp]
+lemma R_zero : reduced_collatz_step 0 = 1 := by
+  simp [reduced_collatz_step]
 
-/-- CollatzOddSteps is preserved under multiplication by powers of 2 -/
-lemma CollatzOddSteps_mul_pow_two (y m k : ℕ) (hy : CollatzOddSteps y m) (hk : k ≥ 1) :
-    CollatzOddSteps (2^k * y) m := by
-  have hy_pos : y ≥ 1 := by cases hy <;> omega
-  induction k with
+@[simp]
+lemma R_one : reduced_collatz_step 1 = 1 := by
+  native_decide
+
+lemma reduced_collatz_step_pos (n : ℕ) : reduced_collatz_step n ≥ 1 := by
+  simp [reduced_collatz_step]
+  exact Nat.ordCompl_pos 2 (by omega)
+
+lemma R_pos (n i : ℕ) (hn : n ≥ 1) : R_iter i n ≥ 1 := by
+  induction i generalizing n with
+  | zero => exact hn
+  | succ i ih => exact ih _ (reduced_collatz_step_pos n)
+
+lemma reduced_collatz_step_odd (n : ℕ) : reduced_collatz_step n % 2 = 1 := by
+  simp only [reduced_collatz_step]
+  have h := Nat.coprime_ordCompl Nat.prime_two (show 3 * n + 1 ≠ 0 by omega)
+  rwa [Nat.coprime_two_left, Nat.odd_iff] at h
+
+lemma R_odd (n i : ℕ) (hi : i ≥ 1) : R_iter i n % 2 = 1 := by
+  induction i generalizing n with
   | zero => omega
-  | succ k ih =>
-    have : 2^(k + 1) * y = 2 * (2^k * y) := by ring
-    rw [this]
-    apply CollatzOddSteps.even (by omega) (by positivity)
-    rw [Nat.mul_div_right _ (by omega)]
-    obtain rfl | hk' := Nat.eq_zero_or_pos k
-    · simp [hy]
-    · exact ih hk'
-
-/-- Numbers reachable via CollatzOddSteps are positive -/
-lemma CollatzOddSteps_pos (n m : ℕ) (h : CollatzOddSteps n m) : n ≥ 1 := by
-  cases h with
-  | base => simp
-  | even _ hn _ => omega
-  | odd _ hgt1 _ => omega
-
-/-- Strengthened Main Lemma: exists n with CollatzOddSteps n m AND n % 3 ≠ 0 AND (m > 0 → n is odd and n > 1) -/
-lemma exists_n_with_m_odd_steps_not_div3 (m : ℕ) :
-    ∃ n : ℕ, CollatzOddSteps n m ∧ n % 3 ≠ 0 ∧ (m > 0 → n % 2 = 1 ∧ n > 1) := by
-  induction m with
-  | zero =>
-    -- Case 0: n=1 works, 1 % 3 = 1 ≠ 0
-    use 1
-    refine ⟨CollatzOddSteps.base, by simp, by simp⟩
-  | succ m_prev ih =>
-    obtain ⟨y, hy, hy_not_div3, hy_odd_gt1⟩ := ih
-    by_cases hm_prev : m_prev = 0
-    · -- m_prev = 0: use n = 5
-      -- 5 % 3 = 2 ≠ 0, 5 is odd, 5 > 1, and CollatzOddSteps 5 1
-      use 5
-      refine ⟨?_, by simp, by simp⟩
-      apply CollatzOddSteps.odd (by simp) (by omega)
-      have h16 : CollatzOddSteps 16 0 := by
-        apply CollatzOddSteps.even; simp; omega
-        apply CollatzOddSteps.even; simp; omega
-        apply CollatzOddSteps.even; simp; omega
-        apply CollatzOddSteps.even; simp; omega
-        exact CollatzOddSteps.base
-      rw [hm_prev]; exact h16
-    · -- m_prev > 0, so y is odd and y > 1 (from our strengthened IH)
-      have hm_prev_pos : m_prev > 0 := Nat.pos_of_ne_zero hm_prev
-      have ⟨hy_odd, hy_gt1⟩ := hy_odd_gt1 hm_prev_pos
-      -- Find predecessor with x % 3 ≠ 0
-      obtain ⟨x, k, hx_odd, hx_eq⟩ :=
-        exists_predecessor_of_odd y hy_odd hy_not_div3
-      -- First build CollatzOddSteps x (m_prev + 1)
-      have hx_gt1 : x > 1 := by
-        -- x is odd, so x ≥ 1; if x = 1 then 4 = 2^k * y, but y is odd and > 1
-        rcases Nat.eq_or_lt_of_le (show x ≥ 1 by omega) with rfl | h
-        · -- x = 1 → 4 = 2^k * y
-          have h4 : 2 ^ k * y = 4 := by omega
-          have hk2 : k ≤ 2 := by
-            by_contra hk; push_neg at hk
-            have : 2 ^ k ≥ 8 := le_trans (by norm_num : (8 : ℕ) ≤ 2^3) (Nat.pow_le_pow_right (by omega) hk)
-            nlinarith [show y ≥ 1 from by omega]
-          interval_cases k <;> omega
-        · omega
-      have hx_steps : CollatzOddSteps x (m_prev + 1) := by
-        apply CollatzOddSteps.odd hx_odd hx_gt1
-        rw [hx_eq]
-        by_cases hk : k = 0
-        · simp [hk]; exact hy
-        · exact CollatzOddSteps_mul_pow_two y m_prev k hy (Nat.one_le_iff_ne_zero.mpr hk)
-      -- Now handle x % 3 ≠ 0
-      by_cases hx3 : x % 3 ≠ 0
-      · exact ⟨x, hx_steps, hx3, fun _ => ⟨hx_odd, hx_gt1⟩⟩
-      · -- x % 3 = 0: use 4*x + 1 instead (inline CollatzOddSteps_4n_add_1)
-        push_neg at hx3
-        use 4 * x + 1
-        refine ⟨?_, by omega, fun _ => ⟨by omega, by omega⟩⟩
-        -- Prove CollatzOddSteps (4*x+1) (m_prev + 1)
-        -- Since x is odd and > 1, hx_steps uses the odd constructor
-        cases hx_steps with
-        | even h_ev _ _ => omega
-        | @odd _ m' _ _ h_next =>
-          apply CollatzOddSteps.odd (by omega) (by omega)
-          apply CollatzOddSteps.even (by omega) (by omega)
-          apply CollatzOddSteps.even (by omega) (by omega)
-          convert h_next using 1; omega
-
-/-- Main Lemma -/
-lemma exists_n_with_m_odd_steps (m : ℕ) : ∃ n : ℕ, CollatzOddSteps n m := by
-  obtain ⟨n, hn, _⟩ := exists_n_with_m_odd_steps_not_div3 m
-  exact ⟨n, hn⟩
-
-/--
-If `n` is odd and greater than 1, then `4n + 1` requires the same number of odd steps `m` as `n`.
-This is because `4n + 1` reaches `3n + 1` (the successor of `n`) using exactly 1 odd step,
-just like `n` reaches `3n + 1` using exactly 1 odd step.
--/
-lemma CollatzOddSteps_4n_add_1 (n m : ℕ) (h_odd : n % 2 = 1) (h_gt1 : n > 1)
-    (h : CollatzOddSteps n m) : CollatzOddSteps (4 * n + 1) m := by
-  -- Since n is odd and > 1, h must use the `odd` constructor
-  -- So m = m_prev + 1 for some m_prev, and CollatzOddSteps (3n+1) m_prev
-  cases h with
-  | base =>
-    -- Contradiction: n > 1 but base case has n = 1
-    contradiction
-  | even h_even _ _ =>
-    -- Contradiction: n is odd but even constructor requires n even
-    rw [h_odd] at h_even; contradiction
-  | @odd n' m_prev _ _ h_next =>
-    -- h_next : CollatzOddSteps (3 * n + 1) m_prev
-    -- Goal: CollatzOddSteps (4 * n + 1) (m_prev + 1)
-
-    apply CollatzOddSteps.odd (by omega) (by omega)
-    apply CollatzOddSteps.even (by omega) (by omega)
-    apply CollatzOddSteps.even (by omega) (by omega)
-    convert h_next using 1; omega
-
-/-- Sequence: iterate (4*x + 1) starting from n₀ -/
-def iter_4n_plus_1 (n₀ : ℕ) : ℕ → ℕ
-  | 0 => n₀
-  | i + 1 => 4 * iter_4n_plus_1 n₀ i + 1
-
-lemma iter_4n_plus_1_odd (n₀ : ℕ) (h_odd : n₀ % 2 = 1) : ∀ i, iter_4n_plus_1 n₀ i % 2 = 1 := by
-  intro i
-  induction i with
-  | zero => exact h_odd
-  | succ i ih => simp [iter_4n_plus_1]; omega
-
-lemma iter_4n_plus_1_gt_one (n₀ : ℕ) (h_gt1 : n₀ > 1) : ∀ i, iter_4n_plus_1 n₀ i > 1 := by
-  intro i
-  induction i with
-  | zero => exact h_gt1
-  | succ i ih => simp [iter_4n_plus_1]; omega
-
-lemma iter_4n_plus_1_growth (n₀ : ℕ) (h_pos : n₀ ≥ 1) : ∀ i, iter_4n_plus_1 n₀ i ≥ i + 1 := by
-  intro i
-  induction i with
-  | zero => simp [iter_4n_plus_1]; omega
   | succ i ih =>
-    simp [iter_4n_plus_1]
-    have h1 : 4 * iter_4n_plus_1 n₀ i + 1 ≥ 4 * (i + 1) + 1 := by omega
-    omega
+    simp only [R_iter]
+    rcases Nat.eq_zero_or_pos i with rfl | hi'
+    · exact reduced_collatz_step_odd n
+    · exact ih _ (by omega)
+
+lemma not_exists_R_with_m_div3 (m : ℕ) (hdiv3: m % 3 = 0) :
+    ¬ ∃ n : ℕ, reduced_collatz_step n = m := by
+  intro ⟨n, hn⟩
+  have h3 : 3 ∣ m := Nat.dvd_of_mod_eq_zero hdiv3
+  rw [← hn] at h3
+  simp only [reduced_collatz_step] at h3
+  have : 3 ∣ (3 * n + 1) := dvd_trans h3 (Nat.ordCompl_dvd (3 * n + 1) 2)
+  omega
+
+private lemma ordCompl_two_mul_pow (k m : ℕ) (hm_odd : m % 2 = 1) :
+    ordCompl[2] (2^k * m) = m := by
+  show 2^k * m / 2 ^ (2^k * m).factorization 2 = m
+  have hcoprime : Nat.Coprime (2^k) m :=
+    Nat.Coprime.pow_left k (by rwa [Nat.coprime_two_left, Nat.odd_iff])
+  rw [Nat.factorization_mul_of_coprime hcoprime, Finsupp.coe_add, Pi.add_apply,
+      Nat.Prime.factorization_pow Nat.prime_two,
+      Finsupp.single_apply, if_pos rfl,
+      Nat.factorization_eq_zero_of_not_dvd (by omega)]
+  simp [Nat.mul_div_cancel_left _ (by positivity : (2:ℕ)^k > 0)]
+
+lemma exists_R_with_m_not_div3 (m : ℕ) (hpos: m > 0) (hodd : m % 2 = 1) (hdiv3: m % 3 ≠ 0) :
+    ∃ n : ℕ, reduced_collatz_step n = m ∧ n % 2 = 1 ∧ n > 1 := by
+  obtain rfl | hm_gt : m = 1 ∨ m > 1 := by omega
+  · exact ⟨5, by native_decide, by omega, by omega⟩
+  · obtain h1 | h2 : m % 3 = 1 ∨ m % 3 = 2 := by omega
+    · use (4 * m - 1) / 3
+      have hdvd : 3 ∣ (4 * m - 1) := by omega
+      have h3n : 3 * ((4 * m - 1) / 3) = 4 * m - 1 := Nat.mul_div_cancel' hdvd
+      refine ⟨?_, by omega, by omega⟩
+      show ordCompl[2] (3 * ((4 * m - 1) / 3) + 1) = m
+      rw [show 3 * ((4 * m - 1) / 3) + 1 = 4 * m from by omega]
+      rw [show (4 : ℕ) * m = 2^2 * m from by ring]
+      exact ordCompl_two_mul_pow 2 m hodd
+    · use (2 * m - 1) / 3
+      have hdvd : 3 ∣ (2 * m - 1) := by omega
+      have h3n : 3 * ((2 * m - 1) / 3) = 2 * m - 1 := Nat.mul_div_cancel' hdvd
+      refine ⟨?_, by omega, by omega⟩
+      show ordCompl[2] (3 * ((2 * m - 1) / 3) + 1) = m
+      rw [show 3 * ((2 * m - 1) / 3) + 1 = 2 * m from by omega]
+      rw [show (2 : ℕ) * m = 2^1 * m from by ring]
+      exact ordCompl_two_mul_pow 1 m hodd
+
+private lemma ordCompl_two_pow_mul (k x : ℕ) (hx : x ≠ 0) :
+    ordCompl[2] (2^k * x) = ordCompl[2] x := by
+  show 2^k * x / 2 ^ (2^k * x).factorization 2 = x / 2 ^ x.factorization 2
+  have h4ne : 2^k ≠ 0 := by positivity
+  rw [Nat.factorization_mul h4ne hx, Finsupp.coe_add, Pi.add_apply,
+      Nat.Prime.factorization_pow Nat.prime_two,
+      Finsupp.single_apply, if_pos rfl,
+      pow_add, Nat.mul_div_mul_left _ _ (by positivity : (2:ℕ)^k > 0)]
+
+lemma R_4n_add_1 (n : ℕ) (h_gt1 : n > 1) :
+    reduced_collatz_step (4 * n + 1) = reduced_collatz_step n := by
+  simp only [reduced_collatz_step]
+  rw [show 3 * (4 * n + 1) + 1 = 4 * (3 * n + 1) from by ring,
+      show (4 : ℕ) = 2^2 from rfl]
+  exact ordCompl_two_pow_mul 2 (3 * n + 1) (by omega)
 
 /--
-For every step count `m`, there are infinitely many `n` (forall k, exists n > k)
-that reach 1 using exactly `m` odd steps.
--/
-lemma infinitely_many_collatz_odd_steps (m : ℕ) : ∀ k, ∃ n, n > k ∧ CollatzOddSteps n m := by
-  intro k
-  cases m with
-  | zero =>
-    -- Case m = 0: Powers of 2.
-    use 2^(k+1)
-    exact ⟨by have := Nat.lt_two_pow_self (n := k + 1); omega,
-      by simpa using CollatzOddSteps_mul_pow_two 1 0 (k+1) CollatzOddSteps.base (by omega)⟩
-
-  | succ m_prev =>
-    -- Case m > 0.
-    obtain ⟨n₀, h_steps, _, h_cond⟩ := exists_n_with_m_odd_steps_not_div3 (m_prev + 1)
-    have ⟨h_odd, h_gt1⟩ := h_cond (by omega : m_prev + 1 > 0)
-
-    refine ⟨iter_4n_plus_1 n₀ k,
-      by have := iter_4n_plus_1_growth n₀ (by omega : n₀ ≥ 1) k; omega, ?_⟩
-    induction k with
-    | zero => simp [iter_4n_plus_1]; exact h_steps
-    | succ i ih =>
-      simp [iter_4n_plus_1]
-      exact CollatzOddSteps_4n_add_1 _ _ (iter_4n_plus_1_odd n₀ h_odd i)
-        (iter_4n_plus_1_gt_one n₀ h_gt1 i) ih
-
-/--
-A "primitive" for step count `m` is an odd number `n` that reaches 1 in `m` steps,
-but is not the child of another *odd* number `k` (via `4k+1`) that also reaches 1 in `m` steps.
+A "primitive" for step count `i` is an odd number `n` that reaches 1 in `i` steps,
+but is not the child of another *odd* number `k` (via `4k+1`) that also reaches 1 in `i` steps.
 
 Since the "Odd Step" count is preserved between `k` and `4k+1` only when `k` is odd,
 we explicitly require the predecessor to be odd.
 -/
-def IsPrimitive4x1 (n m : ℕ) : Prop :=
-  CollatzOddSteps n m ∧
+def IsPrimitive4x1 (n i : ℕ) : Prop :=
+  R_iter n i = 1 ∧
+  i > 1 ∧
+  n > 1 ∧
   n % 2 = 1 ∧
-  ∀ k, k % 2 = 1 → 4 * k + 1 = n → ¬ CollatzOddSteps k m
+  ∀ k, k % 2 = 1 → 4 * k + 1 = n → ¬ R_iter k i = 1
 
 /--
 Lemma: The definition of a primitive simplifies to a modular arithmetic check.
-If `n` is odd and has step count `m`, it is primitive if and only if `n % 8 ≠ 5` or `n = 5`.
+If `n` is odd and has step count `i`, it is primitive if and only if `n % 8 ≠ 5` or `n = 5`.
 -/
-lemma is_primitive_iff_mod_8_ne_5 (n m : ℕ) (h_odd : n % 2 = 1) (h_steps : CollatzOddSteps n m)
-    (h_ne5 : n ≠ 5) : IsPrimitive4x1 n m ↔ n % 8 ≠ 5 := by
-  constructor
-  · intro h_prim h_mod5
-    unfold IsPrimitive4x1 at h_prim
-    have ⟨k, hk⟩ : ∃ k, n = 8 * k + 5 := by
-      use n / 8
-      have := Nat.div_add_mod n 8
-      omega
-    let x := 2 * k + 1
-    have hx_odd : x % 2 = 1 := by simp [x]
-    have hk_pos : k ≥ 1 := by omega
-    have hx_gt1 : x > 1 := by simp [x]; omega
-    have h_map : 4 * x + 1 = n := by
-      rw [hk]; simp [x]; ring
-    have h_x_steps : CollatzOddSteps x m := by
-      cases h_steps with
-      | base => omega
-      | even h_even _ _ => omega
-      | odd h_odd' h_gt1' h_next =>
-        have h_strip : ∀ v m', CollatzOddSteps v m' → v % 2 = 0 → v ≠ 0 →
-            CollatzOddSteps (v / 2) m' := fun v m' hv heven hne => by
-          cases hv with
-          | base => omega
-          | even _ _ h => exact h
-          | odd hodd _ _ => omega
-        have h1 := h_strip (3 * n + 1) _ h_next (by omega) (by omega)
-        have h2 := h_strip ((3 * n + 1) / 2) _ h1 (by omega) (by omega)
-        apply CollatzOddSteps.odd hx_odd hx_gt1
-        have h_eq : 3 * x + 1 = (3 * n + 1) / 4 := by simp only [x]; omega
-        rw [h_eq]
-        rwa [Nat.div_div_eq_div_mul] at h2
-    exact h_prim.2.2 x hx_odd h_map h_x_steps
-  · intro h_mod8_ne_5
-    refine ⟨h_steps, h_odd, fun k hk_odd h_map => absurd ?_ h_mod8_ne_5⟩
-    have := (Nat.div_add_mod k 2).symm; rw [hk_odd] at this; omega
-
-/--
-For every level `m`, there are infinitely many members not divisible by 3.
--/
-lemma infinitely_many_not_div3 (m : ℕ) : ∀ B, ∃ n, n > B ∧ CollatzOddSteps n m ∧ n % 3 ≠ 0 := by
-  intro B
-  obtain ⟨n₀, h_steps, h_mod3, _⟩ := exists_n_with_m_odd_steps_not_div3 m
-  have h_pos := CollatzOddSteps_pos n₀ m h_steps
-  use 2 ^ (B + 1) * n₀
-  refine ⟨?_, CollatzOddSteps_mul_pow_two n₀ m (B + 1) h_steps (by omega), ?_⟩
-  · -- 2^(B+1) * n₀ > B
-    have h_2pow : 2 ^ (B + 1) ≥ B + 1 := by
-      have := Nat.lt_two_pow_self (n := B + 1)
-      omega
-    nlinarith
-  · -- (2^(B+1) * n₀) % 3 ≠ 0
-    rw [Nat.mul_mod]
-    have h2k : 2 ^ (B + 1) % 3 = 1 ∨ 2 ^ (B + 1) % 3 = 2 := by
-      have := pow_two_mod_three (B + 1)
-      split_ifs at this <;> omega
-    have hn0 : n₀ % 3 = 1 ∨ n₀ % 3 = 2 := by
-      have := Nat.mod_lt n₀ (show (0 : ℕ) < 3 by omega)
-      omega
-    rcases h2k with h1 | h1 <;> rcases hn0 with h2 | h2 <;> simp [h1, h2]
+lemma is_primitive_iff_mod_8_ne_5 (n i : ℕ) (h_odd : n % 2 = 1) (h_steps : R_iter n i = 1)
+    (h_ne5 : n ≠ 5) : IsPrimitive4x1 n i ↔ n % 8 ≠ 5 := by
+  sorry
 
 /--
 Every odd number `y` (not div 3) at level `m` generates a Primitive at level `m+1`.
 -/
-lemma odd_node_generates_primitive (y m : ℕ)
-  (h_steps : CollatzOddSteps y m)
+lemma odd_node_generates_primitive (y i : ℕ)
+  (h_steps : R_iter y i = 1)
   (h_odd : y % 2 = 1)
   (h_not_div3 : y % 3 ≠ 0) :
-  ∃ n, IsPrimitive4x1 n (m + 1) := by
-  by_cases hy1 : y = 1
-  · -- y = 1: must have m = 0; use n = 5
-    subst hy1
-    cases h_steps with
-    | base =>
-      use 5
-      refine ⟨?_, by norm_num, ?_⟩
-      · -- CollatzOddSteps 5 1
-        apply CollatzOddSteps.odd (by norm_num) (by omega)
-        apply CollatzOddSteps.even (by norm_num) (by omega)
-        apply CollatzOddSteps.even (by norm_num) (by omega)
-        apply CollatzOddSteps.even (by norm_num) (by omega)
-        apply CollatzOddSteps.even (by norm_num) (by omega)
-        exact CollatzOddSteps.base
-      · -- Primitivity: only predecessor is k=1, which lacks CollatzOddSteps 1 1
-        intro k _ hk_eq
-        have : k = 1 := by omega
-        subst this
-        intro h; cases h with
-        | even h_ev _ _ => omega
-        | odd _ h_gt _ => omega
-    | even h_ev _ _ => omega
-    | odd _ h_gt _ => omega
-  · -- y > 1
-    have hy_gt1 : y > 1 := by have := CollatzOddSteps_pos y m h_steps; omega
-    have hy_mod6 : y % 6 = 1 ∨ y % 6 = 5 := by omega
-    rcases hy_mod6 with h6 | h6
-    · -- y ≡ 1 (mod 6): predecessor via shift k = 2
-      obtain ⟨x, hx_odd, hx_gt1, hx_eq⟩ := exists_predecessor_gt_one_mod1 y h6 hy_gt1
-      use x
-      have hx_steps : CollatzOddSteps x (m + 1) := by
-        apply CollatzOddSteps.odd hx_odd hx_gt1; rw [hx_eq]
-        exact CollatzOddSteps_mul_pow_two y m 2 h_steps (by omega)
-      obtain ⟨q, hq⟩ : ∃ q, y = 6 * q + 1 := ⟨y / 6, by omega⟩
-      have h4 : (2 : ℕ) ^ 2 = 4 := by norm_num
-      rw [h4] at hx_eq
-      have hx_val : x = 8 * q + 1 := by omega
-      exact (is_primitive_iff_mod_8_ne_5 x (m + 1) hx_odd hx_steps (by omega)).mpr (by omega)
-    · -- y ≡ 5 (mod 6): predecessor via shift k = 1
-      obtain ⟨x, hx_odd, hx_gt1, hx_eq⟩ := exists_predecessor_gt_one_mod5 y h6
-      use x
-      have hx_steps : CollatzOddSteps x (m + 1) := by
-        apply CollatzOddSteps.odd hx_odd hx_gt1; rw [hx_eq]
-        exact CollatzOddSteps_mul_pow_two y m 1 h_steps (by omega)
-      obtain ⟨q, hq⟩ : ∃ q, y = 6 * q + 5 := ⟨y / 6, by omega⟩
-      have h2 : (2 : ℕ) ^ 1 = 2 := by norm_num
-      rw [h2] at hx_eq
-      have hx_val : x = 4 * q + 3 := by omega
-      exact (is_primitive_iff_mod_8_ne_5 x (m + 1) hx_odd hx_steps (by omega)).mpr (by omega)
+  ∃ n, IsPrimitive4x1 n (i + 1) := by
+  sorry
 
 /-- Primitives at level m+1 generated by different odd numbers at level m are distinct.
     The generation relationship is 3*p+1 = 2^k * y: p does an odd step then k halvings to reach y.
@@ -572,67 +372,11 @@ lemma primitives_from_distinct_generators_ne
   subst hk
   exact Nat.eq_of_mul_eq_mul_left (by positivity) h
 
-lemma iter_4n_plus_1_mod3 (n₀ i : ℕ) : iter_4n_plus_1 n₀ i % 3 = (n₀ + i) % 3 := by
-  induction i with
-  | zero => simp [iter_4n_plus_1]
-  | succ i ih => simp [iter_4n_plus_1, Nat.add_mod, Nat.mul_mod, ih]; omega
-
 /--
 For every level `m`, there are infinitely many primitive numbers.
 -/
 lemma infinite_primitives (m : ℕ) (h2le: 2 ≤ m) : ∀ B, ∃ n, n > B ∧ IsPrimitive4x1 n m := by
-  intro B
-  have hm : m - 1 + 1 = m := by omega
-  -- Get seed at level m-1: odd, > 1, % 3 ≠ 0
-  obtain ⟨n₀, hn₀_steps, hn₀_mod3, hn₀_cond⟩ := exists_n_with_m_odd_steps_not_div3 (m - 1)
-  have ⟨hn₀_odd, hn₀_gt1⟩ := hn₀_cond (by omega : m - 1 > 0)
-  -- Build large odd y at level m-1
-  set y := iter_4n_plus_1 n₀ (3 * (B + 1)) with hy_def
-  have hy_odd : y % 2 = 1 := iter_4n_plus_1_odd n₀ hn₀_odd _
-  have hy_gt1 : y > 1 := iter_4n_plus_1_gt_one n₀ hn₀_gt1 _
-  have hy_mod3 : y % 3 ≠ 0 := by
-    rw [hy_def, iter_4n_plus_1_mod3]
-    have : (n₀ + 3 * (B + 1)) % 3 = n₀ % 3 := by omega
-    rw [this]; exact hn₀_mod3
-  have hy_large : y ≥ 3 * B + 4 := by
-    have := iter_4n_plus_1_growth n₀ (by omega : n₀ ≥ 1) (3 * (B + 1))
-    omega
-  -- y has CollatzOddSteps at level m-1 (by iterating CollatzOddSteps_4n_add_1)
-  have hy_steps : CollatzOddSteps y (m - 1) := by
-    rw [hy_def]
-    induction (3 * (B + 1)) with
-    | zero => simp [iter_4n_plus_1]; exact hn₀_steps
-    | succ i ih =>
-      simp [iter_4n_plus_1]
-      exact CollatzOddSteps_4n_add_1 _ _ (iter_4n_plus_1_odd n₀ hn₀_odd i)
-        (iter_4n_plus_1_gt_one n₀ hn₀_gt1 i) ih
-  -- Construct primitive at level m from y (inline from odd_node_generates_primitive)
-  have hy_mod6 : y % 6 = 1 ∨ y % 6 = 5 := by omega
-  rcases hy_mod6 with h6 | h6
-  · -- y ≡ 1 (mod 6): primitive x with 3x+1 = 4y
-    obtain ⟨x, hx_odd, hx_gt1, hx_eq⟩ := exists_predecessor_gt_one_mod1 y h6 (by omega)
-    use x
-    have hx_steps : CollatzOddSteps x (m - 1 + 1) := by
-      apply CollatzOddSteps.odd hx_odd hx_gt1; rw [hx_eq]
-      exact CollatzOddSteps_mul_pow_two y (m - 1) 2 hy_steps (by omega)
-    rw [hm] at hx_steps
-    obtain ⟨q, hq⟩ : ∃ q, y = 6 * q + 1 := ⟨y / 6, by omega⟩
-    have h4 : (2 : ℕ) ^ 2 = 4 := by norm_num
-    rw [h4] at hx_eq
-    have hx_val : x = 8 * q + 1 := by omega
-    exact ⟨by omega, (is_primitive_iff_mod_8_ne_5 x m hx_odd hx_steps (by omega)).mpr (by omega)⟩
-  · -- y ≡ 5 (mod 6): primitive x with 3x+1 = 2y
-    obtain ⟨x, hx_odd, hx_gt1, hx_eq⟩ := exists_predecessor_gt_one_mod5 y h6
-    use x
-    have hx_steps : CollatzOddSteps x (m - 1 + 1) := by
-      apply CollatzOddSteps.odd hx_odd hx_gt1; rw [hx_eq]
-      exact CollatzOddSteps_mul_pow_two y (m - 1) 1 hy_steps (by omega)
-    rw [hm] at hx_steps
-    obtain ⟨q, hq⟩ : ∃ q, y = 6 * q + 5 := ⟨y / 6, by omega⟩
-    have h2 : (2 : ℕ) ^ 1 = 2 := by norm_num
-    rw [h2] at hx_eq
-    have hx_val : x = 4 * q + 3 := by omega
-    exact ⟨by omega, (is_primitive_iff_mod_8_ne_5 x m hx_odd hx_steps (by omega)).mpr (by omega)⟩
+  sorry
 
 /-- The odd Collatz successor of an odd number n is the odd part of 3n+1,
     i.e., (3n+1) / 2^v₂(3n+1). This exceeds n only when n ≡ 3 (mod 4). -/

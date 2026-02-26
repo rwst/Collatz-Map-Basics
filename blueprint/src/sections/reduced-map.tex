@@ -1,0 +1,89 @@
+\begin{definition}\label{def:reduced_collatz_step}\lean{reduced_collatz_step}\leanok
+The reduced Collatz map $R: \mathbb{N}\to \mathbb{N}$ is defined by
+\begin{equation}
+    R(n) = \frac{3n+1}{2^{v_2(3n+1)}}
+\end{equation}
+where $v_2(m)$ is the dyadic valuation of $m$. In short $R(n)=$ odd part of $3n+1$.
+\end{definition}
+
+\begin{definition}\label{def:R_iter}\lean{R_iter}\leanok
+For any $k \in \mathbb{N}$, the $k$-fold iteration of the reduced Collatz map
+$R^k: \mathbb{N} \to \mathbb{N}$ is defined recursively by
+\begin{equation}
+    R^0(n) = n
+\end{equation}
+and
+\begin{equation}
+    R^{k+1}(n) = R^k(R(n)).
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:R_zero}\lean{R_zero}\leanok
+$R(0) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+By definition, $R(0) = \text{odd part of } (3 \cdot 0 + 1) = \text{odd part of } 1 = 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:R_one}\lean{R_one}\leanok
+$R(1) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+By definition, $R(1) = \text{odd part of } (3 \cdot 1 + 1) = \text{odd part of } 4 = 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:reduced_collatz_step_pos}\lean{reduced_collatz_step_pos}\leanok
+For all $n \in \mathbb{N}$, $R(n) \geq 1$.
+\end{lemma}
+\begin{proof}\leanok
+Since $3n + 1 \geq 1$ for all $n$, the odd part of $3n+1$ is a positive divisor of a positive number, hence $R(n) \geq 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:R_pos}\lean{R_pos}\leanok\uses{lemma:reduced_collatz_step_pos}
+For all $n, i \in \mathbb{N}$ with $n \geq 1$, we have $R^i(n) \geq 1$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $i$. The base case $i = 0$ is immediate since $R^0(n) = n \geq 1$. For the inductive step, $R^{i+1}(n) = R^i(R(n))$. By Lemma~\ref{lemma:reduced_collatz_step_pos}, $R(n) \geq 1$, so the induction hypothesis gives $R^i(R(n)) \geq 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:reduced_collatz_step_odd}\lean{reduced_collatz_step_odd}\leanok
+For all $n \in \mathbb{N}$, $R(n)$ is odd, i.e.\ $R(n) \equiv 1 \pmod{2}$.
+\end{lemma}
+\begin{proof}\leanok
+By definition, $R(n)$ is the odd part of $3n+1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:R_odd}\lean{R_odd}\leanok\uses{lemma:reduced_collatz_step_odd}
+For all $n \in \mathbb{N}$ and $i \geq 1$, $R^i(n)$ is odd, i.e.\ $R^i(n) \equiv 1 \pmod{2}$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $i$. The base case $i = 1$ follows directly from Lemma~\ref{lemma:reduced_collatz_step_odd}, since $R^1(n) = R(n)$ is odd. For the inductive step, $R^{i+1}(n) = R^i(R(n))$. If $i \geq 1$, the induction hypothesis gives that $R^i(R(n))$ is odd. If $i = 0$, then $R^{i+1}(n) = R^1(n) = R(n)$, which is odd by Lemma~\ref{lemma:reduced_collatz_step_odd}.
+\end{proof}
+
+\begin{lemma}\label{lemma:not_exists_R_with_m_div3}\lean{not_exists_R_with_m_div3}\leanok
+If $m \equiv 0 \pmod{3}$, then there is no $n \in \mathbb{N}$ such that $R(n) = m$. In other words, multiples of $3$ are not in the image of $R$.
+\end{lemma}
+\begin{proof}\leanok
+Suppose for contradiction that $R(n) = m$ for some $n$, with $3 \mid m$. Since $R(n)$ is the odd
+part of $3n+1$, we have $R(n) \mid 3n+1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:exists_R_with_m_not_div3}\lean{exists_R_with_m_not_div3}\leanok
+Let $m > 0$ be odd with $m \not\equiv 0 \pmod{3}$. Then there exists an odd $n > 1$ such that $R(n) = m$.
+\end{lemma}
+\begin{proof}\leanok
+If $m = 1$, take $n = 5$; one checks $R(5) = 1$ by computation.
+
+If $m > 1$, we split on the residue of $m$ modulo $3$:
+\begin{itemize}
+\item If $m \equiv 1 \pmod{3}$: set $n = (4m - 1)/3$. Then $3 \mid (4m-1)$ and $3n + 1 = 4m = 2^2 \cdot m$. Since $m$ is odd, the odd part of $2^2 \cdot m$ is $m$, so $R(n) = m$. One verifies $n$ is odd and $n > 1$.
+\item If $m \equiv 2 \pmod{3}$: set $n = (2m - 1)/3$. Then $3 \mid (2m-1)$ and $3n + 1 = 2m = 2^1 \cdot m$. Since $m$ is odd, the odd part of $2m$ is $m$, so $R(n) = m$. One verifies $n$ is odd and $n > 1$.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}\label{lemma:R_4n_add_1}\lean{R_4n_add_1}\leanok
+For all $n > 1$, $R(4n + 1) = R(n)$.
+\end{lemma}
+\begin{proof}\leanok
+We compute $3(4n+1) + 1 = 12n + 4 = 4(3n+1) = 2^2 \cdot (3n+1)$. Since multiplying by $2^2$ does not change the odd part, we have $R(4n+1) = \text{odd part of } 2^2(3n+1) = \text{odd part of } (3n+1) = R(n)$.
+\end{proof}

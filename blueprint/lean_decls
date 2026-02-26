@@ -22,3 +22,14 @@ collatz_conjecture
 cycle_implies_not_collatz
 unbounded_orbit_implies_not_collatz
 bounded_no_cycle_implies_collatz
+reduced_collatz_step
+R_iter
+R_zero
+R_one
+reduced_collatz_step_pos
+R_pos
+reduced_collatz_step_odd
+R_odd
+not_exists_R_with_m_div3
+exists_R_with_m_not_div3
+R_4n_add_1
