@@ -215,6 +215,9 @@ def R_iter : ℕ → ℕ → ℕ
 | (k + 1), n => R_iter k (reduced_collatz_step n)
 
 @[simp]
+lemma R_iter_succ (k n : ℕ) : R_iter (k + 1) n = R_iter k (reduced_collatz_step n) := rfl
+
+@[simp]
 lemma R_zero : reduced_collatz_step 0 = 1 := by
   simp [reduced_collatz_step]
 
@@ -245,6 +248,10 @@ lemma R_odd (n i : ℕ) (hi : i ≥ 1) : R_iter i n % 2 = 1 := by
     · exact reduced_collatz_step_odd n
     · exact ih _ (by omega)
 
+lemma reduced_collatz_step_iff_mod4 (n : ℕ) (hn: 0 < n) :
+    reduced_collatz_step n > n ↔ n % 4 = 3 := by
+  sorry
+
 lemma not_exists_R_with_m_div3 (m : ℕ) (hdiv3: m % 3 = 0) :
     ¬ ∃ n : ℕ, reduced_collatz_step n = m := by
   intro ⟨n, hn⟩
@@ -267,25 +274,13 @@ private lemma ordCompl_two_mul_pow (k m : ℕ) (hm_odd : m % 2 = 1) :
 
 lemma exists_R_with_m_not_div3 (m : ℕ) (hpos: m > 0) (hodd : m % 2 = 1) (hdiv3: m % 3 ≠ 0) :
     ∃ n : ℕ, reduced_collatz_step n = m ∧ n % 2 = 1 ∧ n > 1 := by
-  obtain rfl | hm_gt : m = 1 ∨ m > 1 := by omega
-  · exact ⟨5, by native_decide, by omega, by omega⟩
-  · obtain h1 | h2 : m % 3 = 1 ∨ m % 3 = 2 := by omega
-    · use (4 * m - 1) / 3
-      have hdvd : 3 ∣ (4 * m - 1) := by omega
-      have h3n : 3 * ((4 * m - 1) / 3) = 4 * m - 1 := Nat.mul_div_cancel' hdvd
-      refine ⟨?_, by omega, by omega⟩
-      show ordCompl[2] (3 * ((4 * m - 1) / 3) + 1) = m
-      rw [show 3 * ((4 * m - 1) / 3) + 1 = 4 * m from by omega]
-      rw [show (4 : ℕ) * m = 2^2 * m from by ring]
-      exact ordCompl_two_mul_pow 2 m hodd
-    · use (2 * m - 1) / 3
-      have hdvd : 3 ∣ (2 * m - 1) := by omega
-      have h3n : 3 * ((2 * m - 1) / 3) = 2 * m - 1 := Nat.mul_div_cancel' hdvd
-      refine ⟨?_, by omega, by omega⟩
-      show ordCompl[2] (3 * ((2 * m - 1) / 3) + 1) = m
-      rw [show 3 * ((2 * m - 1) / 3) + 1 = 2 * m from by omega]
-      rw [show (2 : ℕ) * m = 2^1 * m from by ring]
-      exact ordCompl_two_mul_pow 1 m hodd
+  obtain rfl | hm : m = 1 ∨ m > 1 := by omega
+  · exact ⟨5, by native_decide, by decide, by decide⟩
+  obtain h | h : m % 3 = 1 ∨ m % 3 = 2 := by omega
+  · exact ⟨(4 * m - 1) / 3, by change ordCompl[2] _ = m; rw [show 3 * _ + 1 = 2^2 * m by omega,
+      ordCompl_two_mul_pow 2 _ hodd], by omega, by omega⟩
+  · exact ⟨(2 * m - 1) / 3, by change ordCompl[2] _ = m; rw [show 3 * _ + 1 = 2^1 * m by omega,
+      ordCompl_two_mul_pow 1 _ hodd], by omega, by omega⟩
 
 private lemma ordCompl_two_pow_mul (k x : ℕ) (hx : x ≠ 0) :
     ordCompl[2] (2^k * x) = ordCompl[2] x := by
@@ -303,6 +298,10 @@ lemma R_4n_add_1 (n : ℕ) (h_gt1 : n > 1) :
       show (4 : ℕ) = 2^2 from rfl]
   exact ordCompl_two_pow_mul 2 (3 * n + 1) (by omega)
 
+lemma R_iter_4n_add_1 (n i : ℕ) (hi : i > 0) (hn : n > 1) :
+    R_iter i (4 * n + 1) = R_iter i n := by
+  cases i with | zero => contradiction | succ i => exact congrArg (R_iter i) (R_4n_add_1 n hn)
+
 /--
 A "primitive" for step count `i` is an odd number `n` that reaches 1 in `i` steps,
 but is not the child of another *odd* number `k` (via `4k+1`) that also reaches 1 in `i` steps.
@@ -311,83 +310,188 @@ Since the "Odd Step" count is preserved between `k` and `4k+1` only when `k` is 
 we explicitly require the predecessor to be odd.
 -/
 def IsPrimitive4x1 (n i : ℕ) : Prop :=
-  R_iter n i = 1 ∧
+  R_iter i n = 1 ∧
   i > 1 ∧
   n > 1 ∧
   n % 2 = 1 ∧
-  ∀ k, k % 2 = 1 → 4 * k + 1 = n → ¬ R_iter k i = 1
+  ∀ k, k % 2 = 1 → 4 * k + 1 = n → ¬ R_iter i k = 1
 
 /--
 Lemma: The definition of a primitive simplifies to a modular arithmetic check.
 If `n` is odd and has step count `i`, it is primitive if and only if `n % 8 ≠ 5` or `n = 5`.
 -/
-lemma is_primitive_iff_mod_8_ne_5 (n i : ℕ) (h_odd : n % 2 = 1) (h_steps : R_iter n i = 1)
-    (h_ne5 : n ≠ 5) : IsPrimitive4x1 n i ↔ n % 8 ≠ 5 := by
-  sorry
+lemma is_primitive_iff_mod_8_ne_5 (n i : ℕ) (h_odd : n % 2 = 1) (hi: i > 1) (hn: n > 1)
+    (h_steps : R_iter i n = 1) (h_ne5 : n ≠ 5) :
+    IsPrimitive4x1 n i ↔ n % 8 ≠ 5 := by
+  unfold IsPrimitive4x1
+  simp only [h_steps, hi, hn, h_odd, true_and]
+  constructor
+  · intro h h_mod8
+    obtain ⟨k, rfl⟩ : ∃ k, n = 8 * k + 5 := ⟨n / 8, by omega⟩
+    have hk_gt : 2 * k + 1 > 1 := by omega
+    have step2 : R_iter i (2 * k + 1) = 1 := by
+      have := R_iter_4n_add_1 (2 * k + 1) i (by omega) hk_gt
+      rw [show 4 * (2 * k + 1) + 1 = 8 * k + 5 by omega] at this
+      rwa [← this]
+    exact h (2 * k + 1) (by omega) (by omega) step2
+  · intro h_mod8 k hk_odd hk_eq hk_steps
+    have : n % 8 = 5 := by
+      subst hk_eq
+      obtain ⟨m, rfl⟩ : ∃ m, k = 2 * m + 1 := ⟨k / 2, by omega⟩
+      have : 4 * (2 * m + 1) + 1 = 8 * m + 5 := by omega
+      rw [this]
+      omega
+    omega
+
+lemma primitive_ancestor (x : ℕ) (hx_odd : x % 2 = 1) (hx_gt1 : x > 1)
+    (hx_rcs : reduced_collatz_step x ≠ 1) :
+    ∃ n : ℕ, reduced_collatz_step n = reduced_collatz_step x ∧ n % 2 = 1 ∧ n > 1 ∧ n % 8 ≠ 5 := by
+  induction x using Nat.strong_induction_on with
+  | h x ih =>
+    by_cases h_x5 : x % 8 = 5
+    · obtain ⟨k, rfl⟩ : ∃ k, x = 8 * k + 5 := ⟨x / 8, by omega⟩
+      have h_step : reduced_collatz_step (8 * k + 5) = reduced_collatz_step (2 * k + 1) := by
+        have hk_gt : 2 * k + 1 > 1 := by
+          by_contra h
+          have : k = 0 := by omega
+          subst this
+          exact absurd (by native_decide : reduced_collatz_step 5 = 1) hx_rcs
+        have := R_4n_add_1 (2 * k + 1) hk_gt
+        rw [show 4 * (2 * k + 1) + 1 = 8 * k + 5 by omega] at this
+        exact this
+      have hk_odd : (2 * k + 1) % 2 = 1 := by omega
+      have hk_gt : 2 * k + 1 > 1 := by
+        by_contra h
+        have : k = 0 := by omega
+        subst this
+        exact absurd (by native_decide : reduced_collatz_step 5 = 1) hx_rcs
+      have hk_rcs : reduced_collatz_step (2 * k + 1) ≠ 1 := h_step ▸ hx_rcs
+      have h_lt : 2 * k + 1 < 8 * k + 5 := by omega
+      obtain ⟨n, hn_step, hn_odd, hn_gt1, hn_mod⟩ := ih (2 * k + 1) h_lt hk_odd hk_gt hk_rcs
+      exact ⟨n, hn_step.trans h_step.symm, hn_odd, hn_gt1, hn_mod⟩
+    · exact ⟨x, rfl, hx_odd, hx_gt1, h_x5⟩
 
 /--
 Every odd number `y` (not div 3) at level `m` generates a Primitive at level `m+1`.
 -/
 lemma odd_node_generates_primitive (y i : ℕ)
-  (h_steps : R_iter y i = 1)
+  (h_steps : R_iter i y = 1)
   (h_odd : y % 2 = 1)
-  (h_not_div3 : y % 3 ≠ 0) :
-  ∃ n, IsPrimitive4x1 n (i + 1) := by
-  sorry
+  (h_not_div3 : y % 3 ≠ 0)
+  (h_y_gt1 : y > 1) :
+  ∃ n, IsPrimitive4x1 n (i + 1) ∧ reduced_collatz_step n = y := by
+  have y_pos : y > 0 := by omega
+  obtain ⟨x, hx_step, hx_odd, hx_gt1⟩ := exists_R_with_m_not_div3 y y_pos h_odd h_not_div3
+  have hi : i ≥ 1 := by
+    rcases i with _ | i
+    · simp [R_iter] at h_steps; omega
+    · omega
+  have hx_rcs : reduced_collatz_step x ≠ 1 := by rw [hx_step]; omega
+  obtain ⟨n, hn_step, hn_odd, hn_gt1, hn_mod⟩ := primitive_ancestor x hx_odd hx_gt1 hx_rcs
+  use n
+  have hn_ne5 : n ≠ 5 := by intro h; subst h; revert hn_mod; decide
+  have h_steps_n : R_iter (i + 1) n = 1 := by
+    rw [R_iter_succ, hn_step, hx_step, h_steps]
+  exact ⟨(is_primitive_iff_mod_8_ne_5 n (i + 1) hn_odd (by omega) hn_gt1 h_steps_n hn_ne5).mpr hn_mod,
+         hn_step.trans hx_step⟩
 
-/-- Primitives at level m+1 generated by different odd numbers at level m are distinct.
-    The generation relationship is 3*p+1 = 2^k * y: p does an odd step then k halvings to reach y.
-    Since 3p+1 has a unique odd part, different generators y produce different primitives p. -/
+def reduce4x1 (n : ℕ) : ℕ :=
+  if n % 8 = 5 then
+    reduce4x1 ((n - 1) / 4)
+  else
+    n
+termination_by n
+decreasing_by
+  have : n % 8 = 5 := by assumption
+  omega
+
+lemma rcs_reduce4x1 (n : ℕ) :
+    reduced_collatz_step (reduce4x1 n) = reduced_collatz_step n := by
+  induction n using Nat.strong_induction_on with
+  | h n ih =>
+    unfold reduce4x1
+    split
+    · rename_i h5
+      obtain ⟨k, rfl⟩ : ∃ k, n = 8 * k + 5 := ⟨n / 8, by omega⟩
+      have h_div : (8 * k + 5 - 1) / 4 = 2 * k + 1 := by omega
+      rw [h_div]
+      rw [ih (2 * k + 1) (by omega)]
+      by_cases hk : k = 0
+      · subst hk; native_decide
+      · have hk_gt : 2 * k + 1 > 1 := by omega
+        have := R_4n_add_1 (2 * k + 1) hk_gt
+        rw [show 4 * (2 * k + 1) + 1 = 8 * k + 5 by omega] at this
+        exact this.symm
+    · rfl
+
+/-- Primitives at level m+1 generated by different odd numbers at level m are distinct. -/
 lemma primitives_from_distinct_generators_ne
-    (y₁ y₂ p₁ p₂ k₁ k₂ m : ℕ)
-    (hy₁_odd : y₁ % 2 = 1) (hy₂_odd : y₂ % 2 = 1)
-    (hp₂_prim : IsPrimitive4x1 p₂ (m + 1))
-    (hgen₁ : 3 * p₁ + 1 = 2 ^ k₁ * y₁)
-    (hgen₂ : 3 * p₂ + 1 = 2 ^ k₂ * y₂)
-    (hy_ne : y₁ ≠ y₂) : p₁ ≠ p₂ := by
-  intro heq
-  subst heq
+    (x₁ x₂ y₁ y₂ : ℕ)
+    (hx₁_rcs : reduced_collatz_step x₁ = y₁)
+    (hx₂_rcs : reduced_collatz_step x₂ = y₂)
+    (hy_ne : y₁ ≠ y₂) : reduce4x1 x₁ ≠ reduce4x1 x₂ := by
+  intro h
   apply hy_ne
-  have h := hgen₁.symm.trans hgen₂
-  -- h : 2 ^ k₁ * y₁ = 2 ^ k₂ * y₂
-  have hk : k₁ = k₂ := by
-    by_contra hne
-    rcases lt_or_gt_of_ne hne with hlt | hgt
-    · -- k₁ < k₂ implies 2 ∣ y₁, contradicting oddness
-      have : 2 ^ k₂ = 2 ^ k₁ * 2 ^ (k₂ - k₁) := by
-        rw [← pow_add]; congr 1; omega
-      rw [this, mul_assoc] at h
-      have h1 := Nat.eq_of_mul_eq_mul_left (by positivity) h
-      obtain ⟨c, hc⟩ : 2 ∣ y₁ := by
-        rw [h1]; exact dvd_mul_of_dvd_left (dvd_pow_self 2 (by omega)) y₂
-      omega
-    · -- k₂ < k₁ implies 2 ∣ y₂, contradicting oddness
-      have : 2 ^ k₁ = 2 ^ k₂ * 2 ^ (k₁ - k₂) := by
-        rw [← pow_add]; congr 1; omega
-      rw [this, mul_assoc] at h
-      have h1 := (Nat.eq_of_mul_eq_mul_left (by positivity) h).symm
-      obtain ⟨c, hc⟩ : 2 ∣ y₂ := by
-        rw [h1]; exact dvd_mul_of_dvd_left (dvd_pow_self 2 (by omega)) y₁
-      omega
-  subst hk
-  exact Nat.eq_of_mul_eq_mul_left (by positivity) h
+  rw [← hx₁_rcs, ← hx₂_rcs, ← rcs_reduce4x1 x₁, ← rcs_reduce4x1 x₂, h]
+
+lemma rcs_ge (n : ℕ) (h_odd : n % 2 = 1) :
+    2 * reduced_collatz_step n ≤ 3 * n + 1 := by
+  have h_dvd : reduced_collatz_step n ∣ (3 * n + 1) :=
+    Nat.ordCompl_dvd (3 * n + 1) 2
+  obtain ⟨q, hq⟩ := h_dvd
+  have h_rcs_odd := reduced_collatz_step_odd n
+  have h_pos := reduced_collatz_step_pos n
+  have h_even : (3 * n + 1) % 2 = 0 := by omega
+  have hq_ge2 : q ≥ 2 := by
+    rcases q with _ | _ | q
+    · omega
+    · rw [Nat.mul_one] at hq; omega
+    · omega
+  nlinarith
+
+/-- From any seed at level `m`, produce an arbitrarily large number at level `m`
+    that is odd, `> 1`, and not divisible by 3. -/
+lemma exists_large_not_div3_from_seed (m : ℕ) (hm : m ≥ 1) (y₀ : ℕ)
+    (hy₀_iter : R_iter m y₀ = 1) (hy₀_odd : y₀ % 2 = 1) (hy₀_gt1 : y₀ > 1) (B : ℕ) :
+    ∃ y, y > B ∧ R_iter m y = 1 ∧ y % 2 = 1 ∧ y > 1 ∧ y % 3 ≠ 0 := by
+  have h_large : ∃ y, y > B ∧ R_iter m y = 1 ∧ y % 2 = 1 ∧ y > 1 := by
+    induction B with
+    | zero => exact ⟨y₀, by omega, hy₀_iter, hy₀_odd, hy₀_gt1⟩
+    | succ B ih =>
+      obtain ⟨y, hy_gt, hy_iter, hy_odd, hy_gt1⟩ := ih
+      exact ⟨4 * y + 1, by omega,
+        by rwa [R_iter_4n_add_1 y m (by omega) hy_gt1], by omega, by omega⟩
+  obtain ⟨y, hy_gt, hy_iter, hy_odd, hy_gt1⟩ := h_large
+  by_cases h3 : y % 3 = 0
+  · exact ⟨4 * y + 1, by omega,
+      by rwa [R_iter_4n_add_1 y m (by omega) hy_gt1], by omega, by omega, by omega⟩
+  · exact ⟨y, hy_gt, hy_iter, hy_odd, hy_gt1, h3⟩
 
 /--
 For every level `m`, there are infinitely many primitive numbers.
 -/
 lemma infinite_primitives (m : ℕ) (h2le: 2 ≤ m) : ∀ B, ∃ n, n > B ∧ IsPrimitive4x1 n m := by
-  sorry
-
-/-- The odd Collatz successor of an odd number n is the odd part of 3n+1,
-    i.e., (3n+1) / 2^v₂(3n+1). This exceeds n only when n ≡ 3 (mod 4). -/
-lemma odd_collatz_successor_gt_iff_mod4 (n : ℕ) (h_mod4 : n % 4 = 3)
-    (k : ℕ) (hk : k ≥ 1) (hk_val : (3 * n + 1) = 2 ^ k * ((3 * n + 1) / 2 ^ k))
-    (hk_odd : (3 * n + 1) / 2 ^ k % 2 = 1) :
-    ((3 * n + 1) / 2 ^ k > n ↔ n % 4 = 3) := by
-  refine ⟨fun _ => h_mod4, fun _ => ?_⟩
-  have hk_eq : k = 1 := by
-    by_contra hne
-    have : (4 : ℕ) ∣ (3 * n + 1) :=
-      hk_val ▸ dvd_mul_of_dvd_left (by simpa using Nat.pow_dvd_pow 2 (show k ≥ 2 by omega)) _
-    omega
-  subst hk_eq; simp only [pow_one] at hk_val ⊢; omega
+  obtain ⟨k, rfl⟩ : ∃ k, m = k + 2 := ⟨m - 2, by omega⟩
+  clear h2le
+  induction k with
+  | zero =>
+    intro B
+    obtain ⟨y, hy_gt, hy_iter, hy_odd, hy_gt1, hy_not3⟩ :=
+      exists_large_not_div3_from_seed 1 (by omega) 5
+        (by native_decide) (by decide) (by omega) (2 * B + 2)
+    obtain ⟨n, hn_prim, hn_rcs⟩ :=
+      odd_node_generates_primitive y 1 hy_iter hy_odd hy_not3 hy_gt1
+    have h_bound := rcs_ge n
+    rw [hn_rcs] at h_bound
+    exact ⟨n, by omega, hn_prim⟩
+  | succ k ih =>
+    intro B
+    obtain ⟨p, _, hp_prim⟩ := ih 0
+    obtain ⟨y, hy_gt, hy_iter, hy_odd, hy_gt1, hy_not3⟩ :=
+      exists_large_not_div3_from_seed (k + 2) (by omega) p
+        hp_prim.1 hp_prim.2.2.2.1 hp_prim.2.2.1 (2 * B + 2)
+    obtain ⟨n, hn_prim, hn_rcs⟩ :=
+      odd_node_generates_primitive y (k + 2) hy_iter hy_odd hy_not3 hy_gt1
+    have h_bound := rcs_ge n
+    rw [hn_rcs] at h_bound
+    exact ⟨n, by omega, hn_prim⟩

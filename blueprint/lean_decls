@@ -33,3 +33,14 @@ R_odd
 not_exists_R_with_m_div3
 exists_R_with_m_not_div3
 R_4n_add_1
+R_iter_4n_add_1
+rcs_ge
+IsPrimitive4x1
+is_primitive_iff_mod_8_ne_5
+primitive_ancestor
+odd_node_generates_primitive
+reduce4x1
+rcs_reduce4x1
+primitives_from_distinct_generators_ne
+exists_large_not_div3_from_seed
+infinite_primitives

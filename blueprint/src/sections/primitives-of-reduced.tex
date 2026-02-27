@@ -1,0 +1,119 @@
+\begin{lemma}\label{lemma:R_4n_add_1}\lean{R_4n_add_1}\leanok
+For all $n > 1$, $R(4n + 1) = R(n)$.
+\end{lemma}
+\begin{proof}\leanok
+We compute $3(4n+1) + 1 = 12n + 4 = 4(3n+1) = 2^2 \cdot (3n+1)$. Since multiplying by $2^2$ does not change the odd part, we have $R(4n+1) = \text{odd part of } 2^2(3n+1) = \text{odd part of } (3n+1) = R(n)$.
+\end{proof}
+\begin{lemma}\label{lemma:R_iter_4n_add_1}\lean{R_iter_4n_add_1}\leanok
+For all $n > 1$ and $i > 0$, $R^i(4n + 1) = R^i(n)$.
+\end{lemma}
+\begin{proof}\leanok
+For $i = k + 1$, we have
+$R^{k+1}(4n+1) = R^k(R(4n+1)) = R^k(R(n)) = R^{k+1}(n)$,
+where the middle equality follows from Lemma~\ref{lemma:R_4n_add_1}.
+\end{proof}
+
+\begin{lemma}\label{lemma:rcs_ge}\lean{rcs_ge}\leanok
+For any odd $n \in \mathbb{N}$, $2 R(n) \le 3n + 1$.
+\end{lemma}
+\begin{proof}\leanok
+By definition, $R(n)$ is the odd part of $3n + 1$, meaning $3n + 1 = 2^k \cdot R(n)$ for some $k \in \mathbb{N}$. Since $n$ is odd, $3n + 1$ is even, which implies $k \ge 1$. Thus $2^k \ge 2$, and we have $3n + 1 \ge 2 R(n)$.
+\end{proof}
+
+\begin{definition}\label{def:IsPrimitive4x1}\lean{IsPrimitive4x1}\leanok
+An odd number $n > 1$ is called a \emph{primitive} at level $i > 1$ if
+\begin{enumerate}
+\item $R^i(n) = 1$,
+\item there is no odd $k$ with $4k + 1 = n$ and $R^i(k) = 1$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{lemma:is_primitive_iff_mod_8_ne_5}\lean{is_primitive_iff_mod_8_ne_5}\leanok
+Let $n > 1$ be odd with $n \neq 5$, let $i > 1$, and suppose $R^i(n) = 1$.
+Then $n$ is a primitive at level $i$ if and only if $n \not\equiv 5 \pmod{8}$.
+\end{lemma}
+\begin{proof}\leanok
+($\Rightarrow$) Suppose $n$ is primitive and $n \equiv 5 \pmod{8}$.
+Write $n = 8k + 5 = 4(2k+1) + 1$. Then $2k+1$ is odd and $2k + 1 > 1$ (since $n \neq 5$ implies $k \geq 1$).
+By Lemma~\ref{lemma:R_iter_4n_add_1}, $R^i(2k+1) = R^i(4(2k+1)+1) = R^i(n) = 1$,
+so $2k+1$ is an odd predecessor of $n$ via the $4k+1$ map with the same step count, contradicting primitivity.
+
+($\Leftarrow$) Suppose $n \not\equiv 5 \pmod{8}$ and there exists an odd $k$ with $4k + 1 = n$ and $R^i(k) = 1$.
+Since $k$ is odd, write $k = 2m + 1$; then $n = 4(2m+1) + 1 = 8m + 5 \equiv 5 \pmod{8}$, a contradiction.
+\end{proof}
+
+\begin{lemma}\label{lemma:primitive_ancestor}\lean{primitive_ancestor}\leanok
+Let $x > 1$ be odd with $R(x) \neq 1$. Then there exists an odd $n > 1$ with $R(n) = R(x)$ and $n \not\equiv 5 \pmod{8}$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by strong induction on $x$.
+If $x \not\equiv 5 \pmod{8}$, take $n = x$.
+
+If $x \equiv 5 \pmod{8}$, write $x = 8k + 5 = 4(2k+1) + 1$.
+We must have $2k + 1 > 1$, since $k = 0$ gives $x = 5$ and $R(5) = 1$, contradicting $R(x) \neq 1$.
+By Lemma~\ref{lemma:R_4n_add_1}, $R(x) = R(2k+1)$, so $R(2k+1) \neq 1$.
+Since $2k + 1 < x$, the induction hypothesis yields an odd $n > 1$ with $R(n) = R(2k+1) = R(x)$ and $n \not\equiv 5 \pmod{8}$.
+\end{proof}
+
+\begin{lemma}\label{lemma:odd_node_generates_primitive}\lean{odd_node_generates_primitive}\leanok
+Let $y > 1$ be odd with $y \not\equiv 0 \pmod{3}$ and $R^i(y) = 1$. Then there exists a primitive $n$ at level $i + 1$.
+\end{lemma}
+\begin{proof}\leanok
+Since $y$ is odd, positive, and not divisible by~3, there exists an odd $x > 1$ with $R(x) = y$ (by the surjectivity of $R$ onto odd numbers not divisible by~3).
+In particular $R(x) \neq 1$ since $y > 1$.
+
+By Lemma~\ref{lemma:primitive_ancestor}, there exists an odd $n > 1$ with $R(n) = R(x) = y$ and $n \not\equiv 5 \pmod{8}$.
+Then $R^{i+1}(n) = R^i(R(n)) = R^i(y) = 1$.
+Since $n \neq 5$ (as $5 \equiv 5 \pmod{8}$), Lemma~\ref{lemma:is_primitive_iff_mod_8_ne_5} gives that $n$ is a primitive at level $i + 1$.
+\end{proof}
+
+\begin{definition}\label{def:reduce4x1}\lean{reduce4x1}\leanok
+The function $\text{reduce4x1}: \mathbb{N} \to \mathbb{N}$ is defined recursively by
+\[ \text{reduce4x1}(n) = \begin{cases} \text{reduce4x1}((n-1)/4) & \text{if } n \equiv 5 \pmod{8}, \\ n & \text{otherwise.} \end{cases} \]
+\end{definition}
+
+\begin{lemma}\label{lemma:rcs_reduce4x1}\lean{rcs_reduce4x1}\leanok
+For any $n \in \mathbb{N}$, $R(\text{reduce4x1}(n)) = R(n)$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by strong induction on $n$. If $n \not\equiv 5 \pmod{8}$, then $\text{reduce4x1}(n) = n$ and the result is trivial.
+If $n \equiv 5 \pmod{8}$, then $n = 4k+1$ for some odd $k = (n-1)/4$.
+By the definition of $\text{reduce4x1}$, $\text{reduce4x1}(n) = \text{reduce4x1}(k)$.
+By induction, $R(\text{reduce4x1}(k)) = R(k)$.
+By Lemma~\ref{lemma:R_4n_add_1}, $R(n) = R(4k+1) = R(k)$.
+Thus $R(\text{reduce4x1}(n)) = R(n)$.
+\end{proof}
+
+\begin{lemma}\label{lemma:primitives_from_distinct_generators_ne}\lean{primitives_from_distinct_generators_ne}\leanok
+Let $x_1, x_2 \in \mathbb{N}$ and $y_1, y_2$ be their respective images under $R$, with $y_1 \neq y_2$. Then $\text{reduce4x1}(x_1) \neq \text{reduce4x1}(x_2)$.
+\end{lemma}
+\begin{proof}\leanok
+Suppose for contradiction that $\text{reduce4x1}(x_1) = \text{reduce4x1}(x_2)$.
+Then by Lemma~\ref{lemma:rcs_reduce4x1},
+$y_1 = R(x_1) = R(\text{reduce4x1}(x_1)) = R(\text{reduce4x1}(x_2)) = R(x_2) = y_2$,
+contradicting $y_1 \neq y_2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:exists_large_not_div3_from_seed}\lean{exists_large_not_div3_from_seed}\leanok
+Given a level $m \ge 1$, a seed $y_0 > 1$ that is odd and satisfies $R^m(y_0) = 1$, and $B \in \mathbb{N}$, there exists an odd $y > B$ with $y > 1$, $y \not\equiv 0 \pmod{3}$, and $R^m(y) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+We first show by induction on $B$ that there exists an odd $y > B$ with $y > 1$ and $R^m(y) = 1$.
+The base case $B=0$ is given by $y_0$.
+For the inductive step, if $y > B$ satisfies the conditions, let $y' = 4y + 1$. Then $y' > 4B + 1 > B+1$, $y'$ is odd, $y' > 1$, and $R^m(y') = R^m(y) = 1$ by Lemma~\ref{lemma:R_iter_4n_add_1}.
+
+Now, fixed such a $y > B$ with $R^m(y) = 1$ and $y$ odd, $y > 1$. If $y \not\equiv 0 \pmod{3}$ we are done.
+Otherwise, if $y \equiv 0 \pmod{3}$, consider $y' = 4y + 1$.
+Then $y' > y > B$, $y'$ is odd, $y' > 1$, and $R^m(y') = 1$.
+Finally, $4y + 1 \equiv 4(0) + 1 \equiv 1 \pmod{3}$, so $y' \not\equiv 0 \pmod{3}$.
+\end{proof}
+
+\begin{lemma}\label{lemma:infinite_primitives}\lean{infinite_primitives}\leanok
+For every level $m \ge 2$, there are infinitely many primitive numbers at level $m$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $m \ge 2$.
+Base case $m=2$: Let $B \in \mathbb{N}$. We apply Lemma~\ref{lemma:exists_large_not_div3_from_seed} starting from the seed $y_0 = 5$ at level 1 (with $R(5)=1$) to find an odd $y > 2B + 2$ with $y \not\equiv 0 \pmod{3}$ and $R(y) = 1$. By Lemma~\ref{lemma:odd_node_generates_primitive}, there exists a primitive $n$ at level 2 such that $R(n) = y$. Since $2R(n) \le 3n + 1$ (by Lemma~\ref{lemma:rcs_ge}), $n \ge (2y - 1)/3 > \frac{4B+3}{3} > B$. Thus $n > B$ is the required primitive.
+
+Inductive step $m \to m+1$: Suppose there is a primitive $p$ at level $m$. By Lemma~\ref{lemma:exists_large_not_div3_from_seed}, there exists an odd $y > 2B + 2$ with $y > 1$, $y \not\equiv 0 \pmod{3}$, and $R^m(y) = 1$. By Lemma~\ref{lemma:odd_node_generates_primitive}, there is a primitive $n$ at level $m+1$ with $R(n) = y$. As in the base case, the bound $2R(n) \le 3n + 1$ ensures $n > B$.
+\end{proof}

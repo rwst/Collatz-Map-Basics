@@ -211,6 +211,11 @@ INPUT ./sections/reduced-map.tex
 INPUT ./sections/reduced-map.tex
 INPUT ./sections/reduced-map.tex
 INPUT sections/reduced-map.tex
+INPUT ./sections/primitives-of-reduced.tex
+INPUT ./sections/primitives-of-reduced.tex
+INPUT ./sections/primitives-of-reduced.tex
+INPUT ./sections/primitives-of-reduced.tex
+INPUT sections/primitives-of-reduced.tex
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out
