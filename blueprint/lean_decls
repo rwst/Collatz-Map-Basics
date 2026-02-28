@@ -10,8 +10,6 @@ collatz_iter_zero
 collatz_step_pos
 collatz_iter_pos
 collatz_step_pow_two
-collatz_step_two_mul
-collatz_step_odd
 collatz_iter_two_pow_mul
 collatz_iter_pow_two
 collatz_iter_pow_two_ne_one

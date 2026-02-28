@@ -84,13 +84,16 @@ lemma reduced_collatz_step_iff_mod4 (n : ℕ) (hn: 0 < n) (h_odd : n % 2 = 1) :
         ordCompl_two_mul_pow 1 (6 * k + 5) (by omega)]
     omega
 
-
-private lemma collatz_step_odd (n : ℕ) (h : n % 2 = 1) : collatz_step n = 3 * n + 1 := by
+private lemma collatz_step_even (n : ℕ) (h : n % 2 = 0) : collatz_step n = n / 2 := by
   unfold collatz_step
-  have : (n % 2 == 0) = false := by
-    apply beq_false_of_ne
+  have htrue : (n % 2 == 0) = true := by
+    apply beq_iff_eq.mpr
     omega
-  simp [this]
+  simp [htrue]
+
+private lemma collatz_iter_even_div_two_pow (n d : ℕ) (h_dvd : 2^d ∣ n) : collatz_iter d n = n / 2^d := by
+  obtain ⟨k, rfl⟩ := h_dvd
+  rw [collatz_iter_two_pow_mul d k, Nat.mul_div_cancel_left _ (by positivity)]
 
 /-- If `n > 0` and `n` is odd, then $R(n) = m$ implies there is some $i \ge 1$ such that $C^i(n) = m$. -/
 lemma reduced_collatz_step_implies_collatz_iter (n m : ℕ) (h_odd : n % 2 = 1)
@@ -120,17 +123,6 @@ lemma reduced_collatz_iter_implies_collatz_iter (n m : ℕ) (h_odd : n % 2 = 1) 
     obtain ⟨i, hi, h_iter⟩ := ih (reduced_collatz_step n) (reduced_collatz_step_odd n) hR
     obtain ⟨j, hj, h_step⟩ := reduced_collatz_step_implies_collatz_iter n _ h_odd rfl
     exact ⟨i + j, by omega, by rw [collatz_iter_add, h_step, h_iter]⟩
-
-private lemma collatz_step_even (n : ℕ) (h : n % 2 = 0) : collatz_step n = n / 2 := by
-  unfold collatz_step
-  have htrue : (n % 2 == 0) = true := by
-    apply beq_iff_eq.mpr
-    omega
-  simp [htrue]
-
-private lemma collatz_iter_even_div_two_pow (n d : ℕ) (h_dvd : 2^d ∣ n) : collatz_iter d n = n / 2^d := by
-  obtain ⟨k, rfl⟩ := h_dvd
-  rw [collatz_iter_two_pow_mul d k, Nat.mul_div_cancel_left _ (by positivity)]
 
 def count_odds : ℕ → ℕ → ℕ
 | 0, _ => 0
@@ -202,10 +194,29 @@ lemma collatz_cycle_iff_reduced_collatz_cycle (n : ℕ) (h_odd : n % 2 = 1) :
     obtain ⟨i, hi, hiter⟩ := reduced_collatz_iter_implies_collatz_iter n n h_odd k hcycle
     exact ⟨i, by omega, hiter⟩
 
-/-- A number `n > 0` has a bounded orbit under the standard Collatz map if and only if it has a bounded orbit under the reduced map. -/
-lemma collatz_bounded_iff_reduced_collatz_bounded (n : ℕ) (hn : n > 0) :
+lemma collatz_bounded_iff_reduced_collatz_bounded (n : ℕ) (h_odd : n % 2 = 1) :
     (∃ B, ∀ k, collatz_iter k n ≤ B) ↔ (∃ B, ∀ k, R_iter k n ≤ B) := by
-  sorry
+  constructor
+  · exact fun ⟨B, hB⟩ ↦ ⟨B, fun k ↦ by
+      obtain ⟨i, _, h_eq⟩ := reduced_collatz_iter_implies_collatz_iter n _ h_odd k rfl
+      exact h_eq ▸ hB i⟩
+  · rintro ⟨B, hB⟩
+    refine ⟨max n (3 * B + 1), fun d ↦ ?_⟩
+    induction d with
+    | zero => exact le_max_left _ _
+    | succ d ih =>
+      rw [collatz_iter_succ_right]
+      by_cases h_even : collatz_iter d n % 2 = 0
+      · rw [collatz_step_even _ h_even]
+        exact (Nat.div_le_self _ _).trans ih
+      · have h_odd2 : collatz_iter d n % 2 = 1 := by omega
+        rw [collatz_step_odd _ h_odd2]
+        have h_ord := ordCompl_collatz_iter d n h_odd
+        have h_self : ordCompl[2] (collatz_iter d n) = collatz_iter d n :=
+          (Nat.ordCompl_eq_self_iff_zero_or_not_dvd _ Nat.prime_two).mpr (Or.inr (by omega))
+        rw [h_self] at h_ord
+        have hd_le_B : collatz_iter d n ≤ B := h_ord ▸ hB _
+        exact (by omega : 3 * collatz_iter d n + 1 ≤ 3 * B + 1).trans (le_max_right _ _)
 
 lemma R_4n_add_1 (n : ℕ) :
     reduced_collatz_step (4 * n + 1) = reduced_collatz_step n := by

@@ -62,6 +62,14 @@ def collatz_iter : ℕ → ℕ → ℕ
 | 0, n     => n
 | (k + 1), n => collatz_iter k (collatz_step n)
 
+@[simp]
+lemma collatz_step_odd (n : ℕ) (h : n % 2 = 1) : collatz_step n = 3 * n + 1 := by
+  unfold collatz_step
+  have : (n % 2 == 0) = false := by
+    apply beq_false_of_ne
+    omega
+  simp [this]
+
 @[simp] lemma collatz_step_zero : collatz_step 0 = 0 := by native_decide
 
 lemma collatz_iter_zero (k : ℕ) : collatz_iter k 0 = 0 := by
