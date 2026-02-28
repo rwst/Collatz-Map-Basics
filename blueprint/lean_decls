@@ -35,6 +35,11 @@ not_exists_R_with_m_div3
 exists_R_with_m_not_div3
 reduced_collatz_step_iff_mod4
 reduced_collatz_step_implies_collatz_iter
+reduced_collatz_iter_implies_collatz_iter
+count_odds
+ordCompl_collatz_iter
+collatz_cycle_iff_reduced_collatz_cycle
+collatz_bounded_iff_reduced_collatz_bounded
 R_4n_add_1
 R_iter_4n_add_1
 rcs_ge

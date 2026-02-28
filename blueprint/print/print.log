@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  28 FEB 2026 15:36
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  28 FEB 2026 15:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -721,11 +721,17 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]) (./sections/collatz-map.tex
 [2]) (./sections/collatz-conjecture.tex [3]) (./sections/reduced-map.tex
-[4] [5]) (./sections/primitives-of-reduced.tex [6] [7]) [8]
-Chapter 2.
-[9
+[4] [5]
+Overfull \hbox (9.86134pt too wide) in paragraph at lines 131--137
+[]\TU/lmr/m/n/10 For the inductive step $[] [] []$, let $[][][][][] [] []$. By 
+induction, the odd part of $[]$ is $[][][][][]$.
+ []
 
-] [10
+[6]) (./sections/primitives-of-reduced.tex [7] [8]) [9]
+Chapter 2.
+[10
+
+] [11
 
 ]) (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
  ***********
@@ -736,13 +742,13 @@ Package rerunfilecheck Info: File `print.out' has not changed.
 (rerunfilecheck)             Checksum: C4044167D6FAE2B290425281F8D6B611;1152.
  ) 
 Here is how much of TeX's memory you used:
- 16943 strings out of 475925
- 310600 string characters out of 5783280
- 1951839 words of memory out of 5000000
- 38824 multiletter control sequences out of 15000+600000
+ 16948 strings out of 475925
+ 310792 string characters out of 5783280
+ 1952839 words of memory out of 5000000
+ 38829 multiletter control sequences out of 15000+600000
  563472 words of font info for 89 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
  90i,9n,114p,591b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf 
-(12 pages).
+(13 pages).

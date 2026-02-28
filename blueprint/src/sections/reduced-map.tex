@@ -99,3 +99,60 @@ One iteration of the Collatz map on $n$ gives $C^1(n) = 3n+1 = 2^k \cdot m$.
 By Lemma~\ref{lemma:collatz_iter_two_pow_mul}, applying the Collatz map $k$ more times to $2^k \cdot m$ yields $C^k(2^k \cdot m) = m$.
 Thus $C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m$.
 \end{proof}
+
+\begin{lemma}\label{lemma:reduced_collatz_iter_implies_collatz_iter}\lean{reduced_collatz_iter_implies_collatz_iter}\leanok
+If $n$ is odd and $R^k(n) = m$, then there exists $i \ge k$ such that $C^i(n) = m$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $k$. The base case $k=0$ is trivial as $R^0(n) = n = C^0(n)$.
+For the inductive step $k+1$, let $n_1 = R(n)$. By the induction hypothesis, since $R^k(n_1) = m$, there exists $i \ge k$ such that $C^i(n_1) = m$.
+By Lemma~\ref{lemma:reduced_collatz_step_implies_collatz_iter}, there exists $j \ge 1$ such that $C^j(n) = n_1$.
+Then $C^{i+j}(n) = C^i(C^j(n)) = C^i(n_1) = m$.
+Since $i \ge k$ and $j \ge 1$, we have $i+j \ge k+1$.
+\end{proof}
+
+\begin{definition}\label{def:count_odds}\lean{count_odds}\leanok
+For $d, n \in \mathbb{N}$, the number of odd steps in the first $d$ iterations of the standard Collatz map starting from $n$ is defined by
+\begin{equation}
+    \text{countOdds}(d, n) = \sum_{j=0}^{d-1} [C^j(n) \text{ is odd}]
+\end{equation}
+where $[P]$ is the Iverson bracket.
+\end{definition}
+
+\begin{lemma}\label{lemma:ordCompl_collatz_iter}\lean{ordCompl_collatz_iter}\leanok
+Let $n \in \mathbb{N}$ be odd. For any $d \in \mathbb{N}$, the odd part of $C^d(n)$ is equal to $R^k(n)$, where $k = \text{countOdds}(d, n)$. That is,
+\begin{equation}
+    \text{odd part of } C^d(n) = R^k(n).
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $d$. The base case $d=0$ is trivial as $C^0(n) = n$ is odd, its odd part is $n$, and $\text{count\_odds}(0, n) = 0$, with $R^0(n) = n$.
+
+For the inductive step $d+1$, let $C^d(n) = m$. By induction, the odd part of $m$ is $R^{\text{countOdds}(d, n)}(n)$.
+If $m$ is even, then $C^{d+1}(n) = m/2$. The odd part of $m/2$ is the same as the odd part of $m$.
+Since $m$ is even, $\text{countOdds}(d+1, n) = \text{countOdds}(d, n)$, and the equality holds.
+If $m$ is odd, then $C^{d+1}(n) = 3m+1$. Since $m$ is odd, it equals its own odd part, $m = R^{\text{countOdds}(d, n)}(n)$.
+The odd part of $3m+1$ is $R(m) = R(R^{\text{countOdds}(d, n)}(n)) = R^{\text{countOdds}(d, n) + 1}(n)$.
+Since $m$ is odd, $\text{countOdds}(d+1, n) = \text{countOdds}(d, n) + 1$, confirming the result.
+\end{proof}
+
+\begin{lemma}\label{lemma:collatz_cycle_iff_reduced_collatz_cycle}\lean{collatz_cycle_iff_reduced_collatz_cycle}\leanok
+Let $n \in \mathbb{N}$ be odd. There exists a cycle in the standard Collatz map starting from $n$ if and only if there exists a cycle in the reduced Collatz map starting from $n$.
+\end{lemma}
+\begin{proof}\leanok
+($\Rightarrow$) Suppose there exists $k > 0$ such that $C^k(n) = n$. By Lemma~\ref{lemma:ordCompl_collatz_iter}, the odd part of $C^k(n)$ is $R^j(n)$ where $j = \text{countOdds}(k, n)$. Since $n$ is odd, its odd part is $n$, so $R^j(n) = n$. Since $n$ is odd and $k > 0$, at least one standard Collatz step must have occurred, and since $n \ge 1$, we must have $j > 0$. Thus $n$ is part of a reduced cycle.
+
+($\Leftarrow$) Suppose there exists $j > 0$ such that $R^j(n) = n$. By Lemma~\ref{lemma:reduced_collatz_iter_implies_collatz_iter}, there exists $k \ge j$ such that $C^k(n) = n$. Since $j > 0$, we have $k > 0$, so $n$ is part of a standard cycle.
+\end{proof}
+
+\begin{lemma}\label{lemma:collatz_bounded_iff_reduced_collatz_bounded}\lean{collatz_bounded_iff_reduced_collatz_bounded}\leanok
+Let $n \in \mathbb{N}$ be odd. The orbit of $n$ under the standard Collatz map is bounded if and only if its orbit under the reduced Collatz map is bounded.
+\end{lemma}
+\begin{proof}\leanok
+($\Rightarrow$) Suppose there exists $B$ such that $C^k(n) \le B$ for all $k \ge 0$. By Lemma~\ref{lemma:reduced_collatz_iter_implies_collatz_iter}, every reduced iterate $R^j(n)$ is equal to some $C^k(n)$, so $R^j(n) \le B$ for all $j \ge 0$.
+
+($\Leftarrow$) Suppose there exists $B$ such that $R^j(n) \le B$ for all $j \ge 0$. We claim that $C^k(n) \le \max(n, 3B+1)$ for all $k \ge 0$. We proceed by induction on $k$. The base case $k=0$ is $C^0(n) = n$, which is clearly bounded.
+For the inductive step, let $C^k(n) = m$.
+If $m$ is even, $C^{k+1}(n) = m/2 \le m$, which is bounded by the induction hypothesis.
+If $m$ is odd, then by Lemma~\ref{lemma:ordCompl_collatz_iter}, $m$ is the odd part of $C^k(n)$, which is $R^j(n)$ for $j = \text{countOdds}(k, n)$. Thus $m \le B$. Then $C^{k+1}(n) = 3m+1 \le 3B+1$, which is within the bound.
+\end{proof}

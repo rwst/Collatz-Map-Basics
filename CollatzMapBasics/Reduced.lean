@@ -128,7 +128,7 @@ def count_odds : ℕ → ℕ → ℕ
 | 0, _ => 0
 | d + 1, n => count_odds d n + if collatz_iter d n % 2 = 1 then 1 else 0
 
-lemma count_odds_pos (d n : ℕ) (hd : d > 0) (hn_odd : n % 2 = 1) : count_odds d n > 0 := by
+private lemma count_odds_pos (d n : ℕ) (hd : d > 0) (hn_odd : n % 2 = 1) : count_odds d n > 0 := by
   induction d with
   | zero => contradiction
   | succ d ih =>
@@ -143,7 +143,7 @@ lemma count_odds_pos (d n : ℕ) (hd : d > 0) (hn_odd : n % 2 = 1) : count_odds 
       have : count_odds d n > 0 := ih h_pos
       omega
 
-lemma collatz_iter_succ_right (d n : ℕ) : collatz_iter (d + 1) n = collatz_step (collatz_iter d n) := by
+private lemma collatz_iter_succ_right (d n : ℕ) : collatz_iter (d + 1) n = collatz_step (collatz_iter d n) := by
   induction d generalizing n with
   | zero => rfl
   | succ d ih =>
@@ -151,7 +151,7 @@ lemma collatz_iter_succ_right (d n : ℕ) : collatz_iter (d + 1) n = collatz_ste
     _ = collatz_step (collatz_iter d (collatz_step n)) := ih (collatz_step n)
     _ = collatz_step (collatz_iter (d + 1) n) := rfl
 
-lemma R_iter_succ_right (k n : ℕ) : R_iter (k + 1) n = reduced_collatz_step (R_iter k n) := by
+private lemma R_iter_succ_right (k n : ℕ) : R_iter (k + 1) n = reduced_collatz_step (R_iter k n) := by
   induction k generalizing n with
   | zero => rfl
   | succ k ih =>
