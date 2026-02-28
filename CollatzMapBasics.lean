@@ -7,6 +7,7 @@ import CollatzMapBasics.Garner
 import CollatzMapBasics.Graph
 import CollatzMapBasics.NormalisedGarner
 import CollatzMapBasics.Parity
+import CollatzMapBasics.Reduced
 import CollatzMapBasics.RozierTerracol.CRozLemma21
 import CollatzMapBasics.RozierTerracol.CRozLemma22
 import CollatzMapBasics.RozierTerracol.CRozLemma23

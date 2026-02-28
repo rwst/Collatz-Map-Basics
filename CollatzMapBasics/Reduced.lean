@@ -121,41 +121,16 @@ lemma reduced_collatz_iter_implies_collatz_iter (n m : ℕ) (h_odd : n % 2 = 1) 
     obtain ⟨j, hj, h_step⟩ := reduced_collatz_step_implies_collatz_iter n _ h_odd rfl
     exact ⟨i + j, by omega, by rw [collatz_iter_add, h_step, h_iter]⟩
 
-lemma collatz_step_even (n : ℕ) (h : n % 2 = 0) : collatz_step n = n / 2 := by
+private lemma collatz_step_even (n : ℕ) (h : n % 2 = 0) : collatz_step n = n / 2 := by
   unfold collatz_step
   have htrue : (n % 2 == 0) = true := by
     apply beq_iff_eq.mpr
     omega
   simp [htrue]
 
-lemma collatz_iter_even_div_two_pow (n d : ℕ) (h_dvd : 2^d ∣ n) : collatz_iter d n = n / 2^d := by
-  induction d generalizing n with
-  | zero => simp [collatz_iter]
-  | succ d ih =>
-    have hdvd_n : 2 ∣ n := by
-      have : 2^1 ∣ 2^(d+1) := pow_dvd_pow 2 (by omega)
-      exact dvd_trans this h_dvd
-    have : collatz_step n = n / 2 := by
-      apply collatz_step_even
-      exact Nat.mod_eq_zero_of_dvd hdvd_n
-    have h2 : collatz_iter (d + 1) n = collatz_iter d (n / 2) := by
-      calc collatz_iter (d + 1) n = collatz_iter d (collatz_step n) := rfl
-      _ = collatz_iter d (n / 2) := by rw [this]
-    rw [h2]
-    obtain ⟨k, hk⟩ := h_dvd
-    have hndiv2 : n / 2 = 2^d * k := by
-      rw [hk, pow_succ]
-      have : 2^d * 2 * k = 2 * (2^d * k) := by ring
-      rw [this, Nat.mul_div_cancel_left _ (by omega)]
-    have h_LHS : collatz_iter d (n / 2) = k := by
-      rw [hndiv2]
-      have hdvd : 2^d ∣ (2^d * k) := dvd_mul_right _ _
-      rw [ih (2^d * k) hdvd]
-      exact Nat.mul_div_cancel_left k (by positivity)
-    have h_RHS : n / 2^(d+1) = k := by
-      rw [hk]
-      exact Nat.mul_div_cancel_left k (by positivity)
-    rw [h_LHS, h_RHS]
+private lemma collatz_iter_even_div_two_pow (n d : ℕ) (h_dvd : 2^d ∣ n) : collatz_iter d n = n / 2^d := by
+  obtain ⟨k, rfl⟩ := h_dvd
+  rw [collatz_iter_two_pow_mul d k, Nat.mul_div_cancel_left _ (by positivity)]
 
 def count_odds : ℕ → ℕ → ℕ
 | 0, _ => 0
@@ -197,74 +172,35 @@ lemma ordCompl_collatz_iter (d n : ℕ) (hn_odd : n % 2 = 1) :
   induction d with
   | zero =>
     simp [count_odds, collatz_iter]
-    have h_not_dvd : ¬ 2 ∣ n := by
-      intro h
-      have : n % 2 = 0 := Nat.mod_eq_zero_of_dvd h
-      omega
-    have h_fact := Nat.factorization_eq_zero_of_not_dvd h_not_dvd
-    change n / 2^(n.factorization 2) = n
-    rw [h_fact, pow_zero, Nat.div_one]
+    exact (Nat.ordCompl_eq_self_iff_zero_or_not_dvd n Nat.prime_two).mpr (Or.inr (by omega))
   | succ d ih =>
-    have hCd1 : collatz_iter (d + 1) n = collatz_step (collatz_iter d n) := collatz_iter_succ_right d n
-    rw [hCd1]
+    rw [collatz_iter_succ_right]
     unfold count_odds
     by_cases h_odd : collatz_iter d n % 2 = 1
-    · have h_step : collatz_step (collatz_iter d n) = 3 * (collatz_iter d n) + 1 := by
-        unfold collatz_step
-        have hfalse : (collatz_iter d n % 2 == 0) = false := by
-          apply beq_false_of_ne
-          omega
-        simp [hfalse]
-      rw [h_step, if_pos h_odd]
-      change ordCompl[2] (3 * collatz_iter d n + 1) = R_iter (count_odds d n + 1) n
-      rw [R_iter_succ_right]
-      have hR : ordCompl[2] (3 * collatz_iter d n + 1) = reduced_collatz_step (collatz_iter d n) := rfl
-      rw [hR]
-      have hCd_odd : ordCompl[2] (collatz_iter d n) = collatz_iter d n := by
-        have h_not_dvd : ¬ 2 ∣ collatz_iter d n := by
-          intro h
-          have : collatz_iter d n % 2 = 0 := Nat.mod_eq_zero_of_dvd h
-          omega
-        have h_fact := Nat.factorization_eq_zero_of_not_dvd h_not_dvd
-        change collatz_iter d n / 2^(collatz_iter d n).factorization 2 = collatz_iter d n
-        rw [h_fact, pow_zero, Nat.div_one]
-      rw [← hCd_odd]
-      rw [ih]
+    · rw [collatz_step_odd _ h_odd, if_pos h_odd, R_iter_succ_right, ←ih]
+      have : ordCompl[2] (collatz_iter d n) = collatz_iter d n :=
+        (Nat.ordCompl_eq_self_iff_zero_or_not_dvd _ Nat.prime_two).mpr (Or.inr (by omega))
+      rw [this]
+      rfl
     · have h_even : collatz_iter d n % 2 = 0 := by omega
-      have h_step : collatz_step (collatz_iter d n) = collatz_iter d n / 2 := by
-        unfold collatz_step
-        have htrue : (collatz_iter d n % 2 == 0) = true := by
-          apply beq_iff_eq.mpr
-          omega
-        simp [htrue]
-      rw [h_step, if_neg (by omega)]
-      have h_add_zero : count_odds d n + 0 = count_odds d n := by omega
-      rw [h_add_zero]
-      rw [ordCompl_two_div_two (collatz_iter d n) h_even]
+      rw [collatz_step_even _ h_even, if_neg (by omega), add_zero]
+      rw [ordCompl_two_div_two _ h_even]
       exact ih
 
-set_option linter.unusedVariables false in
-lemma collatz_cycle_iff_reduced_collatz_cycle (n : ℕ) (hn : n > 0) (h_odd : n % 2 = 1) :
+lemma collatz_cycle_iff_reduced_collatz_cycle (n : ℕ) (h_odd : n % 2 = 1) :
     (∃ k > 0, collatz_iter k n = n) ↔ (∃ k > 0, R_iter k n = n) := by
   constructor
-  · intro ⟨k, hk, hcycle⟩
-    use count_odds k n
-    constructor
-    · exact count_odds_pos k n hk h_odd
-    · have h_ord := ordCompl_collatz_iter k n h_odd
-      rw [hcycle] at h_ord
-      have h_not_dvd : ¬ 2 ∣ n := by
-        intro h
-        have : n % 2 = 0 := Nat.mod_eq_zero_of_dvd h
-        omega
-      have h_fact := Nat.factorization_eq_zero_of_not_dvd h_not_dvd
-      change n / 2^(n.factorization 2) = R_iter (count_odds k n) n at h_ord
-      rw [h_fact, pow_zero, Nat.div_one] at h_ord
-      exact h_ord.symm
-  · intro ⟨k, hk, hcycle⟩
+  · rintro ⟨k, hk, hcycle⟩
+    use count_odds k n, count_odds_pos k n hk h_odd
+    have h_ord := ordCompl_collatz_iter k n h_odd
+    rw [hcycle] at h_ord
+    have h_self : ordCompl[2] n = n :=
+      (Nat.ordCompl_eq_self_iff_zero_or_not_dvd n Nat.prime_two).mpr (Or.inr (by omega))
+    rw [h_self] at h_ord
+    exact h_ord.symm
+  · rintro ⟨k, hk, hcycle⟩
     obtain ⟨i, hi, hiter⟩ := reduced_collatz_iter_implies_collatz_iter n n h_odd k hcycle
-    use i
-    exact ⟨by omega, hiter⟩
+    exact ⟨i, by omega, hiter⟩
 
 /-- A number `n > 0` has a bounded orbit under the standard Collatz map if and only if it has a bounded orbit under the reduced map. -/
 lemma collatz_bounded_iff_reduced_collatz_bounded (n : ℕ) (hn : n > 0) :
