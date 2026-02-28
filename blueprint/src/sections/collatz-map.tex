@@ -56,6 +56,33 @@ For all $k \ge 1$, $C(2^k) = 2^{k-1}$.
 Since $2^k$ is even for $k \ge 1$, $C(2^k) = 2^k/2 = 2^{k-1}$.
 \end{proof}
 
+\begin{lemma}\label{lemma:collatz_step_two_mul}\lean{collatz_step_two_mul}\leanok
+For any $p \in \mathbb{N}$, $C(2p) = p$.
+\end{lemma}
+\begin{proof}\leanok
+By the definition of the Collatz map.
+\end{proof}
+
+\begin{lemma}\label{lemma:collatz_step_odd}\lean{collatz_step_odd}\leanok
+For any odd $n \in \mathbb{N}$, $C(n) = 3n + 1$.
+\end{lemma}
+\begin{proof}\leanok
+By the definition of the Collatz map.
+\end{proof}
+
+\begin{lemma}\label{lemma:collatz_iter_two_pow_mul}\lean{collatz_iter_two_pow_mul}\leanok
+For any $k, m \in \mathbb{N}$, $C^k(2^k \cdot m) = m$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $k \in \mathbb{N}$. The base case $k=0$ is trivial as $C^0(m) = m$.
+For the inductive step $k+1$, we have
+\begin{align*}
+    C^{k+1}(2^{k+1} \cdot m) &= C^k(C(2 \cdot 2^k \cdot m)) \\
+    &= C^k(2^k \cdot m) \tag{since $2 \cdot 2^k \cdot m$ is even} \\
+    &= m \tag{by induction hypothesis.}
+\end{align*}
+\end{proof}
+
 \begin{lemma}\label{lemma:collatz_iter_pow_two}\lean{collatz_iter_pow_two}\leanok
 For all $l \in \mathbb{N}$, $C^l(2^l) = 1$.
 \end{lemma}

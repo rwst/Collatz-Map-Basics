@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1772211498.18879 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772211498.84633 0
+["pdflatex"] 1772279804.74859 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772279805.55044 0
   "/etc/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772211498.79931 4133 f4058b474a965c572aa484518fd6f650 "pdflatex"
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772211498.80031 1152 c4044167d6fae2b290425281f8d6b611 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772279805.51186 4478 8320bbf1d4c2232f2c46200faa4b3209 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772279805.51186 1152 c4044167d6fae2b290425281f8d6b611 "pdflatex"
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -89,10 +89,10 @@
   "macros/print.tex" 1771787663.61047 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1771787663.61247 1133 4fae2f63dc1d7fe374dbc5fc881a291e ""
   "sections/collatz-conjecture.tex" 1772106325.02966 3959 9ad47523366e61ef0a331b30d6677e9d ""
-  "sections/collatz-map.tex" 1772117916.2135 4360 1c2cccc3710402bb4ab000569a76f484 ""
+  "sections/collatz-map.tex" 1772277464.15386 5298 b0118c38cbd0d238943a1e74815ee66f ""
   "sections/elementary-number-theory.tex" 1771959186.27257 2748 b20e01a5c06b60cebb7625b10a6e9c1d ""
   "sections/primitives-of-reduced.tex" 1772211397.52635 7270 c34b97e79f681cbac0b2257cbaed9dc4 ""
-  "sections/reduced-map.tex" 1772204351.32731 3920 fa2d37ba1c3922c0abd3d0a8d422fed4 ""
+  "sections/reduced-map.tex" 1772218319.40106 5302 0df7007b20df9b7ed0a28c333dd572b0 ""
   (generated)
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux"
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.log"

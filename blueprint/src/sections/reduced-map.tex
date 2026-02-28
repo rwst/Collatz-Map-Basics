@@ -81,3 +81,21 @@ If $m > 1$, we split on the residue of $m$ modulo $3$:
 \end{itemize}
 \end{proof}
 
+\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{reduced_collatz_step_iff_mod4}\leanok
+For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
+\end{lemma}
+\begin{proof}\leanok
+($\Rightarrow$) Suppose $n \equiv 1 \pmod{4}$, say $n = 4k + 1$. Then $3n + 1 = 12k + 4 = 2^2(3k + 1)$. The reduced step is $R(n) = \text{odd part of } (3k + 1) \le 3k + 1$. Since $3k + 1 < 4k + 1$ (for $k \ge 0$), we have $R(n) < n$, a contradiction. Thus we must have $n \equiv 3 \pmod{4}$.
+
+($\Leftarrow$) Suppose $n \equiv 3 \pmod{4}$, say $n = 4k + 3$. Then $3n + 1 = 12k + 10 = 2(6k + 5)$. Since $6k + 5$ is odd, $R(n) = 6k + 5$. Since $k \ge 0$, we have $6k + 5 > 4k + 3$, so $R(n) > n$.
+\end{proof}
+
+\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{reduced_collatz_step_implies_collatz_iter}\leanok
+If $n > 0$ is odd and $R(n) = m$, then there exists $i \ge 1$ such that $C^i(n) = m$.
+\end{lemma}
+\begin{proof}\leanok
+By definition, $R(n)$ is the odd part of $3n+1$, so $3n+1 = 2^k \cdot m$ for some $k \in \mathbb{N}$. Since $n$ is odd, $3n+1$ is even, so $k \ge 1$.
+One iteration of the Collatz map on $n$ gives $C^1(n) = 3n+1 = 2^k \cdot m$.
+By Lemma~\ref{lemma:collatz_iter_two_pow_mul}, applying the Collatz map $k$ more times to $2^k \cdot m$ yields $C^k(2^k \cdot m) = m$.
+Thus $C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m$.
+\end{proof}

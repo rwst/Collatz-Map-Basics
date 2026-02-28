@@ -10,6 +10,9 @@ collatz_iter_zero
 collatz_step_pos
 collatz_iter_pos
 collatz_step_pow_two
+collatz_step_two_mul
+collatz_step_odd
+collatz_iter_two_pow_mul
 collatz_iter_pow_two
 collatz_iter_pow_two_ne_one
 exists_collatz_reverse_strict
@@ -32,6 +35,8 @@ reduced_collatz_step_odd
 R_odd
 not_exists_R_with_m_div3
 exists_R_with_m_not_div3
+reduced_collatz_step_iff_mod4
+reduced_collatz_step_implies_collatz_iter
 R_4n_add_1
 R_iter_4n_add_1
 rcs_ge
