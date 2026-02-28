@@ -1,25 +1,67 @@
 import Mathlib
-import CollatzMapBasics.Compact
+import CollatzMapBasics.Basic
+import CollatzMapBasics.Terras
 
 namespace CollatzMapBasics
 
 open Classical
 
+
+/-- One T step equals one or two collatz_steps. -/
+lemma T_step_collatz (n : ℕ) :
+    ∃ j, j ≥ 1 ∧ collatz_iter j n = T n := by
+  rcases Nat.even_or_odd n with ⟨k, rfl⟩ | ⟨k, rfl⟩
+  · have h1 : (k + k) % 2 = 0 := by omega
+    exact ⟨1, le_refl _, by simp [collatz_iter, collatz_step, h1, T_even h1]⟩
+  · have h1 : (2 * k + 1) % 2 = 1 := by omega
+    have h2 : (3 * (2 * k + 1) + 1) % 2 = 0 := by omega
+    exact ⟨2, by omega, by simp [collatz_iter, collatz_step, h1, h2, T_odd h1]⟩
+
+/-- For any k, T_iter k n can be simulated by some number of collatz_iter steps. -/
+lemma T_iter_to_collatz_iter (k n : ℕ) :
+    ∃ j, collatz_iter j n = T_iter k n := by
+  induction k with
+  | zero => exact ⟨0, rfl⟩
+  | succ k ih =>
+    obtain ⟨j₀, hj₀⟩ := ih
+    obtain ⟨j₁, _, hj₁⟩ := T_step_collatz (T_iter k n)
+    exact ⟨j₁ + j₀, by rw [collatz_iter_add, hj₀, hj₁]; rfl⟩
+
+private lemma collatz_step_even' {n : ℕ} (h : n % 2 = 0) : collatz_step n = n / 2 := by
+  simp [collatz_step, h]
+
+private lemma collatz_step_odd' {n : ℕ} (h : n % 2 = 1) : collatz_step n = 3 * n + 1 := by
+  simp [collatz_step]; omega
+
+/-- If collatz_iter reaches 1, then T_iter also reaches 1. -/
+lemma collatz_iter_to_T_iter (j n : ℕ) (hn : n ≥ 1) (hj : collatz_iter j n = 1) :
+    ∃ k, T_iter k n = 1 := by
+  induction j generalizing n with
+  | zero => exact ⟨0, hj⟩
+  | succ j ih =>
+    simp only [collatz_iter] at hj
+    rcases Nat.even_or_odd n with ⟨m, rfl⟩ | ⟨m, rfl⟩
+    · -- even case
+      have he : (m + m) % 2 = 0 := by omega
+      have hdiv : (m + m) / 2 = m := by omega
+      rw [collatz_step_even' he, hdiv] at hj
+      obtain ⟨k', hk'⟩ := ih m (by omega) hj
+      exact ⟨k' + 1, by rw [T_iter_add k' 1]; simp only [T_iter]; rw [T_even he, hdiv]; exact hk'⟩
+    · -- odd case
+      have hodd : (2 * m + 1) % 2 = 1 := by omega
+      rw [collatz_step_odd' hodd] at hj
+      obtain ⟨k', hk'⟩ := ih (3 * (2 * m + 1) + 1) (by omega) hj
+      have hk'_pos : k' ≥ 1 := by
+        by_contra h0; push_neg at h0; interval_cases k'; simp [T_iter] at hk'
+      refine ⟨k', ?_⟩
+      have hsplit : k' = (k' - 1) + 1 := by omega
+      rw [hsplit, T_iter_add _ 1]; simp only [T_iter]; rw [T_odd hodd]
+      rw [hsplit, T_iter_add _ 1] at hk'; simp only [T_iter] at hk'
+      rwa [T_even (by omega)] at hk'
+
 /-- The Collatz graph of `T`: a directed graph on `ℕ` with an edge from `n` to `T n`. -/
 def collatz_graph : Digraph ℕ where
   Adj n m := m = T n
-
-private lemma T_one : T 1 = 2 := by rw [T_odd (by omega)]
-
-private lemma T_two : T 2 = 1 := by rw [T_even (by omega)]
-
-private lemma T_iter_one_cycle (j : ℕ) : T_iter j 1 = 1 ∨ T_iter j 1 = 2 := by
-  induction j with
-  | zero => left; rfl
-  | succ j ih =>
-    rcases ih with h | h <;> simp only [T_iter, h]
-    · right; exact T_one
-    · left; exact T_two
 
 private lemma collatz_graph_adj_iff (a b : ℕ) :
     collatz_graph.toSimpleGraphInclusive.Adj a b ↔ a ≠ b ∧ (b = T a ∨ a = T b) := by
@@ -100,5 +142,6 @@ lemma collatz_graph_weakly_connected_iff_collatz :
       have := T_iter_reachable k n
       rwa [hk] at this
     exact (reach_one a ha).trans (reach_one b hb).symm
+
 
 end CollatzMapBasics

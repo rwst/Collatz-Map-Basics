@@ -56,6 +56,13 @@
  </li>
 <li class="">
   <a href="sect0007.html"><span class="toc_ref">2</span> <span class="toc_entry">The Terras Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0008.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+
+  </ul>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -82,7 +89,7 @@
 
     <a class="icon proof" href="sect0002.html#lemma:pow_two_mod_three">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000009"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000010"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -91,7 +98,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c280fa147c852fc87800c7be3d9d18e1f06038fb/CollatzMapBasics/Basic.lean#L4" class="lean_decl">pow_two_mod_three</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L4" class="lean_decl">pow_two_mod_three</a></li>
           
         </ul>
     </div>
@@ -100,7 +107,7 @@
   </div>
   <div class="lemma_thmcontent">
   
-<div class="equation" id="a0000000010">
+<div class="equation" id="a0000000011">
 <p>
   <div class="equation_content">
     \begin{equation}  2^k \pmod3 = \begin{cases}  1 &  \text{if } k \text{ is even}, \\ 2 &  \text{if } k \text{ is odd}. \end{cases} \end{equation}
@@ -111,7 +118,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000009">
+<div class="proof_wrapper" id="a0000000010">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -138,7 +145,7 @@
 
     <a class="icon proof" href="sect0002.html#lemma:exists_predecessor_of_odd">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000011"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000012"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -147,7 +154,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c280fa147c852fc87800c7be3d9d18e1f06038fb/CollatzMapBasics/Basic.lean#L22" class="lean_decl">exists_predecessor_of_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L22" class="lean_decl">exists_predecessor_of_odd</a></li>
           
         </ul>
     </div>
@@ -156,7 +163,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(y\) be an odd natural number such that \(y \pmod3 \neq 0\). Then there exist natural numbers \(x\) and \(k\) such that \(x\) is odd and </p>
-<div class="equation" id="a0000000012">
+<div class="equation" id="a0000000013">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 2^k y. \end{equation}
@@ -167,7 +174,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000011">
+<div class="proof_wrapper" id="a0000000012">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -196,7 +203,7 @@
 
     <a class="icon proof" href="sect0002.html#lemma:no_odd_predecessor_for_div3">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000013"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000014"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -205,7 +212,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c280fa147c852fc87800c7be3d9d18e1f06038fb/CollatzMapBasics/Basic.lean#L32" class="lean_decl">no_odd_predecessor_for_div3</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L32" class="lean_decl">no_odd_predecessor_for_div3</a></li>
           
         </ul>
     </div>
@@ -214,7 +221,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(y\) be a natural number such that \(y \equiv 0 \pmod3\). Then for all natural numbers \(n\) and \(k\), </p>
-<div class="equation" id="a0000000014">
+<div class="equation" id="a0000000015">
 <p>
   <div class="equation_content">
     \begin{equation}  3n + 1 \neq 2^k y. \end{equation}
@@ -225,7 +232,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000013">
+<div class="proof_wrapper" id="a0000000014">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -252,7 +259,7 @@
 
     <a class="icon proof" href="sect0002.html#lemma:exists_predecessor_gt_one_mod1">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000015"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000016"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -261,7 +268,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c280fa147c852fc87800c7be3d9d18e1f06038fb/CollatzMapBasics/Basic.lean#L39" class="lean_decl">exists_predecessor_gt_one_mod1</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L39" class="lean_decl">exists_predecessor_gt_one_mod1</a></li>
           
         </ul>
     </div>
@@ -270,7 +277,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(y {\gt} 1\) be a natural number such that \(y \equiv 1 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
-<div class="equation" id="a0000000016">
+<div class="equation" id="a0000000017">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 4 y. \end{equation}
@@ -281,7 +288,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000015">
+<div class="proof_wrapper" id="a0000000016">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -308,7 +315,7 @@
 
     <a class="icon proof" href="sect0002.html#lemma:exists_predecessor_gt_one_mod5">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000017"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000018"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -317,7 +324,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c280fa147c852fc87800c7be3d9d18e1f06038fb/CollatzMapBasics/Basic.lean#L46" class="lean_decl">exists_predecessor_gt_one_mod5</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L46" class="lean_decl">exists_predecessor_gt_one_mod5</a></li>
           
         </ul>
     </div>
@@ -326,7 +333,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(y\) be a natural number such that \(y \equiv 5 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
-<div class="equation" id="a0000000018">
+<div class="equation" id="a0000000019">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 2y. \end{equation}
@@ -337,7 +344,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000017">
+<div class="proof_wrapper" id="a0000000018">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof

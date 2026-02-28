@@ -1,6 +1,4 @@
-import CollatzMapBasics.Compact
 import CollatzMapBasics.Garner
-import CollatzMapBasics.NormalisedGarner
 import CollatzMapBasics.Parity
 
 
@@ -24,11 +22,6 @@ def L (j q : ℕ) : ℚ := ((3 : ℚ) ^ q - 2 ^ q) / 2 ^ j
 
 /-- The upper bound: `R(q) = (3^q - 2^q) / 2^q`. -/
 def R (q : ℕ) : ℚ := ((3 : ℚ) ^ q - 2 ^ q) / 2 ^ q
-
-lemma num_odd_steps_le (j n : ℕ) : num_odd_steps j n ≤ j := by
-  unfold num_odd_steps
-  have h (i : ℕ) : X (T_iter i n) ≤ 1 := by rw [X_eq_mod]; omega
-  refine (Finset.sum_le_card_nsmul (Finset.range j) (fun i => X (T_iter i n)) 1 (fun i _ => h i)).trans_eq (by simp)
 
 lemma L_nonneg (j q : ℕ) : L j q ≥ 0 := by
   unfold L

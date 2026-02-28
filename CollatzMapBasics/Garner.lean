@@ -1,11 +1,10 @@
 import Mathlib
-import CollatzMapBasics.Compact
+import CollatzMapBasics.Terras
+import CollatzMapBasics.Parity
 
 namespace CollatzMapBasics
 
-/-- The number of odd iterates among the first `k` steps starting from `n`. -/
-def num_odd_steps (k n : ℕ) : ℕ :=
-  (Finset.range k).sum (fun i => X (T_iter i n))
+open Classical
 
 /-- The Garner correction term: `Q(0) = 0`, `Q(k+1) = 3^{x_k} · Q(k) + 2^k · x_k`,
     where `x_k = X(T^k(n))`. -/
@@ -13,10 +12,17 @@ def garner_correction : ℕ → ℕ → ℕ
   | 0, _     => 0
   | k + 1, n => 3 ^ X (T_iter k n) * garner_correction k n + 2 ^ k * X (T_iter k n)
 
-lemma T_expand (m : ℕ) : 2 * T m = 3 ^ X m * m + X m := by
-  rcases Nat.even_or_odd m with ⟨k, rfl⟩ | ⟨k, rfl⟩
-  · rw [T_even (by omega), X_even (by omega)]; omega
-  · rw [T_odd (by omega), X_odd (by omega)]; omega
+lemma garner_correction_eq_of_E_vec_eq (k m n : ℕ) (h : E_vec k m = E_vec k n) :
+    garner_correction k m = garner_correction k n := by
+  induction k with
+  | zero => simp [garner_correction]
+  | succ k ih =>
+    simp only [garner_correction]
+    have hk : E_vec k m = E_vec k n := E_vec_restrict k m n h
+    have hXk : X (T_iter k m) = X (T_iter k n) := by
+      have := congr_fun h ⟨k, lt_add_one k⟩
+      simpa [E_vec_apply] using this
+    rw [hXk, ih hk]
 
 /-- **Garner's formula** [Gar81]. After `k` steps of the Collatz map `T`,
     `2^k · T^k(n) = 3^{S_k} · n + Q_k`
@@ -81,5 +87,34 @@ lemma garner_correction_eq_sum (k n : ℕ) :
 
 /-- The Garner coefficient: `C k n = 3^(num_odd_steps k n) / 2^k` as a rational number. -/
 def C (k n : ℕ) : ℚ := (3 ^ num_odd_steps k n : ℚ) / (2 ^ k : ℚ)
+
+/-- The coefficient stopping time `τ(n)` is the least `j ≥ 1` such that `C j n < 1`,
+    or `⊤` if no such `j` exists. -/
+noncomputable def coeff_stopping_time (n : ℕ) : ℕ∞ :=
+  if h : ∃ j : ℕ, j ≥ 1 ∧ C j n < 1 then
+    (Nat.find h : ℕ∞)
+  else
+    ⊤
+
+/-- The Garner correction ratio: `E j n = Q_j(n) / 2^j`. -/
+def E (j n : ℕ) : ℚ := (garner_correction j n : ℚ) / (2 ^ j : ℚ)
+
+lemma E_zero (n : ℕ) : E 0 n = 0 := by
+  simp [E, garner_correction]
+
+lemma E_succ (k n : ℕ) :
+    E (k + 1) n = (3 ^ X (T_iter k n) : ℚ) / 2 * E k n +
+      (X (T_iter k n) : ℚ) / 2 := by
+  simp only [E, garner_correction]
+  rw [show (2 : ℚ) ^ (k + 1) = 2 * 2 ^ k from by ring]
+  have h2k : (2 ^ k : ℚ) ≠ 0 := by positivity
+  field_simp
+  push_cast
+  ring
+
+lemma E_step_strict_mono (x : ℕ) (a b : ℚ) (hab : a < b) :
+    (3 ^ x : ℚ) / 2 * a + (x : ℚ) / 2 < (3 ^ x : ℚ) / 2 * b + (x : ℚ) / 2 := by
+  have h3 : (3 ^ x : ℚ) / 2 > 0 := by positivity
+  nlinarith
 
 end CollatzMapBasics

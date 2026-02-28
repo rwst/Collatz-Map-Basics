@@ -1,6 +1,4 @@
-import CollatzMapBasics.Compact
 import CollatzMapBasics.Garner
-import CollatzMapBasics.NormalisedGarner
 import CollatzMapBasics.Parity
 
 /-!

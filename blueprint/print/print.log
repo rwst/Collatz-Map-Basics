@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  28 FEB 2026 15:59
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  28 FEB 2026 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -729,23 +729,24 @@ induction, the odd part of $[]$ is $[][][][][]$.
 
 [6]) (./sections/primitives-of-reduced.tex [7] [8]) [9]
 Chapter 2.
-[10
+(./sections/terras-def.tex) [10
 
 ] [11
 
-]) (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
+])
+(/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: C4044167D6FAE2B290425281F8D6B611;1152.
+(rerunfilecheck)             Checksum: CBE57D61A8031E8AD39F8F40BFB7E4F3;1261.
  ) 
 Here is how much of TeX's memory you used:
- 16948 strings out of 475925
- 310792 string characters out of 5783280
+ 16957 strings out of 475925
+ 311018 string characters out of 5783280
  1952839 words of memory out of 5000000
- 38829 multiletter control sequences out of 15000+600000
+ 38835 multiletter control sequences out of 15000+600000
  563472 words of font info for 89 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
  90i,9n,114p,591b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s

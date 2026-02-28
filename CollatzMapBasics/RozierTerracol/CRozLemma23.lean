@@ -1,9 +1,7 @@
-import CollatzMapBasics.Compact
 import CollatzMapBasics.Garner
-import CollatzMapBasics.NormalisedGarner
+import CollatzMapBasics.Periodicity
 import CollatzMapBasics.RozierTerracol.CRozLemma21
 import CollatzMapBasics.RozierTerracol.CRozLemma22
-import CollatzMapBasics.Terras
 
 /-!
 * [Gar81] Garner, Lynn E. "On the Collatz 3𝑛+ 1 algorithm." Proceedings of the American

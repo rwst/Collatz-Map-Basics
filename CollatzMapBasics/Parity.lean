@@ -1,5 +1,5 @@
 import Mathlib
-import CollatzMapBasics.Compact
+import CollatzMapBasics.Terras
 
 namespace CollatzMapBasics
 
@@ -49,5 +49,35 @@ def Precedes (v1 v2 : ParityVector) : Prop :=
 infix:50 " ≼ " => Precedes
 
 end ParityVector
+
+/-- `E_vec k n` is the parity vector `(X(n), X(T n), …, X(T^{k-1} n))` as a function `Fin k → ℕ`,
+    where each entry is 0 or 1. -/
+def E_vec (k : ℕ) (n : ℕ) : Fin k → ℕ :=
+  fun i => X (T_iter i.val n)
+
+@[simp]
+lemma E_vec_apply (k n : ℕ) (i : Fin k) : E_vec k n i = X (T_iter i.val n) := rfl
+
+lemma E_vec_le_one (k n : ℕ) (i : Fin k) : E_vec k n i ≤ 1 := by
+  simp only [E_vec_apply, X_eq_mod]; omega
+
+lemma num_odd_steps_eq_E_vec_sum (k n : ℕ) :
+    num_odd_steps k n = Finset.sum Finset.univ (E_vec k n) := by
+  simp [num_odd_steps, E_vec]; exact Finset.sum_range _
+
+lemma E_vec_restrict (k m n : ℕ) (h : E_vec (k + 1) m = E_vec (k + 1) n) :
+    E_vec k m = E_vec k n := by
+  ext ⟨i, hi⟩
+  have := congr_fun h ⟨i, by omega⟩
+  simpa [E_vec_apply] using this
+
+lemma num_odd_steps_eq_of_E_vec_eq (k m n : ℕ) (h : E_vec k m = E_vec k n) :
+    num_odd_steps k m = num_odd_steps k n := by
+  simp only [num_odd_steps]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [Finset.mem_range] at hi
+  have := congr_fun h ⟨i, hi⟩
+  simpa [E_vec_apply] using this
 
 end CollatzMapBasics

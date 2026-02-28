@@ -1,6 +1,4 @@
-import CollatzMapBasics.Compact
 import CollatzMapBasics.Garner
-import CollatzMapBasics.NormalisedGarner
 import CollatzMapBasics.Approximation
 import CollatzMapBasics.RozierTerracol.CRozLemma22
 import CollatzMapBasics.RozierTerracol.CRozLemma23
