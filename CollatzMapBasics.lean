@@ -1,5 +1,6 @@
 import CollatzMapBasics.Approximation
 import CollatzMapBasics.Basic
+import CollatzMapBasics.Elementary
 import CollatzMapBasics.Example
 import CollatzMapBasics.Garner
 import CollatzMapBasics.Parity

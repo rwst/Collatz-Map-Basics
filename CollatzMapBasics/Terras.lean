@@ -1,66 +1,10 @@
 import Mathlib
+import CollatzMapBasics.Elementary
+
 
 namespace CollatzMapBasics
 
 open Classical
-
-lemma parity_of_mod_pow_succ {k m n : ℕ} (h : m % 2 ^ (k + 1) = n % 2 ^ (k + 1)) :
-    m % 2 = n % 2 := by
-  have h1 : m % 2 ^ (k + 1) % 2 = m % 2 :=
-    Nat.mod_mod_of_dvd m (dvd_pow_self 2 (Nat.succ_ne_zero k))
-  have h2 : n % 2 ^ (k + 1) % 2 = n % 2 :=
-    Nat.mod_mod_of_dvd n (dvd_pow_self 2 (Nat.succ_ne_zero k))
-  omega
-
-lemma int_dvd_sub_of_mod_eq {a b c : ℕ} (h : a % c = b % c) :
-    (c : ℤ) ∣ ((a : ℤ) - (b : ℤ)) :=
-  Int.dvd_iff_emod_eq_zero.mpr (Int.emod_eq_emod_iff_emod_sub_eq_zero.mp (by exact_mod_cast h))
-
-lemma nat_mod_eq_of_int_dvd_sub {a b c : ℕ} (h : (c : ℤ) ∣ ((a : ℤ) - (b : ℤ))) :
-    a % c = b % c := by
-  exact_mod_cast Int.emod_eq_emod_iff_emod_sub_eq_zero.mpr (Int.dvd_iff_emod_eq_zero.mp h)
-
-lemma coprime_pow_three_pow_two (s k : ℕ) : Nat.Coprime (3 ^ s) (2 ^ k) := by
-  apply Nat.Coprime.pow; decide
-
-lemma pow_two_mod_three (k : ℕ) (hk : k ≥ 1) : 2^k % 3 = if k % 2 = 0 then 1 else 2 := by
-  induction k with
-  | zero => omega
-  | succ n ih =>
-    by_cases hn : n = 0
-    · simp [hn]
-    · have hn' : n ≥ 1 := Nat.one_le_iff_ne_zero.mpr hn
-      simp only [Nat.pow_succ]
-      rw [Nat.mul_mod, ih hn']
-      by_cases hparity : n % 2 = 0
-      · simp only [hparity, ↓reduceIte]
-        have : (n + 1) % 2 = 1 := by omega
-        simp [this]
-      · have hnodd : n % 2 = 1 := by omega
-        simp only [hnodd]
-        have : (n + 1) % 2 = 0 := by omega
-        simp [this]
-
-
-/-- `X n` is `(1 - (-1)^n) / 2`, i.e., 0 when `n` is even and 1 when `n` is odd. -/
-def X (n : ℕ) : ℕ := ((1 - (-1 : ℤ)^n) / 2).toNat
-
-lemma X_even {n : ℕ} (h : n % 2 = 0) : X n = 0 := by
-  obtain ⟨k, rfl⟩ := Nat.dvd_of_mod_eq_zero h
-  simp [X, pow_mul, Int.one_pow]
-
-lemma X_odd {n : ℕ} (h : n % 2 = 1) : X n = 1 := by
-  obtain ⟨k, hk⟩ := Nat.odd_iff.mpr h
-  subst hk
-  simp [X, pow_succ, pow_mul, Int.one_pow]
-
-lemma X_eq_mod (n : ℕ) : X n = n % 2 := by
-  rcases Nat.even_or_odd n with ⟨k, rfl⟩ | ⟨k, rfl⟩
-  · rw [X_even (by omega)]; omega
-  · rw [X_odd (by omega)]; omega
-
-lemma X_congr {m n : ℕ} (h : m % 2 = n % 2) : X m = X n := by
-  rw [X_eq_mod, X_eq_mod, h]
 
 /-- `T n` is one step of the Collatz map in the compact form `(n * 3^X(n) + X(n)) / 2`,
     where `X(n) = n % 2`. When `n` is even this gives `n / 2`; when `n` is odd, `(3n + 1) / 2`. -/

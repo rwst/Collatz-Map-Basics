@@ -74,23 +74,23 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">7</span></div>
+      <span class="definition_thmlabel">19</span></div>
     <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the Collatz map \(C^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000021">
+<div class="equation" id="a0000000033">
 <p>
   <div class="equation_content">
     \begin{equation}  C^0(n) = n \end{equation}
   </div>
-  <span class="equation_label">11</span>
+  <span class="equation_label">12</span>
 </p>
 </div>
 <p> and </p>
-<div class="equation" id="a0000000022">
+<div class="equation" id="a0000000034">
 <p>
   <div class="equation_content">
     \begin{equation}  C^{k+1}(n) = C^k(C(n)). \end{equation}
   </div>
-  <span class="equation_label">12</span>
+  <span class="equation_label">13</span>
 </p>
 </div>
 </div>
@@ -101,7 +101,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L61" class="lean_decl">collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L12" class="lean_decl">collatz_iter</a>
     
   </span>
     
@@ -126,14 +126,14 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">6</span></div>
+      <span class="definition_thmlabel">18</span></div>
     <div class="thm_thmcontent"><p>The Collatz map \(C: \mathbb {N} \to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000020">
+<div class="equation" id="a0000000032">
 <p>
   <div class="equation_content">
     \begin{equation}  C(n) = \begin{cases}  n/2 &  \text{if } n \text{ is even}, \\ 3n + 1 &  \text{if } n \text{ is odd}. \end{cases} \end{equation}
   </div>
-  <span class="equation_label">8</span>
+  <span class="equation_label">9</span>
 </p>
 </div>
 </div>
@@ -144,7 +144,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L54" class="lean_decl">collatz_step</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L5" class="lean_decl">collatz_step</a>
     
   </span>
     
@@ -169,14 +169,14 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">39</span></div>
+      <span class="definition_thmlabel">51</span></div>
     <div class="thm_thmcontent"><p>For \(d, n \in \mathbb {N}\), the number of odd steps in the first \(d\) iterations of the standard Collatz map starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000059">
+<div class="equation" id="a0000000071">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{countOdds}(d, n) = \sum _{j=0}^{d-1} [C^j(n) \text{ is odd}] \end{equation}
   </div>
-  <span class="equation_label">19</span>
+  <span class="equation_label">20</span>
 </p>
 </div>
 <p> where \([P]\) is the Iverson bracket. </p>
@@ -188,7 +188,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L127" class="lean_decl">count_odds</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a>
     
   </span>
     
@@ -213,7 +213,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">46</span></div>
+      <span class="definition_thmlabel">58</span></div>
     <div class="thm_thmcontent"><p>An odd number \(n {\gt} 1\) is called a <em>primitive</em> at level \(i {\gt} 1\) if </p>
 <ol class="enumerate">
   <li><p>\(R^i(n) = 1\), </p>
@@ -229,7 +229,50 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L239" class="lean_decl">IsPrimitive4x1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L241" class="lean_decl">CollatzMapBasics.IsPrimitive4x1</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:num_odd_steps_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:num_odd_steps" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">74</span></div>
+    <div class="thm_thmcontent"><p>The number of odd steps in the first \(k\) iterations of \(T\) starting from \(n\) is defined by </p>
+<div class="equation" id="a0000000093">
+<p>
+  <div class="equation_content">
+    \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} X(T^i(n)). \end{equation}
+  </div>
+  <span class="equation_label">2</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0008.html#def:num_odd_steps">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L56" class="lean_decl">CollatzMapBasics.num_odd_steps</a>
     
   </span>
     
@@ -254,23 +297,23 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">27</span></div>
+      <span class="definition_thmlabel">39</span></div>
     <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the reduced Collatz map \(R^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000046">
+<div class="equation" id="a0000000058">
 <p>
   <div class="equation_content">
     \begin{equation}  R^0(n) = n \end{equation}
   </div>
-  <span class="equation_label">17</span>
+  <span class="equation_label">18</span>
 </p>
 </div>
 <p> and </p>
-<div class="equation" id="a0000000047">
+<div class="equation" id="a0000000059">
 <p>
   <div class="equation_content">
     \begin{equation}  R^{k+1}(n) = R^k(R(n)). \end{equation}
   </div>
-  <span class="equation_label">18</span>
+  <span class="equation_label">19</span>
 </p>
 </div>
 </div>
@@ -281,7 +324,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">R_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a>
     
   </span>
     
@@ -306,9 +349,9 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">50</span></div>
+      <span class="definition_thmlabel">62</span></div>
     <div class="thm_thmcontent"><p>The function \(\text{reduce4x1}: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="displaymath" id="a0000000070">
+<div class="displaymath" id="a0000000082">
   \[  \text{reduce4x1}(n) = \begin{cases}  \text{reduce4x1}((n-1)/4) &  \text{if } n \equiv 5 \pmod{8}, \\ n &  \text{otherwise.} \end{cases}  \]
 </div>
 </div>
@@ -319,7 +362,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L310" class="lean_decl">reduce4x1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L312" class="lean_decl">CollatzMapBasics.reduce4x1</a>
     
   </span>
     
@@ -344,14 +387,14 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">26</span></div>
+      <span class="definition_thmlabel">38</span></div>
     <div class="thm_thmcontent"><p>The reduced Collatz map \(R: \mathbb {N}\to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000045">
+<div class="equation" id="a0000000057">
 <p>
   <div class="equation_content">
     \begin{equation}  R(n) = \frac{3n+1}{2^{v_2(3n+1)}} \end{equation}
   </div>
-  <span class="equation_label">16</span>
+  <span class="equation_label">17</span>
 </p>
 </div>
 <p> where \(v_2(m)\) is the dyadic valuation of \(m\). In short \(R(n)=\) odd part of \(3n+1\). </p>
@@ -363,7 +406,199 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L5" class="lean_decl">reduced_collatz_step</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:stopping_time_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:stopping_time" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">75</span></div>
+    <div class="thm_thmcontent"><p>The stopping time \(\sigma (n)\) of \(n\) under \(T\) is the smallest \(k \ge 1\) such that \(T^k(n) {\lt} n\). If no such \(k\) exists, \(\sigma (n) = \infty \). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#def:stopping_time">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L91" class="lean_decl">CollatzMapBasics.stopping_time</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:T_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:T" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">67</span></div>
+    <div class="thm_thmcontent"><p>The compact Collatz map \(T: \mathbb {N} \to \mathbb {N}\) is defined by </p>
+<div class="equation" id="a0000000087">
+<p>
+  <div class="equation_content">
+    \begin{equation}  T(n) = \frac{n \cdot 3^{X(n)} + X(n)}{2} \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+<p> where \(X(n) = n \pmod2\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#def:T">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L11" class="lean_decl">CollatzMapBasics.T</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:T_iter_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:T_iter" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">70</span></div>
+    <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the map \(T\) is defined recursively by \(T^0(n) = n\) and \(T^{k+1}(n) = T(T^k(n))\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#def:T_iter">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L20" class="lean_decl">CollatzMapBasics.T_iter</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:total_stopping_time_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:total_stopping_time" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">76</span></div>
+    <div class="thm_thmcontent"><p>The total stopping time \(\sigma _\infty (n)\) of \(n\) under \(T\) is the smallest \(k \ge 1\) such that \(T^k(n) = 1\). If no such \(k\) exists, \(\sigma _\infty (n) = \infty \). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#def:total_stopping_time">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L109" class="lean_decl">CollatzMapBasics.total_stopping_time</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:X_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:X" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13</span></div>
+    <div class="thm_thmcontent"><p>We define the indicator function \(X: \mathbb {N} \to \mathbb {N}\) such that \(X(n) = 0\) if \(n\) is even and \(X(n) = 1\) if \(n\) is odd. Formally, </p>
+<div class="equation" id="a0000000027">
+<p>
+  <div class="equation_content">
+    \begin{equation}  X(n) = \frac{1 - (-1)^n}{2}. \end{equation}
+  </div>
+  <span class="equation_label">8</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0002.html#def:X">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L74" class="lean_decl">CollatzMapBasics.X</a>
     
   </span>
     
@@ -388,7 +623,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">25</span></div>
+      <span class="lemma_thmlabel">37</span></div>
     <div class="thm_thmcontent"><p>If no natural number \(n {\gt} 4\) lies on a nontrivial cycle and every orbit under \(C\) is bounded, then the Collatz conjecture is true. </p>
 </div>
 
@@ -398,7 +633,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L211" class="lean_decl">bounded_no_cycle_implies_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L162" class="lean_decl">bounded_no_cycle_implies_collatz</a>
     
   </span>
     
@@ -423,7 +658,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">42</span></div>
+      <span class="lemma_thmlabel">54</span></div>
     <div class="thm_thmcontent"><p>Let \(n \in \mathbb {N}\) be odd. The orbit of \(n\) under the standard Collatz map is bounded if and only if its orbit under the reduced Collatz map is bounded. </p>
 </div>
 
@@ -433,7 +668,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L197" class="lean_decl">collatz_bounded_iff_reduced_collatz_bounded</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a>
     
   </span>
     
@@ -458,7 +693,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">41</span></div>
+      <span class="lemma_thmlabel">53</span></div>
     <div class="thm_thmcontent"><p>Let \(n \in \mathbb {N}\) be odd. There exists a cycle in the standard Collatz map starting from \(n\) if and only if there exists a cycle in the reduced Collatz map starting from \(n\). </p>
 </div>
 
@@ -468,7 +703,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L182" class="lean_decl">collatz_cycle_iff_reduced_collatz_cycle</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a>
     
   </span>
     
@@ -493,7 +728,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">17</span></div>
+      <span class="lemma_thmlabel">29</span></div>
     <div class="thm_thmcontent"><p>For all \(a, b, n \in \mathbb {N}\), \(C^{a+b}(n) = C^a(C^b(n))\). </p>
 </div>
 
@@ -503,7 +738,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L130" class="lean_decl">collatz_iter_add</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L81" class="lean_decl">collatz_iter_add</a>
     
   </span>
     
@@ -528,7 +763,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">19</span></div>
+      <span class="lemma_thmlabel">31</span></div>
     <div class="thm_thmcontent"><p>If \(n \in \{ 1, 2, 4\} \), then for all \(i \in \mathbb {N}\), \(C^i(n) \in \{ 1, 2, 4\} \). </p>
 </div>
 
@@ -538,7 +773,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L142" class="lean_decl">collatz_iter_mem_124</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L93" class="lean_decl">collatz_iter_mem_124</a>
     
   </span>
     
@@ -563,7 +798,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">18</span></div>
+      <span class="lemma_thmlabel">30</span></div>
     <div class="thm_thmcontent"><p>If \(C^k(n) = n\), then for all \(m \in \mathbb {N}\), \(C^{m \cdot k}(n) = n\). </p>
 </div>
 
@@ -573,7 +808,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L136" class="lean_decl">collatz_iter_mul_cycle</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L87" class="lean_decl">collatz_iter_mul_cycle</a>
     
   </span>
     
@@ -598,7 +833,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">20</span></div>
+      <span class="lemma_thmlabel">32</span></div>
     <div class="thm_thmcontent"><p>For all \(i \in \mathbb {N}\), \(C^i(1) \le 4\). </p>
 </div>
 
@@ -608,7 +843,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L151" class="lean_decl">collatz_iter_one_le_four</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L102" class="lean_decl">collatz_iter_one_le_four</a>
     
   </span>
     
@@ -633,7 +868,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">11</span></div>
+      <span class="lemma_thmlabel">23</span></div>
     <div class="thm_thmcontent"><p>If \(n \ge 1\), then for all \(k \in \mathbb {N}\), \(C^k(n) \ge 1\). </p>
 </div>
 
@@ -643,7 +878,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L89" class="lean_decl">collatz_iter_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L40" class="lean_decl">collatz_iter_pos</a>
     
   </span>
     
@@ -668,7 +903,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">14</span></div>
+      <span class="lemma_thmlabel">26</span></div>
     <div class="thm_thmcontent"><p>For all \(l \in \mathbb {N}\), \(C^l(2^l) = 1\). </p>
 </div>
 
@@ -678,7 +913,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L99" class="lean_decl">collatz_iter_pow_two</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L50" class="lean_decl">collatz_iter_pow_two</a>
     
   </span>
     
@@ -703,7 +938,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">15</span></div>
+      <span class="lemma_thmlabel">27</span></div>
     <div class="thm_thmcontent"><p>For all \(k {\lt} l\), \(C^k(2^l) \neq 1\). </p>
 </div>
 
@@ -713,7 +948,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L116" class="lean_decl">collatz_iter_pow_two_ne_one</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L67" class="lean_decl">collatz_iter_pow_two_ne_one</a>
     
   </span>
     
@@ -738,7 +973,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">13</span></div>
+      <span class="lemma_thmlabel">25</span></div>
     <div class="thm_thmcontent"><p>For any \(k, m \in \mathbb {N}\), \(C^k(2^k \cdot m) = m\). </p>
 </div>
 
@@ -748,7 +983,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L104" class="lean_decl">collatz_iter_two_pow_mul</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L55" class="lean_decl">collatz_iter_two_pow_mul</a>
     
   </span>
     
@@ -773,7 +1008,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">9</span></div>
+      <span class="lemma_thmlabel">21</span></div>
     <div class="thm_thmcontent"><p>For all \(k \in \mathbb {N}\), \(C^k(0) = 0\). </p>
 </div>
 
@@ -783,7 +1018,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L75" class="lean_decl">collatz_iter_zero</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L26" class="lean_decl">collatz_iter_zero</a>
     
   </span>
     
@@ -808,14 +1043,14 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">21</span></div>
+      <span class="lemma_thmlabel">33</span></div>
     <div class="thm_thmcontent"><p>The Collatz map \(C(n)\) has the closed form </p>
-<div class="equation" id="a0000000038">
+<div class="equation" id="a0000000050">
 <p>
   <div class="equation_content">
     \begin{equation}  C(n) = \frac{(7n + 2) - (5n + 2)(-1)^n}{4} \end{equation}
   </div>
-  <span class="equation_label">13</span>
+  <span class="equation_label">14</span>
 </p>
 </div>
 <p> for all \(n \in \mathbb {N}\). </p>
@@ -827,7 +1062,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L155" class="lean_decl">collatz_step_closed_form</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L106" class="lean_decl">collatz_step_closed_form</a>
     
   </span>
     
@@ -852,7 +1087,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">10</span></div>
+      <span class="lemma_thmlabel">22</span></div>
     <div class="thm_thmcontent"><p>If \(n \ge 1\), then \(C(n) \ge 1\). </p>
 </div>
 
@@ -862,7 +1097,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L81" class="lean_decl">collatz_step_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L32" class="lean_decl">collatz_step_pos</a>
     
   </span>
     
@@ -887,7 +1122,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">12</span></div>
+      <span class="lemma_thmlabel">24</span></div>
     <div class="thm_thmcontent"><p>For all \(k \ge 1\), \(C(2^k) = 2^{k-1}\). </p>
 </div>
 
@@ -897,7 +1132,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L94" class="lean_decl">collatz_step_pow_two</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L45" class="lean_decl">collatz_step_pow_two</a>
     
   </span>
     
@@ -922,7 +1157,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">8</span></div>
+      <span class="lemma_thmlabel">20</span></div>
     <div class="thm_thmcontent"><p>\(C(0) = 0\). </p>
 </div>
 
@@ -933,6 +1168,41 @@
     Lean: 
     
        <a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=collatz_step_zero#doc" class="lean_decl">collatz_step_zero</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:coprime_pow_three_pow_two_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:coprime_pow_three_pow_two" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12</span></div>
+    <div class="thm_thmcontent"><p>For any \(s, k \in \mathbb {N}\), \(3^s\) and \(2^k\) are coprime. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:coprime_pow_three_pow_two">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L70" class="lean_decl">CollatzMapBasics.coprime_pow_three_pow_two</a>
     
   </span>
     
@@ -957,7 +1227,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">23</span></div>
+      <span class="lemma_thmlabel">35</span></div>
     <div class="thm_thmcontent"><p>If there exists a natural number \(n {\gt} 4\) and \(k \ge 1\) such that \(C^k(n) = n\), then the Collatz conjecture is false <b class="bf">(No-cycle condition)</b>. </p>
 </div>
 
@@ -967,7 +1237,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L181" class="lean_decl">cycle_implies_not_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L132" class="lean_decl">cycle_implies_not_collatz</a>
     
   </span>
     
@@ -992,7 +1262,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">16</span></div>
+      <span class="lemma_thmlabel">28</span></div>
     <div class="thm_thmcontent"><p>For all \(l \in \mathbb {N}\), there exists \(n \in \mathbb {N}\) such that \(C^l(n) = 1\) and for all \(k {\lt} l\), \(C^k(n) \neq 1\). </p>
 </div>
 
@@ -1002,7 +1272,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L124" class="lean_decl">exists_collatz_reverse_strict</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L75" class="lean_decl">exists_collatz_reverse_strict</a>
     
   </span>
     
@@ -1027,7 +1297,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">53</span></div>
+      <span class="lemma_thmlabel">65</span></div>
     <div class="thm_thmcontent"><p>Given a level \(m \ge 1\), a seed \(y_0 {\gt} 1\) that is odd and satisfies \(R^m(y_0) = 1\), and \(B \in \mathbb {N}\), there exists an odd \(y {\gt} B\) with \(y {\gt} 1\), \(y \not\equiv 0 \pmod{3}\), and \(R^m(y) = 1\). </p>
 </div>
 
@@ -1037,7 +1307,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L351" class="lean_decl">exists_large_not_div3_from_seed</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L353" class="lean_decl">CollatzMapBasics.exists_large_not_div3_from_seed</a>
     
   </span>
     
@@ -1062,9 +1332,9 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">4</span></div>
+      <span class="lemma_thmlabel">7</span></div>
     <div class="thm_thmcontent"><p>Let \(y {\gt} 1\) be a natural number such that \(y \equiv 1 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
-<div class="equation" id="a0000000017">
+<div class="equation" id="a0000000020">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 4 y. \end{equation}
@@ -1080,7 +1350,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L39" class="lean_decl">exists_predecessor_gt_one_mod1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L41" class="lean_decl">CollatzMapBasics.exists_predecessor_gt_one_mod1</a>
     
   </span>
     
@@ -1105,9 +1375,9 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">5</span></div>
+      <span class="lemma_thmlabel">8</span></div>
     <div class="thm_thmcontent"><p>Let \(y\) be a natural number such that \(y \equiv 5 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
-<div class="equation" id="a0000000019">
+<div class="equation" id="a0000000022">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 2y. \end{equation}
@@ -1123,7 +1393,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L46" class="lean_decl">exists_predecessor_gt_one_mod5</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L48" class="lean_decl">CollatzMapBasics.exists_predecessor_gt_one_mod5</a>
     
   </span>
     
@@ -1148,9 +1418,9 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">2</span></div>
+      <span class="lemma_thmlabel">5</span></div>
     <div class="thm_thmcontent"><p>Let \(y\) be an odd natural number such that \(y \pmod3 \neq 0\). Then there exist natural numbers \(x\) and \(k\) such that \(x\) is odd and </p>
-<div class="equation" id="a0000000013">
+<div class="equation" id="a0000000016">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 2^k y. \end{equation}
@@ -1166,7 +1436,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L22" class="lean_decl">exists_predecessor_of_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L24" class="lean_decl">CollatzMapBasics.exists_predecessor_of_odd</a>
     
   </span>
     
@@ -1191,7 +1461,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">35</span></div>
+      <span class="lemma_thmlabel">47</span></div>
     <div class="thm_thmcontent"><p>Let \(m {\gt} 0\) be odd with \(m \not\equiv 0 \pmod{3}\). Then there exists an odd \(n {\gt} 1\) such that \(R(n) = m\). </p>
 </div>
 
@@ -1201,7 +1471,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L55" class="lean_decl">exists_R_with_m_not_div3</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a>
     
   </span>
     
@@ -1226,7 +1496,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">54</span></div>
+      <span class="lemma_thmlabel">66</span></div>
     <div class="thm_thmcontent"><p>For every level \(m \ge 2\), there are infinitely many primitive numbers at level \(m\). </p>
 </div>
 
@@ -1236,7 +1506,42 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L385" class="lean_decl">infinite_primitives</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L387" class="lean_decl">CollatzMapBasics.infinite_primitives</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:int_dvd_sub_of_mod_eq_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:int_dvd_sub_of_mod_eq" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10</span></div>
+    <div class="thm_thmcontent"><p>For any \(a, b, c \in \mathbb {N}\), if \(a \equiv b \pmod c\), then \(c \mid (a - b)\) in the integers. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:int_dvd_sub_of_mod_eq">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L62" class="lean_decl">CollatzMapBasics.int_dvd_sub_of_mod_eq</a>
     
   </span>
     
@@ -1261,7 +1566,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">47</span></div>
+      <span class="lemma_thmlabel">59</span></div>
     <div class="thm_thmcontent"><p>Let \(n {\gt} 1\) be odd with \(n \neq 5\), let \(i {\gt} 1\), and suppose \(R^i(n) = 1\). Then \(n\) is a primitive at level \(i\) if and only if \(n \not\equiv 5 \pmod{8}\). </p>
 </div>
 
@@ -1271,7 +1576,42 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L250" class="lean_decl">is_primitive_iff_mod_8_ne_5</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L252" class="lean_decl">CollatzMapBasics.is_primitive_iff_mod_8_ne_5</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:nat_mod_eq_of_int_dvd_sub_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:nat_mod_eq_of_int_dvd_sub" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">11</span></div>
+    <div class="thm_thmcontent"><p>For any \(a, b, c \in \mathbb {N}\), if \(c \mid (a - b)\) in the integers, then \(a \equiv b \pmod c\) in the natural numbers. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:nat_mod_eq_of_int_dvd_sub">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L66" class="lean_decl">CollatzMapBasics.nat_mod_eq_of_int_dvd_sub</a>
     
   </span>
     
@@ -1296,9 +1636,9 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">3</span></div>
+      <span class="lemma_thmlabel">6</span></div>
     <div class="thm_thmcontent"><p>Let \(y\) be a natural number such that \(y \equiv 0 \pmod3\). Then for all natural numbers \(n\) and \(k\), </p>
-<div class="equation" id="a0000000015">
+<div class="equation" id="a0000000018">
 <p>
   <div class="equation_content">
     \begin{equation}  3n + 1 \neq 2^k y. \end{equation}
@@ -1314,7 +1654,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L32" class="lean_decl">no_odd_predecessor_for_div3</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L34" class="lean_decl">CollatzMapBasics.no_odd_predecessor_for_div3</a>
     
   </span>
     
@@ -1339,7 +1679,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">34</span></div>
+      <span class="lemma_thmlabel">46</span></div>
     <div class="thm_thmcontent"><p>If \(m \equiv 0 \pmod{3}\), then there is no \(n \in \mathbb {N}\) such that \(R(n) = m\). In other words, multiples of \(3\) are not in the image of \(R\). </p>
 </div>
 
@@ -1349,7 +1689,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L46" class="lean_decl">not_exists_R_with_m_div3</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a>
     
   </span>
     
@@ -1374,7 +1714,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">49</span></div>
+      <span class="lemma_thmlabel">61</span></div>
     <div class="thm_thmcontent"><p>Let \(y {\gt} 1\) be odd with \(y \not\equiv 0 \pmod{3}\) and \(R^i(y) = 1\). Then there exists a primitive \(n\) at level \(i + 1\). </p>
 </div>
 
@@ -1384,7 +1724,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L292" class="lean_decl">odd_node_generates_primitive</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L294" class="lean_decl">CollatzMapBasics.odd_node_generates_primitive</a>
     
   </span>
     
@@ -1409,14 +1749,14 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">40</span></div>
+      <span class="lemma_thmlabel">52</span></div>
     <div class="thm_thmcontent"><p>Let \(n \in \mathbb {N}\) be odd. For any \(d \in \mathbb {N}\), the odd part of \(C^d(n)\) is equal to \(R^k(n)\), where \(k = \text{countOdds}(d, n)\). That is, </p>
-<div class="equation" id="a0000000061">
+<div class="equation" id="a0000000073">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{odd part of } C^d(n) = R^k(n). \end{equation}
   </div>
-  <span class="equation_label">20</span>
+  <span class="equation_label">21</span>
 </p>
 </div>
 </div>
@@ -1427,7 +1767,147 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L162" class="lean_decl">ordCompl_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:ordCompl_two_div_two_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:ordCompl_two_div_two" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">2</span></div>
+    <div class="thm_thmcontent"><p>For any even \(x \in \mathbb {N}\), the odd part of \(x/2\) is equal to the odd part of \(x\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:ordCompl_two_div_two">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L11" class="lean_decl">CollatzMapBasics.ordCompl_two_div_two</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:ordCompl_two_mul_pow_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:ordCompl_two_mul_pow" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">4</span></div>
+    <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\) and any odd \(m \in \mathbb {N}\), the odd part of \(2^k \cdot m\) is \(m\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:ordCompl_two_mul_pow">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L19" class="lean_decl">CollatzMapBasics.ordCompl_two_mul_pow</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:ordCompl_two_pow_mul_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:ordCompl_two_pow_mul" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">3</span></div>
+    <div class="thm_thmcontent"><p>For any \(k, x \in \mathbb {N}\), the odd part of \(2^k \cdot x\) is equal to the odd part of \(x\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:ordCompl_two_pow_mul">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L15" class="lean_decl">CollatzMapBasics.ordCompl_two_pow_mul</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:parity_of_mod_pow_succ_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:parity_of_mod_pow_succ" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">9</span></div>
+    <div class="thm_thmcontent"><p>For any \(k, m, n \in \mathbb {N}\), if \(m \equiv n \pmod{2^{k+1}}\), then \(m \equiv n \pmod2\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:parity_of_mod_pow_succ">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L54" class="lean_decl">CollatzMapBasics.parity_of_mod_pow_succ</a>
     
   </span>
     
@@ -1470,7 +1950,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L4" class="lean_decl">pow_two_mod_three</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L6" class="lean_decl">CollatzMapBasics.pow_two_mod_three</a>
     
   </span>
     
@@ -1495,7 +1975,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">48</span></div>
+      <span class="lemma_thmlabel">60</span></div>
     <div class="thm_thmcontent"><p>Let \(x {\gt} 1\) be odd with \(R(x) \neq 1\). Then there exists an odd \(n {\gt} 1\) with \(R(n) = R(x)\) and \(n \not\equiv 5 \pmod{8}\). </p>
 </div>
 
@@ -1505,7 +1985,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L268" class="lean_decl">primitive_ancestor</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L270" class="lean_decl">CollatzMapBasics.primitive_ancestor</a>
     
   </span>
     
@@ -1530,7 +2010,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">52</span></div>
+      <span class="lemma_thmlabel">64</span></div>
     <div class="thm_thmcontent"><p>Let \(x_1, x_2 \in \mathbb {N}\) and \(y_1, y_2\) be their respective images under \(R\), with \(y_1 \neq y_2\). Then \(\text{reduce4x1}(x_1) \neq \text{reduce4x1}(x_2)\). </p>
 </div>
 
@@ -1540,7 +2020,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L340" class="lean_decl">primitives_from_distinct_generators_ne</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L342" class="lean_decl">CollatzMapBasics.primitives_from_distinct_generators_ne</a>
     
   </span>
     
@@ -1565,7 +2045,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">43</span></div>
+      <span class="lemma_thmlabel">55</span></div>
     <div class="thm_thmcontent"><p>For all \(n {\gt} 1\), \(R(4n + 1) = R(n)\). </p>
 </div>
 
@@ -1575,7 +2055,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L221" class="lean_decl">R_4n_add_1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L223" class="lean_decl">CollatzMapBasics.R_4n_add_1</a>
     
   </span>
     
@@ -1600,7 +2080,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">44</span></div>
+      <span class="lemma_thmlabel">56</span></div>
     <div class="thm_thmcontent"><p>For all \(n {\gt} 1\) and \(i {\gt} 0\), \(R^i(4n + 1) = R^i(n)\). </p>
 </div>
 
@@ -1610,7 +2090,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L228" class="lean_decl">R_iter_4n_add_1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L230" class="lean_decl">CollatzMapBasics.R_iter_4n_add_1</a>
     
   </span>
     
@@ -1635,7 +2115,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">33</span></div>
+      <span class="lemma_thmlabel">45</span></div>
     <div class="thm_thmcontent"><p> For all \(n \in \mathbb {N}\) and \(i \geq 1\), \(R^i(n)\) is odd, i.e. \(R^i(n) \equiv 1 \pmod{2}\). </p>
 </div>
 
@@ -1645,7 +2125,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L36" class="lean_decl">R_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a>
     
   </span>
     
@@ -1670,7 +2150,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">29</span></div>
+      <span class="lemma_thmlabel">41</span></div>
     <div class="thm_thmcontent"><p>\(R(1) = 1\). </p>
 </div>
 
@@ -1680,7 +2160,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L19" class="lean_decl">R_one</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a>
     
   </span>
     
@@ -1705,7 +2185,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">31</span></div>
+      <span class="lemma_thmlabel">43</span></div>
     <div class="thm_thmcontent"><p> For all \(n, i \in \mathbb {N}\) with \(n \geq 1\), we have \(R^i(n) \geq 1\). </p>
 </div>
 
@@ -1715,7 +2195,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L26" class="lean_decl">R_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a>
     
   </span>
     
@@ -1740,7 +2220,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">28</span></div>
+      <span class="lemma_thmlabel">40</span></div>
     <div class="thm_thmcontent"><p>\(R(0) = 1\). </p>
 </div>
 
@@ -1750,7 +2230,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L15" class="lean_decl">R_zero</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a>
     
   </span>
     
@@ -1775,7 +2255,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">45</span></div>
+      <span class="lemma_thmlabel">57</span></div>
     <div class="thm_thmcontent"><p>For any odd \(n \in \mathbb {N}\), \(2 R(n) \le 3n + 1\). </p>
 </div>
 
@@ -1785,7 +2265,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L367" class="lean_decl">rcs_ge</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L369" class="lean_decl">CollatzMapBasics.rcs_ge</a>
     
   </span>
     
@@ -1810,7 +2290,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">51</span></div>
+      <span class="lemma_thmlabel">63</span></div>
     <div class="thm_thmcontent"><p>For any \(n \in \mathbb {N}\), \(R(\text{reduce4x1}(n)) = R(n)\). </p>
 </div>
 
@@ -1820,7 +2300,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L320" class="lean_decl">rcs_reduce4x1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L322" class="lean_decl">CollatzMapBasics.rcs_reduce4x1</a>
     
   </span>
     
@@ -1845,7 +2325,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">38</span></div>
+      <span class="lemma_thmlabel">50</span></div>
     <div class="thm_thmcontent"><p>If \(n\) is odd and \(R^k(n) = m\), then there exists \(i \ge k\) such that \(C^i(n) = m\). </p>
 </div>
 
@@ -1855,7 +2335,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L117" class="lean_decl">reduced_collatz_iter_implies_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a>
     
   </span>
     
@@ -1880,7 +2360,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">36</span></div>
+      <span class="lemma_thmlabel">48</span></div>
     <div class="thm_thmcontent"><p>For any odd \(n {\gt} 0\), \(R(n) {\gt} n\) if and only if \(n \equiv 3 \pmod{4}\). </p>
 </div>
 
@@ -1890,7 +2370,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L65" class="lean_decl">reduced_collatz_step_iff_mod4</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a>
     
   </span>
     
@@ -1915,7 +2395,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">37</span></div>
+      <span class="lemma_thmlabel">49</span></div>
     <div class="thm_thmcontent"><p>If \(n {\gt} 0\) is odd and \(R(n) = m\), then there exists \(i \ge 1\) such that \(C^i(n) = m\). </p>
 </div>
 
@@ -1925,7 +2405,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L99" class="lean_decl">reduced_collatz_step_implies_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a>
     
   </span>
     
@@ -1950,7 +2430,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">32</span></div>
+      <span class="lemma_thmlabel">44</span></div>
     <div class="thm_thmcontent"><p>For all \(n \in \mathbb {N}\), \(R(n)\) is odd, i.e. \(R(n) \equiv 1 \pmod{2}\). </p>
 </div>
 
@@ -1960,7 +2440,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L31" class="lean_decl">reduced_collatz_step_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a>
     
   </span>
     
@@ -1985,7 +2465,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">30</span></div>
+      <span class="lemma_thmlabel">42</span></div>
     <div class="thm_thmcontent"><p>For all \(n \in \mathbb {N}\), \(R(n) \geq 1\). </p>
 </div>
 
@@ -1995,7 +2475,182 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L22" class="lean_decl">reduced_collatz_step_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:T_congr_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:T_congr" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">73</span></div>
+    <div class="thm_thmcontent"><p>For any \(k, m, n \in \mathbb {N}\), if \(m \equiv n \pmod{2^{k+1}}\), then \(T(m) \equiv T(n) \pmod{2^k}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lemma:T_congr">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L69" class="lean_decl">CollatzMapBasics.T_congr</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:T_even_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:T_even" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">68</span></div>
+    <div class="thm_thmcontent"><p>If \(n\) is even, \(T(n) = n/2\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lemma:T_even">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L13" class="lean_decl">CollatzMapBasics.T_even</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:T_iter_pos_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:T_iter_pos" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">72</span></div>
+    <div class="thm_thmcontent"><p>If \(n \ge 1\), then \(T^k(n) \ge 1\) for all \(k \in \mathbb {N}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lemma:T_iter_pos">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L41" class="lean_decl">CollatzMapBasics.T_iter_pos</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:T_odd_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:T_odd" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">69</span></div>
+    <div class="thm_thmcontent"><p>If \(n\) is odd, \(T(n) = (3n + 1)/2\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lemma:T_odd">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L16" class="lean_decl">CollatzMapBasics.T_odd</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:T_pos_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:T_pos" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">71</span></div>
+    <div class="thm_thmcontent"><p>If \(n \ge 1\), then \(T(n) \ge 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lemma:T_pos">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Terras.lean#L36" class="lean_decl">CollatzMapBasics.T_pos</a>
     
   </span>
     
@@ -2020,7 +2675,7 @@
       <span class="lemma_thmcaption">
       Lemma
       </span>
-      <span class="lemma_thmlabel">24</span></div>
+      <span class="lemma_thmlabel">36</span></div>
     <div class="thm_thmcontent"><p>If there exists a natural number \(n\) such that its orbit under \(C\) is unbounded, then the Collatz conjecture is false <b class="bf">(No-unbounded-orbit condition)</b>. </p>
 </div>
 
@@ -2030,7 +2685,147 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L192" class="lean_decl">unbounded_orbit_implies_not_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L143" class="lean_decl">unbounded_orbit_implies_not_collatz</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:X_congr_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:X_congr" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">17</span></div>
+    <div class="thm_thmcontent"><p>If \(m \equiv n \pmod2\), then \(X(m) = X(n)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:X_congr">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L90" class="lean_decl">CollatzMapBasics.X_congr</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:X_eq_mod_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:X_eq_mod" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">16</span></div>
+    <div class="thm_thmcontent"><p>For all \(n \in \mathbb {N}\), \(X(n) = n \pmod2\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:X_eq_mod">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L85" class="lean_decl">CollatzMapBasics.X_eq_mod</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:X_even_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:X_even" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">14</span></div>
+    <div class="thm_thmcontent"><p>If \(n \equiv 0 \pmod2\), then \(X(n) = 0\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:X_even">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L76" class="lean_decl">CollatzMapBasics.X_even</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:X_odd_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:X_odd" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">15</span></div>
+    <div class="thm_thmcontent"><p>If \(n \equiv 1 \pmod2\), then \(X(n) = 1\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#lemma:X_odd">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Elementary.lean#L80" class="lean_decl">CollatzMapBasics.X_odd</a>
     
   </span>
     
@@ -2055,7 +2850,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">22</span></div>
+      <span class="theorem_thmlabel">34</span></div>
     <div class="thm_thmcontent"><p>For every natural number \(n\), either \(n = 0\) or there exists a natural number \(k\) such that \(C^k(n) = 1\). </p>
 </div>
 
@@ -2065,7 +2860,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Basic.lean#L175" class="lean_decl">collatz_conjecture</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Basic.lean#L126" class="lean_decl">collatz_conjecture</a>
     
   </span>
     
@@ -2095,7 +2890,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"lemma:no_odd_predecessor_for_div3"	[color=green,		fillcolor="#1CAC78",		label=no_odd_predecessor_for_div3,		shape=ellipse,		style=filled];	"lemma:collatz_step_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pow_two,		shape=ellipse,		style=filled];	"lemma:exists_collatz_reverse_strict"	[color=green,		fillcolor="#1CAC78",		label=exists_collatz_reverse_strict,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mem_124"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mem_124,		shape=ellipse,		style=filled];	"lemma:R_pos"	[color=green,		fillcolor="#1CAC78",		label=R_pos,		shape=ellipse,		style=filled];	"lemma:ordCompl_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_collatz_iter,		shape=ellipse,		style=filled];	"lemma:pow_two_mod_three"	[color=green,		fillcolor="#1CAC78",		label=pow_two_mod_three,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_of_odd"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_of_odd,		shape=ellipse,		style=filled];	"lemma:bounded_no_cycle_implies_collatz"	[color=green,		fillcolor="#1CAC78",		label=bounded_no_cycle_implies_collatz,		shape=ellipse,		style=filled];	"lemma:R_one"	[color=green,		fillcolor="#1CAC78",		label=R_one,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_iter_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_iter_implies_collatz_iter,		shape=ellipse,		style=filled];	"lemma:is_primitive_iff_mod_8_ne_5"	[color=green,		fillcolor="#1CAC78",		label=is_primitive_iff_mod_8_ne_5,		shape=ellipse,		style=filled];	"lemma:rcs_reduce4x1"	[color=green,		fillcolor="#1CAC78",		label=rcs_reduce4x1,		shape=ellipse,		style=filled];	"lemma:collatz_iter_add"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_add,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_implies_collatz_iter,		shape=ellipse,		style=filled];	"lemma:R_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_4n_add_1,		shape=ellipse,		style=filled];	"lemma:R_iter_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_iter_4n_add_1,		shape=ellipse,		style=filled];	"lemma:odd_node_generates_primitive"	[color=green,		fillcolor="#1CAC78",		label=odd_node_generates_primitive,		shape=ellipse,		style=filled];	"lemma:collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pos,		shape=ellipse,		style=filled];	"def:collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=collatz_step,		shape=box,		style=filled];	"def:R_iter"	[color=green,		fillcolor="#B0ECA3",		label=R_iter,		shape=box,		style=filled];	"lemma:collatz_iter_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_zero,		shape=ellipse,		style=filled];	"lemma:collatz_iter_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_two_pow_mul,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two_ne_one"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two_ne_one,		shape=ellipse,		style=filled];	"lemma:collatz_iter_one_le_four"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_one_le_four,		shape=ellipse,		style=filled];	"lemma:collatz_step_closed_form"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_closed_form,		shape=ellipse,		style=filled];	"lemma:R_zero"	[color=green,		fillcolor="#1CAC78",		label=R_zero,		shape=ellipse,		style=filled];	"lemma:exists_large_not_div3_from_seed"	[color=green,		fillcolor="#1CAC78",		label=exists_large_not_div3_from_seed,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two,		shape=ellipse,		style=filled];	"lemma:cycle_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=cycle_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:collatz_bounded_iff_reduced_collatz_bounded"	[color=green,		fillcolor="#1CAC78",		label=collatz_bounded_iff_reduced_collatz_bounded,		shape=ellipse,		style=filled];	"def:count_odds"	[color=green,		fillcolor="#B0ECA3",		label=count_odds,		shape=box,		style=filled];	"def:reduced_collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=reduced_collatz_step,		shape=box,		style=filled];	"def:collatz_iter"	[color=green,		fillcolor="#B0ECA3",		label=collatz_iter,		shape=box,		style=filled];	"def:reduce4x1"	[color=green,		fillcolor="#B0ECA3",		label=reduce4x1,		shape=box,		style=filled];	"lemma:exists_predecessor_gt_one_mod5"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod5,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pos,		shape=ellipse,		style=filled];	"lemma:R_odd"	[color=green,		fillcolor="#1CAC78",		label=R_odd,		shape=ellipse,		style=filled];	"lemma:not_exists_R_with_m_div3"	[color=green,		fillcolor="#1CAC78",		label=not_exists_R_with_m_div3,		shape=ellipse,		style=filled];	"lemma:exists_R_with_m_not_div3"	[color=green,		fillcolor="#1CAC78",		label=exists_R_with_m_not_div3,		shape=ellipse,		style=filled];	"lemma:rcs_ge"	[color=green,		fillcolor="#1CAC78",		label=rcs_ge,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod1"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod1,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mul_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mul_cycle,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos" -> "lemma:R_pos"	[style=dashed];	"lemma:reduced_collatz_step_iff_mod4"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_iff_mod4,		shape=ellipse,		style=filled];	"lemma:primitive_ancestor"	[color=green,		fillcolor="#1CAC78",		label=primitive_ancestor,		shape=ellipse,		style=filled];	"lemma:primitives_from_distinct_generators_ne"	[color=green,		fillcolor="#1CAC78",		label=primitives_from_distinct_generators_ne,		shape=ellipse,		style=filled];	"lemma:infinite_primitives"	[color=green,		fillcolor="#1CAC78",		label=infinite_primitives,		shape=ellipse,		style=filled];	"thm:collatz_conjecture"	[color=green,		fillcolor="#A3D6FF",		label=collatz_conjecture,		shape=ellipse,		style=filled];	"lemma:collatz_step_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_zero,		shape=ellipse,		style=filled];	"def:IsPrimitive4x1"	[color=green,		fillcolor="#B0ECA3",		label=IsPrimitive4x1,		shape=box,		style=filled];	"lemma:unbounded_orbit_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=unbounded_orbit_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_odd,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd" -> "lemma:R_odd"	[style=dashed];	"lemma:collatz_cycle_iff_reduced_collatz_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_cycle_iff_reduced_collatz_cycle,		shape=ellipse,		style=filled];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"lemma:collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pos,		shape=ellipse,		style=filled];	"lemma:exists_collatz_reverse_strict"	[color=green,		fillcolor="#1CAC78",		label=exists_collatz_reverse_strict,		shape=ellipse,		style=filled];	"lemma:collatz_iter_add"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_add,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_odd,		shape=ellipse,		style=filled];	"lemma:R_odd"	[color=green,		fillcolor="#1CAC78",		label=R_odd,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd" -> "lemma:R_odd"	[style=dashed];	"lemma:collatz_cycle_iff_reduced_collatz_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_cycle_iff_reduced_collatz_cycle,		shape=ellipse,		style=filled];	"lemma:infinite_primitives"	[color=green,		fillcolor="#1CAC78",		label=infinite_primitives,		shape=ellipse,		style=filled];	"lemma:T_congr"	[color=green,		fillcolor="#1CAC78",		label=T_congr,		shape=ellipse,		style=filled];	"def:T"	[color=green,		fillcolor="#B0ECA3",		label=T,		shape=box,		style=filled];	"lemma:pow_two_mod_three"	[color=green,		fillcolor="#1CAC78",		label=pow_two_mod_three,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_div_two"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_div_two,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod1"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod1,		shape=ellipse,		style=filled];	"lemma:nat_mod_eq_of_int_dvd_sub"	[color=green,		fillcolor="#1CAC78",		label=nat_mod_eq_of_int_dvd_sub,		shape=ellipse,		style=filled];	"lemma:collatz_iter_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_zero,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mem_124"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mem_124,		shape=ellipse,		style=filled];	"lemma:collatz_iter_one_le_four"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_one_le_four,		shape=ellipse,		style=filled];	"lemma:cycle_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=cycle_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:R_one"	[color=green,		fillcolor="#1CAC78",		label=R_one,		shape=ellipse,		style=filled];	"lemma:rcs_reduce4x1"	[color=green,		fillcolor="#1CAC78",		label=rcs_reduce4x1,		shape=ellipse,		style=filled];	"lemma:primitives_from_distinct_generators_ne"	[color=green,		fillcolor="#1CAC78",		label=primitives_from_distinct_generators_ne,		shape=ellipse,		style=filled];	"lemma:T_odd"	[color=green,		fillcolor="#1CAC78",		label=T_odd,		shape=ellipse,		style=filled];	"def:total_stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=total_stopping_time,		shape=box,		style=filled];	"lemma:collatz_iter_pow_two_ne_one"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two_ne_one,		shape=ellipse,		style=filled];	"lemma:collatz_step_closed_form"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_closed_form,		shape=ellipse,		style=filled];	"lemma:unbounded_orbit_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=unbounded_orbit_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:exists_R_with_m_not_div3"	[color=green,		fillcolor="#1CAC78",		label=exists_R_with_m_not_div3,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_implies_collatz_iter,		shape=ellipse,		style=filled];	"lemma:odd_node_generates_primitive"	[color=green,		fillcolor="#1CAC78",		label=odd_node_generates_primitive,		shape=ellipse,		style=filled];	"lemma:no_odd_predecessor_for_div3"	[color=green,		fillcolor="#1CAC78",		label=no_odd_predecessor_for_div3,		shape=ellipse,		style=filled];	"def:collatz_iter"	[color=green,		fillcolor="#B0ECA3",		label=collatz_iter,		shape=box,		style=filled];	"lemma:exists_predecessor_gt_one_mod5"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod5,		shape=ellipse,		style=filled];	"lemma:X_congr"	[color=green,		fillcolor="#1CAC78",		label=X_congr,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mul_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mul_cycle,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_iter_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_iter_implies_collatz_iter,		shape=ellipse,		style=filled];	"lemma:ordCompl_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_collatz_iter,		shape=ellipse,		style=filled];	"lemma:rcs_ge"	[color=green,		fillcolor="#1CAC78",		label=rcs_ge,		shape=ellipse,		style=filled];	"lemma:T_pos"	[color=green,		fillcolor="#1CAC78",		label=T_pos,		shape=ellipse,		style=filled];	"thm:collatz_conjecture"	[color=green,		fillcolor="#A3D6FF",		label=collatz_conjecture,		shape=ellipse,		style=filled];	"lemma:T_even"	[color=green,		fillcolor="#1CAC78",		label=T_even,		shape=ellipse,		style=filled];	"def:num_odd_steps"	[color=green,		fillcolor="#B0ECA3",		label=num_odd_steps,		shape=box,		style=filled];	"def:stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=stopping_time,		shape=box,		style=filled];	"lemma:ordCompl_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_pow_mul,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_mul_pow"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_mul_pow,		shape=ellipse,		style=filled];	"lemma:X_even"	[color=green,		fillcolor="#1CAC78",		label=X_even,		shape=ellipse,		style=filled];	"lemma:collatz_step_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pow_two,		shape=ellipse,		style=filled];	"lemma:R_zero"	[color=green,		fillcolor="#1CAC78",		label=R_zero,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:R_pos"	[color=green,		fillcolor="#1CAC78",		label=R_pos,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos" -> "lemma:R_pos"	[style=dashed];	"lemma:reduced_collatz_step_iff_mod4"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_iff_mod4,		shape=ellipse,		style=filled];	"lemma:primitive_ancestor"	[color=green,		fillcolor="#1CAC78",		label=primitive_ancestor,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_of_odd"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_of_odd,		shape=ellipse,		style=filled];	"def:reduced_collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=reduced_collatz_step,		shape=box,		style=filled];	"def:R_iter"	[color=green,		fillcolor="#B0ECA3",		label=R_iter,		shape=box,		style=filled];	"def:collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=collatz_step,		shape=box,		style=filled];	"def:IsPrimitive4x1"	[color=green,		fillcolor="#B0ECA3",		label=IsPrimitive4x1,		shape=box,		style=filled];	"lemma:parity_of_mod_pow_succ"	[color=green,		fillcolor="#1CAC78",		label=parity_of_mod_pow_succ,		shape=ellipse,		style=filled];	"lemma:X_eq_mod"	[color=green,		fillcolor="#1CAC78",		label=X_eq_mod,		shape=ellipse,		style=filled];	"lemma:collatz_bounded_iff_reduced_collatz_bounded"	[color=green,		fillcolor="#1CAC78",		label=collatz_bounded_iff_reduced_collatz_bounded,		shape=ellipse,		style=filled];	"lemma:R_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_4n_add_1,		shape=ellipse,		style=filled];	"lemma:R_iter_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_iter_4n_add_1,		shape=ellipse,		style=filled];	"def:X"	[color=green,		fillcolor="#B0ECA3",		label=X,		shape=box,		style=filled];	"def:T_iter"	[color=green,		fillcolor="#B0ECA3",		label=T_iter,		shape=box,		style=filled];	"lemma:int_dvd_sub_of_mod_eq"	[color=green,		fillcolor="#1CAC78",		label=int_dvd_sub_of_mod_eq,		shape=ellipse,		style=filled];	"lemma:coprime_pow_three_pow_two"	[color=green,		fillcolor="#1CAC78",		label=coprime_pow_three_pow_two,		shape=ellipse,		style=filled];	"lemma:collatz_step_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_zero,		shape=ellipse,		style=filled];	"lemma:collatz_iter_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_two_pow_mul,		shape=ellipse,		style=filled];	"lemma:bounded_no_cycle_implies_collatz"	[color=green,		fillcolor="#1CAC78",		label=bounded_no_cycle_implies_collatz,		shape=ellipse,		style=filled];	"lemma:not_exists_R_with_m_div3"	[color=green,		fillcolor="#1CAC78",		label=not_exists_R_with_m_div3,		shape=ellipse,		style=filled];	"lemma:exists_large_not_div3_from_seed"	[color=green,		fillcolor="#1CAC78",		label=exists_large_not_div3_from_seed,		shape=ellipse,		style=filled];	"lemma:T_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=T_iter_pos,		shape=ellipse,		style=filled];	"def:count_odds"	[color=green,		fillcolor="#B0ECA3",		label=count_odds,		shape=box,		style=filled];	"def:reduce4x1"	[color=green,		fillcolor="#B0ECA3",		label=reduce4x1,		shape=box,		style=filled];	"lemma:X_odd"	[color=green,		fillcolor="#1CAC78",		label=X_odd,		shape=ellipse,		style=filled];	"lemma:is_primitive_iff_mod_8_ne_5"	[color=green,		fillcolor="#1CAC78",		label=is_primitive_iff_mod_8_ne_5,		shape=ellipse,		style=filled];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

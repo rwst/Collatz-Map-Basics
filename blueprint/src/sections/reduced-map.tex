@@ -1,4 +1,4 @@
-\begin{definition}\label{def:reduced_collatz_step}\lean{reduced_collatz_step}\leanok
+\begin{definition}\label{def:reduced_collatz_step}\lean{CollatzMapBasics.reduced_collatz_step}\leanok
 The reduced Collatz map $R: \mathbb{N}\to \mathbb{N}$ is defined by
 \begin{equation}
     R(n) = \frac{3n+1}{2^{v_2(3n+1)}}
@@ -6,7 +6,7 @@ The reduced Collatz map $R: \mathbb{N}\to \mathbb{N}$ is defined by
 where $v_2(m)$ is the dyadic valuation of $m$. In short $R(n)=$ odd part of $3n+1$.
 \end{definition}
 
-\begin{definition}\label{def:R_iter}\lean{R_iter}\leanok
+\begin{definition}\label{def:R_iter}\lean{CollatzMapBasics.R_iter}\leanok
 For any $k \in \mathbb{N}$, the $k$-fold iteration of the reduced Collatz map
 $R^k: \mathbb{N} \to \mathbb{N}$ is defined recursively by
 \begin{equation}
@@ -18,49 +18,49 @@ and
 \end{equation}
 \end{definition}
 
-\begin{lemma}\label{lemma:R_zero}\lean{R_zero}\leanok
+\begin{lemma}\label{lemma:R_zero}\lean{CollatzMapBasics.R_zero}\leanok
 $R(0) = 1$.
 \end{lemma}
 \begin{proof}\leanok
 By definition, $R(0) = \text{odd part of } (3 \cdot 0 + 1) = \text{odd part of } 1 = 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:R_one}\lean{R_one}\leanok
+\begin{lemma}\label{lemma:R_one}\lean{CollatzMapBasics.R_one}\leanok
 $R(1) = 1$.
 \end{lemma}
 \begin{proof}\leanok
 By definition, $R(1) = \text{odd part of } (3 \cdot 1 + 1) = \text{odd part of } 4 = 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_pos}\lean{reduced_collatz_step_pos}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_pos}\lean{CollatzMapBasics.reduced_collatz_step_pos}\leanok
 For all $n \in \mathbb{N}$, $R(n) \geq 1$.
 \end{lemma}
 \begin{proof}\leanok
 Since $3n + 1 \geq 1$ for all $n$, the odd part of $3n+1$ is a positive divisor of a positive number, hence $R(n) \geq 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:R_pos}\lean{R_pos}\leanok\uses{lemma:reduced_collatz_step_pos}
+\begin{lemma}\label{lemma:R_pos}\lean{CollatzMapBasics.R_pos}\leanok\uses{lemma:reduced_collatz_step_pos}
 For all $n, i \in \mathbb{N}$ with $n \geq 1$, we have $R^i(n) \geq 1$.
 \end{lemma}
 \begin{proof}\leanok
 We proceed by induction on $i$. The base case $i = 0$ is immediate since $R^0(n) = n \geq 1$. For the inductive step, $R^{i+1}(n) = R^i(R(n))$. By Lemma~\ref{lemma:reduced_collatz_step_pos}, $R(n) \geq 1$, so the induction hypothesis gives $R^i(R(n)) \geq 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_odd}\lean{reduced_collatz_step_odd}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_odd}\lean{CollatzMapBasics.reduced_collatz_step_odd}\leanok
 For all $n \in \mathbb{N}$, $R(n)$ is odd, i.e.\ $R(n) \equiv 1 \pmod{2}$.
 \end{lemma}
 \begin{proof}\leanok
 By definition, $R(n)$ is the odd part of $3n+1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:R_odd}\lean{R_odd}\leanok\uses{lemma:reduced_collatz_step_odd}
+\begin{lemma}\label{lemma:R_odd}\lean{CollatzMapBasics.R_odd}\leanok\uses{lemma:reduced_collatz_step_odd}
 For all $n \in \mathbb{N}$ and $i \geq 1$, $R^i(n)$ is odd, i.e.\ $R^i(n) \equiv 1 \pmod{2}$.
 \end{lemma}
 \begin{proof}\leanok
 We proceed by induction on $i$. The base case $i = 1$ follows directly from Lemma~\ref{lemma:reduced_collatz_step_odd}, since $R^1(n) = R(n)$ is odd. For the inductive step, $R^{i+1}(n) = R^i(R(n))$. If $i \geq 1$, the induction hypothesis gives that $R^i(R(n))$ is odd. If $i = 0$, then $R^{i+1}(n) = R^1(n) = R(n)$, which is odd by Lemma~\ref{lemma:reduced_collatz_step_odd}.
 \end{proof}
 
-\begin{lemma}\label{lemma:not_exists_R_with_m_div3}\lean{not_exists_R_with_m_div3}\leanok
+\begin{lemma}\label{lemma:not_exists_R_with_m_div3}\lean{CollatzMapBasics.not_exists_R_with_m_div3}\leanok
 If $m \equiv 0 \pmod{3}$, then there is no $n \in \mathbb{N}$ such that $R(n) = m$. In other words, multiples of $3$ are not in the image of $R$.
 \end{lemma}
 \begin{proof}\leanok
@@ -68,7 +68,7 @@ Suppose for contradiction that $R(n) = m$ for some $n$, with $3 \mid m$. Since $
 part of $3n+1$, we have $R(n) \mid 3n+1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:exists_R_with_m_not_div3}\lean{exists_R_with_m_not_div3}\leanok
+\begin{lemma}\label{lemma:exists_R_with_m_not_div3}\lean{CollatzMapBasics.exists_R_with_m_not_div3}\leanok
 Let $m > 0$ be odd with $m \not\equiv 0 \pmod{3}$. Then there exists an odd $n > 1$ such that $R(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -81,7 +81,7 @@ If $m > 1$, we split on the residue of $m$ modulo $3$:
 \end{itemize}
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{reduced_collatz_step_iff_mod4}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{CollatzMapBasics.reduced_collatz_step_iff_mod4}\leanok
 For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
 \end{lemma}
 \begin{proof}\leanok
@@ -90,7 +90,7 @@ For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
 ($\Leftarrow$) Suppose $n \equiv 3 \pmod{4}$, say $n = 4k + 3$. Then $3n + 1 = 12k + 10 = 2(6k + 5)$. Since $6k + 5$ is odd, $R(n) = 6k + 5$. Since $k \ge 0$, we have $6k + 5 > 4k + 3$, so $R(n) > n$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{reduced_collatz_step_implies_collatz_iter}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_step_implies_collatz_iter}\leanok
 If $n > 0$ is odd and $R(n) = m$, then there exists $i \ge 1$ such that $C^i(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -100,7 +100,7 @@ By Lemma~\ref{lemma:collatz_iter_two_pow_mul}, applying the Collatz map $k$ more
 Thus $C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_iter_implies_collatz_iter}\lean{reduced_collatz_iter_implies_collatz_iter}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_iter_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter}\leanok
 If $n$ is odd and $R^k(n) = m$, then there exists $i \ge k$ such that $C^i(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -111,7 +111,7 @@ Then $C^{i+j}(n) = C^i(C^j(n)) = C^i(n_1) = m$.
 Since $i \ge k$ and $j \ge 1$, we have $i+j \ge k+1$.
 \end{proof}
 
-\begin{definition}\label{def:count_odds}\lean{count_odds}\leanok
+\begin{definition}\label{def:count_odds}\lean{CollatzMapBasics.count_odds}\leanok
 For $d, n \in \mathbb{N}$, the number of odd steps in the first $d$ iterations of the standard Collatz map starting from $n$ is defined by
 \begin{equation}
     \text{countOdds}(d, n) = \sum_{j=0}^{d-1} [C^j(n) \text{ is odd}]
@@ -119,7 +119,7 @@ For $d, n \in \mathbb{N}$, the number of odd steps in the first $d$ iterations o
 where $[P]$ is the Iverson bracket.
 \end{definition}
 
-\begin{lemma}\label{lemma:ordCompl_collatz_iter}\lean{ordCompl_collatz_iter}\leanok
+\begin{lemma}\label{lemma:ordCompl_collatz_iter}\lean{CollatzMapBasics.ordCompl_collatz_iter}\leanok
 Let $n \in \mathbb{N}$ be odd. For any $d \in \mathbb{N}$, the odd part of $C^d(n)$ is equal to $R^k(n)$, where $k = \text{countOdds}(d, n)$. That is,
 \begin{equation}
     \text{odd part of } C^d(n) = R^k(n).
@@ -136,7 +136,7 @@ The odd part of $3m+1$ is $R(m) = R(R^{\text{countOdds}(d, n)}(n)) = R^{\text{co
 Since $m$ is odd, $\text{countOdds}(d+1, n) = \text{countOdds}(d, n) + 1$, confirming the result.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_cycle_iff_reduced_collatz_cycle}\lean{collatz_cycle_iff_reduced_collatz_cycle}\leanok
+\begin{lemma}\label{lemma:collatz_cycle_iff_reduced_collatz_cycle}\lean{CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle}\leanok
 Let $n \in \mathbb{N}$ be odd. There exists a cycle in the standard Collatz map starting from $n$ if and only if there exists a cycle in the reduced Collatz map starting from $n$.
 \end{lemma}
 \begin{proof}\leanok
@@ -145,7 +145,7 @@ Let $n \in \mathbb{N}$ be odd. There exists a cycle in the standard Collatz map 
 ($\Leftarrow$) Suppose there exists $j > 0$ such that $R^j(n) = n$. By Lemma~\ref{lemma:reduced_collatz_iter_implies_collatz_iter}, there exists $k \ge j$ such that $C^k(n) = n$. Since $j > 0$, we have $k > 0$, so $n$ is part of a standard cycle.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_bounded_iff_reduced_collatz_bounded}\lean{collatz_bounded_iff_reduced_collatz_bounded}\leanok
+\begin{lemma}\label{lemma:collatz_bounded_iff_reduced_collatz_bounded}\lean{CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded}\leanok
 Let $n \in \mathbb{N}$ be odd. The orbit of $n$ under the standard Collatz map is bounded if and only if its orbit under the reduced Collatz map is bounded.
 \end{lemma}
 \begin{proof}\leanok

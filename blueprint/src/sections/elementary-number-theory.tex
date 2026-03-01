@@ -1,4 +1,4 @@
-\begin{lemma}\label{lemma:pow_two_mod_three}\lean{pow_two_mod_three}\leanok
+\begin{lemma}\label{lemma:pow_two_mod_three}\lean{CollatzMapBasics.pow_two_mod_three}\leanok
 \begin{equation}
     2^k \pmod 3 =
     \begin{cases}
@@ -11,7 +11,28 @@
 Trivial by induction on $k$.
 \end{proof}
 
-\begin{lemma}\label{lemma:exists_predecessor_of_odd}\lean{exists_predecessor_of_odd}\leanok
+\begin{lemma}\label{lemma:ordCompl_two_div_two}\lean{CollatzMapBasics.ordCompl_two_div_two}\leanok
+For any even $x \in \mathbb{N}$, the odd part of $x/2$ is equal to the odd part of $x$.
+\end{lemma}
+\begin{proof}\leanok
+Since $x$ is even, $x = 2 \cdot (x/2)$. The dyadic valuation of $2 \cdot (x/2)$ is one more than that of $x/2$ (if $x/2 > 0$), but the odd part remains the same.
+\end{proof}
+
+\begin{lemma}\label{lemma:ordCompl_two_pow_mul}\lean{CollatzMapBasics.ordCompl_two_pow_mul}\leanok
+For any $k, x \in \mathbb{N}$, the odd part of $2^k \cdot x$ is equal to the odd part of $x$.
+\end{lemma}
+\begin{proof}\leanok
+This is a standard property of the odd part (dyadic valuation). Multiplying by a power of 2 only changes the valuation, not the odd part.
+\end{proof}
+
+\begin{lemma}\label{lemma:ordCompl_two_mul_pow}\lean{CollatzMapBasics.ordCompl_two_mul_pow}\leanok
+For any $k \in \mathbb{N}$ and any odd $m \in \mathbb{N}$, the odd part of $2^k \cdot m$ is $m$.
+\end{lemma}
+\begin{proof}\leanok
+By Lemma~\ref{lemma:ordCompl_two_pow_mul}, the odd part of $2^k \cdot m$ is the odd part of $m$. Since $m$ is odd, it is its own odd part.
+\end{proof}
+
+\begin{lemma}\label{lemma:exists_predecessor_of_odd}\lean{CollatzMapBasics.exists_predecessor_of_odd}\leanok
 Let $y$ be an odd natural number such that $y \pmod 3 \neq 0$. Then there exist natural numbers $x$
 and $k$ such that $x$ is odd and
 \begin{equation}
@@ -28,7 +49,7 @@ If $y \equiv 2 \pmod 3$, we choose $x = (2y - 1)/3$ and $k = 1$.
 In both cases, it is straightforward to verify that $x$ is an odd natural number and $3x+1=2^k y$.
 \end{proof}
 
-\begin{lemma}\label{lemma:no_odd_predecessor_for_div3}\lean{no_odd_predecessor_for_div3}\leanok
+\begin{lemma}\label{lemma:no_odd_predecessor_for_div3}\lean{CollatzMapBasics.no_odd_predecessor_for_div3}\leanok
 Let $y$ be a natural number such that $y \equiv 0 \pmod 3$. Then for all natural numbers $n$ and $k$,
 \begin{equation}
     3n + 1 \neq 2^k y.
@@ -41,7 +62,7 @@ Since $y \equiv 0 \pmod 3$, the right-hand side is a multiple of $3$, which redu
 This yields $1 \equiv 0 \pmod 3$, a contradiction.
 \end{proof}
 
-\begin{lemma}\label{lemma:exists_predecessor_gt_one_mod1}\lean{exists_predecessor_gt_one_mod1}\leanok
+\begin{lemma}\label{lemma:exists_predecessor_gt_one_mod1}\lean{CollatzMapBasics.exists_predecessor_gt_one_mod1}\leanok
 Let $y > 1$ be a natural number such that $y \equiv 1 \pmod 6$. Then there exists an odd natural
 number $x > 1$ such that
 \begin{equation}
@@ -55,7 +76,7 @@ Furthermore, since $y > 1$, we have $x > 1$.
 It is straightforward to verify that $3x + 1 = 4y = 2^2 y$.
 \end{proof}
 
-\begin{lemma}\label{lemma:exists_predecessor_gt_one_mod5}\lean{exists_predecessor_gt_one_mod5}\leanok
+\begin{lemma}\label{lemma:exists_predecessor_gt_one_mod5}\lean{CollatzMapBasics.exists_predecessor_gt_one_mod5}\leanok
 Let $y$ be a natural number such that $y \equiv 5 \pmod 6$. Then there exists an odd natural
 number $x > 1$ such that
 \begin{equation}
@@ -67,4 +88,68 @@ We choose $x = (2y - 1)/3$. Since $y \equiv 5 \pmod 6$, it follows that $2y - 1$
 of $3$, so $x$ is an odd integer.
 Furthermore, since $y \equiv 5 \pmod 6$, we have $y \ge 5$, which implies $x \ge 3 > 1$.
 It is straightforward to verify that $3x + 1 = 2y$.
+\end{proof}
+
+\begin{lemma}\label{lemma:parity_of_mod_pow_succ}\lean{CollatzMapBasics.parity_of_mod_pow_succ}\leanok
+For any $k, m, n \in \mathbb{N}$, if $m \equiv n \pmod{2^{k+1}}$, then $m \equiv n \pmod 2$.
+\end{lemma}
+\begin{proof}\leanok
+This follows from the fact that $2$ divides $2^{k+1}$.
+\end{proof}
+
+\begin{lemma}\label{lemma:int_dvd_sub_of_mod_eq}\lean{CollatzMapBasics.int_dvd_sub_of_mod_eq}\leanok
+For any $a, b, c \in \mathbb{N}$, if $a \equiv b \pmod c$, then $c \mid (a - b)$ in the integers.
+\end{lemma}
+\begin{proof}\leanok
+Standard property of modular arithmetic.
+\end{proof}
+
+\begin{lemma}\label{lemma:nat_mod_eq_of_int_dvd_sub}\lean{CollatzMapBasics.nat_mod_eq_of_int_dvd_sub}\leanok
+For any $a, b, c \in \mathbb{N}$, if $c \mid (a - b)$ in the integers, then $a \equiv b \pmod c$ in the natural numbers.
+\end{lemma}
+\begin{proof}\leanok
+Standard property of modular arithmetic.
+\end{proof}
+
+\begin{lemma}\label{lemma:coprime_pow_three_pow_two}\lean{CollatzMapBasics.coprime_pow_three_pow_two}\leanok
+For any $s, k \in \mathbb{N}$, $3^s$ and $2^k$ are coprime.
+\end{lemma}
+\begin{proof}\leanok
+The only prime factor of $3^s$ is 3, and the only prime factor of $2^k$ is 2. Since 2 and 3 are distinct primes, any power of 3 and any power of 2 are coprime.
+\end{proof}
+
+\begin{definition}\label{def:X}\lean{CollatzMapBasics.X}\leanok
+We define the indicator function $X: \mathbb{N} \to \mathbb{N}$ such that $X(n) = 0$ if $n$ is even and $X(n) = 1$ if $n$ is odd.
+Formally,
+\begin{equation}
+    X(n) = \frac{1 - (-1)^n}{2}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:X_even}\lean{CollatzMapBasics.X_even}\leanok
+If $n \equiv 0 \pmod 2$, then $X(n) = 0$.
+\end{lemma}
+\begin{proof}\leanok
+If $n$ is even, $(-1)^n = 1$, so $X(n) = (1 - 1)/2 = 0$.
+\end{proof}
+
+\begin{lemma}\label{lemma:X_odd}\lean{CollatzMapBasics.X_odd}\leanok
+If $n \equiv 1 \pmod 2$, then $X(n) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+If $n$ is odd, $(-1)^n = -1$, so $X(n) = (1 - (-1))/2 = 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:X_eq_mod}\lean{CollatzMapBasics.X_eq_mod}\leanok
+For all $n \in \mathbb{N}$, $X(n) = n \pmod 2$.
+\end{lemma}
+\begin{proof}\leanok
+By cases on the parity of $n$.
+\end{proof}
+
+\begin{lemma}\label{lemma:X_congr}\lean{CollatzMapBasics.X_congr}\leanok
+If $m \equiv n \pmod 2$, then $X(m) = X(n)$.
+\end{lemma}
+\begin{proof}\leanok
+This follows from Lemma~\ref{lemma:X_eq_mod}.
 \end{proof}

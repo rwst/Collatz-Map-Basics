@@ -1,6 +1,8 @@
 import Mathlib
 import CollatzMapBasics.Basic
 
+namespace CollatzMapBasics
+
 /-- The reduced Collatz map `R` maps an odd natural number `n` to the odd part of `3n + 1`. -/
 def reduced_collatz_step (n : ℕ) : ℕ := ordCompl[2] (3 * n + 1)
 

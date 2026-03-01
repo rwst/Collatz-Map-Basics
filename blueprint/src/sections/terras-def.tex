@@ -1,0 +1,66 @@
+\begin{definition}\label{def:T}\lean{CollatzMapBasics.T}\leanok
+The compact Collatz map $T: \mathbb{N} \to \mathbb{N}$ is defined by
+\begin{equation}
+    T(n) = \frac{n \cdot 3^{X(n)} + X(n)}{2}
+\end{equation}
+where $X(n) = n \pmod 2$.
+\end{definition}
+
+\begin{lemma}\label{lemma:T_even}\lean{CollatzMapBasics.T_even}\leanok
+If $n$ is even, $T(n) = n/2$.
+\end{lemma}
+\begin{proof}\leanok
+If $n$ is even, $X(n) = 0$, so $T(n) = (n \cdot 3^0 + 0) / 2 = n/2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_odd}\lean{CollatzMapBasics.T_odd}\leanok
+If $n$ is odd, $T(n) = (3n + 1)/2$.
+\end{lemma}
+\begin{proof}\leanok
+If $n$ is odd, $X(n) = 1$, so $T(n) = (n \cdot 3^1 + 1) / 2 = (3n + 1)/2$.
+\end{proof}
+
+\begin{definition}\label{def:T_iter}\lean{CollatzMapBasics.T_iter}\leanok
+For any $k \in \mathbb{N}$, the $k$-fold iteration of the map $T$ is defined recursively by $T^0(n) = n$ and $T^{k+1}(n) = T(T^k(n))$.
+\end{definition}
+
+\begin{lemma}\label{lemma:T_pos}\lean{CollatzMapBasics.T_pos}\leanok
+If $n \ge 1$, then $T(n) \ge 1$.
+\end{lemma}
+\begin{proof}\leanok
+If $n$ is even, $n \ge 2$, so $n/2 \ge 1$. If $n$ is odd, $3n+1 \ge 4$, so $(3n+1)/2 \ge 2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_iter_pos}\lean{CollatzMapBasics.T_iter_pos}\leanok
+If $n \ge 1$, then $T^k(n) \ge 1$ for all $k \in \mathbb{N}$.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$, using Lemma~\ref{lemma:T_pos}.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_congr}\lean{CollatzMapBasics.T_congr}\leanok
+For any $k, m, n \in \mathbb{N}$, if $m \equiv n \pmod{2^{k+1}}$, then $T(m) \equiv T(n) \pmod{2^k}$.
+\end{lemma}
+\begin{proof}\leanok
+Let $m \equiv n \pmod{2^{k+1}}$. This implies $m \equiv n \pmod 2$, so $X(m) = X(n)$.
+We have $2 T(m) = 3^{X(m)} m + X(m)$ and $2 T(n) = 3^{X(n)} n + X(n)$.
+Subtracting these yields $2(T(m) - T(n)) = 3^{X(m)}(m - n)$.
+Since $2^{k+1} \mid (m - n)$, we have $2^k \mid (T(m) - T(n))$.
+\end{proof}
+
+\begin{definition}\label{def:num_odd_steps}\lean{CollatzMapBasics.num_odd_steps}\leanok
+The number of odd steps in the first $k$ iterations of $T$ starting from $n$ is defined by
+\begin{equation}
+    Q(k, n) = \sum_{i=0}^{k-1} X(T^i(n)).
+\end{equation}
+\end{definition}
+
+\begin{definition}\label{def:stopping_time}\lean{CollatzMapBasics.stopping_time}\leanok
+The stopping time $\sigma(n)$ of $n$ under $T$ is the smallest $k \ge 1$ such that $T^k(n) < n$.
+If no such $k$ exists, $\sigma(n) = \infty$.
+\end{definition}
+
+\begin{definition}\label{def:total_stopping_time}\lean{CollatzMapBasics.total_stopping_time}\leanok
+The total stopping time $\sigma_\infty(n)$ of $n$ under $T$ is the smallest $k \ge 1$ such that $T^k(n) = 1$.
+If no such $k$ exists, $\sigma_\infty(n) = \infty$.
+\end{definition}

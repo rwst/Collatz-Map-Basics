@@ -79,7 +79,7 @@
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">26</span>
+    <span class="definition_thmlabel">38</span>
     <div class="thm_header_extras">
 
     
@@ -95,7 +95,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L5" class="lean_decl">reduced_collatz_step</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a></li>
           
         </ul>
     </div>
@@ -104,12 +104,12 @@
   </div>
   <div class="definition_thmcontent">
   <p>The reduced Collatz map \(R: \mathbb {N}\to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000045">
+<div class="equation" id="a0000000057">
 <p>
   <div class="equation_content">
     \begin{equation}  R(n) = \frac{3n+1}{2^{v_2(3n+1)}} \end{equation}
   </div>
-  <span class="equation_label">16</span>
+  <span class="equation_label">17</span>
 </p>
 </div>
 <p> where \(v_2(m)\) is the dyadic valuation of \(m\). In short \(R(n)=\) odd part of \(3n+1\). </p>
@@ -121,7 +121,7 @@
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">27</span>
+    <span class="definition_thmlabel">39</span>
     <div class="thm_header_extras">
 
     
@@ -137,7 +137,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">R_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a></li>
           
         </ul>
     </div>
@@ -146,21 +146,21 @@
   </div>
   <div class="definition_thmcontent">
   <p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the reduced Collatz map \(R^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000046">
+<div class="equation" id="a0000000058">
 <p>
   <div class="equation_content">
     \begin{equation}  R^0(n) = n \end{equation}
   </div>
-  <span class="equation_label">17</span>
+  <span class="equation_label">18</span>
 </p>
 </div>
 <p> and </p>
-<div class="equation" id="a0000000047">
+<div class="equation" id="a0000000059">
 <p>
   <div class="equation_content">
     \begin{equation}  R^{k+1}(n) = R^k(R(n)). \end{equation}
   </div>
-  <span class="equation_label">18</span>
+  <span class="equation_label">19</span>
 </p>
 </div>
 
@@ -171,7 +171,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">28</span>
+    <span class="lemma_thmlabel">40</span>
     <div class="thm_header_extras">
 
     
@@ -181,7 +181,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_zero">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000048"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000060"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -190,7 +190,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L15" class="lean_decl">R_zero</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a></li>
           
         </ul>
     </div>
@@ -202,7 +202,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000048">
+<div class="proof_wrapper" id="a0000000060">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -219,7 +219,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">29</span>
+    <span class="lemma_thmlabel">41</span>
     <div class="thm_header_extras">
 
     
@@ -229,7 +229,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_one">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000049"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000061"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -238,7 +238,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L19" class="lean_decl">R_one</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a></li>
           
         </ul>
     </div>
@@ -250,7 +250,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000049">
+<div class="proof_wrapper" id="a0000000061">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -267,7 +267,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">30</span>
+    <span class="lemma_thmlabel">42</span>
     <div class="thm_header_extras">
 
     
@@ -277,7 +277,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_pos">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000050"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000062"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -286,7 +286,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L22" class="lean_decl">reduced_collatz_step_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a></li>
           
         </ul>
     </div>
@@ -298,7 +298,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000050">
+<div class="proof_wrapper" id="a0000000062">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -315,7 +315,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">31</span>
+    <span class="lemma_thmlabel">43</span>
     <div class="thm_header_extras">
 
     
@@ -325,7 +325,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_pos">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000051"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000063"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -341,7 +341,7 @@
         
         <ul class="uses">
           
-          <li><a href="sect0005.html#lemma:reduced_collatz_step_pos">Lemma 30</a></li>
+          <li><a href="sect0005.html#lemma:reduced_collatz_step_pos">Lemma 42</a></li>
           
         </ul>
     
@@ -354,7 +354,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L26" class="lean_decl">R_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a></li>
           
         </ul>
     </div>
@@ -366,7 +366,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000051">
+<div class="proof_wrapper" id="a0000000063">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -374,7 +374,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>We proceed by induction on \(i\). The base case \(i = 0\) is immediate since \(R^0(n) = n \geq 1\). For the inductive step, \(R^{i+1}(n) = R^i(R(n))\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_pos">30</a>, \(R(n) \geq 1\), so the induction hypothesis gives \(R^i(R(n)) \geq 1\). </p>
+  <p>We proceed by induction on \(i\). The base case \(i = 0\) is immediate since \(R^0(n) = n \geq 1\). For the inductive step, \(R^{i+1}(n) = R^i(R(n))\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_pos">42</a>, \(R(n) \geq 1\), so the induction hypothesis gives \(R^i(R(n)) \geq 1\). </p>
 
   </div>
 </div>
@@ -383,7 +383,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">32</span>
+    <span class="lemma_thmlabel">44</span>
     <div class="thm_header_extras">
 
     
@@ -393,7 +393,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_odd">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000052"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000064"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -402,7 +402,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L31" class="lean_decl">reduced_collatz_step_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a></li>
           
         </ul>
     </div>
@@ -414,7 +414,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000052">
+<div class="proof_wrapper" id="a0000000064">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -431,7 +431,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">33</span>
+    <span class="lemma_thmlabel">45</span>
     <div class="thm_header_extras">
 
     
@@ -441,7 +441,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_odd">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000053"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000065"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -457,7 +457,7 @@
         
         <ul class="uses">
           
-          <li><a href="sect0005.html#lemma:reduced_collatz_step_odd">Lemma 32</a></li>
+          <li><a href="sect0005.html#lemma:reduced_collatz_step_odd">Lemma 44</a></li>
           
         </ul>
     
@@ -470,7 +470,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L36" class="lean_decl">R_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a></li>
           
         </ul>
     </div>
@@ -482,7 +482,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000053">
+<div class="proof_wrapper" id="a0000000065">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -490,7 +490,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>We proceed by induction on \(i\). The base case \(i = 1\) follows directly from Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_odd">32</a>, since \(R^1(n) = R(n)\) is odd. For the inductive step, \(R^{i+1}(n) = R^i(R(n))\). If \(i \geq 1\), the induction hypothesis gives that \(R^i(R(n))\) is odd. If \(i = 0\), then \(R^{i+1}(n) = R^1(n) = R(n)\), which is odd by Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_odd">32</a>. </p>
+  <p>We proceed by induction on \(i\). The base case \(i = 1\) follows directly from Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_odd">44</a>, since \(R^1(n) = R(n)\) is odd. For the inductive step, \(R^{i+1}(n) = R^i(R(n))\). If \(i \geq 1\), the induction hypothesis gives that \(R^i(R(n))\) is odd. If \(i = 0\), then \(R^{i+1}(n) = R^1(n) = R(n)\), which is odd by Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_odd">44</a>. </p>
 
   </div>
 </div>
@@ -499,7 +499,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">34</span>
+    <span class="lemma_thmlabel">46</span>
     <div class="thm_header_extras">
 
     
@@ -509,7 +509,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:not_exists_R_with_m_div3">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000054"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000066"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -518,7 +518,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L46" class="lean_decl">not_exists_R_with_m_div3</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a></li>
           
         </ul>
     </div>
@@ -530,7 +530,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000054">
+<div class="proof_wrapper" id="a0000000066">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -547,7 +547,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">35</span>
+    <span class="lemma_thmlabel">47</span>
     <div class="thm_header_extras">
 
     
@@ -557,7 +557,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:exists_R_with_m_not_div3">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000055"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000067"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -566,7 +566,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L55" class="lean_decl">exists_R_with_m_not_div3</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a></li>
           
         </ul>
     </div>
@@ -578,7 +578,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000055">
+<div class="proof_wrapper" id="a0000000067">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -602,7 +602,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">36</span>
+    <span class="lemma_thmlabel">48</span>
     <div class="thm_header_extras">
 
     
@@ -612,7 +612,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_iff_mod4">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000056"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000068"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -621,7 +621,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L65" class="lean_decl">reduced_collatz_step_iff_mod4</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a></li>
           
         </ul>
     </div>
@@ -633,7 +633,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000056">
+<div class="proof_wrapper" id="a0000000068">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -651,7 +651,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">37</span>
+    <span class="lemma_thmlabel">49</span>
     <div class="thm_header_extras">
 
     
@@ -661,7 +661,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_implies_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000057"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000069"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -670,7 +670,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L99" class="lean_decl">reduced_collatz_step_implies_collatz_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -682,7 +682,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000057">
+<div class="proof_wrapper" id="a0000000069">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -690,7 +690,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By definition, \(R(n)\) is the odd part of \(3n+1\), so \(3n+1 = 2^k \cdot m\) for some \(k \in \mathbb {N}\). Since \(n\) is odd, \(3n+1\) is even, so \(k \ge 1\). One iteration of the Collatz map on \(n\) gives \(C^1(n) = 3n+1 = 2^k \cdot m\). By Lemma&#160;<a href="sect0003.html#lemma:collatz_iter_two_pow_mul">13</a>, applying the Collatz map \(k\) more times to \(2^k \cdot m\) yields \(C^k(2^k \cdot m) = m\). Thus \(C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m\). </p>
+  <p>By definition, \(R(n)\) is the odd part of \(3n+1\), so \(3n+1 = 2^k \cdot m\) for some \(k \in \mathbb {N}\). Since \(n\) is odd, \(3n+1\) is even, so \(k \ge 1\). One iteration of the Collatz map on \(n\) gives \(C^1(n) = 3n+1 = 2^k \cdot m\). By Lemma&#160;<a href="sect0003.html#lemma:collatz_iter_two_pow_mul">25</a>, applying the Collatz map \(k\) more times to \(2^k \cdot m\) yields \(C^k(2^k \cdot m) = m\). Thus \(C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m\). </p>
 
   </div>
 </div>
@@ -699,7 +699,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">38</span>
+    <span class="lemma_thmlabel">50</span>
     <div class="thm_header_extras">
 
     
@@ -709,7 +709,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000058"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000070"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -718,7 +718,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L117" class="lean_decl">reduced_collatz_iter_implies_collatz_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -730,7 +730,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000058">
+<div class="proof_wrapper" id="a0000000070">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -738,7 +738,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>We proceed by induction on \(k\). The base case \(k=0\) is trivial as \(R^0(n) = n = C^0(n)\). For the inductive step \(k+1\), let \(n_1 = R(n)\). By the induction hypothesis, since \(R^k(n_1) = m\), there exists \(i \ge k\) such that \(C^i(n_1) = m\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_implies_collatz_iter">37</a>, there exists \(j \ge 1\) such that \(C^j(n) = n_1\). Then \(C^{i+j}(n) = C^i(C^j(n)) = C^i(n_1) = m\). Since \(i \ge k\) and \(j \ge 1\), we have \(i+j \ge k+1\). </p>
+  <p>We proceed by induction on \(k\). The base case \(k=0\) is trivial as \(R^0(n) = n = C^0(n)\). For the inductive step \(k+1\), let \(n_1 = R(n)\). By the induction hypothesis, since \(R^k(n_1) = m\), there exists \(i \ge k\) such that \(C^i(n_1) = m\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_implies_collatz_iter">49</a>, there exists \(j \ge 1\) such that \(C^j(n) = n_1\). Then \(C^{i+j}(n) = C^i(C^j(n)) = C^i(n_1) = m\). Since \(i \ge k\) and \(j \ge 1\), we have \(i+j \ge k+1\). </p>
 
   </div>
 </div>
@@ -747,7 +747,7 @@
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">39</span>
+    <span class="definition_thmlabel">51</span>
     <div class="thm_header_extras">
 
     
@@ -763,7 +763,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L127" class="lean_decl">count_odds</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a></li>
           
         </ul>
     </div>
@@ -772,12 +772,12 @@
   </div>
   <div class="definition_thmcontent">
   <p>For \(d, n \in \mathbb {N}\), the number of odd steps in the first \(d\) iterations of the standard Collatz map starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000059">
+<div class="equation" id="a0000000071">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{countOdds}(d, n) = \sum _{j=0}^{d-1} [C^j(n) \text{ is odd}] \end{equation}
   </div>
-  <span class="equation_label">19</span>
+  <span class="equation_label">20</span>
 </p>
 </div>
 <p> where \([P]\) is the Iverson bracket. </p>
@@ -789,7 +789,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">40</span>
+    <span class="lemma_thmlabel">52</span>
     <div class="thm_header_extras">
 
     
@@ -799,7 +799,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:ordCompl_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000060"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000072"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -808,7 +808,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L162" class="lean_decl">ordCompl_collatz_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -817,18 +817,18 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(n \in \mathbb {N}\) be odd. For any \(d \in \mathbb {N}\), the odd part of \(C^d(n)\) is equal to \(R^k(n)\), where \(k = \text{countOdds}(d, n)\). That is, </p>
-<div class="equation" id="a0000000061">
+<div class="equation" id="a0000000073">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{odd part of } C^d(n) = R^k(n). \end{equation}
   </div>
-  <span class="equation_label">20</span>
+  <span class="equation_label">21</span>
 </p>
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000060">
+<div class="proof_wrapper" id="a0000000072">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -846,7 +846,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">41</span>
+    <span class="lemma_thmlabel">53</span>
     <div class="thm_header_extras">
 
     
@@ -856,7 +856,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:collatz_cycle_iff_reduced_collatz_cycle">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000062"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000074"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -865,7 +865,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L182" class="lean_decl">collatz_cycle_iff_reduced_collatz_cycle</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a></li>
           
         </ul>
     </div>
@@ -877,7 +877,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000062">
+<div class="proof_wrapper" id="a0000000074">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -885,8 +885,8 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>(\(\Rightarrow \)) Suppose there exists \(k {\gt} 0\) such that \(C^k(n) = n\). By Lemma&#160;<a href="sect0005.html#lemma:ordCompl_collatz_iter">40</a>, the odd part of \(C^k(n)\) is \(R^j(n)\) where \(j = \text{countOdds}(k, n)\). Since \(n\) is odd, its odd part is \(n\), so \(R^j(n) = n\). Since \(n\) is odd and \(k {\gt} 0\), at least one standard Collatz step must have occurred, and since \(n \ge 1\), we must have \(j {\gt} 0\). Thus \(n\) is part of a reduced cycle. </p>
-<p>(\(\Leftarrow \)) Suppose there exists \(j {\gt} 0\) such that \(R^j(n) = n\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">38</a>, there exists \(k \ge j\) such that \(C^k(n) = n\). Since \(j {\gt} 0\), we have \(k {\gt} 0\), so \(n\) is part of a standard cycle. </p>
+  <p>(\(\Rightarrow \)) Suppose there exists \(k {\gt} 0\) such that \(C^k(n) = n\). By Lemma&#160;<a href="sect0005.html#lemma:ordCompl_collatz_iter">52</a>, the odd part of \(C^k(n)\) is \(R^j(n)\) where \(j = \text{countOdds}(k, n)\). Since \(n\) is odd, its odd part is \(n\), so \(R^j(n) = n\). Since \(n\) is odd and \(k {\gt} 0\), at least one standard Collatz step must have occurred, and since \(n \ge 1\), we must have \(j {\gt} 0\). Thus \(n\) is part of a reduced cycle. </p>
+<p>(\(\Leftarrow \)) Suppose there exists \(j {\gt} 0\) such that \(R^j(n) = n\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">50</a>, there exists \(k \ge j\) such that \(C^k(n) = n\). Since \(j {\gt} 0\), we have \(k {\gt} 0\), so \(n\) is part of a standard cycle. </p>
 
   </div>
 </div>
@@ -895,7 +895,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">42</span>
+    <span class="lemma_thmlabel">54</span>
     <div class="thm_header_extras">
 
     
@@ -905,7 +905,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:collatz_bounded_iff_reduced_collatz_bounded">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000063"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000075"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -914,7 +914,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/9267ef4f37c09a8e263fd197d822df09f7b221c5/CollatzMapBasics/Reduced.lean#L197" class="lean_decl">collatz_bounded_iff_reduced_collatz_bounded</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a></li>
           
         </ul>
     </div>
@@ -926,7 +926,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000063">
+<div class="proof_wrapper" id="a0000000075">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -934,8 +934,8 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>(\(\Rightarrow \)) Suppose there exists \(B\) such that \(C^k(n) \le B\) for all \(k \ge 0\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">38</a>, every reduced iterate \(R^j(n)\) is equal to some \(C^k(n)\), so \(R^j(n) \le B\) for all \(j \ge 0\). </p>
-<p>(\(\Leftarrow \)) Suppose there exists \(B\) such that \(R^j(n) \le B\) for all \(j \ge 0\). We claim that \(C^k(n) \le \max (n, 3B+1)\) for all \(k \ge 0\). We proceed by induction on \(k\). The base case \(k=0\) is \(C^0(n) = n\), which is clearly bounded. For the inductive step, let \(C^k(n) = m\). If \(m\) is even, \(C^{k+1}(n) = m/2 \le m\), which is bounded by the induction hypothesis. If \(m\) is odd, then by Lemma&#160;<a href="sect0005.html#lemma:ordCompl_collatz_iter">40</a>, \(m\) is the odd part of \(C^k(n)\), which is \(R^j(n)\) for \(j = \text{countOdds}(k, n)\). Thus \(m \le B\). Then \(C^{k+1}(n) = 3m+1 \le 3B+1\), which is within the bound. </p>
+  <p>(\(\Rightarrow \)) Suppose there exists \(B\) such that \(C^k(n) \le B\) for all \(k \ge 0\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">50</a>, every reduced iterate \(R^j(n)\) is equal to some \(C^k(n)\), so \(R^j(n) \le B\) for all \(j \ge 0\). </p>
+<p>(\(\Leftarrow \)) Suppose there exists \(B\) such that \(R^j(n) \le B\) for all \(j \ge 0\). We claim that \(C^k(n) \le \max (n, 3B+1)\) for all \(k \ge 0\). We proceed by induction on \(k\). The base case \(k=0\) is \(C^0(n) = n\), which is clearly bounded. For the inductive step, let \(C^k(n) = m\). If \(m\) is even, \(C^{k+1}(n) = m/2 \le m\), which is bounded by the induction hypothesis. If \(m\) is odd, then by Lemma&#160;<a href="sect0005.html#lemma:ordCompl_collatz_iter">52</a>, \(m\) is the odd part of \(C^k(n)\), which is \(R^j(n)\) for \(j = \text{countOdds}(k, n)\). Thus \(m \le B\). Then \(C^{k+1}(n) = 3m+1 \le 3B+1\), which is within the bound. </p>
 
   </div>
 </div>
