@@ -74,3 +74,14 @@ CollatzMapBasics.T_congr
 CollatzMapBasics.num_odd_steps
 CollatzMapBasics.stopping_time
 CollatzMapBasics.total_stopping_time
+CollatzMapBasics.ParityVector
+CollatzMapBasics.ParityVector.q
+CollatzMapBasics.ParityVector.size
+CollatzMapBasics.ParityVector.onesRatio
+CollatzMapBasics.ParityVector.V
+CollatzMapBasics.ParityVector.V_length
+CollatzMapBasics.ParityVector.V_get
+CollatzMapBasics.ParityVector.Precedes
+CollatzMapBasics.E_vec
+CollatzMapBasics.num_odd_steps_eq_E_vec_sum
+CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq

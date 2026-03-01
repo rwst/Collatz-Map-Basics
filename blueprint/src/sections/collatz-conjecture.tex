@@ -41,9 +41,12 @@ Thus, the assumption that the conjecture is true must be false.
 \begin{lemma}\label{lemma:bounded_no_cycle_implies_collatz}\lean{bounded_no_cycle_implies_collatz}\leanok
 If no natural number $n > 4$ lies on a nontrivial cycle and every orbit under $C$ is bounded, then
 the Collatz conjecture is true.
+$$ \left( \forall n k, n > 4 \to k \ge 1 \to C^k(n) \neq n \right) \to \left( \forall n, \exists B, \forall k, C^k(n) \le B \right) \to \forall m, m = 0 \lor \exists j, C^j(m) = 1 $$
 \end{lemma}
 \begin{proof}\leanok
-Let $m$ be an arbitrary natural number. If $m = 0$, the conjecture trivially holds.
+To prove that the Collatz conjecture is true under these assumptions, we must show that for an
+arbitrary target number $m$ (distinct from the hypothesis parameter $n$), either $m = 0$ or there exists some index $j$ such that $C^j(m) = 1$.
+If $m = 0$, this condition trivially holds.
 Assume $m \ge 1$. By the boundedness assumption, there exists some bound $B$ such that $C^k(m) \le B$ for all $k \ge 0$.
 Because the infinite sequence $(C^k(m))_{k=0}^\infty$ only takes values in the finite set $\{1, 2, \ldots, B\}$, the Pigeonhole Principle implies that there must be a collision.
 That is, there exist indices $i < j$ such that $C^i(m) = C^j(m)$. Let $c = C^i(m)$.

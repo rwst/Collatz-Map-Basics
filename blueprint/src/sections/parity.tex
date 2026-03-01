@@ -1,0 +1,68 @@
+\begin{definition}\label{def:ParityVector}\lean{CollatzMapBasics.ParityVector}\leanok
+A parity vector is a finite sequence of bits (0 and 1). In the formalization, it is represented as a list of boolean values, where \texttt{false} corresponds to 0 and \texttt{true} corresponds to 1.
+\end{definition}
+
+\begin{definition}\label{def:ParityVector_q}\lean{CollatzMapBasics.ParityVector.q}\leanok
+For a parity vector $v$, $q(v)$ is the number of ones (true entries) in $v$.
+\end{definition}
+
+\begin{definition}\label{def:ParityVector_size}\lean{CollatzMapBasics.ParityVector.size}\leanok
+The size of a parity vector $v$, denoted $|v|$, is its length.
+\end{definition}
+
+\begin{definition}\label{def:ParityVector_onesRatio}\lean{CollatzMapBasics.ParityVector.onesRatio}\leanok
+The ones-ratio of a parity vector $v$ is the rational number $q(v) / |v|$. If the vector is empty, the ratio is defined to be 0.
+\end{definition}
+
+\begin{definition}\label{def:ParityVector_V}\lean{CollatzMapBasics.ParityVector.V}\leanok
+For $j, n \in \mathbb{N}$, the parity vector $V(j, n)$ of length $j$ for the Collatz sequence starting at $n$ is defined as
+\begin{equation}
+    V(j, n) = (X(n), X(T(n)), \dots, X(T^{j-1}(n))).
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:V_length}\lean{CollatzMapBasics.ParityVector.V_length}\leanok
+The length of $V(j, n)$ is $j$.
+\end{lemma}
+\begin{proof}\leanok
+Immediate from the definition.
+\end{proof}
+
+\begin{lemma}\label{lemma:V_get}\lean{CollatzMapBasics.ParityVector.V_get}\leanok
+For any $i < j$, the $i$-th entry of $V(j, n)$ is $X(T^i(n))$.
+\end{lemma}
+\begin{proof}\leanok
+Immediate from the definition.
+\end{proof}
+
+\begin{definition}\label{def:ParityVector_Precedes}\lean{CollatzMapBasics.ParityVector.Precedes}\leanok
+The elementary precedence relation $\prec_e$ is defined by swapping a $01$ subword with $10$:
+\begin{equation}
+    w_1 01 w_2 \prec_e w_1 10 w_2.
+\end{equation}
+The precedence relation $\preceq$ is the reflexive transitive closure of $\prec_e$.
+\end{definition}
+
+\begin{definition}\label{def:E_vec}\lean{CollatzMapBasics.E_vec}\leanok
+For $k, n \in \mathbb{N}$, the vector $E(k, n)$ is the function from $\{0, \dots, k-1\}$ to $\{0, 1\}$ defined by
+\begin{equation}
+    E(k, n)(i) = X(T^i(n)).
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:num_odd_steps_eq_E_vec_sum}\lean{CollatzMapBasics.num_odd_steps_eq_E_vec_sum}\leanok
+The number of odd steps $Q(k, n)$ is equal to the sum of the entries of $E(k, n)$:
+\begin{equation}
+    Q(k, n) = \sum_{i=0}^{k-1} E(k, n)(i).
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+By definition of $Q(k, n)$ and $E(k, n)$.
+\end{proof}
+
+\begin{lemma}\label{lemma:num_odd_steps_eq_of_E_vec_eq}\lean{CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq}\leanok
+If $E(k, m) = E(k, n)$, then $Q(k, m) = Q(k, n)$.
+\end{lemma}
+\begin{proof}\leanok
+Directly from Lemma~\ref{lemma:num_odd_steps_eq_E_vec_sum}.
+\end{proof}

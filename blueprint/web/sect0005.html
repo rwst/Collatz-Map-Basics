@@ -61,6 +61,9 @@
      <li class="">
   <a href="sect0008.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
  </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Parity Vectors</span></a>
+ </li>
 
   </ul>
  </li>
@@ -95,7 +98,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a></li>
           
         </ul>
     </div>
@@ -104,7 +107,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>The reduced Collatz map \(R: \mathbb {N}\to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000057">
+<div class="equation" id="a0000000059">
 <p>
   <div class="equation_content">
     \begin{equation}  R(n) = \frac{3n+1}{2^{v_2(3n+1)}} \end{equation}
@@ -137,7 +140,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a></li>
           
         </ul>
     </div>
@@ -146,7 +149,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the reduced Collatz map \(R^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000058">
+<div class="equation" id="a0000000060">
 <p>
   <div class="equation_content">
     \begin{equation}  R^0(n) = n \end{equation}
@@ -155,7 +158,7 @@
 </p>
 </div>
 <p> and </p>
-<div class="equation" id="a0000000059">
+<div class="equation" id="a0000000061">
 <p>
   <div class="equation_content">
     \begin{equation}  R^{k+1}(n) = R^k(R(n)). \end{equation}
@@ -181,7 +184,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_zero">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000060"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000062"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -190,7 +193,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a></li>
           
         </ul>
     </div>
@@ -202,7 +205,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000060">
+<div class="proof_wrapper" id="a0000000062">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -229,7 +232,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_one">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000061"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000063"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -238,7 +241,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a></li>
           
         </ul>
     </div>
@@ -250,7 +253,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000061">
+<div class="proof_wrapper" id="a0000000063">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -277,7 +280,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_pos">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000062"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000064"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -286,7 +289,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a></li>
           
         </ul>
     </div>
@@ -298,7 +301,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000062">
+<div class="proof_wrapper" id="a0000000064">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -325,7 +328,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_pos">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000063"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000065"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -354,7 +357,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a></li>
           
         </ul>
     </div>
@@ -366,7 +369,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000063">
+<div class="proof_wrapper" id="a0000000065">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -393,7 +396,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_odd">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000064"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000066"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -402,7 +405,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a></li>
           
         </ul>
     </div>
@@ -414,7 +417,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000064">
+<div class="proof_wrapper" id="a0000000066">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -441,7 +444,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:R_odd">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000065"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000067"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -470,7 +473,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a></li>
           
         </ul>
     </div>
@@ -482,7 +485,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000065">
+<div class="proof_wrapper" id="a0000000067">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -509,7 +512,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:not_exists_R_with_m_div3">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000066"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000068"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -518,7 +521,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a></li>
           
         </ul>
     </div>
@@ -530,7 +533,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000066">
+<div class="proof_wrapper" id="a0000000068">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -557,7 +560,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:exists_R_with_m_not_div3">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000067"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000069"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -566,7 +569,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a></li>
           
         </ul>
     </div>
@@ -578,7 +581,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000067">
+<div class="proof_wrapper" id="a0000000069">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -612,7 +615,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_iff_mod4">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000068"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000070"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -621,7 +624,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a></li>
           
         </ul>
     </div>
@@ -633,7 +636,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000068">
+<div class="proof_wrapper" id="a0000000070">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -661,7 +664,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_implies_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000069"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000071"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -670,7 +673,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -682,7 +685,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000069">
+<div class="proof_wrapper" id="a0000000071">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -709,7 +712,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000070"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000072"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -718,7 +721,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -730,7 +733,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000070">
+<div class="proof_wrapper" id="a0000000072">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -763,7 +766,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a></li>
           
         </ul>
     </div>
@@ -772,7 +775,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>For \(d, n \in \mathbb {N}\), the number of odd steps in the first \(d\) iterations of the standard Collatz map starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000071">
+<div class="equation" id="a0000000073">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{countOdds}(d, n) = \sum _{j=0}^{d-1} [C^j(n) \text{ is odd}] \end{equation}
@@ -799,7 +802,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:ordCompl_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000072"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000074"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -808,7 +811,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -817,7 +820,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(n \in \mathbb {N}\) be odd. For any \(d \in \mathbb {N}\), the odd part of \(C^d(n)\) is equal to \(R^k(n)\), where \(k = \text{countOdds}(d, n)\). That is, </p>
-<div class="equation" id="a0000000073">
+<div class="equation" id="a0000000075">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{odd part of } C^d(n) = R^k(n). \end{equation}
@@ -828,7 +831,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000072">
+<div class="proof_wrapper" id="a0000000074">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -856,7 +859,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:collatz_cycle_iff_reduced_collatz_cycle">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000074"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000076"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -865,7 +868,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a></li>
           
         </ul>
     </div>
@@ -877,7 +880,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000074">
+<div class="proof_wrapper" id="a0000000076">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -905,7 +908,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:collatz_bounded_iff_reduced_collatz_bounded">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000075"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000077"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -914,7 +917,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/7171430d606bbf8b4fa643583a0d7f5d0ba387d5/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/982ab6c7dbe4c5402c3e5d9baaea63ff0966c3e2/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a></li>
           
         </ul>
     </div>
@@ -926,7 +929,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000075">
+<div class="proof_wrapper" id="a0000000077">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
