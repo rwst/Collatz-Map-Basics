@@ -226,6 +226,11 @@ INPUT ./sections/parity.tex
 INPUT ./sections/parity.tex
 INPUT ./sections/parity.tex
 INPUT sections/parity.tex
+INPUT ./sections/decomposition.tex
+INPUT ./sections/decomposition.tex
+INPUT ./sections/decomposition.tex
+INPUT ./sections/decomposition.tex
+INPUT sections/decomposition.tex
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out

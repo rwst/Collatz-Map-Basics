@@ -1,0 +1,95 @@
+\begin{definition}\label{def:decomposition_correction}\lean{CollatzMapBasics.decomposition_correction}\leanok
+For $k, n \in \mathbb{N}$, the accumulated correction term $Q(k, n)$ of the Terras map is defined recursively by $Q(0, n) = 0$ and
+\begin{equation}
+    Q(k+1, n) = 3^{X(T^k(n))} Q(k, n) + 2^k X(T^k(n)).
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:decomposition_correction_eq_of_E_vec_eq}\lean{CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq}\leanok
+If $E(k, m) = E(k, n)$, then $Q(k, m) = Q(k, n)$.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$.
+\end{proof}
+
+\begin{lemma}\label{lemma:linear_decomposition}\lean{CollatzMapBasics.linear_decomposition}\leanok
+For any $k, n \in \mathbb{N}$, the $k$-fold iteration of the Terras map $T^k(n)$ satisfies the linear identity
+\begin{equation}
+    2^k T^k(n) = 3^{Q(k, n)} n + Q(k, n)
+\end{equation}
+where $Q(k, n)$ is the number of odd iterates as defined in Definition~\ref{def:num_odd_steps}.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$, using the identity $2 T(m) = 3^{X(m)} m + X(m)$.
+\end{proof}
+
+\begin{lemma}\label{lemma:num_odd_steps_mono}\lean{CollatzMapBasics.num_odd_steps_mono}\leanok
+If $j \le k$, then $Q(j, n) \le Q(k, n)$.
+\end{lemma}
+\begin{proof}\leanok
+By definition of $Q(k, n)$ as a sum of non-negative terms.
+\end{proof}
+
+\begin{lemma}\label{lemma:num_odd_steps_succ}\lean{CollatzMapBasics.num_odd_steps_succ}\leanok
+$Q(k+1, n) = Q(k, n) + X(T^k(n))$.
+\end{lemma}
+\begin{proof}\leanok
+Immediate from the definition of $Q(k, n)$.
+\end{proof}
+
+\begin{definition}\label{def:decomposition_correction_sum}\lean{CollatzMapBasics.decomposition_correction_sum}\leanok
+The correction term $Q(k, n)$ has the closed-form expression
+\begin{equation}
+    Q(k, n) = \sum_{j=0}^{k-1} X(T^j(n)) 2^j 3^{Q(k, n) - Q(j+1, n)}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:decomposition_correction_eq_sum}\lean{CollatzMapBasics.decomposition_correction_eq_sum}\leanok
+The recursive definition of $Q(k, n)$ is equivalent to the closed-form sum.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$.
+\end{proof}
+
+\begin{definition}\label{def:C}\lean{CollatzMapBasics.C}\leanok
+The decomposition coefficient $C(k, n)$ is the rational number
+\begin{equation}
+    C(k, n) = \frac{3^{Q(k, n)}}{2^k}.
+\end{equation}
+\end{definition}
+
+\begin{definition}\label{def:coeff_stopping_time}\lean{CollatzMapBasics.coeff_stopping_time}\leanok
+The coefficient stopping time $\tau(n)$ is the smallest $j \ge 1$ such that $C(j, n) < 1$.
+If no such $j$ exists, $\tau(n) = \infty$.
+\end{definition}
+
+\begin{definition}\label{def:E}\lean{CollatzMapBasics.E}\leanok
+The correction ratio $E(j, n)$ is the rational number
+\begin{equation}
+    E(j, n) = \frac{Q(j, n)}{2^j}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:E_zero}\lean{CollatzMapBasics.E_zero}\leanok
+$E(0, n) = 0$.
+\end{lemma}
+\begin{proof}\leanok
+Trivial by definition.
+\end{proof}
+
+\begin{lemma}\label{lemma:E_succ}\lean{CollatzMapBasics.E_succ}\leanok
+The ratio $E$ satisfies the recurrence
+\begin{equation}
+    E(k+1, n) = \frac{3^{X(T^k(n))}}{2} E(k, n) + \frac{X(T^k(n))}{2}.
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+By diving the recurrence for $Q(k, n)$ by $2^{k+1}$.
+\end{proof}
+
+\begin{lemma}\label{lemma:E_step_strict_mono}\lean{CollatzMapBasics.E_step_strict_mono}\leanok
+For a fixed parity $x \in \{0, 1\}$, the step map $a \mapsto \frac{3^x}{2} a + \frac{x}{2}$ is strictly monotone.
+\end{lemma}
+\begin{proof}\leanok
+Since $3^x/2 > 0$ for $x \in \{0, 1\}$.
+\end{proof}
