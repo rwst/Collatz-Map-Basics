@@ -236,6 +236,11 @@ INPUT ./sections/decomposition.tex
 INPUT ./sections/decomposition.tex
 INPUT ./sections/decomposition.tex
 INPUT sections/decomposition.tex
+INPUT ./sections/periodicity.tex
+INPUT ./sections/periodicity.tex
+INPUT ./sections/periodicity.tex
+INPUT ./sections/periodicity.tex
+INPUT sections/periodicity.tex
 INPUT ./sections/TC-correspondence.tex
 INPUT ./sections/TC-correspondence.tex
 INPUT ./sections/TC-correspondence.tex

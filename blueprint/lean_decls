@@ -89,7 +89,9 @@ CollatzMapBasics.ParityVector.V_length
 CollatzMapBasics.ParityVector.V_get
 CollatzMapBasics.ParityVector.Precedes
 CollatzMapBasics.E_vec
+CollatzMapBasics.E_vec_le_one
 CollatzMapBasics.num_odd_steps_eq_E_vec_sum
+CollatzMapBasics.E_vec_restrict
 CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq
 CollatzMapBasics.decomposition_correction
 CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq
@@ -104,6 +106,9 @@ CollatzMapBasics.E
 CollatzMapBasics.E_zero
 CollatzMapBasics.E_succ
 CollatzMapBasics.E_step_strict_mono
+CollatzMapBasics.terras_backward
+CollatzMapBasics.terras_forward
+CollatzMapBasics.terras_periodicity
 CollatzMapBasics.T_step_collatz
 CollatzMapBasics.T_iter_to_collatz_iter
 CollatzMapBasics.collatz_iter_to_T_iter

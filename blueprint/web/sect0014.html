@@ -12,9 +12,8 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Collatz Map Basics: Periodicity</title>
-<link rel="next" href="sect0014.html" title="Correspondence to the Original Map" />
-<link rel="prev" href="sect0012.html" title="Linear Decomposition" />
+<title>Collatz Map Basics: Correspondence to the Original Map</title>
+<link rel="prev" href="sect0013.html" title="Periodicity" />
 <link rel="up" href="sect0009.html" title="The Compact Map" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
@@ -77,10 +76,10 @@
 <li class="">
   <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
  </li>
-<li class=" active current">
+<li class="">
   <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Periodicity</span></a>
  </li>
-<li class="">
+<li class=" active current">
   <a href="sect0014.html"><span class="toc_ref">3.5</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
  </li>
 
@@ -95,13 +94,13 @@
 
 
 <div class="main-text">
-<h1 id="a0000000014">3.4 Periodicity</h1>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:terras_backward">
+<h1 id="a0000000015">3.5 Correspondence to the Original Map</h1>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_step_collatz">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">109</span>
+    <span class="lemma_thmlabel">112</span>
     <div class="thm_header_extras">
 
     
@@ -109,9 +108,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0013.html#lemma:terras_backward">#</a>
+    <a class="icon proof" href="sect0014.html#lemma:T_step_collatz">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000130"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0014.html#a0000000135"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -120,7 +119,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L11" class="lean_decl">CollatzMapBasics.T_step_collatz</a></li>
           
         </ul>
     </div>
@@ -128,11 +127,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>For any \(k \in \mathbb {N}\) and \(m, n \in \mathbb {N}\), if \(m \equiv n \pmod{2^k}\), then \(E(k, m) = E(k, n)\). </p>
+  <p>For any \(n \in \mathbb {N}\), one step of the compact Collatz map \(T\) can be simulated by one or two steps of the original Collatz map \(C\). Specifically, there exists \(j \in \{ 1, 2\} \) such that \(C^j(n) = T(n)\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000130">
+<div class="proof_wrapper" id="a0000000135">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -140,16 +139,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\). The base case \(k=0\) is trivial as \(E(0, n)\) is the empty function. For the inductive step \(k+1\), if \(m \equiv n \pmod{2^{k+1}}\), then \(m \equiv n \pmod2\), so \(X(m) = X(n)\). By the congruence properties of \(T\) (Lemma&#160;<a href="sect0010.html#lemma:T_congr">79</a>), \(T(m) \equiv T(n) \pmod{2^k}\). By the induction hypothesis, \(E(k, T(m)) = E(k, T(n))\), which implies agreement on the remaining \(k\) entries of the parity vector. </p>
+  <p>We split into cases based on the parity of \(n\). If \(n\) is even, \(T(n) = n/2 = C(n)\), so \(j=1\). If \(n\) is odd, \(T(n) = (3n+1)/2 = C(3n+1)/2 = C(C(n))\), so \(j=2\) (since \(3n+1\) is even). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:terras_forward">
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_to_collatz_iter">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">110</span>
+    <span class="lemma_thmlabel">113</span>
     <div class="thm_header_extras">
 
     
@@ -157,9 +156,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0013.html#lemma:terras_forward">#</a>
+    <a class="icon proof" href="sect0014.html#lemma:T_iter_to_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000131"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0014.html#a0000000136"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -168,7 +167,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L21" class="lean_decl">CollatzMapBasics.T_iter_to_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -176,11 +175,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>For \(m, n \ge 1\), if \(E(k, m) = E(k, n)\), then \(m \equiv n \pmod{2^k}\). </p>
+  <p>For any \(k, n \in \mathbb {N}\), there exists \(j \in \mathbb {N}\) such that \(C^j(n) = T^k(n)\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000131">
+<div class="proof_wrapper" id="a0000000136">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -188,20 +187,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Assume \(E(k, m) = E(k, n)\). Then \(Q(k, m) = Q(k, n) = S\) and \(Q(k, m) = Q(k, n) = Q\). From the linear decomposition (Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition">98</a>), we have: </p>
-<div class="displaymath" id="a0000000132">
-  \begin{align*}  2^k T^k(m) & = 3^S m + Q \\ 2^k T^k(n) & = 3^S n + Q \end{align*}
-</div>
-<p> Subtracting these yields \(2^k (T^k(m) - T^k(n)) = 3^S (m - n)\). Since \(2^k\) is coprime to \(3^S\) (Lemma&#160;<a href="sect0002.html#lemma:coprime_pow_three_pow_two">12</a>), \(2^k\) must divide \(m - n\), so \(m \equiv n \pmod{2^k}\). </p>
+  <p>By induction on \(k\), using Lemma&#160;<a href="sect0014.html#lemma:T_step_collatz">112</a>. </p>
 
   </div>
 </div>
-<div class="theorem_thmwrapper theorem-style-plain" id="theorem:terras_periodicity">
-  <div class="theorem_thmheading">
-    <span class="theorem_thmcaption">
-    Theorem
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:collatz_iter_to_T_iter">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
     </span>
-    <span class="theorem_thmlabel">111</span>
+    <span class="lemma_thmlabel">114</span>
     <div class="thm_header_extras">
 
     
@@ -209,9 +204,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0013.html#theorem:terras_periodicity">#</a>
+    <a class="icon proof" href="sect0014.html#lemma:collatz_iter_to_T_iter">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000133"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0014.html#a0000000137"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -220,31 +215,19 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L37" class="lean_decl">CollatzMapBasics.collatz_iter_to_T_iter</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="theorem_thmcontent">
-  <p>(Theorem 1.2 in Terras (1976)<span class="cite">
-	[
-	<a href="sect0014.html#terras76" >5</a>
-	]
-</span>) Two positive integers \(m, n \ge 1\) have the same parity vector of length \(k\) if and only if they are congruent modulo \(2^k\): </p>
-<div class="equation" id="a0000000134">
-<p>
-  <div class="equation_content">
-    \begin{equation}  E(k, m) = E(k, n) \iff m \equiv n \pmod{2^k}. \end{equation}
-  </div>
-  <span class="equation_label">12</span>
-</p>
-</div>
+  <div class="lemma_thmcontent">
+  <p>If \(n \ge 1\) and \(C^j(n) = 1\) for some \(j \in \mathbb {N}\), then there exists \(k \in \mathbb {N}\) such that \(T^k(n) = 1\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000133">
+<div class="proof_wrapper" id="a0000000137">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -252,10 +235,28 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>This follows directly from Lemma&#160;<a href="sect0013.html#lemma:terras_backward">109</a> and Lemma&#160;<a href="sect0013.html#lemma:terras_forward">110</a>. </p>
+  <p>By induction on \(j\). In the base case \(j=0\), \(n=1=T^0(n)\). For the inductive step \(j+1\), if \(n\) is even, then \(C(n) = n/2 = T(n)\), so we apply the induction hypothesis to \(T(n)\). If \(n\) is odd, then \(C(n) = 3n+1\), and \(C(3n+1) = (3n+1)/2 = T(n)\). Since \(C^j(3n+1) = 1\), we apply the induction hypothesis to \(3n+1\), which reaches 1 under \(T\). Since \(T(n)\) is a step in that sequence, \(n\) also reaches 1 under \(T\). </p>
 
   </div>
 </div>
+<dl class="bibliography">
+  <dt><a name="crandall78">1</a></dt>
+  <dd><p><i class="sc">Crandall, Richard E.</i>, <em>"On the “3𝑥+ 1” problem."</em>, Mathematics of computation 32.144 (1978): 1281-1292. </p>
+</dd>
+  <dt><a name="everett77">2</a></dt>
+  <dd><p><i class="sc">Everett, C. J.</i>, <em>"Iteration of the number-theoretic function \(f(2n)= n, f(2n+1)= 3n+2\)."</em>, Advances in Mathematics 25.1 (1977): 42-45. </p>
+</dd>
+  <dt><a name="lagarias">3</a></dt>
+  <dd><p><i class="sc">Lagarias, Jeffrey C.</i>, "The 3x+ 1 problem: An overview.", in: <em>The ultimate challenge: The 3x+1 Problem</em> (2010): 3-29. </p>
+</dd>
+  <dt><a name="rozier2025paradoxical">4</a></dt>
+  <dd><p><i class="sc">Rozier, Olivier and Terracol, Claude</i>, <em>Paradoxical behavior in Collatz sequences</em>, arXiv preprint arXiv:2502.00948, 2025 </p>
+</dd>
+  <dt><a name="terras76">5</a></dt>
+  <dd><p><i class="sc">Terras, Riho</i>, <em>"A stopping time problem on the positive integers."</em>, Acta Arithmetica 30 (1976): 241-252. </p>
+</dd>
+</dl>
+<p> <br /> </p>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -267,11 +268,9 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="sect0012.html" title="Linear Decomposition"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="sect0013.html" title="Periodicity"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
   <a href="sect0009.html" title="The Compact Map"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
-</a>
-  <a href="sect0014.html" title="Correspondence to the Original Map"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

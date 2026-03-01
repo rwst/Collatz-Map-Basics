@@ -51,6 +51,13 @@ For $k, n \in \mathbb{N}$, the vector $E(k, n)$ is the function from $\{0, \dots
 \end{equation}
 \end{definition}
 
+\begin{lemma}\label{lemma:E_vec_le_one}\lean{CollatzMapBasics.E_vec_le_one}\leanok
+Each entry of $E(k, n)$ is at most 1.
+\end{lemma}
+\begin{proof}\leanok
+Immediate from the definition of $X(n)$.
+\end{proof}
+
 \begin{lemma}\label{lemma:num_odd_steps_eq_E_vec_sum}\lean{CollatzMapBasics.num_odd_steps_eq_E_vec_sum}\leanok
 The number of odd steps $Q(k, n)$ is equal to the sum of the entries of $E(k, n)$:
 \begin{equation}
@@ -59,6 +66,13 @@ The number of odd steps $Q(k, n)$ is equal to the sum of the entries of $E(k, n)
 \end{lemma}
 \begin{proof}\leanok
 By definition of $Q(k, n)$ and $E(k, n)$.
+\end{proof}
+
+\begin{lemma}\label{lemma:E_vec_restrict}\lean{CollatzMapBasics.E_vec_restrict}\leanok
+If $E(k+1, m) = E(k+1, n)$, then $E(k, m) = E(k, n)$.
+\end{lemma}
+\begin{proof}\leanok
+The agreement on the first $k+1$ entries implies agreement on the first $k$ entries.
 \end{proof}
 
 \begin{lemma}\label{lemma:num_odd_steps_eq_of_E_vec_eq}\lean{CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq}\leanok

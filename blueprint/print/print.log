@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 15:39
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -735,12 +735,12 @@ induction, the odd part of $[]$ is $[][][][][]$.
 Chapter 3.
 (./sections/terras-def.tex [12
 
-]) (./sections/parity.tex)
-(./sections/decomposition.tex [13] [14]) (./sections/TC-correspondence.tex)
-[15]
+]) (./sections/parity.tex [13])
+(./sections/decomposition.tex [14]) (./sections/periodicity.tex)
+(./sections/TC-correspondence.tex [15]) [16]
 Missing character: There is no 𝑥 (U+1D465) in font [lmroman10-italic]:mapping=t
 ex-text;!
-[16
+[17
 
 ]) (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
  ***********
@@ -748,16 +748,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 48DBC187BFE522E52F6B08D7C84E9FD4;2033.
+(rerunfilecheck)             Checksum: C63D92AE9DBDC35C3CFC825E1E6C89F4;2143.
  ) 
 Here is how much of TeX's memory you used:
- 17052 strings out of 475925
- 313249 string characters out of 5783280
+ 17065 strings out of 475925
+ 313587 string characters out of 5783280
  1950839 words of memory out of 5000000
- 38916 multiletter control sequences out of 15000+600000
+ 38926 multiletter control sequences out of 15000+600000
  563480 words of font info for 90 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
  90i,9n,114p,591b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf 
-(18 pages).
+(19 pages).
