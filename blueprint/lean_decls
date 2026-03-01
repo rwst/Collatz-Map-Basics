@@ -112,3 +112,9 @@ CollatzMapBasics.terras_periodicity
 CollatzMapBasics.T_step_collatz
 CollatzMapBasics.T_iter_to_collatz_iter
 CollatzMapBasics.collatz_iter_to_T_iter
+CollatzMapBasics.ξ
+CollatzMapBasics.irrational_xi
+CollatzMapBasics.delta
+CollatzMapBasics.inequality_equiv
+CollatzMapBasics.infinite_rat_approx_from_below
+CollatzMapBasics.exists_infinite_pairs_approx

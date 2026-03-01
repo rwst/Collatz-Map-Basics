@@ -246,6 +246,11 @@ INPUT ./sections/TC-correspondence.tex
 INPUT ./sections/TC-correspondence.tex
 INPUT ./sections/TC-correspondence.tex
 INPUT sections/TC-correspondence.tex
+INPUT ./sections/log2div3.tex
+INPUT ./sections/log2div3.tex
+INPUT ./sections/log2div3.tex
+INPUT ./sections/log2div3.tex
+INPUT sections/log2div3.tex
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out

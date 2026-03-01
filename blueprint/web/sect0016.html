@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Collatz Map Basics: Diophantine Approximations</title>
+<link rel="prev" href="sect0015.html" title="Rozier & Terracol (2025)" />
+<link rel="up" href="sect0015.html" title="Rozier & Terracol (2025)" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Collatz Map Basics</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">The Collatz Conjecture</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html"><span class="toc_ref">1.1</span> <span class="toc_entry">Elementary Number Theory</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">1.2</span> <span class="toc_entry">The Collatz Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Collatz Graph</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">2</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">3</span> <span class="toc_entry">The Compact Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Periodicity</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">3.5</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active">
+  <a href="sect0015.html"><span class="toc_ref">4</span> <span class="toc_entry">Rozier &amp; Terracol (2025)</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class=" active current">
+  <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Diophantine Approximations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000017">4.1 Diophantine Approximations</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:xi">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">115</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0016.html#def:xi">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.xi#doc" class="lean_decl">CollatzMapBasics.xi</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The irrational constant \(\xi \) is defined as: </p>
+<div class="equation" id="a0000000140">
+<p>
+  <div class="equation_content">
+    \begin{equation}  \xi = \frac{\log 2}{\log 3}. \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:irrational_xi">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">116</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0016.html#lemma:irrational_xi">#</a>
+    
+    <a class="icon proof" href="sect0016.html#a0000000141"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L60" class="lean_decl">CollatzMapBasics.irrational_xi</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>The constant \(\xi \) is irrational. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000141">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Suppose for contradiction that \(\xi = a/b\) for some integers \(a, b\) with \(b \ne 0\). Then \(b \log 2 = a \log 3\), which implies \(\log (2^b) = \log (3^a)\). Since the exponential function is injective, we must have \(2^b = 3^a\). However, an integer equation of the form \(2^b = 3^a\) holds if and only if \(a = b = 0\), contradicting the assumption that \(b \ne 0\) (or checking via parity for nonzero \(a, b\)). Therefore, \(\xi \) cannot be written as a fraction of integers. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:delta">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">117</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0016.html#def:delta">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L10" class="lean_decl">CollatzMapBasics.delta</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>For any \(\varepsilon \in \mathbb {R}\), we define the bound \(\delta (\varepsilon )\) as: </p>
+<div class="equation" id="a0000000142">
+<p>
+  <div class="equation_content">
+    \begin{equation}  \delta (\varepsilon ) = \frac{-\log (1 - \varepsilon )}{\log 3}. \end{equation}
+  </div>
+  <span class="equation_label">2</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:inequality_equiv">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">118</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0016.html#lemma:inequality_equiv">#</a>
+    
+    <a class="icon proof" href="sect0016.html#a0000000143"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L79" class="lean_decl">CollatzMapBasics.inequality_equiv</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For any positive integers \(a, b {\gt} 0\) and any \(\varepsilon {\lt} 1\), the following equivalence holds: </p>
+<div class="equation" id="a0000000144">
+<p>
+  <div class="equation_content">
+    \begin{equation}  1 - \varepsilon {\lt} \frac{3^a}{2^b} {\lt} 1 \iff 0 {\lt} \xi - \frac{a}{b} {\lt} \frac{\delta (\varepsilon )}{b}. \end{equation}
+  </div>
+  <span class="equation_label">3</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000143">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We apply the natural logarithm to the inequality \(1 - \varepsilon {\lt} \frac{3^a}{2^b} {\lt} 1\). The left-hand side gives \(\log (1 - \varepsilon ) {\lt} a \log 3 - b \log 2\), which rearranges to \(b \log 2 - a \log 3 {\lt} -\log (1 - \varepsilon )\). Dividing by \(b \log 3\) (which is positive since \(b {\gt} 0\)), we obtain \(\xi - a/b {\lt} \delta (\varepsilon )/b\). The right-hand side gives \(a \log 3 - b \log 2 {\lt} 0\), which is equivalent to \(a \log 3 {\lt} b \log 2\). Dividing by \(b \log 3\) yields \(a/b {\lt} \xi \), or \(0 {\lt} \xi - a/b\). These steps are reversible. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:infinite_rat_approx_from_below">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">119</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0016.html#lemma:infinite_rat_approx_from_below">#</a>
+    
+    <a class="icon proof" href="sect0016.html#a0000000145"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L407" class="lean_decl">CollatzMapBasics.infinite_rat_approx_from_below</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>There are infinitely many rational numbers \(q = n/d {\lt} \xi \) such that </p>
+<div class="equation" id="a0000000146">
+<p>
+  <div class="equation_content">
+    \begin{equation}  |\xi - q| {\lt} \frac{1}{d^2}. \end{equation}
+  </div>
+  <span class="equation_label">4</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000145">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is a standard consequence of the theory of continued fractions. The continued fraction convergents of an irrational number \(\xi \) alternate in being strictly less than and strictly greater than \(\xi \). The even convergents \(q_k = p_{2k}/q_{2k}\) provide an infinite sequence of rational approximations strictly smaller than \(\xi \), satisfying the well-known approximation bound \(|\xi - q_k| {\lt} 1 / (q_k)^2\). Since \(\xi \) is irrational, the set of such convergents is infinite. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="theorem:exists_infinite_pairs_approx">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">120</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0016.html#theorem:exists_infinite_pairs_approx">#</a>
+    
+    <a class="icon proof" href="sect0016.html#a0000000147"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L557" class="lean_decl">CollatzMapBasics.exists_infinite_pairs_approx</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>For any \(\varepsilon \in (0, 1)\), there exist infinitely many pairs of positive integers \((a, b)\) such that: </p>
+<div class="equation" id="a0000000148">
+<p>
+  <div class="equation_content">
+    \begin{equation}  1 - \varepsilon {\lt} \frac{3^a}{2^b} {\lt} 1. \end{equation}
+  </div>
+  <span class="equation_label">5</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000147">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(\varepsilon \in (0, 1)\), the value \(\delta (\varepsilon )\) is strictly positive. By Lemma&#160;<a href="sect0016.html#lemma:infinite_rat_approx_from_below">119</a>, there are infinitely many rational approximations \(q = a/b {\lt} \xi \) such that \(|\xi - a/b| {\lt} 1/b^2\). Because there are infinitely many such approximations, we can choose ones where the denominator \(b\) is arbitrarily large. In particular, we restrict to the infinite subset where \(b\) is large enough such that \(b \ge 2\) and \(1/b \le \delta (\varepsilon )\) (or more formally, \(b \ge \lceil 1 / \delta (\varepsilon ) \rceil + 1\)). For such an approximation, we have: </p>
+<div class="displaymath" id="a0000000149">
+  \[  \xi - \frac{a}{b} = \left|\xi - \frac{a}{b}\right| {\lt} \frac{1}{b^2} \le \frac{\delta (\varepsilon )}{b} \cdot \frac{1}{b} \le \frac{\delta (\varepsilon )}{b}.  \]
+</div>
+<p> Since \(q {\lt} \xi \), we have \(0 {\lt} \xi - a/b\). Thus, \(0 {\lt} \xi - a/b {\lt} \delta (\varepsilon )/b\). We ensure \(a\) and \(b\) are positive (a trivial consequence since \(\xi {\gt} 0\) and \(b\) is large). By Lemma&#160;<a href="sect0016.html#lemma:inequality_equiv">118</a>, this implies \(1 - \varepsilon {\lt} \frac{3^a}{2^b} {\lt} 1\). Since the subset constructed in this way is infinite and each fraction maps to a unique pair, there are infinitely many such pairs \((a, b)\). </p>
+
+  </div>
+</div>
+<dl class="bibliography">
+  <dt><a name="crandall78">1</a></dt>
+  <dd><p><i class="sc">Crandall, Richard E.</i>, <em>"On the “3𝑥+ 1” problem."</em>, Mathematics of computation 32.144 (1978): 1281-1292. </p>
+</dd>
+  <dt><a name="everett77">2</a></dt>
+  <dd><p><i class="sc">Everett, C. J.</i>, <em>"Iteration of the number-theoretic function \(f(2n)= n, f(2n+1)= 3n+2\)."</em>, Advances in Mathematics 25.1 (1977): 42-45. </p>
+</dd>
+  <dt><a name="lagarias">3</a></dt>
+  <dd><p><i class="sc">Lagarias, Jeffrey C.</i>, "The 3x+ 1 problem: An overview.", in: <em>The ultimate challenge: The 3x+1 Problem</em> (2010): 3-29. </p>
+</dd>
+  <dt><a name="rozier2025paradoxical">4</a></dt>
+  <dd><p><i class="sc">Rozier, Olivier and Terracol, Claude</i>, <em>Paradoxical behavior in Collatz sequences</em>, arXiv preprint arXiv:2502.00948, 2025 </p>
+</dd>
+  <dt><a name="terras76">5</a></dt>
+  <dd><p><i class="sc">Terras, Riho</i>, <em>"A stopping time problem on the positive integers."</em>, Acta Arithmetica 30 (1976): 241-252. </p>
+</dd>
+</dl>
+<p> <br /> </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0015.html" title="Rozier & Terracol (2025)"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="sect0015.html" title="Rozier & Terracol (2025)"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

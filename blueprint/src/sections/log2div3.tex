@@ -1,0 +1,62 @@
+\begin{definition}\label{def:xi}\lean{CollatzMapBasics.ξ}\leanok
+The irrational constant $\xi$ is defined as:
+\begin{equation}
+    \xi = \frac{\log 2}{\log 3}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:irrational_xi}\lean{CollatzMapBasics.irrational_xi}\leanok
+The constant $\xi$ is irrational.
+\end{lemma}
+\begin{proof}\leanok
+Suppose for contradiction that $\xi = a/b$ for some integers $a, b$ with $b \ne 0$. Then $b \log 2 = a \log 3$, which implies $\log(2^b) = \log(3^a)$. Since the exponential function is injective, we must have $2^b = 3^a$. However, an integer equation of the form $2^b = 3^a$ holds if and only if $a = b = 0$, contradicting the assumption that $b \ne 0$ (or checking via parity for nonzero $a, b$). Therefore, $\xi$ cannot be written as a fraction of integers.
+\end{proof}
+
+\begin{definition}\label{def:delta}\lean{CollatzMapBasics.delta}\leanok
+For any $\varepsilon \in \mathbb{R}$, we define the bound $\delta(\varepsilon)$ as:
+\begin{equation}
+    \delta(\varepsilon) = \frac{-\log(1 - \varepsilon)}{\log 3}.
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lemma:inequality_equiv}\lean{CollatzMapBasics.inequality_equiv}\leanok
+For any positive integers $a, b > 0$ and any $\varepsilon < 1$, the following equivalence holds:
+\begin{equation}
+    1 - \varepsilon < \frac{3^a}{2^b} < 1 \iff 0 < \xi - \frac{a}{b} < \frac{\delta(\varepsilon)}{b}.
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+We apply the natural logarithm to the inequality $1 - \varepsilon < \frac{3^a}{2^b} < 1$.
+The left-hand side gives $\log(1 - \varepsilon) < a \log 3 - b \log 2$, which rearranges to $b \log 2 - a \log 3 < -\log(1 - \varepsilon)$.
+Dividing by $b \log 3$ (which is positive since $b > 0$), we obtain $\xi - a/b < \delta(\varepsilon)/b$.
+The right-hand side gives $a \log 3 - b \log 2 < 0$, which is equivalent to $a \log 3 < b \log 2$. Dividing by $b \log 3$ yields $a/b < \xi$, or $0 < \xi - a/b$.
+These steps are reversible.
+\end{proof}
+
+\begin{lemma}\label{lemma:infinite_rat_approx_from_below}\lean{CollatzMapBasics.infinite_rat_approx_from_below}\leanok
+There are infinitely many rational numbers $q = n/d < \xi$ such that
+\begin{equation}
+    |\xi - q| < \frac{1}{d^2}.
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+This is a standard consequence of the theory of continued fractions. The continued fraction convergents of an irrational number $\xi$ alternate in being strictly less than and strictly greater than $\xi$. The even convergents $q_k = p_{2k}/q_{2k}$ provide an infinite sequence of rational approximations strictly smaller than $\xi$, satisfying the well-known approximation bound $|\xi - q_k| < 1 / (q_k)^2$. Since $\xi$ is irrational, the set of such convergents is infinite.
+\end{proof}
+
+\begin{theorem}\label{theorem:exists_infinite_pairs_approx}\lean{CollatzMapBasics.exists_infinite_pairs_approx}\leanok
+For any $\varepsilon \in (0, 1)$, there exist infinitely many pairs of positive integers $(a, b)$ such that:
+\begin{equation}
+    1 - \varepsilon < \frac{3^a}{2^b} < 1.
+\end{equation}
+\end{theorem}
+\begin{proof}\leanok
+Since $\varepsilon \in (0, 1)$, the value $\delta(\varepsilon)$ is strictly positive. By Lemma~\ref{lemma:infinite_rat_approx_from_below}, there are infinitely many rational approximations $q = a/b < \xi$ such that $|\xi - a/b| < 1/b^2$. Because there are infinitely many such approximations, we can choose ones where the denominator $b$ is arbitrarily large. In particular, we restrict to the infinite subset where $b$ is large enough such that $b \ge 2$ and $1/b \le \delta(\varepsilon)$ (or more formally, $b \ge \lceil 1 / \delta(\varepsilon) \rceil + 1$).
+For such an approximation, we have:
+\[
+    \xi - \frac{a}{b} = \left|\xi - \frac{a}{b}\right| < \frac{1}{b^2} \le \frac{\delta(\varepsilon)}{b} \cdot \frac{1}{b} \le \frac{\delta(\varepsilon)}{b}.
+\]
+Since $q < \xi$, we have $0 < \xi - a/b$. Thus, $0 < \xi - a/b < \delta(\varepsilon)/b$.
+We ensure $a$ and $b$ are positive (a trivial consequence since $\xi > 0$ and $b$ is large).
+By Lemma~\ref{lemma:inequality_equiv}, this implies $1 - \varepsilon < \frac{3^a}{2^b} < 1$.
+Since the subset constructed in this way is infinite and each fraction maps to a unique pair, there are infinitely many such pairs $(a, b)$.
+\end{proof}

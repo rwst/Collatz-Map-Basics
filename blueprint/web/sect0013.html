@@ -86,6 +86,16 @@
 
   </ul>
  </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">4</span> <span class="toc_entry">Rozier &amp; Terracol (2025)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Diophantine Approximations</span></a>
+ </li>
+
+  </ul>
+ </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
 </nav>
@@ -111,7 +121,7 @@
 
     <a class="icon proof" href="sect0013.html#lemma:terras_backward">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000130"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000132"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -120,7 +130,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
           
         </ul>
     </div>
@@ -132,7 +142,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000130">
+<div class="proof_wrapper" id="a0000000132">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -159,7 +169,7 @@
 
     <a class="icon proof" href="sect0013.html#lemma:terras_forward">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000131"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000133"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -168,7 +178,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
           
         </ul>
     </div>
@@ -180,7 +190,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000131">
+<div class="proof_wrapper" id="a0000000133">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -189,7 +199,7 @@
   </div>
   <div class="proof_content">
   <p>Assume \(E(k, m) = E(k, n)\). Then \(Q(k, m) = Q(k, n) = S\) and \(Q(k, m) = Q(k, n) = Q\). From the linear decomposition (Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition">98</a>), we have: </p>
-<div class="displaymath" id="a0000000132">
+<div class="displaymath" id="a0000000134">
   \begin{align*}  2^k T^k(m) & = 3^S m + Q \\ 2^k T^k(n) & = 3^S n + Q \end{align*}
 </div>
 <p> Subtracting these yields \(2^k (T^k(m) - T^k(n)) = 3^S (m - n)\). Since \(2^k\) is coprime to \(3^S\) (Lemma&#160;<a href="sect0002.html#lemma:coprime_pow_three_pow_two">12</a>), \(2^k\) must divide \(m - n\), so \(m \equiv n \pmod{2^k}\). </p>
@@ -211,7 +221,7 @@
 
     <a class="icon proof" href="sect0013.html#theorem:terras_periodicity">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000133"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000135"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -220,7 +230,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
           
         </ul>
     </div>
@@ -230,10 +240,10 @@
   <div class="theorem_thmcontent">
   <p>(Theorem 1.2 in Terras (1976)<span class="cite">
 	[
-	<a href="sect0014.html#terras76" >5</a>
+	<a href="sect0016.html#terras76" >5</a>
 	]
 </span>) Two positive integers \(m, n \ge 1\) have the same parity vector of length \(k\) if and only if they are congruent modulo \(2^k\): </p>
-<div class="equation" id="a0000000134">
+<div class="equation" id="a0000000136">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k, m) = E(k, n) \iff m \equiv n \pmod{2^k}. \end{equation}
@@ -244,7 +254,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000133">
+<div class="proof_wrapper" id="a0000000135">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof

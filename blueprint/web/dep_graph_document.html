@@ -76,7 +76,7 @@
       </span>
       <span class="definition_thmlabel">103</span></div>
     <div class="thm_thmcontent"><p>The decomposition coefficient \(C(k, n)\) is the rational number </p>
-<div class="equation" id="a0000000124">
+<div class="equation" id="a0000000126">
 <p>
   <div class="equation_content">
     \begin{equation}  C(k, n) = \frac{3^{Q(k, n)}}{2^k}. \end{equation}
@@ -92,7 +92,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L89" class="lean_decl">CollatzMapBasics.C</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L89" class="lean_decl">CollatzMapBasics.C</a>
     
   </span>
     
@@ -127,7 +127,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L93" class="lean_decl">CollatzMapBasics.coeff_stopping_time</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L93" class="lean_decl">CollatzMapBasics.coeff_stopping_time</a>
     
   </span>
     
@@ -162,7 +162,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L56" class="lean_decl">CollatzMapBasics.collatz_graph</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L56" class="lean_decl">CollatzMapBasics.collatz_graph</a>
     
   </span>
     
@@ -189,7 +189,7 @@
       </span>
       <span class="definition_thmlabel">19</span></div>
     <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the Collatz map \(C^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000039">
+<div class="equation" id="a0000000041">
 <p>
   <div class="equation_content">
     \begin{equation}  C^0(n) = n \end{equation}
@@ -198,7 +198,7 @@
 </p>
 </div>
 <p> and </p>
-<div class="equation" id="a0000000040">
+<div class="equation" id="a0000000042">
 <p>
   <div class="equation_content">
     \begin{equation}  C^{k+1}(n) = C^k(C(n)). \end{equation}
@@ -214,7 +214,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L12" class="lean_decl">collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L12" class="lean_decl">collatz_iter</a>
     
   </span>
     
@@ -241,7 +241,7 @@
       </span>
       <span class="definition_thmlabel">18</span></div>
     <div class="thm_thmcontent"><p>The Collatz map \(C: \mathbb {N} \to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000038">
+<div class="equation" id="a0000000040">
 <p>
   <div class="equation_content">
     \begin{equation}  C(n) = \begin{cases}  n/2 &  \text{if } n \text{ is even}, \\ 3n + 1 &  \text{if } n \text{ is odd}. \end{cases} \end{equation}
@@ -257,7 +257,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L5" class="lean_decl">collatz_step</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L5" class="lean_decl">collatz_step</a>
     
   </span>
     
@@ -284,7 +284,7 @@
       </span>
       <span class="definition_thmlabel">57</span></div>
     <div class="thm_thmcontent"><p>For \(d, n \in \mathbb {N}\), the number of odd steps in the first \(d\) iterations of the standard Collatz map starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000083">
+<div class="equation" id="a0000000085">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{countOdds}(d, n) = \sum _{j=0}^{d-1} [C^j(n) \text{ is odd}] \end{equation}
@@ -301,7 +301,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a>
     
   </span>
     
@@ -328,7 +328,7 @@
       </span>
       <span class="definition_thmlabel">96</span></div>
     <div class="thm_thmcontent"><p>For \(k, n \in \mathbb {N}\), the accumulated correction term \(Q(k, n)\) of the Terras map is defined recursively by \(Q(0, n) = 0\) and </p>
-<div class="equation" id="a0000000116">
+<div class="equation" id="a0000000118">
 <p>
   <div class="equation_content">
     \begin{equation}  Q(k+1, n) = 3^{X(T^k(n))} Q(k, n) + 2^k X(T^k(n)). \end{equation}
@@ -344,7 +344,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L11" class="lean_decl">CollatzMapBasics.decomposition_correction</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L11" class="lean_decl">CollatzMapBasics.decomposition_correction</a>
     
   </span>
     
@@ -371,7 +371,7 @@
       </span>
       <span class="definition_thmlabel">101</span></div>
     <div class="thm_thmcontent"><p>The correction term \(Q(k, n)\) has the closed-form expression </p>
-<div class="equation" id="a0000000122">
+<div class="equation" id="a0000000124">
 <p>
   <div class="equation_content">
     \begin{equation}  Q(k, n) = \sum _{j=0}^{k-1} X(T^j(n)) 2^j 3^{Q(k, n) - Q(j+1, n)}. \end{equation}
@@ -387,7 +387,50 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L61" class="lean_decl">CollatzMapBasics.decomposition_correction_sum</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L61" class="lean_decl">CollatzMapBasics.decomposition_correction_sum</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:delta_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:delta" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">117</span></div>
+    <div class="thm_thmcontent"><p>For any \(\varepsilon \in \mathbb {R}\), we define the bound \(\delta (\varepsilon )\) as: </p>
+<div class="equation" id="a0000000142">
+<p>
+  <div class="equation_content">
+    \begin{equation}  \delta (\varepsilon ) = \frac{-\log (1 - \varepsilon )}{\log 3}. \end{equation}
+  </div>
+  <span class="equation_label">2</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0016.html#def:delta">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L10" class="lean_decl">CollatzMapBasics.delta</a>
     
   </span>
     
@@ -414,7 +457,7 @@
       </span>
       <span class="definition_thmlabel">105</span></div>
     <div class="thm_thmcontent"><p>The correction ratio \(E(j, n)\) is the rational number </p>
-<div class="equation" id="a0000000125">
+<div class="equation" id="a0000000127">
 <p>
   <div class="equation_content">
     \begin{equation}  E(j, n) = \frac{Q(j, n)}{2^j}. \end{equation}
@@ -430,7 +473,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L100" class="lean_decl">CollatzMapBasics.E</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L100" class="lean_decl">CollatzMapBasics.E</a>
     
   </span>
     
@@ -457,7 +500,7 @@
       </span>
       <span class="definition_thmlabel">91</span></div>
     <div class="thm_thmcontent"><p>For \(k, n \in \mathbb {N}\), the vector \(E(k, n)\) is the function from \(\{ 0, \dots , k-1\} \) to \(\{ 0, 1\} \) defined by </p>
-<div class="equation" id="a0000000110">
+<div class="equation" id="a0000000112">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k, n)(i) = X(T^i(n)). \end{equation}
@@ -473,7 +516,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L55" class="lean_decl">CollatzMapBasics.E_vec</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L55" class="lean_decl">CollatzMapBasics.E_vec</a>
     
   </span>
     
@@ -514,7 +557,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L241" class="lean_decl">CollatzMapBasics.IsPrimitive4x1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L241" class="lean_decl">CollatzMapBasics.IsPrimitive4x1</a>
     
   </span>
     
@@ -541,7 +584,7 @@
       </span>
       <span class="definition_thmlabel">80</span></div>
     <div class="thm_thmcontent"><p>The number of odd steps in the first \(k\) iterations of \(T\) starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000105">
+<div class="equation" id="a0000000107">
 <p>
   <div class="equation_content">
     \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} X(T^i(n)). \end{equation}
@@ -557,7 +600,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L56" class="lean_decl">CollatzMapBasics.num_odd_steps</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L56" class="lean_decl">CollatzMapBasics.num_odd_steps</a>
     
   </span>
     
@@ -592,7 +635,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L7" class="lean_decl">CollatzMapBasics.ParityVector</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L7" class="lean_decl">CollatzMapBasics.ParityVector</a>
     
   </span>
     
@@ -627,7 +670,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L25" class="lean_decl">CollatzMapBasics.ParityVector.onesRatio</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L25" class="lean_decl">CollatzMapBasics.ParityVector.onesRatio</a>
     
   </span>
     
@@ -654,7 +697,7 @@
       </span>
       <span class="definition_thmlabel">90</span></div>
     <div class="thm_thmcontent"><p>The elementary precedence relation \(\prec _e\) is defined by swapping a \(01\) subword with \(10\): </p>
-<div class="equation" id="a0000000109">
+<div class="equation" id="a0000000111">
 <p>
   <div class="equation_content">
     \begin{equation}  w_1 01 w_2 \prec _e w_1 10 w_2. \end{equation}
@@ -671,7 +714,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L46" class="lean_decl">CollatzMapBasics.ParityVector.Precedes</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L46" class="lean_decl">CollatzMapBasics.ParityVector.Precedes</a>
     
   </span>
     
@@ -706,7 +749,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L19" class="lean_decl">CollatzMapBasics.ParityVector.q</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L19" class="lean_decl">CollatzMapBasics.ParityVector.q</a>
     
   </span>
     
@@ -741,7 +784,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L22" class="lean_decl">CollatzMapBasics.ParityVector.size</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L22" class="lean_decl">CollatzMapBasics.ParityVector.size</a>
     
   </span>
     
@@ -768,7 +811,7 @@
       </span>
       <span class="definition_thmlabel">87</span></div>
     <div class="thm_thmcontent"><p>For \(j, n \in \mathbb {N}\), the parity vector \(V(j, n)\) of length \(j\) for the compact Collatz sequence starting at \(n\) is defined as </p>
-<div class="displaymath" id="a0000000106">
+<div class="displaymath" id="a0000000108">
   \[  V(j, n) = (X(n), X(T(n)), \dots , X(T^{j-1}(n))).  \]
 </div>
 </div>
@@ -779,7 +822,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L28" class="lean_decl">CollatzMapBasics.ParityVector.V</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L28" class="lean_decl">CollatzMapBasics.ParityVector.V</a>
     
   </span>
     
@@ -806,7 +849,7 @@
       </span>
       <span class="definition_thmlabel">45</span></div>
     <div class="thm_thmcontent"><p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the reduced Collatz map \(R^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000070">
+<div class="equation" id="a0000000072">
 <p>
   <div class="equation_content">
     \begin{equation}  R^0(n) = n \end{equation}
@@ -815,7 +858,7 @@
 </p>
 </div>
 <p> and </p>
-<div class="equation" id="a0000000071">
+<div class="equation" id="a0000000073">
 <p>
   <div class="equation_content">
     \begin{equation}  R^{k+1}(n) = R^k(R(n)). \end{equation}
@@ -831,7 +874,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a>
     
   </span>
     
@@ -858,7 +901,7 @@
       </span>
       <span class="definition_thmlabel">68</span></div>
     <div class="thm_thmcontent"><p>The function \(\text{reduce4x1}: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="displaymath" id="a0000000094">
+<div class="displaymath" id="a0000000096">
   \[  \text{reduce4x1}(n) = \begin{cases}  \text{reduce4x1}((n-1)/4) &  \text{if } n \equiv 5 \pmod{8}, \\ n &  \text{otherwise.} \end{cases}  \]
 </div>
 </div>
@@ -869,7 +912,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L312" class="lean_decl">CollatzMapBasics.reduce4x1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L312" class="lean_decl">CollatzMapBasics.reduce4x1</a>
     
   </span>
     
@@ -896,7 +939,7 @@
       </span>
       <span class="definition_thmlabel">44</span></div>
     <div class="thm_thmcontent"><p>The reduced Collatz map \(R: \mathbb {N}\to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000069">
+<div class="equation" id="a0000000071">
 <p>
   <div class="equation_content">
     \begin{equation}  R(n) = \frac{3n+1}{2^{v_2(3n+1)}} \end{equation}
@@ -913,7 +956,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a>
     
   </span>
     
@@ -948,7 +991,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L91" class="lean_decl">CollatzMapBasics.stopping_time</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L91" class="lean_decl">CollatzMapBasics.stopping_time</a>
     
   </span>
     
@@ -975,7 +1018,7 @@
       </span>
       <span class="definition_thmlabel">73</span></div>
     <div class="thm_thmcontent"><p>The compact Collatz map \(T: \mathbb {N} \to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000099">
+<div class="equation" id="a0000000101">
 <p>
   <div class="equation_content">
     \begin{equation}  T(n) = \frac{n \cdot 3^{X(n)} + X(n)}{2} \end{equation}
@@ -992,7 +1035,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L11" class="lean_decl">CollatzMapBasics.T</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L11" class="lean_decl">CollatzMapBasics.T</a>
     
   </span>
     
@@ -1027,7 +1070,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L20" class="lean_decl">CollatzMapBasics.T_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L20" class="lean_decl">CollatzMapBasics.T_iter</a>
     
   </span>
     
@@ -1062,7 +1105,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L109" class="lean_decl">CollatzMapBasics.total_stopping_time</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L109" class="lean_decl">CollatzMapBasics.total_stopping_time</a>
     
   </span>
     
@@ -1089,7 +1132,7 @@
       </span>
       <span class="definition_thmlabel">13</span></div>
     <div class="thm_thmcontent"><p>We define the indicator function \(X: \mathbb {N} \to \mathbb {N}\) such that \(X(n) = 0\) if \(n\) is even and \(X(n) = 1\) if \(n\) is odd. Formally, </p>
-<div class="equation" id="a0000000033">
+<div class="equation" id="a0000000035">
 <p>
   <div class="equation_content">
     \begin{equation}  X(n) = \frac{1 - (-1)^n}{2}. \end{equation}
@@ -1105,7 +1148,50 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L74" class="lean_decl">CollatzMapBasics.X</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L74" class="lean_decl">CollatzMapBasics.X</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:xi_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:xi" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">115</span></div>
+    <div class="thm_thmcontent"><p>The irrational constant \(\xi \) is defined as: </p>
+<div class="equation" id="a0000000140">
+<p>
+  <div class="equation_content">
+    \begin{equation}  \xi = \frac{\log 2}{\log 3}. \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0016.html#def:xi">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.xi#doc" class="lean_decl">CollatzMapBasics.xi</a>
     
   </span>
     
@@ -1132,7 +1218,7 @@
       </span>
       <span class="lemma_thmlabel">37</span></div>
     <div class="thm_thmcontent"><p>If no natural number \(n {\gt} 4\) lies on a nontrivial cycle and every orbit under \(C\) is bounded, then the Collatz conjecture is true. </p>
-<div class="displaymath" id="a0000000063">
+<div class="displaymath" id="a0000000065">
   \[  \left( \forall n k, n {\gt} 4 \to k \ge 1 \to C^k(n) \neq n \right) \to \left( \forall n, \exists B, \forall k, C^k(n) \le B \right) \to \forall m, m = 0 \lor \exists j, C^j(m) = 1  \]
 </div>
 </div>
@@ -1143,7 +1229,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L162" class="lean_decl">bounded_no_cycle_implies_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L162" class="lean_decl">bounded_no_cycle_implies_collatz</a>
     
   </span>
     
@@ -1178,7 +1264,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a>
     
   </span>
     
@@ -1213,7 +1299,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a>
     
   </span>
     
@@ -1248,7 +1334,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L59" class="lean_decl">CollatzMapBasics.collatz_graph_adj_iff</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L59" class="lean_decl">CollatzMapBasics.collatz_graph_adj_iff</a>
     
   </span>
     
@@ -1283,7 +1369,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L81" class="lean_decl">collatz_iter_add</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L81" class="lean_decl">collatz_iter_add</a>
     
   </span>
     
@@ -1318,7 +1404,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L93" class="lean_decl">collatz_iter_mem_124</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L93" class="lean_decl">collatz_iter_mem_124</a>
     
   </span>
     
@@ -1353,7 +1439,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L87" class="lean_decl">collatz_iter_mul_cycle</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L87" class="lean_decl">collatz_iter_mul_cycle</a>
     
   </span>
     
@@ -1388,7 +1474,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L102" class="lean_decl">collatz_iter_one_le_four</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L102" class="lean_decl">collatz_iter_one_le_four</a>
     
   </span>
     
@@ -1423,7 +1509,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L40" class="lean_decl">collatz_iter_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L40" class="lean_decl">collatz_iter_pos</a>
     
   </span>
     
@@ -1458,7 +1544,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L50" class="lean_decl">collatz_iter_pow_two</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L50" class="lean_decl">collatz_iter_pow_two</a>
     
   </span>
     
@@ -1493,7 +1579,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L67" class="lean_decl">collatz_iter_pow_two_ne_one</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L67" class="lean_decl">collatz_iter_pow_two_ne_one</a>
     
   </span>
     
@@ -1528,7 +1614,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L37" class="lean_decl">CollatzMapBasics.collatz_iter_to_T_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L37" class="lean_decl">CollatzMapBasics.collatz_iter_to_T_iter</a>
     
   </span>
     
@@ -1563,7 +1649,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L55" class="lean_decl">collatz_iter_two_pow_mul</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L55" class="lean_decl">collatz_iter_two_pow_mul</a>
     
   </span>
     
@@ -1598,7 +1684,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L26" class="lean_decl">collatz_iter_zero</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L26" class="lean_decl">collatz_iter_zero</a>
     
   </span>
     
@@ -1625,7 +1711,7 @@
       </span>
       <span class="lemma_thmlabel">33</span></div>
     <div class="thm_thmcontent"><p>The Collatz map \(C(n)\) has the closed form </p>
-<div class="equation" id="a0000000056">
+<div class="equation" id="a0000000058">
 <p>
   <div class="equation_content">
     \begin{equation}  C(n) = \frac{(7n + 2) - (5n + 2)(-1)^n}{4} \end{equation}
@@ -1642,7 +1728,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L106" class="lean_decl">collatz_step_closed_form</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L106" class="lean_decl">collatz_step_closed_form</a>
     
   </span>
     
@@ -1677,7 +1763,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L32" class="lean_decl">collatz_step_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L32" class="lean_decl">collatz_step_pos</a>
     
   </span>
     
@@ -1712,7 +1798,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L45" class="lean_decl">collatz_step_pow_two</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L45" class="lean_decl">collatz_step_pow_two</a>
     
   </span>
     
@@ -1782,7 +1868,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L88" class="lean_decl">CollatzMapBasics.confluence_of_reachable</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L88" class="lean_decl">CollatzMapBasics.confluence_of_reachable</a>
     
   </span>
     
@@ -1817,7 +1903,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L73" class="lean_decl">CollatzMapBasics.confluence_step</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L73" class="lean_decl">CollatzMapBasics.confluence_step</a>
     
   </span>
     
@@ -1852,7 +1938,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L70" class="lean_decl">CollatzMapBasics.coprime_pow_three_pow_two</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L70" class="lean_decl">CollatzMapBasics.coprime_pow_three_pow_two</a>
     
   </span>
     
@@ -1887,7 +1973,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L132" class="lean_decl">cycle_implies_not_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L132" class="lean_decl">cycle_implies_not_collatz</a>
     
   </span>
     
@@ -1922,7 +2008,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L15" class="lean_decl">CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L15" class="lean_decl">CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq</a>
     
   </span>
     
@@ -1957,7 +2043,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L65" class="lean_decl">CollatzMapBasics.decomposition_correction_eq_sum</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L65" class="lean_decl">CollatzMapBasics.decomposition_correction_eq_sum</a>
     
   </span>
     
@@ -1992,7 +2078,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L115" class="lean_decl">CollatzMapBasics.E_step_strict_mono</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L115" class="lean_decl">CollatzMapBasics.E_step_strict_mono</a>
     
   </span>
     
@@ -2019,7 +2105,7 @@
       </span>
       <span class="lemma_thmlabel">107</span></div>
     <div class="thm_thmcontent"><p>The ratio \(E\) satisfies the recurrence </p>
-<div class="equation" id="a0000000128">
+<div class="equation" id="a0000000130">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k+1, n) = \frac{3^{X(T^k(n))}}{2} E(k, n) + \frac{X(T^k(n))}{2}. \end{equation}
@@ -2035,7 +2121,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L105" class="lean_decl">CollatzMapBasics.E_succ</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L105" class="lean_decl">CollatzMapBasics.E_succ</a>
     
   </span>
     
@@ -2070,7 +2156,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L61" class="lean_decl">CollatzMapBasics.E_vec_le_one</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L61" class="lean_decl">CollatzMapBasics.E_vec_le_one</a>
     
   </span>
     
@@ -2105,7 +2191,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L68" class="lean_decl">CollatzMapBasics.E_vec_restrict</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L68" class="lean_decl">CollatzMapBasics.E_vec_restrict</a>
     
   </span>
     
@@ -2140,7 +2226,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L102" class="lean_decl">CollatzMapBasics.E_zero</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L102" class="lean_decl">CollatzMapBasics.E_zero</a>
     
   </span>
     
@@ -2175,7 +2261,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L75" class="lean_decl">exists_collatz_reverse_strict</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L75" class="lean_decl">exists_collatz_reverse_strict</a>
     
   </span>
     
@@ -2210,7 +2296,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L353" class="lean_decl">CollatzMapBasics.exists_large_not_div3_from_seed</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L353" class="lean_decl">CollatzMapBasics.exists_large_not_div3_from_seed</a>
     
   </span>
     
@@ -2237,7 +2323,7 @@
       </span>
       <span class="lemma_thmlabel">7</span></div>
     <div class="thm_thmcontent"><p>Let \(y {\gt} 1\) be a natural number such that \(y \equiv 1 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
-<div class="equation" id="a0000000026">
+<div class="equation" id="a0000000028">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 4 y. \end{equation}
@@ -2253,7 +2339,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L41" class="lean_decl">CollatzMapBasics.exists_predecessor_gt_one_mod1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L41" class="lean_decl">CollatzMapBasics.exists_predecessor_gt_one_mod1</a>
     
   </span>
     
@@ -2280,7 +2366,7 @@
       </span>
       <span class="lemma_thmlabel">8</span></div>
     <div class="thm_thmcontent"><p>Let \(y\) be a natural number such that \(y \equiv 5 \pmod6\). Then there exists an odd natural number \(x {\gt} 1\) such that </p>
-<div class="equation" id="a0000000028">
+<div class="equation" id="a0000000030">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 2y. \end{equation}
@@ -2296,7 +2382,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L48" class="lean_decl">CollatzMapBasics.exists_predecessor_gt_one_mod5</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L48" class="lean_decl">CollatzMapBasics.exists_predecessor_gt_one_mod5</a>
     
   </span>
     
@@ -2323,7 +2409,7 @@
       </span>
       <span class="lemma_thmlabel">5</span></div>
     <div class="thm_thmcontent"><p>Let \(y\) be an odd natural number such that \(y \pmod3 \neq 0\). Then there exist natural numbers \(x\) and \(k\) such that \(x\) is odd and </p>
-<div class="equation" id="a0000000022">
+<div class="equation" id="a0000000024">
 <p>
   <div class="equation_content">
     \begin{equation}  3x + 1 = 2^k y. \end{equation}
@@ -2339,7 +2425,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L24" class="lean_decl">CollatzMapBasics.exists_predecessor_of_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L24" class="lean_decl">CollatzMapBasics.exists_predecessor_of_odd</a>
     
   </span>
     
@@ -2374,7 +2460,50 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:inequality_equiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:inequality_equiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">118</span></div>
+    <div class="thm_thmcontent"><p>For any positive integers \(a, b {\gt} 0\) and any \(\varepsilon {\lt} 1\), the following equivalence holds: </p>
+<div class="equation" id="a0000000144">
+<p>
+  <div class="equation_content">
+    \begin{equation}  1 - \varepsilon {\lt} \frac{3^a}{2^b} {\lt} 1 \iff 0 {\lt} \xi - \frac{a}{b} {\lt} \frac{\delta (\varepsilon )}{b}. \end{equation}
+  </div>
+  <span class="equation_label">3</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0016.html#lemma:inequality_equiv">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L79" class="lean_decl">CollatzMapBasics.inequality_equiv</a>
     
   </span>
     
@@ -2409,7 +2538,50 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L387" class="lean_decl">CollatzMapBasics.infinite_primitives</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L387" class="lean_decl">CollatzMapBasics.infinite_primitives</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:infinite_rat_approx_from_below_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:infinite_rat_approx_from_below" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">119</span></div>
+    <div class="thm_thmcontent"><p>There are infinitely many rational numbers \(q = n/d {\lt} \xi \) such that </p>
+<div class="equation" id="a0000000146">
+<p>
+  <div class="equation_content">
+    \begin{equation}  |\xi - q| {\lt} \frac{1}{d^2}. \end{equation}
+  </div>
+  <span class="equation_label">4</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0016.html#lemma:infinite_rat_approx_from_below">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L407" class="lean_decl">CollatzMapBasics.infinite_rat_approx_from_below</a>
     
   </span>
     
@@ -2444,7 +2616,42 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L62" class="lean_decl">CollatzMapBasics.int_dvd_sub_of_mod_eq</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L62" class="lean_decl">CollatzMapBasics.int_dvd_sub_of_mod_eq</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lemma:irrational_xi_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lemma:irrational_xi" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">116</span></div>
+    <div class="thm_thmcontent"><p>The constant \(\xi \) is irrational. </p>
+</div>
+
+    <a class="latex_link" href="sect0016.html#lemma:irrational_xi">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L60" class="lean_decl">CollatzMapBasics.irrational_xi</a>
     
   </span>
     
@@ -2479,7 +2686,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L252" class="lean_decl">CollatzMapBasics.is_primitive_iff_mod_8_ne_5</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L252" class="lean_decl">CollatzMapBasics.is_primitive_iff_mod_8_ne_5</a>
     
   </span>
     
@@ -2506,7 +2713,7 @@
       </span>
       <span class="lemma_thmlabel">98</span></div>
     <div class="thm_thmcontent"><p>For any \(k, n \in \mathbb {N}\), the \(k\)-fold iteration of the Terras map \(T^k(n)\) satisfies the linear identity </p>
-<div class="equation" id="a0000000119">
+<div class="equation" id="a0000000121">
 <p>
   <div class="equation_content">
     \begin{equation}  2^k T^k(n) = 3^{Q(k, n)} n + Q(k, n) \end{equation}
@@ -2523,7 +2730,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L30" class="lean_decl">CollatzMapBasics.linear_decomposition</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L30" class="lean_decl">CollatzMapBasics.linear_decomposition</a>
     
   </span>
     
@@ -2558,7 +2765,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L66" class="lean_decl">CollatzMapBasics.nat_mod_eq_of_int_dvd_sub</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L66" class="lean_decl">CollatzMapBasics.nat_mod_eq_of_int_dvd_sub</a>
     
   </span>
     
@@ -2585,7 +2792,7 @@
       </span>
       <span class="lemma_thmlabel">6</span></div>
     <div class="thm_thmcontent"><p>Let \(y\) be a natural number such that \(y \equiv 0 \pmod3\). Then for all natural numbers \(n\) and \(k\), </p>
-<div class="equation" id="a0000000024">
+<div class="equation" id="a0000000026">
 <p>
   <div class="equation_content">
     \begin{equation}  3n + 1 \neq 2^k y. \end{equation}
@@ -2601,7 +2808,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L34" class="lean_decl">CollatzMapBasics.no_odd_predecessor_for_div3</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L34" class="lean_decl">CollatzMapBasics.no_odd_predecessor_for_div3</a>
     
   </span>
     
@@ -2636,7 +2843,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a>
     
   </span>
     
@@ -2663,7 +2870,7 @@
       </span>
       <span class="lemma_thmlabel">93</span></div>
     <div class="thm_thmcontent"><p>The number of odd steps \(Q(k, n)\) is equal to the sum of the entries of \(E(k, n)\): </p>
-<div class="equation" id="a0000000113">
+<div class="equation" id="a0000000115">
 <p>
   <div class="equation_content">
     \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} E(k, n)(i). \end{equation}
@@ -2679,7 +2886,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L64" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_E_vec_sum</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L64" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_E_vec_sum</a>
     
   </span>
     
@@ -2714,7 +2921,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L74" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L74" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq</a>
     
   </span>
     
@@ -2749,7 +2956,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L49" class="lean_decl">CollatzMapBasics.num_odd_steps_mono</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L49" class="lean_decl">CollatzMapBasics.num_odd_steps_mono</a>
     
   </span>
     
@@ -2784,7 +2991,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Decomposition.lean#L54" class="lean_decl">CollatzMapBasics.num_odd_steps_succ</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Decomposition.lean#L54" class="lean_decl">CollatzMapBasics.num_odd_steps_succ</a>
     
   </span>
     
@@ -2819,7 +3026,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L294" class="lean_decl">CollatzMapBasics.odd_node_generates_primitive</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L294" class="lean_decl">CollatzMapBasics.odd_node_generates_primitive</a>
     
   </span>
     
@@ -2846,7 +3053,7 @@
       </span>
       <span class="lemma_thmlabel">58</span></div>
     <div class="thm_thmcontent"><p>Let \(n \in \mathbb {N}\) be odd. For any \(d \in \mathbb {N}\), the odd part of \(C^d(n)\) is equal to \(R^k(n)\), where \(k = \text{countOdds}(d, n)\). That is, </p>
-<div class="equation" id="a0000000085">
+<div class="equation" id="a0000000087">
 <p>
   <div class="equation_content">
     \begin{equation}  \text{odd part of } C^d(n) = R^k(n). \end{equation}
@@ -2862,7 +3069,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a>
     
   </span>
     
@@ -2897,7 +3104,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L11" class="lean_decl">CollatzMapBasics.ordCompl_two_div_two</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L11" class="lean_decl">CollatzMapBasics.ordCompl_two_div_two</a>
     
   </span>
     
@@ -2932,7 +3139,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L19" class="lean_decl">CollatzMapBasics.ordCompl_two_mul_pow</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L19" class="lean_decl">CollatzMapBasics.ordCompl_two_mul_pow</a>
     
   </span>
     
@@ -2967,7 +3174,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L15" class="lean_decl">CollatzMapBasics.ordCompl_two_pow_mul</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L15" class="lean_decl">CollatzMapBasics.ordCompl_two_pow_mul</a>
     
   </span>
     
@@ -3002,7 +3209,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L54" class="lean_decl">CollatzMapBasics.parity_of_mod_pow_succ</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L54" class="lean_decl">CollatzMapBasics.parity_of_mod_pow_succ</a>
     
   </span>
     
@@ -3029,7 +3236,7 @@
       </span>
       <span class="lemma_thmlabel">1</span></div>
     <div class="thm_thmcontent">
-<div class="equation" id="a0000000017">
+<div class="equation" id="a0000000019">
 <p>
   <div class="equation_content">
     \begin{equation}  2^k \pmod3 = \begin{cases}  1 &  \text{if } k \text{ is even}, \\ 2 &  \text{if } k \text{ is odd}. \end{cases} \end{equation}
@@ -3045,7 +3252,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L6" class="lean_decl">CollatzMapBasics.pow_two_mod_three</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L6" class="lean_decl">CollatzMapBasics.pow_two_mod_three</a>
     
   </span>
     
@@ -3080,7 +3287,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L270" class="lean_decl">CollatzMapBasics.primitive_ancestor</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L270" class="lean_decl">CollatzMapBasics.primitive_ancestor</a>
     
   </span>
     
@@ -3115,7 +3322,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L342" class="lean_decl">CollatzMapBasics.primitives_from_distinct_generators_ne</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L342" class="lean_decl">CollatzMapBasics.primitives_from_distinct_generators_ne</a>
     
   </span>
     
@@ -3150,7 +3357,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L223" class="lean_decl">CollatzMapBasics.R_4n_add_1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L223" class="lean_decl">CollatzMapBasics.R_4n_add_1</a>
     
   </span>
     
@@ -3185,7 +3392,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L230" class="lean_decl">CollatzMapBasics.R_iter_4n_add_1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L230" class="lean_decl">CollatzMapBasics.R_iter_4n_add_1</a>
     
   </span>
     
@@ -3220,7 +3427,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a>
     
   </span>
     
@@ -3255,7 +3462,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a>
     
   </span>
     
@@ -3290,7 +3497,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a>
     
   </span>
     
@@ -3325,7 +3532,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a>
     
   </span>
     
@@ -3360,7 +3567,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L369" class="lean_decl">CollatzMapBasics.rcs_ge</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L369" class="lean_decl">CollatzMapBasics.rcs_ge</a>
     
   </span>
     
@@ -3395,7 +3602,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L322" class="lean_decl">CollatzMapBasics.rcs_reduce4x1</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L322" class="lean_decl">CollatzMapBasics.rcs_reduce4x1</a>
     
   </span>
     
@@ -3430,7 +3637,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a>
     
   </span>
     
@@ -3465,7 +3672,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a>
     
   </span>
     
@@ -3500,7 +3707,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a>
     
   </span>
     
@@ -3535,7 +3742,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a>
     
   </span>
     
@@ -3570,7 +3777,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a>
     
   </span>
     
@@ -3605,7 +3812,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L69" class="lean_decl">CollatzMapBasics.T_congr</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L69" class="lean_decl">CollatzMapBasics.T_congr</a>
     
   </span>
     
@@ -3640,7 +3847,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L13" class="lean_decl">CollatzMapBasics.T_even</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L13" class="lean_decl">CollatzMapBasics.T_even</a>
     
   </span>
     
@@ -3675,7 +3882,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L41" class="lean_decl">CollatzMapBasics.T_iter_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L41" class="lean_decl">CollatzMapBasics.T_iter_pos</a>
     
   </span>
     
@@ -3710,7 +3917,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L63" class="lean_decl">CollatzMapBasics.T_iter_reachable</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L63" class="lean_decl">CollatzMapBasics.T_iter_reachable</a>
     
   </span>
     
@@ -3745,7 +3952,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L21" class="lean_decl">CollatzMapBasics.T_iter_to_collatz_iter</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L21" class="lean_decl">CollatzMapBasics.T_iter_to_collatz_iter</a>
     
   </span>
     
@@ -3780,7 +3987,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L16" class="lean_decl">CollatzMapBasics.T_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L16" class="lean_decl">CollatzMapBasics.T_odd</a>
     
   </span>
     
@@ -3815,7 +4022,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Terras.lean#L36" class="lean_decl">CollatzMapBasics.T_pos</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Terras.lean#L36" class="lean_decl">CollatzMapBasics.T_pos</a>
     
   </span>
     
@@ -3850,7 +4057,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L11" class="lean_decl">CollatzMapBasics.T_step_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L11" class="lean_decl">CollatzMapBasics.T_step_collatz</a>
     
   </span>
     
@@ -3885,7 +4092,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a>
     
   </span>
     
@@ -3920,7 +4127,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a>
     
   </span>
     
@@ -3955,7 +4162,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L143" class="lean_decl">unbounded_orbit_implies_not_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L143" class="lean_decl">unbounded_orbit_implies_not_collatz</a>
     
   </span>
     
@@ -3990,7 +4197,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L35" class="lean_decl">CollatzMapBasics.ParityVector.V_get</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L35" class="lean_decl">CollatzMapBasics.ParityVector.V_get</a>
     
   </span>
     
@@ -4025,7 +4232,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Parity.lean#L32" class="lean_decl">CollatzMapBasics.ParityVector.V_length</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Parity.lean#L32" class="lean_decl">CollatzMapBasics.ParityVector.V_length</a>
     
   </span>
     
@@ -4060,7 +4267,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L90" class="lean_decl">CollatzMapBasics.X_congr</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L90" class="lean_decl">CollatzMapBasics.X_congr</a>
     
   </span>
     
@@ -4095,7 +4302,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L85" class="lean_decl">CollatzMapBasics.X_eq_mod</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L85" class="lean_decl">CollatzMapBasics.X_eq_mod</a>
     
   </span>
     
@@ -4130,7 +4337,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L76" class="lean_decl">CollatzMapBasics.X_even</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L76" class="lean_decl">CollatzMapBasics.X_even</a>
     
   </span>
     
@@ -4165,7 +4372,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Elementary.lean#L80" class="lean_decl">CollatzMapBasics.X_odd</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Elementary.lean#L80" class="lean_decl">CollatzMapBasics.X_odd</a>
     
   </span>
     
@@ -4200,7 +4407,50 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/TC.lean#L101" class="lean_decl">CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L101" class="lean_decl">CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz</a>
+    
+  </span>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="theorem:exists_infinite_pairs_approx_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="theorem:exists_infinite_pairs_approx" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">120</span></div>
+    <div class="thm_thmcontent"><p>For any \(\varepsilon \in (0, 1)\), there exist infinitely many pairs of positive integers \((a, b)\) such that: </p>
+<div class="equation" id="a0000000148">
+<p>
+  <div class="equation_content">
+    \begin{equation}  1 - \varepsilon {\lt} \frac{3^a}{2^b} {\lt} 1. \end{equation}
+  </div>
+  <span class="equation_label">5</span>
+</p>
+</div>
+</div>
+
+    <a class="latex_link" href="sect0016.html#theorem:exists_infinite_pairs_approx">LaTeX</a>
+    
+    
+  <span class="lean_link">
+    Lean: 
+    
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Approximation.lean#L557" class="lean_decl">CollatzMapBasics.exists_infinite_pairs_approx</a>
     
   </span>
     
@@ -4228,10 +4478,10 @@
       <span class="theorem_thmlabel">111</span></div>
     <div class="thm_thmcontent"><p>(Theorem 1.2 in Terras (1976)<span class="cite">
 	[
-	<a href="sect0014.html#terras76" >5</a>
+	<a href="sect0016.html#terras76" >5</a>
 	]
 </span>) Two positive integers \(m, n \ge 1\) have the same parity vector of length \(k\) if and only if they are congruent modulo \(2^k\): </p>
-<div class="equation" id="a0000000134">
+<div class="equation" id="a0000000136">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k, m) = E(k, n) \iff m \equiv n \pmod{2^k}. \end{equation}
@@ -4247,7 +4497,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a>
     
   </span>
     
@@ -4282,7 +4532,7 @@
   <span class="lean_link">
     Lean: 
     
-       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/673f4e6ceaff83c8fb05e8650718e5a121861f0d/CollatzMapBasics/Basic.lean#L126" class="lean_decl">collatz_conjecture</a>
+       <a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Basic.lean#L126" class="lean_decl">collatz_conjecture</a>
     
   </span>
     
@@ -4312,7 +4562,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:ParityVector_V"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_V,		shape=box,		style=filled];	"lemma:collatz_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pos,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_iter_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_iter_implies_collatz_iter,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_eq_of_E_vec_eq"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_eq_of_E_vec_eq,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_div_two"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_div_two,		shape=ellipse,		style=filled];	"def:ParityVector_onesRatio"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_onesRatio,		shape=box,		style=filled];	"lemma:unbounded_orbit_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=unbounded_orbit_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:collatz_bounded_iff_reduced_collatz_bounded"	[color=green,		fillcolor="#1CAC78",		label=collatz_bounded_iff_reduced_collatz_bounded,		shape=ellipse,		style=filled];	"lemma:odd_node_generates_primitive"	[color=green,		fillcolor="#1CAC78",		label=odd_node_generates_primitive,		shape=ellipse,		style=filled];	"lemma:T_pos"	[color=green,		fillcolor="#1CAC78",		label=T_pos,		shape=ellipse,		style=filled];	"def:collatz_iter"	[color=green,		fillcolor="#B0ECA3",		label=collatz_iter,		shape=box,		style=filled];	"def:ParityVector_size"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_size,		shape=box,		style=filled];	"lemma:R_iter_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_iter_4n_add_1,		shape=ellipse,		style=filled];	"lemma:primitives_from_distinct_generators_ne"	[color=green,		fillcolor="#1CAC78",		label=primitives_from_distinct_generators_ne,		shape=ellipse,		style=filled];	"thm:collatz_conjecture"	[color=green,		fillcolor="#A3D6FF",		label=collatz_conjecture,		shape=ellipse,		style=filled];	"lemma:V_get"	[color=green,		fillcolor="#1CAC78",		label=V_get,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_implies_collatz_iter,		shape=ellipse,		style=filled];	"def:reduced_collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=reduced_collatz_step,		shape=box,		style=filled];	"def:reduce4x1"	[color=green,		fillcolor="#B0ECA3",		label=reduce4x1,		shape=box,		style=filled];	"def:C"	[color=green,		fillcolor="#B0ECA3",		label=C,		shape=box,		style=filled];	"lemma:exists_predecessor_of_odd"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_of_odd,		shape=ellipse,		style=filled];	"lemma:primitive_ancestor"	[color=green,		fillcolor="#1CAC78",		label=primitive_ancestor,		shape=ellipse,		style=filled];	"theorem:collatz_graph_weakly_connected_iff_collatz"	[color=green,		fillcolor="#1CAC78",		label=collatz_graph_weakly_connected_iff_collatz,		shape=ellipse,		style=filled];	"def:collatz_graph"	[color=green,		fillcolor="#B0ECA3",		label=collatz_graph,		shape=box,		style=filled];	"def:coeff_stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=coeff_stopping_time,		shape=box,		style=filled];	"lemma:collatz_step_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_zero,		shape=ellipse,		style=filled];	"lemma:T_congr"	[color=green,		fillcolor="#1CAC78",		label=T_congr,		shape=ellipse,		style=filled];	"lemma:X_odd"	[color=green,		fillcolor="#1CAC78",		label=X_odd,		shape=ellipse,		style=filled];	"lemma:exists_R_with_m_not_div3"	[color=green,		fillcolor="#1CAC78",		label=exists_R_with_m_not_div3,		shape=ellipse,		style=filled];	"lemma:E_vec_le_one"	[color=green,		fillcolor="#1CAC78",		label=E_vec_le_one,		shape=ellipse,		style=filled];	"lemma:E_vec_restrict"	[color=green,		fillcolor="#1CAC78",		label=E_vec_restrict,		shape=ellipse,		style=filled];	"lemma:E_succ"	[color=green,		fillcolor="#1CAC78",		label=E_succ,		shape=ellipse,		style=filled];	"lemma:exists_collatz_reverse_strict"	[color=green,		fillcolor="#1CAC78",		label=exists_collatz_reverse_strict,		shape=ellipse,		style=filled];	"def:R_iter"	[color=green,		fillcolor="#B0ECA3",		label=R_iter,		shape=box,		style=filled];	"lemma:pow_two_mod_three"	[color=green,		fillcolor="#1CAC78",		label=pow_two_mod_three,		shape=ellipse,		style=filled];	"lemma:nat_mod_eq_of_int_dvd_sub"	[color=green,		fillcolor="#1CAC78",		label=nat_mod_eq_of_int_dvd_sub,		shape=ellipse,		style=filled];	"lemma:collatz_iter_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_zero,		shape=ellipse,		style=filled];	"lemma:cycle_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=cycle_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:E_zero"	[color=green,		fillcolor="#1CAC78",		label=E_zero,		shape=ellipse,		style=filled];	"def:ParityVector"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector,		shape=box,		style=filled];	"lemma:collatz_iter_pow_two_ne_one"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two_ne_one,		shape=ellipse,		style=filled];	"lemma:collatz_step_closed_form"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_closed_form,		shape=ellipse,		style=filled];	"lemma:no_odd_predecessor_for_div3"	[color=green,		fillcolor="#1CAC78",		label=no_odd_predecessor_for_div3,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod5"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod5,		shape=ellipse,		style=filled];	"lemma:X_congr"	[color=green,		fillcolor="#1CAC78",		label=X_congr,		shape=ellipse,		style=filled];	"lemma:collatz_cycle_iff_reduced_collatz_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_cycle_iff_reduced_collatz_cycle,		shape=ellipse,		style=filled];	"lemma:linear_decomposition"	[color=green,		fillcolor="#1CAC78",		label=linear_decomposition,		shape=ellipse,		style=filled];	"lemma:E_step_strict_mono"	[color=green,		fillcolor="#1CAC78",		label=E_step_strict_mono,		shape=ellipse,		style=filled];	"def:IsPrimitive4x1"	[color=green,		fillcolor="#B0ECA3",		label=IsPrimitive4x1,		shape=box,		style=filled];	"lemma:collatz_graph_adj_iff"	[color=green,		fillcolor="#1CAC78",		label=collatz_graph_adj_iff,		shape=ellipse,		style=filled];	"lemma:T_iter_reachable"	[color=green,		fillcolor="#1CAC78",		label=T_iter_reachable,		shape=ellipse,		style=filled];	"lemma:terras_forward"	[color=green,		fillcolor="#1CAC78",		label=terras_forward,		shape=ellipse,		style=filled];	"def:collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=collatz_step,		shape=box,		style=filled];	"lemma:parity_of_mod_pow_succ"	[color=green,		fillcolor="#1CAC78",		label=parity_of_mod_pow_succ,		shape=ellipse,		style=filled];	"lemma:X_eq_mod"	[color=green,		fillcolor="#1CAC78",		label=X_eq_mod,		shape=ellipse,		style=filled];	"lemma:infinite_primitives"	[color=green,		fillcolor="#1CAC78",		label=infinite_primitives,		shape=ellipse,		style=filled];	"lemma:V_length"	[color=green,		fillcolor="#1CAC78",		label=V_length,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:R_pos"	[color=green,		fillcolor="#1CAC78",		label=R_pos,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos" -> "lemma:R_pos"	[style=dashed];	"lemma:coprime_pow_three_pow_two"	[color=green,		fillcolor="#1CAC78",		label=coprime_pow_three_pow_two,		shape=ellipse,		style=filled];	"lemma:rcs_ge"	[color=green,		fillcolor="#1CAC78",		label=rcs_ge,		shape=ellipse,		style=filled];	"lemma:rcs_reduce4x1"	[color=green,		fillcolor="#1CAC78",		label=rcs_reduce4x1,		shape=ellipse,		style=filled];	"def:ParityVector_Precedes"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_Precedes,		shape=box,		style=filled];	"lemma:collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:T_even"	[color=green,		fillcolor="#1CAC78",		label=T_even,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_succ"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_succ,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod1"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod1,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mem_124"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mem_124,		shape=ellipse,		style=filled];	"lemma:collatz_iter_one_le_four"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_one_le_four,		shape=ellipse,		style=filled];	"lemma:R_odd"	[color=green,		fillcolor="#1CAC78",		label=R_odd,		shape=ellipse,		style=filled];	"theorem:terras_periodicity"	[color=green,		fillcolor="#1CAC78",		label=terras_periodicity,		shape=ellipse,		style=filled];	"def:T_iter"	[color=green,		fillcolor="#B0ECA3",		label=T_iter,		shape=box,		style=filled];	"def:num_odd_steps"	[color=green,		fillcolor="#B0ECA3",		label=num_odd_steps,		shape=box,		style=filled];	"def:decomposition_correction_sum"	[color=green,		fillcolor="#B0ECA3",		label=decomposition_correction_sum,		shape=box,		style=filled];	"lemma:T_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=T_iter_pos,		shape=ellipse,		style=filled];	"lemma:confluence_of_reachable"	[color=green,		fillcolor="#1CAC78",		label=confluence_of_reachable,		shape=ellipse,		style=filled];	"lemma:T_odd"	[color=green,		fillcolor="#1CAC78",		label=T_odd,		shape=ellipse,		style=filled];	"lemma:decomposition_correction_eq_sum"	[color=green,		fillcolor="#1CAC78",		label=decomposition_correction_eq_sum,		shape=ellipse,		style=filled];	"lemma:X_even"	[color=green,		fillcolor="#1CAC78",		label=X_even,		shape=ellipse,		style=filled];	"lemma:T_iter_to_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=T_iter_to_collatz_iter,		shape=ellipse,		style=filled];	"def:T"	[color=green,		fillcolor="#B0ECA3",		label=T,		shape=box,		style=filled];	"lemma:R_one"	[color=green,		fillcolor="#1CAC78",		label=R_one,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_odd,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd" -> "lemma:R_odd"	[style=dashed];	"lemma:decomposition_correction_eq_of_E_vec_eq"	[color=green,		fillcolor="#1CAC78",		label=decomposition_correction_eq_of_E_vec_eq,		shape=ellipse,		style=filled];	"lemma:R_zero"	[color=green,		fillcolor="#1CAC78",		label=R_zero,		shape=ellipse,		style=filled];	"def:X"	[color=green,		fillcolor="#B0ECA3",		label=X,		shape=box,		style=filled];	"lemma:collatz_iter_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_two_pow_mul,		shape=ellipse,		style=filled];	"def:count_odds"	[color=green,		fillcolor="#B0ECA3",		label=count_odds,		shape=box,		style=filled];	"def:ParityVector_q"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_q,		shape=box,		style=filled];	"lemma:is_primitive_iff_mod_8_ne_5"	[color=green,		fillcolor="#1CAC78",		label=is_primitive_iff_mod_8_ne_5,		shape=ellipse,		style=filled];	"lemma:collatz_iter_to_T_iter"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_to_T_iter,		shape=ellipse,		style=filled];	"def:decomposition_correction"	[color=green,		fillcolor="#B0ECA3",		label=decomposition_correction,		shape=box,		style=filled];	"lemma:collatz_iter_add"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_add,		shape=ellipse,		style=filled];	"lemma:not_exists_R_with_m_div3"	[color=green,		fillcolor="#1CAC78",		label=not_exists_R_with_m_div3,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_iff_mod4"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_iff_mod4,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_eq_E_vec_sum"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_eq_E_vec_sum,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mul_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mul_cycle,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_pow_mul,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_mul_pow"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_mul_pow,		shape=ellipse,		style=filled];	"lemma:collatz_step_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pow_two,		shape=ellipse,		style=filled];	"lemma:R_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_4n_add_1,		shape=ellipse,		style=filled];	"lemma:exists_large_not_div3_from_seed"	[color=green,		fillcolor="#1CAC78",		label=exists_large_not_div3_from_seed,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_mono"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_mono,		shape=ellipse,		style=filled];	"lemma:ordCompl_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_collatz_iter,		shape=ellipse,		style=filled];	"def:stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=stopping_time,		shape=box,		style=filled];	"lemma:terras_backward"	[color=green,		fillcolor="#1CAC78",		label=terras_backward,		shape=ellipse,		style=filled];	"def:total_stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=total_stopping_time,		shape=box,		style=filled];	"def:E_vec"	[color=green,		fillcolor="#B0ECA3",		label=E_vec,		shape=box,		style=filled];	"lemma:int_dvd_sub_of_mod_eq"	[color=green,		fillcolor="#1CAC78",		label=int_dvd_sub_of_mod_eq,		shape=ellipse,		style=filled];	"lemma:bounded_no_cycle_implies_collatz"	[color=green,		fillcolor="#1CAC78",		label=bounded_no_cycle_implies_collatz,		shape=ellipse,		style=filled];	"def:E"	[color=green,		fillcolor="#B0ECA3",		label=E,		shape=box,		style=filled];	"lemma:confluence_step"	[color=green,		fillcolor="#1CAC78",		label=confluence_step,		shape=ellipse,		style=filled];	"lemma:T_step_collatz"	[color=green,		fillcolor="#1CAC78",		label=T_step_collatz,		shape=ellipse,		style=filled];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:ParityVector_V"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_V,		shape=box,		style=filled];	"lemma:collatz_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pos,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_iter_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_iter_implies_collatz_iter,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_eq_of_E_vec_eq"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_eq_of_E_vec_eq,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_div_two"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_div_two,		shape=ellipse,		style=filled];	"lemma:infinite_rat_approx_from_below"	[color=green,		fillcolor="#1CAC78",		label=infinite_rat_approx_from_below,		shape=ellipse,		style=filled];	"def:ParityVector_onesRatio"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_onesRatio,		shape=box,		style=filled];	"lemma:unbounded_orbit_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=unbounded_orbit_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:collatz_bounded_iff_reduced_collatz_bounded"	[color=green,		fillcolor="#1CAC78",		label=collatz_bounded_iff_reduced_collatz_bounded,		shape=ellipse,		style=filled];	"lemma:odd_node_generates_primitive"	[color=green,		fillcolor="#1CAC78",		label=odd_node_generates_primitive,		shape=ellipse,		style=filled];	"lemma:T_pos"	[color=green,		fillcolor="#1CAC78",		label=T_pos,		shape=ellipse,		style=filled];	"theorem:exists_infinite_pairs_approx"	[color=green,		fillcolor="#1CAC78",		label=exists_infinite_pairs_approx,		shape=ellipse,		style=filled];	"def:collatz_iter"	[color=green,		fillcolor="#B0ECA3",		label=collatz_iter,		shape=box,		style=filled];	"def:ParityVector_size"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_size,		shape=box,		style=filled];	"lemma:R_iter_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_iter_4n_add_1,		shape=ellipse,		style=filled];	"lemma:primitives_from_distinct_generators_ne"	[color=green,		fillcolor="#1CAC78",		label=primitives_from_distinct_generators_ne,		shape=ellipse,		style=filled];	"thm:collatz_conjecture"	[color=green,		fillcolor="#A3D6FF",		label=collatz_conjecture,		shape=ellipse,		style=filled];	"lemma:V_get"	[color=green,		fillcolor="#1CAC78",		label=V_get,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_implies_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_implies_collatz_iter,		shape=ellipse,		style=filled];	"def:reduced_collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=reduced_collatz_step,		shape=box,		style=filled];	"def:reduce4x1"	[color=green,		fillcolor="#B0ECA3",		label=reduce4x1,		shape=box,		style=filled];	"def:C"	[color=green,		fillcolor="#B0ECA3",		label=C,		shape=box,		style=filled];	"def:xi"	[color=green,		fillcolor="#B0ECA3",		label=xi,		shape=box,		style=filled];	"lemma:exists_predecessor_of_odd"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_of_odd,		shape=ellipse,		style=filled];	"lemma:primitive_ancestor"	[color=green,		fillcolor="#1CAC78",		label=primitive_ancestor,		shape=ellipse,		style=filled];	"theorem:collatz_graph_weakly_connected_iff_collatz"	[color=green,		fillcolor="#1CAC78",		label=collatz_graph_weakly_connected_iff_collatz,		shape=ellipse,		style=filled];	"def:collatz_graph"	[color=green,		fillcolor="#B0ECA3",		label=collatz_graph,		shape=box,		style=filled];	"def:coeff_stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=coeff_stopping_time,		shape=box,		style=filled];	"lemma:collatz_step_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_zero,		shape=ellipse,		style=filled];	"lemma:T_congr"	[color=green,		fillcolor="#1CAC78",		label=T_congr,		shape=ellipse,		style=filled];	"lemma:inequality_equiv"	[color=green,		fillcolor="#1CAC78",		label=inequality_equiv,		shape=ellipse,		style=filled];	"lemma:X_odd"	[color=green,		fillcolor="#1CAC78",		label=X_odd,		shape=ellipse,		style=filled];	"lemma:exists_R_with_m_not_div3"	[color=green,		fillcolor="#1CAC78",		label=exists_R_with_m_not_div3,		shape=ellipse,		style=filled];	"lemma:E_vec_le_one"	[color=green,		fillcolor="#1CAC78",		label=E_vec_le_one,		shape=ellipse,		style=filled];	"lemma:E_vec_restrict"	[color=green,		fillcolor="#1CAC78",		label=E_vec_restrict,		shape=ellipse,		style=filled];	"lemma:E_succ"	[color=green,		fillcolor="#1CAC78",		label=E_succ,		shape=ellipse,		style=filled];	"def:delta"	[color=green,		fillcolor="#B0ECA3",		label=delta,		shape=box,		style=filled];	"lemma:exists_collatz_reverse_strict"	[color=green,		fillcolor="#1CAC78",		label=exists_collatz_reverse_strict,		shape=ellipse,		style=filled];	"def:R_iter"	[color=green,		fillcolor="#B0ECA3",		label=R_iter,		shape=box,		style=filled];	"lemma:pow_two_mod_three"	[color=green,		fillcolor="#1CAC78",		label=pow_two_mod_three,		shape=ellipse,		style=filled];	"lemma:nat_mod_eq_of_int_dvd_sub"	[color=green,		fillcolor="#1CAC78",		label=nat_mod_eq_of_int_dvd_sub,		shape=ellipse,		style=filled];	"lemma:collatz_iter_zero"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_zero,		shape=ellipse,		style=filled];	"lemma:cycle_implies_not_collatz"	[color=green,		fillcolor="#1CAC78",		label=cycle_implies_not_collatz,		shape=ellipse,		style=filled];	"lemma:E_zero"	[color=green,		fillcolor="#1CAC78",		label=E_zero,		shape=ellipse,		style=filled];	"def:ParityVector"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector,		shape=box,		style=filled];	"lemma:collatz_iter_pow_two_ne_one"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two_ne_one,		shape=ellipse,		style=filled];	"lemma:collatz_step_closed_form"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_closed_form,		shape=ellipse,		style=filled];	"lemma:irrational_xi"	[color=green,		fillcolor="#1CAC78",		label=irrational_xi,		shape=ellipse,		style=filled];	"lemma:no_odd_predecessor_for_div3"	[color=green,		fillcolor="#1CAC78",		label=no_odd_predecessor_for_div3,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod5"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod5,		shape=ellipse,		style=filled];	"lemma:X_congr"	[color=green,		fillcolor="#1CAC78",		label=X_congr,		shape=ellipse,		style=filled];	"lemma:collatz_cycle_iff_reduced_collatz_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_cycle_iff_reduced_collatz_cycle,		shape=ellipse,		style=filled];	"lemma:linear_decomposition"	[color=green,		fillcolor="#1CAC78",		label=linear_decomposition,		shape=ellipse,		style=filled];	"lemma:E_step_strict_mono"	[color=green,		fillcolor="#1CAC78",		label=E_step_strict_mono,		shape=ellipse,		style=filled];	"def:IsPrimitive4x1"	[color=green,		fillcolor="#B0ECA3",		label=IsPrimitive4x1,		shape=box,		style=filled];	"lemma:collatz_graph_adj_iff"	[color=green,		fillcolor="#1CAC78",		label=collatz_graph_adj_iff,		shape=ellipse,		style=filled];	"lemma:T_iter_reachable"	[color=green,		fillcolor="#1CAC78",		label=T_iter_reachable,		shape=ellipse,		style=filled];	"lemma:terras_forward"	[color=green,		fillcolor="#1CAC78",		label=terras_forward,		shape=ellipse,		style=filled];	"def:collatz_step"	[color=green,		fillcolor="#B0ECA3",		label=collatz_step,		shape=box,		style=filled];	"lemma:parity_of_mod_pow_succ"	[color=green,		fillcolor="#1CAC78",		label=parity_of_mod_pow_succ,		shape=ellipse,		style=filled];	"lemma:X_eq_mod"	[color=green,		fillcolor="#1CAC78",		label=X_eq_mod,		shape=ellipse,		style=filled];	"lemma:infinite_primitives"	[color=green,		fillcolor="#1CAC78",		label=infinite_primitives,		shape=ellipse,		style=filled];	"lemma:V_length"	[color=green,		fillcolor="#1CAC78",		label=V_length,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:R_pos"	[color=green,		fillcolor="#1CAC78",		label=R_pos,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_pos" -> "lemma:R_pos"	[style=dashed];	"lemma:coprime_pow_three_pow_two"	[color=green,		fillcolor="#1CAC78",		label=coprime_pow_three_pow_two,		shape=ellipse,		style=filled];	"lemma:rcs_ge"	[color=green,		fillcolor="#1CAC78",		label=rcs_ge,		shape=ellipse,		style=filled];	"lemma:rcs_reduce4x1"	[color=green,		fillcolor="#1CAC78",		label=rcs_reduce4x1,		shape=ellipse,		style=filled];	"def:ParityVector_Precedes"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_Precedes,		shape=box,		style=filled];	"lemma:collatz_step_pos"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pos,		shape=ellipse,		style=filled];	"lemma:T_even"	[color=green,		fillcolor="#1CAC78",		label=T_even,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_succ"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_succ,		shape=ellipse,		style=filled];	"lemma:exists_predecessor_gt_one_mod1"	[color=green,		fillcolor="#1CAC78",		label=exists_predecessor_gt_one_mod1,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mem_124"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mem_124,		shape=ellipse,		style=filled];	"lemma:collatz_iter_one_le_four"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_one_le_four,		shape=ellipse,		style=filled];	"lemma:R_odd"	[color=green,		fillcolor="#1CAC78",		label=R_odd,		shape=ellipse,		style=filled];	"theorem:terras_periodicity"	[color=green,		fillcolor="#1CAC78",		label=terras_periodicity,		shape=ellipse,		style=filled];	"def:T_iter"	[color=green,		fillcolor="#B0ECA3",		label=T_iter,		shape=box,		style=filled];	"def:num_odd_steps"	[color=green,		fillcolor="#B0ECA3",		label=num_odd_steps,		shape=box,		style=filled];	"def:decomposition_correction_sum"	[color=green,		fillcolor="#B0ECA3",		label=decomposition_correction_sum,		shape=box,		style=filled];	"lemma:T_iter_pos"	[color=green,		fillcolor="#1CAC78",		label=T_iter_pos,		shape=ellipse,		style=filled];	"lemma:confluence_of_reachable"	[color=green,		fillcolor="#1CAC78",		label=confluence_of_reachable,		shape=ellipse,		style=filled];	"lemma:T_odd"	[color=green,		fillcolor="#1CAC78",		label=T_odd,		shape=ellipse,		style=filled];	"lemma:decomposition_correction_eq_sum"	[color=green,		fillcolor="#1CAC78",		label=decomposition_correction_eq_sum,		shape=ellipse,		style=filled];	"lemma:X_even"	[color=green,		fillcolor="#1CAC78",		label=X_even,		shape=ellipse,		style=filled];	"lemma:T_iter_to_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=T_iter_to_collatz_iter,		shape=ellipse,		style=filled];	"lemma:R_one"	[color=green,		fillcolor="#1CAC78",		label=R_one,		shape=ellipse,		style=filled];	"def:T"	[color=green,		fillcolor="#B0ECA3",		label=T,		shape=box,		style=filled];	"lemma:reduced_collatz_step_odd"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_odd,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_odd" -> "lemma:R_odd"	[style=dashed];	"lemma:decomposition_correction_eq_of_E_vec_eq"	[color=green,		fillcolor="#1CAC78",		label=decomposition_correction_eq_of_E_vec_eq,		shape=ellipse,		style=filled];	"lemma:R_zero"	[color=green,		fillcolor="#1CAC78",		label=R_zero,		shape=ellipse,		style=filled];	"def:X"	[color=green,		fillcolor="#B0ECA3",		label=X,		shape=box,		style=filled];	"lemma:collatz_iter_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_two_pow_mul,		shape=ellipse,		style=filled];	"def:count_odds"	[color=green,		fillcolor="#B0ECA3",		label=count_odds,		shape=box,		style=filled];	"def:ParityVector_q"	[color=green,		fillcolor="#B0ECA3",		label=ParityVector_q,		shape=box,		style=filled];	"lemma:is_primitive_iff_mod_8_ne_5"	[color=green,		fillcolor="#1CAC78",		label=is_primitive_iff_mod_8_ne_5,		shape=ellipse,		style=filled];	"lemma:collatz_iter_to_T_iter"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_to_T_iter,		shape=ellipse,		style=filled];	"def:decomposition_correction"	[color=green,		fillcolor="#B0ECA3",		label=decomposition_correction,		shape=box,		style=filled];	"lemma:collatz_iter_add"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_add,		shape=ellipse,		style=filled];	"lemma:not_exists_R_with_m_div3"	[color=green,		fillcolor="#1CAC78",		label=not_exists_R_with_m_div3,		shape=ellipse,		style=filled];	"lemma:reduced_collatz_step_iff_mod4"	[color=green,		fillcolor="#1CAC78",		label=reduced_collatz_step_iff_mod4,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_eq_E_vec_sum"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_eq_E_vec_sum,		shape=ellipse,		style=filled];	"lemma:collatz_iter_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_pow_two,		shape=ellipse,		style=filled];	"lemma:collatz_iter_mul_cycle"	[color=green,		fillcolor="#1CAC78",		label=collatz_iter_mul_cycle,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_pow_mul"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_pow_mul,		shape=ellipse,		style=filled];	"lemma:ordCompl_two_mul_pow"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_two_mul_pow,		shape=ellipse,		style=filled];	"lemma:collatz_step_pow_two"	[color=green,		fillcolor="#1CAC78",		label=collatz_step_pow_two,		shape=ellipse,		style=filled];	"lemma:R_4n_add_1"	[color=green,		fillcolor="#1CAC78",		label=R_4n_add_1,		shape=ellipse,		style=filled];	"lemma:exists_large_not_div3_from_seed"	[color=green,		fillcolor="#1CAC78",		label=exists_large_not_div3_from_seed,		shape=ellipse,		style=filled];	"lemma:num_odd_steps_mono"	[color=green,		fillcolor="#1CAC78",		label=num_odd_steps_mono,		shape=ellipse,		style=filled];	"lemma:ordCompl_collatz_iter"	[color=green,		fillcolor="#1CAC78",		label=ordCompl_collatz_iter,		shape=ellipse,		style=filled];	"def:stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=stopping_time,		shape=box,		style=filled];	"lemma:terras_backward"	[color=green,		fillcolor="#1CAC78",		label=terras_backward,		shape=ellipse,		style=filled];	"def:total_stopping_time"	[color=green,		fillcolor="#B0ECA3",		label=total_stopping_time,		shape=box,		style=filled];	"def:E_vec"	[color=green,		fillcolor="#B0ECA3",		label=E_vec,		shape=box,		style=filled];	"lemma:int_dvd_sub_of_mod_eq"	[color=green,		fillcolor="#1CAC78",		label=int_dvd_sub_of_mod_eq,		shape=ellipse,		style=filled];	"lemma:bounded_no_cycle_implies_collatz"	[color=green,		fillcolor="#1CAC78",		label=bounded_no_cycle_implies_collatz,		shape=ellipse,		style=filled];	"def:E"	[color=green,		fillcolor="#B0ECA3",		label=E,		shape=box,		style=filled];	"lemma:confluence_step"	[color=green,		fillcolor="#1CAC78",		label=confluence_step,		shape=ellipse,		style=filled];	"lemma:T_step_collatz"	[color=green,		fillcolor="#1CAC78",		label=T_step_collatz,		shape=ellipse,		style=filled];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

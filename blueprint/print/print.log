@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 15:56
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 17:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -738,9 +738,13 @@ Chapter 3.
 ]) (./sections/parity.tex [13])
 (./sections/decomposition.tex [14]) (./sections/periodicity.tex)
 (./sections/TC-correspondence.tex [15]) [16]
+Chapter 4.
+(./sections/log2div3.tex [17
+
+]) [18]
 Missing character: There is no 𝑥 (U+1D465) in font [lmroman10-italic]:mapping=t
 ex-text;!
-[17
+[19
 
 ]) (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
  ***********
@@ -748,16 +752,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: C63D92AE9DBDC35C3CFC825E1E6C89F4;2143.
+(rerunfilecheck)             Checksum: 8CD943A2A6FD7CC031C4A04A8E982E29;2513.
  ) 
 Here is how much of TeX's memory you used:
- 17065 strings out of 475925
- 313587 string characters out of 5783280
+ 17080 strings out of 475925
+ 313937 string characters out of 5783280
  1950839 words of memory out of 5000000
- 38926 multiletter control sequences out of 15000+600000
+ 38938 multiletter control sequences out of 15000+600000
  563480 words of font info for 90 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
- 90i,9n,114p,591b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,9n,114p,653b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf 
-(19 pages).
+(21 pages).

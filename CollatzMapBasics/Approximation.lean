@@ -10,137 +10,107 @@ noncomputable def ξ : ℝ := Real.log 2 / Real.log 3
 noncomputable def delta (ε : ℝ) : ℝ := -Real.log (1 - ε) / Real.log 3
 
 
+/-- Helper to prove 2^b = 3^a over ℚ implies b = 0 -/
+lemma rat_zpow_eq (a b : ℤ) (h : (2 : ℚ)^b = (3 : ℚ)^a) : b = 0 := by
+  obtain ⟨a_nat, rfl | rfl⟩ := Int.eq_nat_or_neg a
+  · obtain ⟨b_nat, rfl | rfl⟩ := Int.eq_nat_or_neg b
+    · simp only [zpow_natCast] at h
+      rcases eq_or_ne b_nat 0 with rfl | hb
+      · rfl
+      · have he : Even (3 ^ a_nat) :=
+          (by exact_mod_cast h : 2 ^ b_nat = 3 ^ a_nat) ▸ Even.pow_of_ne_zero (by decide) hb
+        have ho : Odd (3 ^ a_nat) := Odd.pow (by decide)
+        obtain ⟨k, hk⟩ := he
+        obtain ⟨m, hm⟩ := ho
+        omega
+    · simp only [zpow_natCast, zpow_neg] at h
+      have hh_nat : 2 ^ b_nat * 3 ^ a_nat = 1 := by
+        exact_mod_cast (show (2 : ℚ) ^ b_nat * (3 : ℚ) ^ a_nat = 1 by
+          rw [← h]; exact mul_inv_cancel₀ (by positivity))
+      cases b_nat
+      · rfl
+      · rename_i n
+        have : 2 * (2 ^ n * 3 ^ a_nat) = 1 := by
+          calc 2 * (2 ^ n * 3 ^ a_nat) = 2 ^ (n + 1) * 3 ^ a_nat := by ring
+            _ = 1 := hh_nat
+        omega
+  · obtain ⟨b_nat, rfl | rfl⟩ := Int.eq_nat_or_neg b
+    · simp only [zpow_natCast, zpow_neg] at h
+      have hh_nat : 3 ^ a_nat * 2 ^ b_nat = 1 := by
+        exact_mod_cast (show (3 : ℚ) ^ a_nat * (2 : ℚ) ^ b_nat = 1 by
+          rw [h]; exact mul_inv_cancel₀ (by positivity))
+      cases b_nat
+      · rfl
+      · rename_i n
+        have : 2 * (3 ^ a_nat * 2 ^ n) = 1 := by
+          calc 2 * (3 ^ a_nat * 2 ^ n) = 3 ^ a_nat * 2 ^ (n + 1) := by ring
+            _ = 1 := hh_nat
+        omega
+    · simp only [zpow_neg, inv_inj] at h
+      rcases eq_or_ne b_nat 0 with rfl | hb
+      · rfl
+      · have he : Even (3 ^ a_nat) :=
+          (by exact_mod_cast h : 2 ^ b_nat = 3 ^ a_nat) ▸ Even.pow_of_ne_zero (by decide) hb
+        have ho : Odd (3 ^ a_nat) := Odd.pow (by decide)
+        obtain ⟨k, hk⟩ := he
+        obtain ⟨m, hm⟩ := ho
+        omega
+
 /-- Auxiliary Lemma 1: ξ is irrational. -/
 lemma irrational_xi : Irrational ξ := by
   rw [ξ, irrational_iff_ne_rational]
-  intro m n hn
-  rw [ne_comm]
-  intro h
-  have hpos3 : 0 < (3 : ℝ) := by norm_num
-  have hpos2 : 0 < (2 : ℝ) := by norm_num
-  have hl2 : 0 < Real.log 2 := Real.log_pos (by norm_num)
-  have hl3 : 0 < Real.log 3 := Real.log_pos (by norm_num)
-  -- n * log 2 / log 3 = m  => n * log 2 = m * log 3
-  have h1 : (n : ℝ) * (Real.log 2 / Real.log 3) = m := by
-    rw [← h]
-    field_simp [hl2.ne', hl3.ne']
-  have h2 : (n : ℝ) * Real.log 2 = (m : ℝ) * Real.log 3 := by
-    rw [← h1]
-    field_simp [hl2.ne', hl3.ne']
-  have h2abs : (n.natAbs : ℝ) * Real.log 2 = (m.natAbs : ℝ) * Real.log 3 := by
-    rcases lt_trichotomy n 0 with hnl | hnz | hnp
-    · have h_m : (m:ℝ) = (n:ℝ) * (Real.log 2 / Real.log 3) := by
-        calc (m:ℝ) = (m:ℝ) * Real.log 3 / Real.log 3 := by rw [mul_div_cancel_right₀ _ hl3.ne']
-        _ = (n:ℝ) * Real.log 2 / Real.log 3 := by rw [← h2]
-        _ = (n:ℝ) * (Real.log 2 / Real.log 3) := by ring
-      have hm_neg : (m:ℝ) < 0 := by
-        calc (m:ℝ) = (n:ℝ) * (Real.log 2 / Real.log 3) := h_m
-        _ < 0 := mul_neg_of_neg_of_pos (by exact_mod_cast hnl) (div_pos hl2 hl3)
-      have hm_neg_int : m < 0 := by exact_mod_cast hm_neg
-      have hn_nat_r : (n.natAbs : ℝ) = -(n : ℝ) := by
-        have h1 : (n.natAbs : ℤ) = -n := Int.ofNat_natAbs_of_nonpos hnl.le
-        have h2 : ((n.natAbs : ℤ) : ℝ) = ((-n : ℤ) : ℝ) := congrArg (fun x : ℤ => (x : ℝ)) h1
-        have h3 : (n.natAbs : ℝ) = ((n.natAbs : ℤ) : ℝ) := (Int.cast_natCast n.natAbs).symm
-        rw [h3, h2]
-        push_cast
-        rfl
-      have hm_nat_r : (m.natAbs : ℝ) = -(m : ℝ) := by
-        have h1 : (m.natAbs : ℤ) = -m := Int.ofNat_natAbs_of_nonpos hm_neg_int.le
-        have h2 : ((m.natAbs : ℤ) : ℝ) = ((-m : ℤ) : ℝ) := congrArg (fun x : ℤ => (x : ℝ)) h1
-        have h3 : (m.natAbs : ℝ) = ((m.natAbs : ℤ) : ℝ) := (Int.cast_natCast m.natAbs).symm
-        rw [h3, h2]
-        push_cast
-        rfl
-      rw [hn_nat_r, hm_nat_r, neg_mul, neg_mul, h2]
-    · contradiction
-    · have h_m : (m:ℝ) = (n:ℝ) * (Real.log 2 / Real.log 3) := by
-        calc (m:ℝ) = (m:ℝ) * Real.log 3 / Real.log 3 := by rw [mul_div_cancel_right₀ _ hl3.ne']
-        _ = (n:ℝ) * Real.log 2 / Real.log 3 := by rw [← h2]
-        _ = (n:ℝ) * (Real.log 2 / Real.log 3) := by ring
-      have hm_pos : 0 < (m:ℝ) := by
-        calc 0 < (n:ℝ) * (Real.log 2 / Real.log 3) := mul_pos (by exact_mod_cast hnp) (div_pos hl2 hl3)
-        _ = (m:ℝ) := h_m.symm
-      have hm_pos_int : 0 < m := by exact_mod_cast hm_pos
-      have hn_nat_r : (n.natAbs : ℝ) = (n : ℝ) := by
-        have h1 : (n.natAbs : ℤ) = n := Int.ofNat_natAbs_of_nonneg hnp.le
-        have h2 : ((n.natAbs : ℤ) : ℝ) = ((n : ℤ) : ℝ) := congrArg (fun x : ℤ => (x : ℝ)) h1
-        have h3 : (n.natAbs : ℝ) = ((n.natAbs : ℤ) : ℝ) := (Int.cast_natCast n.natAbs).symm
-        rw [h3, h2]
-      have hm_nat_r : (m.natAbs : ℝ) = (m : ℝ) := by
-        have h1 : (m.natAbs : ℤ) = m := Int.ofNat_natAbs_of_nonneg hm_pos_int.le
-        have h2 : ((m.natAbs : ℤ) : ℝ) = ((m : ℤ) : ℝ) := congrArg (fun x : ℤ => (x : ℝ)) h1
-        have h3 : (m.natAbs : ℝ) = ((m.natAbs : ℤ) : ℝ) := (Int.cast_natCast m.natAbs).symm
-        rw [h3, h2]
-      rw [hn_nat_r, hm_nat_r, h2]
-  have h3 : (2 : ℝ) ^ (n.natAbs : ℝ) = (3 : ℝ) ^ (m.natAbs : ℝ) := by
-    rw [← Real.log_rpow hpos2, ← Real.log_rpow hpos3] at h2abs
-    refine Real.log_injOn_pos (Set.mem_Ioi.mpr (Real.rpow_pos_of_pos hpos2 _))
-      (Set.mem_Ioi.mpr (Real.rpow_pos_of_pos hpos3 _)) h2abs
-  have h4 : 2 ^ n.natAbs = 3 ^ m.natAbs := by
-    have h_left : (2 : ℝ) ^ (n.natAbs : ℝ) = ((2 ^ n.natAbs : ℕ) : ℝ) := by
-      rw [Real.rpow_natCast]
-      push_cast
-      rfl
-    have h_right : (3 : ℝ) ^ (m.natAbs : ℝ) = ((3 ^ m.natAbs : ℕ) : ℝ) := by
-      rw [Real.rpow_natCast]
-      push_cast
-      rfl
-    rw [h_left, h_right] at h3
-    exact_mod_cast h3
-  have hn_pos : n.natAbs ≠ 0 := by
-    intro hz
-    have : n = 0 := Int.natAbs_eq_zero.mp hz
-    contradiction
-  have h_even : Even (2 ^ n.natAbs) := Even.pow_of_ne_zero (by decide) hn_pos
-  rw [h4] at h_even
-  have h_odd : ¬ Even (3 ^ m.natAbs) := by
-    rw [Nat.not_even_iff_odd]
-    exact Odd.pow (by decide)
-  exact h_odd h_even
+  rintro a b hb h
+  have hl3 : (0 : ℝ) < Real.log 3 := Real.log_pos (by norm_num)
+  have hb' : (b : ℝ) ≠ 0 := by exact_mod_cast hb
+  have h1 : (b : ℝ) * Real.log 2 = (a : ℝ) * Real.log 3 := by
+    calc (b : ℝ) * Real.log 2 = (b : ℝ) * (Real.log 2 / Real.log 3) * Real.log 3 := by rw [mul_assoc, div_mul_cancel₀ _ hl3.ne']
+      _ = (b : ℝ) * (a / b) * Real.log 3 := by rw [h]
+      _ = (a : ℝ) * Real.log 3 := by rw [mul_div_cancel₀ _ hb']
+  have eq2 : Real.log ((2 : ℝ) ^ b) = Real.log ((3 : ℝ) ^ a) := by
+    rw [Real.log_zpow, Real.log_zpow, h1]
+  have eq3 : (2 : ℝ) ^ b = (3 : ℝ) ^ a :=
+    Real.log_injOn_pos (Set.mem_Ioi.mpr (by positivity)) (Set.mem_Ioi.mpr (by positivity)) eq2
+  have eq4 : ((2 : ℚ) ^ b : ℝ) = ((3 : ℚ) ^ a : ℝ) := by
+    push_cast
+    exact eq3
+  exact hb (rat_zpow_eq a b (by exact_mod_cast eq4))
 
 /-- Auxiliary Lemma 2: Equivalence of the original inequality and the rational approximation. -/
 lemma inequality_equiv (a b : ℕ) (hb : 0 < b) (ε : ℝ) (hε₁ : ε < 1) :
     (1 - ε < (3 : ℝ)^a / (2 : ℝ)^b ∧ (3 : ℝ)^a / (2 : ℝ)^b < 1) ↔
     (0 < ξ - (a : ℝ) / (b : ℝ) ∧ ξ - (a : ℝ) / (b : ℝ) < delta ε / b) := by
-  have hpos3 : 0 < (3 : ℝ) := by norm_num
-  have hpos2 : 0 < (2 : ℝ) := by norm_num
-  have hb_real : 0 < (b : ℝ) := by exact_mod_cast hb
+  have hb' : 0 < (b : ℝ) := by exact_mod_cast hb
   have hlog3 : 0 < Real.log 3 := Real.log_pos (by norm_num)
-  have h3a_pos : 0 < (3 : ℝ)^a := pow_pos hpos3 a
-  have h2b_pos : 0 < (2 : ℝ)^b := pow_pos hpos2 b
+  have hpos3 : 0 < (3:ℝ)^a := by positivity
+  have hpos2 : 0 < (2:ℝ)^b := by positivity
   rw [ξ, delta]
   constructor
   · rintro ⟨h1, h2⟩
+    have h1' := Real.log_lt_log_iff (by linarith) (div_pos hpos3 hpos2) |>.mpr h1
+    have h2' := Real.log_lt_log_iff (div_pos hpos3 hpos2) (by norm_num) |>.mpr h2
+    rw [Real.log_div hpos3.ne' hpos2.ne', Real.log_pow, Real.log_pow] at h1' h2'
+    rw [Real.log_one] at h2'
+    have : (a : ℝ) * Real.log 3 < (b : ℝ) * Real.log 2 := by linarith
+    have h2_bound : (b : ℝ) * Real.log 2 - (a : ℝ) * Real.log 3 < -Real.log (1 - ε) := by linarith
     constructor
-    · rw [div_lt_one h2b_pos] at h2
-      have h2' : Real.log ((3 : ℝ)^a) < Real.log ((2 : ℝ)^b) := by
-        rwa [Real.log_lt_log_iff h3a_pos h2b_pos]
-      rw [Real.log_pow, Real.log_pow] at h2'
-      field_simp [hlog3.ne', hb_real.ne']
+    · field_simp [hlog3.ne', hb'.ne']
       linarith
-    · have h1' : Real.log (1 - ε) < Real.log ((3 : ℝ)^a / (2 : ℝ)^b) := by
-        rwa [Real.log_lt_log_iff (by linarith) (div_pos h3a_pos h2b_pos)]
-      rw [Real.log_div h3a_pos.ne' h2b_pos.ne', Real.log_pow, Real.log_pow] at h1'
-      field_simp [hlog3.ne', hb_real.ne']
+    · field_simp [hlog3.ne', hb'.ne']
       linarith
   · rintro ⟨h1, h2⟩
+    have h1_bound : (a : ℝ) * Real.log 3 < (b : ℝ) * Real.log 2 := by
+      field_simp [hlog3.ne', hb'.ne'] at h1
+      linarith
+    have h2_bound : (b : ℝ) * Real.log 2 - (a : ℝ) * Real.log 3 < -Real.log (1 - ε) := by
+      field_simp [hlog3.ne', hb'.ne'] at h2
+      linarith
     constructor
-    · field_simp [hlog3.ne', hb_real.ne'] at h2
-      have h2' : Real.log (2 ^ b : ℝ) - Real.log (3 ^ a : ℝ) < -Real.log (1 - ε) := by
-        rw [Real.log_pow, Real.log_pow]
-        linarith
-      have h2'' : Real.log (1 - ε) < Real.log (3 ^ a : ℝ) - Real.log (2 ^ b : ℝ) := by
-        linarith
-      rw [← Real.log_div h3a_pos.ne' h2b_pos.ne'] at h2''
-      rw [Real.log_lt_log_iff (by linarith) (div_pos h3a_pos h2b_pos)] at h2''
-      exact h2''
-    · field_simp [hlog3.ne', hb_real.ne'] at h1
-      have h1' : Real.log ((3 : ℝ)^a) < Real.log ((2 : ℝ)^b) := by
-        rw [Real.log_pow, Real.log_pow]
-        linarith
-      rw [Real.log_lt_log_iff h3a_pos h2b_pos] at h1'
-      rw [div_lt_one h2b_pos]
-      exact h1'
+    · apply Real.log_lt_log_iff (by linarith) (div_pos hpos3 hpos2) |>.mp
+      rw [Real.log_div hpos3.ne' hpos2.ne', Real.log_pow, Real.log_pow]
+      linarith
+    · apply Real.log_lt_log_iff (div_pos hpos3 hpos2) (by norm_num) |>.mp
+      rw [Real.log_one, Real.log_div hpos3.ne' hpos2.ne', Real.log_pow, Real.log_pow]
+      linarith
 
 /-- Helper: delta is positive when 0 < ε < 1 -/
 lemma delta_pos (ε : ℝ) (hε₀ : 0 < ε) (hε₁ : ε < 1) : 0 < delta ε := by
@@ -194,8 +164,8 @@ lemma floor_mul_pos (b : ℕ) (hb : 2 ≤ b) :
   have hξ_bound : 1 < ξ * 2 := by
     unfold ξ
     rw [div_mul_eq_mul_div, one_lt_div (Real.log_pos (by norm_num : (1 : ℝ) < 3))]
-    calc Real.log 3 < Real.log 4 := by
-          exact (Real.log_lt_log_iff (by norm_num : (0 : ℝ) < 3) (by norm_num : (0 : ℝ) < 4)).mpr (by norm_num)
+    calc Real.log 3 < Real.log 4 :=
+          (Real.log_lt_log_iff (by norm_num : (0 : ℝ) < 3) (by norm_num : (0 : ℝ) < 4)).mpr (by norm_num)
     _ = Real.log (2 ^ 2) := by norm_num
     _ = 2 * Real.log 2 := Real.log_pow 2 2
     _ = Real.log 2 * 2 := mul_comm _ _
@@ -217,9 +187,7 @@ lemma B_pos {v : ℝ} (n : ℕ) (hn : 1 ≤ n) :
   | succ n ih =>
     rcases Decidable.em ((GenContFract.of v).TerminatedAt n) with h | h
     · rcases Decidable.em (1 ≤ n) with hn1 | hn1
-      · have hstab : (GenContFract.of v).contsAux (n + 2) = (GenContFract.of v).contsAux (n + 1) :=
-          GenContFract.contsAux_stable_step_of_terminated h
-        rw [hstab]
+      · rw [GenContFract.contsAux_stable_step_of_terminated h]
         exact ih hn1
       · simp at hn1
         subst hn1
@@ -231,12 +199,12 @@ lemma B_pos {v : ℝ} (n : ℕ) (hn : 1 ≤ n) :
         GenContFract.fib_le_of_contsAux_b (Or.inr h)
 
 lemma pB_nonneg {v : ℝ} (n : ℕ) :
-    (0 : ℝ) ≤ ((GenContFract.of v).contsAux n).b := by
-  exact GenContFract.zero_le_of_contsAux_b
+    (0 : ℝ) ≤ ((GenContFract.of v).contsAux n).b :=
+  GenContFract.zero_le_of_contsAux_b
 
 lemma frac_lt_one_of_ifp {v : ℝ} (ifp : IntFractPair ℝ) (n : ℕ) (h : IntFractPair.stream v n = some ifp) :
-    ifp.fr < 1 := by
-  exact GenContFract.IntFractPair.nth_stream_fr_lt_one h
+    ifp.fr < 1 :=
+  GenContFract.IntFractPair.nth_stream_fr_lt_one h
 
 lemma frac_pos_of_ifp {v : ℝ} (ifp : IntFractPair ℝ) (n : ℕ) (h : IntFractPair.stream v n = some ifp) (h_irr : Irrational v) :
     0 < ifp.fr := by
@@ -260,8 +228,8 @@ noncomputable def convergent_pair (v : ℝ) (n : ℕ) : GenContFract.Pair ℚ :=
   Classical.choose (GenContFract.exists_gcf_pair_rat_eq_of_nth_contsAux v n)
 
 lemma convergent_pair_spec (v : ℝ) (n : ℕ) :
-    (GenContFract.of v).contsAux n = GenContFract.Pair.map Rat.cast (convergent_pair v n) := by
-  exact Classical.choose_spec (GenContFract.exists_gcf_pair_rat_eq_of_nth_contsAux v n)
+    (GenContFract.of v).contsAux n = GenContFract.Pair.map Rat.cast (convergent_pair v n) :=
+  Classical.choose_spec (GenContFract.exists_gcf_pair_rat_eq_of_nth_contsAux v n)
 
 noncomputable def convergent_rat (v : ℝ) (n : ℕ) : ℚ :=
   (convergent_pair v (n + 1)).a / (convergent_pair v (n + 1)).b
@@ -334,31 +302,25 @@ lemma dens_pos (v : ℝ) (n : ℕ) : 0 < (GenContFract.of v).dens n := by
   | succ m => exact B_pos (m + 1) (Nat.succ_le_succ (Nat.zero_le _))
 
 lemma convergent_rat_exists (v : ℝ) (n : ℕ) :
-    ∃ q : ℚ, (q : ℝ) = (GenContFract.of v).convs n ∧ (q.den : ℝ) ≤ (GenContFract.of v).dens n := by
-  use convergent_rat v n
-  constructor
-  · rw [convergent_rat_eq]
-  · exact den_le_dens v n (dens_pos v n)
+    ∃ q : ℚ, (q : ℝ) = (GenContFract.of v).convs n ∧ (q.den : ℝ) ≤ (GenContFract.of v).dens n :=
+  ⟨convergent_rat v n, convergent_rat_eq v n, den_le_dens v n (dens_pos v n)⟩
 
-lemma not_terminated (v : ℝ) (h_irr : Irrational v) (n : ℕ) : ¬(GenContFract.of v).TerminatedAt n := by
-  have h_not_term : ¬(GenContFract.of v).Terminates := by
-    rw [GenContFract.terminates_iff_rat]
-    exact fun ⟨q, hq⟩ => h_irr ⟨q, hq.symm⟩
-  exact fun h => h_not_term ⟨n, h⟩
+lemma not_terminated (v : ℝ) (h_irr : Irrational v) (n : ℕ) : ¬(GenContFract.of v).TerminatedAt n :=
+  fun h => (GenContFract.terminates_iff_rat (v := v) |>.mp ⟨n, h⟩).elim fun q hq => h_irr ⟨q, hq.symm⟩
 
 lemma s_defined (v : ℝ) (h_irr : Irrational v) (n : ℕ) : (GenContFract.of v).s.get? n ≠ none := by
   have h := not_terminated v h_irr n
   unfold GenContFract.TerminatedAt Stream'.Seq.TerminatedAt at h
   exact h
 
-lemma part_dens_ge_one (v : ℝ) (n : ℕ) {b : ℝ} (h : (GenContFract.of v).partDens.get? n = some b) : 1 ≤ b := by
-  exact GenContFract.of_one_le_get?_partDen h
+lemma part_dens_ge_one (v : ℝ) (n : ℕ) {b : ℝ} (h : (GenContFract.of v).partDens.get? n = some b) : 1 ≤ b :=
+  GenContFract.of_one_le_get?_partDen h
 
 lemma dens_recurrence_val' (v : ℝ) (h_irr : Irrational v) (n : ℕ) :
     ∃ b : ℝ, (GenContFract.of v).partDens.get? (n + 1) = some b ∧
     (GenContFract.of v).dens (n + 2) = b * (GenContFract.of v).dens (n + 1) + (GenContFract.of v).dens n := by
-      obtain ⟨gp, hgp⟩ : ∃ gp : GenContFract.Pair ℝ, (GenContFract.of v).s.get? (n + 1) = some gp := by
-        exact Option.ne_none_iff_exists'.mp ( s_defined v h_irr _ );
+      obtain ⟨gp, hgp⟩ : ∃ gp : GenContFract.Pair ℝ, (GenContFract.of v).s.get? (n + 1) = some gp :=
+        Option.ne_none_iff_exists'.mp ( s_defined v h_irr _ )
       use gp.b
       simp_all [ GenContFract.partDens ]
       rw [ GenContFract.dens ]
@@ -415,8 +377,7 @@ lemma convs_even_lt_xi (n : ℕ) : (GenContFract.of ξ).convs (2 * n) < ξ := by
   have h_sub_pos : 0 < ξ - (GenContFract.of ξ).convs (2 * n) := by
     rw [h_eq]
     rw [if_neg h_fr_ne_zero]
-    have h_sign : (-1 : ℝ) ^ (2 * n) = 1 := by simp
-    rw [h_sign]
+    rw [show (-1 : ℝ) ^ (2 * n) = 1 from by simp]
     apply one_div_pos.mpr
     have hB : 0 < ((GenContFract.of ξ).contsAux (2 * n + 1)).b := dens_pos ξ (2 * n)
     have hpB : 0 ≤ ((GenContFract.of ξ).contsAux (2 * n)).b := GenContFract.zero_le_of_contsAux_b
@@ -427,8 +388,8 @@ lemma convs_even_lt_xi (n : ℕ) : (GenContFract.of ξ).convs (2 * n) < ξ := by
     positivity
   linarith
 
-lemma tendsto_convs (v : ℝ) : Filter.Tendsto (fun n => (GenContFract.of v).convs n) Filter.atTop (nhds v) := by
-  exact GenContFract.of_convergence v
+lemma tendsto_convs (v : ℝ) : Filter.Tendsto (fun n => (GenContFract.of v).convs n) Filter.atTop (nhds v) :=
+  GenContFract.of_convergence v
 
 lemma approximation_ineq (n : ℕ) (hn : 1 ≤ n) :
     |ξ - (GenContFract.of ξ).convs n| < 1 / ((GenContFract.of ξ).dens n) ^ 2 := by
@@ -438,9 +399,7 @@ lemma approximation_ineq (n : ℕ) (hn : 1 ≤ n) :
     GenContFract.abs_sub_convs_le <| not_terminated ξ irrational_xi n
   have h_strict : 1 / ((GenContFract.of ξ).dens n * (GenContFract.of ξ).dens (n + 1)) < 1 / ((GenContFract.of ξ).dens n) ^ 2 := by
     rw [sq]
-    have h1 : (GenContFract.of ξ).dens n * (GenContFract.of ξ).dens n < (GenContFract.of ξ).dens n * (GenContFract.of ξ).dens (n + 1) := by nlinarith
-    have h2 : 0 < (GenContFract.of ξ).dens n * (GenContFract.of ξ).dens n := by nlinarith
-    exact one_div_lt_one_div_of_lt h2 h1
+    exact one_div_lt_one_div_of_lt (by nlinarith) (by nlinarith)
   exact lt_of_le_of_lt h_bound h_strict
 
 /-- There are infinitely many rationals below ξ with |ξ - q| < 1/q.den².
@@ -448,9 +407,8 @@ lemma approximation_ineq (n : ℕ) (hn : 1 ≤ n) :
 lemma infinite_rat_approx_from_below :
     {q : ℚ | (q : ℝ) < ξ ∧ |ξ - q| < 1 / (q.den : ℝ) ^ 2}.Infinite := by
   let f : ℕ → ℚ := fun k => Classical.choose (convergent_rat_exists ξ (2 * k + 2))
-  have hf : ∀ k, (f k : ℝ) = (GenContFract.of ξ).convs (2 * k + 2) ∧ ((f k).den : ℝ) ≤ (GenContFract.of ξ).dens (2 * k + 2) := by
-    intro k
-    exact Classical.choose_spec (convergent_rat_exists ξ (2 * k + 2))
+  have hf : ∀ k, (f k : ℝ) = (GenContFract.of ξ).convs (2 * k + 2) ∧ ((f k).den : ℝ) ≤ (GenContFract.of ξ).dens (2 * k + 2) :=
+    fun k => Classical.choose_spec (convergent_rat_exists ξ (2 * k + 2))
 
   have hinS : ∀ k, f k ∈ {q : ℚ | (q : ℝ) < ξ ∧ |ξ - q| < 1 / (q.den : ℝ) ^ 2} := by
     intro k
@@ -532,8 +490,8 @@ lemma infinite_rat_approx_filtered (N₀ : ℕ) :
           have h3 : (n : ℝ) / d < ((d : ℝ)^2)⁻¹ + ξ := by linarith
           have h4 := (div_lt_iff₀ h_d_pos).mp h3
           nlinarith
-    have h_finite_num_den : {q : ℚ | ∃ d : ℕ, d < N₀ ∧ ∃ n : ℤ, q = n / d ∧ |ξ - (n : ℝ) / d| < 1 / (d : ℝ) ^ 2}.Finite := by
-      exact Set.Finite.subset ( Set.Finite.biUnion ( Set.finite_lt_nat N₀ ) fun d hd => Set.Finite.image ( fun n : ℤ => ( n : ℚ ) / d ) ( h_finite_num_den d hd ) ) fun x hx => by aesop
+    have h_finite_num_den : {q : ℚ | ∃ d : ℕ, d < N₀ ∧ ∃ n : ℤ, q = n / d ∧ |ξ - (n : ℝ) / d| < 1 / (d : ℝ) ^ 2}.Finite :=
+      Set.Finite.subset ( Set.Finite.biUnion ( Set.finite_lt_nat N₀ ) fun d hd => Set.Finite.image ( fun n : ℤ => ( n : ℚ ) / d ) ( h_finite_num_den d hd ) ) fun x hx => by aesop
     refine h_finite_num_den.subset ?_
     exact fun x hx => ⟨ x.den, hx.2.2, x.num, x.num_div_den.symm, by simpa [ Rat.cast_def ] using hx.2.1 ⟩
   exact Set.Infinite.mono (by
@@ -552,9 +510,7 @@ lemma rat_map_injOn (S : Set ℚ) (h : ∀ q ∈ S, 0 < q) :
   have hq2_pos := h q2 hq2
   have h1 := Rat.num_pos.mpr hq1_pos
   have h2 := Rat.num_pos.mpr hq2_pos
-  have hnum : q1.num = q2.num := by
-    have := heq.1
-    omega
+  have hnum : q1.num = q2.num := by omega
   have hden : q1.den = q2.den := heq.2
   exact Rat.ext hnum hden
 
@@ -614,12 +570,8 @@ lemma exists_infinite_pairs_approx (ε : ℝ) (hε₀ : 0 < ε) (hε₁ : ε < 1
 
   -- The map q ↦ (q.num.toNat, q.den)
   let f : ℚ → ℕ × ℕ := fun q => (q.num.toNat, q.den)
-  have hf_inj : Set.InjOn f S_filtered := by
-    apply rat_map_injOn _
-    intro q hq
-    -- If q < ξ and |ξ - q| < 1/q.den^2, then q > ξ - 1/q.den^2.
-    -- Since ξ ≈ 0.63, q is positive for large enough denominators.
-    exact q_pos_of_in_S_filtered (le_max_left 2 _) hq.1 hq.2.1 hq.2.2
+  have hf_inj : Set.InjOn f S_filtered :=
+    rat_map_injOn _ (fun _ hq => q_pos_of_in_S_filtered (le_max_left 2 _) hq.1 hq.2.1 hq.2.2)
 
   apply Set.Infinite.mono _ (Set.Infinite.image hf_inj hS_filtered_inf)
   intro p hp
@@ -643,8 +595,6 @@ lemma exists_infinite_pairs_approx (ε : ℝ) (hε₀ : 0 < ε) (hε₁ : ε < 1
   have hb_large : Nat.ceil (1 / delta ε) + 1 ≤ q.den := le_trans (le_max_right 2 _) hq_den_ge
   have h_inv_lt : 1 / (q.den : ℝ) < delta ε := by
     rw [div_lt_iff₀ hb_pos_real]
-    have h1 : (Nat.ceil (1 / delta ε) : ℝ) < q.den := by
-      exact_mod_cast (by omega : Nat.ceil (1 / delta ε) < q.den)
     calc 1 ≤ ↑(Nat.ceil (1 / delta ε)) * delta ε := by
           rw [← div_le_iff₀ hδ]; exact Nat.le_ceil _
     _ = delta ε * ↑(Nat.ceil (1 / delta ε)) := mul_comm _ _
@@ -656,10 +606,7 @@ lemma exists_infinite_pairs_approx (ε : ℝ) (hε₀ : 0 < ε) (hε₁ : ε < 1
   have hq_bound2 : ξ - (q : ℝ) < delta ε / q.den := by
     calc ξ - q < 1 / (q.den : ℝ) ^ 2 := hq_bound
     _ = (1 / (q.den : ℝ)) * (1 / (q.den : ℝ)) := by ring
-    _ < delta ε * (1 / (q.den : ℝ)) := by
-          have h1 : 1 / (q.den : ℝ) < delta ε := h_inv_lt
-          have h2 : 0 < 1 / (q.den : ℝ) := one_div_pos.mpr hb_pos_real
-          nlinarith
+    _ < delta ε * (1 / (q.den : ℝ)) := by nlinarith [one_div_pos.mpr hb_pos_real]
     _ = delta ε / (q.den : ℝ) := by ring
 
   -- Now we know 0 < ξ - q < delta(ε)/q.den

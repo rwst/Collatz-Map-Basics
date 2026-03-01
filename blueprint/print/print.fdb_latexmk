@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1772376998.79692 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772376999.58096 0
+["pdflatex"] 1772381233.64971 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772381234.37913 0
   "/etc/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772376999.53251 9355 47706350caf68a1c5663f62bb3f715ab "pdflatex"
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772376999.53351 2143 c63d92ae9dbdc35c3cfc825e1e6c89f4 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772381234.33476 10050 30a873b61b18725385af674e0500e461 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772381234.33576 2513 8cd943a2a6fd7cc031c4a04a8e982e29 "pdflatex"
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -84,7 +84,7 @@
   "/usr/share/texmf/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1771858310 10663260 0e83f00fad4e17610da4ad9f49b5cd24 ""
-  "content.tex" 1772376602.39836 2162 ba81d22a1d1f125a43f82b16d524aa65 ""
+  "content.tex" 1772381220.13535 2262 0ac18c190481633fde83dbdd30199aea ""
   "macros/common.tex" 1771787663.61047 826 2468ad0b6614f40a29d7ec803ebc006e ""
   "macros/print.tex" 1771787663.61047 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1771787663.61247 1133 4fae2f63dc1d7fe374dbc5fc881a291e ""
@@ -94,6 +94,7 @@
   "sections/decomposition.tex" 1772366815.6837 3605 c35b62ccaa6152adf4ccccba907a88ef ""
   "sections/elementary-number-theory.tex" 1772304214.77344 6391 912393fa709fbd14519bee6357c4a272 ""
   "sections/graph.tex" 1772375768.9739 2804 60b8e9452307b0185e9239ae491f638d ""
+  "sections/log2div3.tex" 1772381046.37737 4283 a7753238fb1e676319fc5694a0c431a1 ""
   "sections/parity.tex" 1772376452.53313 3374 f93f360bdceef7fafaf5e838ac783058 ""
   "sections/periodicity.tex" 1772376972.13674 1820 28a3e6dee7548dc4cfea65facc71f5cd ""
   "sections/primitives-of-reduced.tex" 1772304214.77444 7474 2af5d1e22b7ad170a0ca5afb0b01adaa ""
