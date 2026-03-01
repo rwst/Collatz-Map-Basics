@@ -12,10 +12,10 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Collatz Map Basics: Primitives of The Reduced Map</title>
-<link rel="next" href="sect0007.html" title="The Terras Map" />
-<link rel="prev" href="sect0005.html" title="The Reduced Collatz Map" />
-<link rel="up" href="sect0001.html" title="The Collatz Conjecture" />
+<title>The Reduced Collatz Map</title>
+<link rel="next" href="sect0007.html" title="Definitions" />
+<link rel="prev" href="sect0005.html" title="The Collatz Graph" />
+<link rel="up" href="index.html" title="Collatz Map Basics" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -32,10 +32,10 @@
 <div class="wrapper">
 <nav class="toc">
 <ul class="sub-toc-0">
-<li class=" active">
+<li class="">
   <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">The Collatz Conjecture</span></a>
-  <span class="expand-toc">▼</span>
-  <ul class="sub-toc-1 active">
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
      <li class="">
   <a href="sect0002.html"><span class="toc_ref">1.1</span> <span class="toc_entry">Elementary Number Theory</span></a>
  </li>
@@ -46,26 +46,39 @@
   <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
  </li>
 <li class="">
-  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Collatz Graph</span></a>
+ </li>
+
+  </ul>
  </li>
 <li class=" active current">
-  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+  <a href="sect0006.html"><span class="toc_ref">2</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
  </li>
 
   </ul>
  </li>
 <li class="">
-  <a href="sect0007.html"><span class="toc_ref">2</span> <span class="toc_entry">The Terras Map</span></a>
+  <a href="sect0009.html"><span class="toc_ref">3</span> <span class="toc_entry">The Compact Map</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0008.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
  </li>
 <li class="">
-  <a href="sect0009.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Parity Vectors</span></a>
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
  </li>
 <li class="">
-  <a href="sect0010.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
  </li>
 
   </ul>
@@ -79,569 +92,19 @@
 
 
 <div class="main-text">
-<h1 id="a0000000007">1.5 Primitives of The Reduced Map</h1>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:R_4n_add_1">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">55</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:R_4n_add_1">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000079"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L223" class="lean_decl">CollatzMapBasics.R_4n_add_1</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For all \(n {\gt} 1\), \(R(4n + 1) = R(n)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000079">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We compute \(3(4n+1) + 1 = 12n + 4 = 4(3n+1) = 2^2 \cdot (3n+1)\). Since multiplying by \(2^2\) does not change the odd part, we have \(R(4n+1) = \text{odd part of } 2^2(3n+1) = \text{odd part of } (3n+1) = R(n)\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:R_iter_4n_add_1">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">56</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:R_iter_4n_add_1">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000080"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L230" class="lean_decl">CollatzMapBasics.R_iter_4n_add_1</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For all \(n {\gt} 1\) and \(i {\gt} 0\), \(R^i(4n + 1) = R^i(n)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000080">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>For \(i = k + 1\), we have \(R^{k+1}(4n+1) = R^k(R(4n+1)) = R^k(R(n)) = R^{k+1}(n)\), where the middle equality follows from Lemma&#160;<a href="sect0006.html#lemma:R_4n_add_1">55</a>. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:rcs_ge">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">57</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:rcs_ge">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000081"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L369" class="lean_decl">CollatzMapBasics.rcs_ge</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For any odd \(n \in \mathbb {N}\), \(2 R(n) \le 3n + 1\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000081">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>By definition, \(R(n)\) is the odd part of \(3n + 1\), meaning \(3n + 1 = 2^k \cdot R(n)\) for some \(k \in \mathbb {N}\). Since \(n\) is odd, \(3n + 1\) is even, which implies \(k \ge 1\). Thus \(2^k \ge 2\), and we have \(3n + 1 \ge 2 R(n)\). </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:IsPrimitive4x1">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">58</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#def:IsPrimitive4x1">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L241" class="lean_decl">CollatzMapBasics.IsPrimitive4x1</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>An odd number \(n {\gt} 1\) is called a <em>primitive</em> at level \(i {\gt} 1\) if </p>
-<ol class="enumerate">
-  <li><p>\(R^i(n) = 1\), </p>
-</li>
-  <li><p>there is no odd \(k\) with \(4k + 1 = n\) and \(R^i(k) = 1\). </p>
-</li>
-</ol>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:is_primitive_iff_mod_8_ne_5">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">59</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:is_primitive_iff_mod_8_ne_5">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000082"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L252" class="lean_decl">CollatzMapBasics.is_primitive_iff_mod_8_ne_5</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(n {\gt} 1\) be odd with \(n \neq 5\), let \(i {\gt} 1\), and suppose \(R^i(n) = 1\). Then \(n\) is a primitive at level \(i\) if and only if \(n \not\equiv 5 \pmod{8}\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000082">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>(\(\Rightarrow \)) Suppose \(n\) is primitive and \(n \equiv 5 \pmod{8}\). Write \(n = 8k + 5 = 4(2k+1) + 1\). Then \(2k+1\) is odd and \(2k + 1 {\gt} 1\) (since \(n \neq 5\) implies \(k \geq 1\)). By Lemma&#160;<a href="sect0006.html#lemma:R_iter_4n_add_1">56</a>, \(R^i(2k+1) = R^i(4(2k+1)+1) = R^i(n) = 1\), so \(2k+1\) is an odd predecessor of \(n\) via the \(4k+1\) map with the same step count, contradicting primitivity. </p>
-<p>(\(\Leftarrow \)) Suppose \(n \not\equiv 5 \pmod{8}\) and there exists an odd \(k\) with \(4k + 1 = n\) and \(R^i(k) = 1\). Since \(k\) is odd, write \(k = 2m + 1\); then \(n = 4(2m+1) + 1 = 8m + 5 \equiv 5 \pmod{8}\), a contradiction. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:primitive_ancestor">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">60</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:primitive_ancestor">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000083"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L270" class="lean_decl">CollatzMapBasics.primitive_ancestor</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(x {\gt} 1\) be odd with \(R(x) \neq 1\). Then there exists an odd \(n {\gt} 1\) with \(R(n) = R(x)\) and \(n \not\equiv 5 \pmod{8}\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000083">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We proceed by strong induction on \(x\). If \(x \not\equiv 5 \pmod{8}\), take \(n = x\). </p>
-<p>If \(x \equiv 5 \pmod{8}\), write \(x = 8k + 5 = 4(2k+1) + 1\). We must have \(2k + 1 {\gt} 1\), since \(k = 0\) gives \(x = 5\) and \(R(5) = 1\), contradicting \(R(x) \neq 1\). By Lemma&#160;<a href="sect0006.html#lemma:R_4n_add_1">55</a>, \(R(x) = R(2k+1)\), so \(R(2k+1) \neq 1\). Since \(2k + 1 {\lt} x\), the induction hypothesis yields an odd \(n {\gt} 1\) with \(R(n) = R(2k+1) = R(x)\) and \(n \not\equiv 5 \pmod{8}\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:odd_node_generates_primitive">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">61</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:odd_node_generates_primitive">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000084"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L294" class="lean_decl">CollatzMapBasics.odd_node_generates_primitive</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(y {\gt} 1\) be odd with \(y \not\equiv 0 \pmod{3}\) and \(R^i(y) = 1\). Then there exists a primitive \(n\) at level \(i + 1\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000084">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Since \(y\) is odd, positive, and not divisible by&#160;3, there exists an odd \(x {\gt} 1\) with \(R(x) = y\) (by the surjectivity of \(R\) onto odd numbers not divisible by&#160;3). In particular \(R(x) \neq 1\) since \(y {\gt} 1\). </p>
-<p>By Lemma&#160;<a href="sect0006.html#lemma:primitive_ancestor">60</a>, there exists an odd \(n {\gt} 1\) with \(R(n) = R(x) = y\) and \(n \not\equiv 5 \pmod{8}\). Then \(R^{i+1}(n) = R^i(R(n)) = R^i(y) = 1\). Since \(n \neq 5\) (as \(5 \equiv 5 \pmod{8}\)), Lemma&#160;<a href="sect0006.html#lemma:is_primitive_iff_mod_8_ne_5">59</a> gives that \(n\) is a primitive at level \(i + 1\). </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:reduce4x1">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">62</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#def:reduce4x1">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L312" class="lean_decl">CollatzMapBasics.reduce4x1</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>The function \(\text{reduce4x1}: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="displaymath" id="a0000000085">
-  \[  \text{reduce4x1}(n) = \begin{cases}  \text{reduce4x1}((n-1)/4) &  \text{if } n \equiv 5 \pmod{8}, \\ n &  \text{otherwise.} \end{cases}  \]
-</div>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:rcs_reduce4x1">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">63</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:rcs_reduce4x1">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000086"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L322" class="lean_decl">CollatzMapBasics.rcs_reduce4x1</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For any \(n \in \mathbb {N}\), \(R(\text{reduce4x1}(n)) = R(n)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000086">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We proceed by strong induction on \(n\). If \(n \not\equiv 5 \pmod{8}\), then \(\text{reduce4x1}(n) = n\) and the result is trivial. If \(n \equiv 5 \pmod{8}\), then \(n = 4k+1\) for some odd \(k = (n-1)/4\). By the definition of \(\text{reduce4x1}\), \(\text{reduce4x1}(n) = \text{reduce4x1}(k)\). By induction, \(R(\text{reduce4x1}(k)) = R(k)\). By Lemma&#160;<a href="sect0006.html#lemma:R_4n_add_1">55</a>, \(R(n) = R(4k+1) = R(k)\). Thus \(R(\text{reduce4x1}(n)) = R(n)\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:primitives_from_distinct_generators_ne">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">64</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:primitives_from_distinct_generators_ne">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000087"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L342" class="lean_decl">CollatzMapBasics.primitives_from_distinct_generators_ne</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(x_1, x_2 \in \mathbb {N}\) and \(y_1, y_2\) be their respective images under \(R\), with \(y_1 \neq y_2\). Then \(\text{reduce4x1}(x_1) \neq \text{reduce4x1}(x_2)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000087">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Suppose for contradiction that \(\text{reduce4x1}(x_1) = \text{reduce4x1}(x_2)\). Then by Lemma&#160;<a href="sect0006.html#lemma:rcs_reduce4x1">63</a>, \(y_1 = R(x_1) = R(\text{reduce4x1}(x_1)) = R(\text{reduce4x1}(x_2)) = R(x_2) = y_2\), contradicting \(y_1 \neq y_2\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:exists_large_not_div3_from_seed">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">65</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:exists_large_not_div3_from_seed">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000088"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L353" class="lean_decl">CollatzMapBasics.exists_large_not_div3_from_seed</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Given a level \(m \ge 1\), a seed \(y_0 {\gt} 1\) that is odd and satisfies \(R^m(y_0) = 1\), and \(B \in \mathbb {N}\), there exists an odd \(y {\gt} B\) with \(y {\gt} 1\), \(y \not\equiv 0 \pmod{3}\), and \(R^m(y) = 1\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000088">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We first show by induction on \(B\) that there exists an odd \(y {\gt} B\) with \(y {\gt} 1\) and \(R^m(y) = 1\). The base case \(B=0\) is given by \(y_0\). For the inductive step, if \(y {\gt} B\) satisfies the conditions, let \(y' = 4y + 1\). Then \(y' {\gt} 4B + 1 {\gt} B+1\), \(y'\) is odd, \(y' {\gt} 1\), and \(R^m(y') = R^m(y) = 1\) by Lemma&#160;<a href="sect0006.html#lemma:R_iter_4n_add_1">56</a>. </p>
-<p>Now, fixed such a \(y {\gt} B\) with \(R^m(y) = 1\) and \(y\) odd, \(y {\gt} 1\). If \(y \not\equiv 0 \pmod{3}\) we are done. Otherwise, if \(y \equiv 0 \pmod{3}\), consider \(y' = 4y + 1\). Then \(y' {\gt} y {\gt} B\), \(y'\) is odd, \(y' {\gt} 1\), and \(R^m(y') = 1\). Finally, \(4y + 1 \equiv 4(0) + 1 \equiv 1 \pmod{3}\), so \(y' \not\equiv 0 \pmod{3}\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:infinite_primitives">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">66</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0006.html#lemma:infinite_primitives">#</a>
-    
-    <a class="icon proof" href="sect0006.html#a0000000089"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L387" class="lean_decl">CollatzMapBasics.infinite_primitives</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For every level \(m \ge 2\), there are infinitely many primitive numbers at level \(m\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000089">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We proceed by induction on \(m \ge 2\). Base case \(m=2\): Let \(B \in \mathbb {N}\). We apply Lemma&#160;<a href="sect0006.html#lemma:exists_large_not_div3_from_seed">65</a> starting from the seed \(y_0 = 5\) at level 1 (with \(R(5)=1\)) to find an odd \(y {\gt} 2B + 2\) with \(y \not\equiv 0 \pmod{3}\) and \(R(y) = 1\). By Lemma&#160;<a href="sect0006.html#lemma:odd_node_generates_primitive">61</a>, there exists a primitive \(n\) at level 2 such that \(R(n) = y\). Since \(2R(n) \le 3n + 1\) (by Lemma&#160;<a href="sect0006.html#lemma:rcs_ge">57</a>), \(n \ge (2y - 1)/3 {\gt} \frac{4B+3}{3} {\gt} B\). Thus \(n {\gt} B\) is the required primitive. </p>
-<p>Inductive step \(m \to m+1\): Suppose there is a primitive \(p\) at level \(m\). By Lemma&#160;<a href="sect0006.html#lemma:exists_large_not_div3_from_seed">65</a>, there exists an odd \(y {\gt} 2B + 2\) with \(y {\gt} 1\), \(y \not\equiv 0 \pmod{3}\), and \(R^m(y) = 1\). By Lemma&#160;<a href="sect0006.html#lemma:odd_node_generates_primitive">61</a>, there is a primitive \(n\) at level \(m+1\) with \(R(n) = y\). As in the base case, the bound \(2R(n) \le 3n + 1\) ensures \(n {\gt} B\). </p>
-
-  </div>
-</div>
+<h1 id="a0000000007">2 The Reduced Collatz Map</h1>
 
 </div> <!--main-text -->
+<nav class=local_toc>
+<ul>
+  <li>  
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+  </li>
+  <li>  
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+  </li>
+</ul>
+</nav>
 </div> <!-- content-wrapper -->
 </div> <!-- content -->
 </div> <!-- wrapper -->
@@ -651,11 +114,11 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="sect0005.html" title="The Reduced Collatz Map"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="sect0005.html" title="The Collatz Graph"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="sect0001.html" title="The Collatz Conjecture"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="index.html" title="Collatz Map Basics"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0007.html" title="The Terras Map"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0007.html" title="Definitions"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

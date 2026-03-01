@@ -12,8 +12,8 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Collatz Map Basics: The Reduced Collatz Map</title>
-<link rel="next" href="sect0006.html" title="Primitives of The Reduced Map" />
+<title>Collatz Map Basics: The Collatz Graph</title>
+<link rel="next" href="sect0006.html" title="The Reduced Collatz Map" />
 <link rel="prev" href="sect0004.html" title="The Collatz Conjecture" />
 <link rel="up" href="sect0001.html" title="The Collatz Conjecture" />
 <link rel="stylesheet" href="styles/theme-white.css" />
@@ -46,26 +46,39 @@
   <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
  </li>
 <li class=" active current">
-  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
- </li>
-<li class="">
-  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Collatz Graph</span></a>
  </li>
 
   </ul>
  </li>
 <li class="">
-  <a href="sect0007.html"><span class="toc_ref">2</span> <span class="toc_entry">The Terras Map</span></a>
+  <a href="sect0006.html"><span class="toc_ref">2</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0008.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
  </li>
 <li class="">
-  <a href="sect0009.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Parity Vectors</span></a>
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+ </li>
+
+  </ul>
  </li>
 <li class="">
-  <a href="sect0010.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+  <a href="sect0009.html"><span class="toc_ref">3</span> <span class="toc_entry">The Compact Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
  </li>
 
   </ul>
@@ -79,8 +92,8 @@
 
 
 <div class="main-text">
-<h1 id="a0000000006">1.4 The Reduced Collatz Map</h1>
-<div class="definition_thmwrapper theorem-style-definition" id="def:reduced_collatz_step">
+<h1 id="a0000000006">1.4 The Collatz Graph</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:collatz_graph">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
@@ -93,7 +106,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#def:reduced_collatz_step">#</a>
+    <a class="icon proof" href="sect0005.html#def:collatz_graph">#</a>
     
     
     
@@ -101,7 +114,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L7" class="lean_decl">CollatzMapBasics.reduced_collatz_step</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/TC.lean#L56" class="lean_decl">CollatzMapBasics.collatz_graph</a></li>
           
         </ul>
     </div>
@@ -109,30 +122,16 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>The reduced Collatz map \(R: \mathbb {N}\to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000060">
-<p>
-  <div class="equation_content">
-    \begin{equation}  R(n) = \frac{3n+1}{2^{v_2(3n+1)}} \end{equation}
-  </div>
-  <span class="equation_label">17</span>
-</p>
-</div>
-<p> where \(v_2(m)\) is the dyadic valuation of \(m\). In short \(R(n)=\) odd part of \(3n+1\). </p>
+  <p>The Collatz graph \(\mathcal{G}\) is a directed graph on \(\mathbb {N}\) with an edge from \(n\) to \(T(n)\) for all \(n \in \mathbb {N}\). We consider its associated simple undirected graph \(\mathcal{G}'\). </p>
 
   </div>
 </div>
-<p> This map seems to have been introduced by Crandall<span class="cite">
-	[
-	<a href="sect0010.html#crandall78" >1</a>
-	]
-</span>. One of its advantages is that multiplications by 3 are constant for each step, regardless if \(n\) is even or odd. </p>
-<div class="definition_thmwrapper theorem-style-definition" id="def:R_iter">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:collatz_graph_adj_iff">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
     </span>
-    <span class="definition_thmlabel">39</span>
+    <span class="lemma_thmlabel">39</span>
     <div class="thm_header_extras">
 
     
@@ -140,7 +139,10 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#def:R_iter">#</a>
+    <a class="icon proof" href="sect0005.html#lemma:collatz_graph_adj_iff">#</a>
+    
+    <a class="icon proof" href="sect0005.html#a0000000063"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
     
     
     
@@ -148,36 +150,31 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L9" class="lean_decl">CollatzMapBasics.R_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/TC.lean#L59" class="lean_decl">CollatzMapBasics.collatz_graph_adj_iff</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="definition_thmcontent">
-  <p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the reduced Collatz map \(R^k: \mathbb {N} \to \mathbb {N}\) is defined recursively by </p>
-<div class="equation" id="a0000000061">
-<p>
-  <div class="equation_content">
-    \begin{equation}  R^0(n) = n \end{equation}
-  </div>
-  <span class="equation_label">18</span>
-</p>
-</div>
-<p> and </p>
-<div class="equation" id="a0000000062">
-<p>
-  <div class="equation_content">
-    \begin{equation}  R^{k+1}(n) = R^k(R(n)). \end{equation}
-  </div>
-  <span class="equation_label">19</span>
-</p>
-</div>
+  <div class="lemma_thmcontent">
+  <p>Two distinct vertices \(a, b\) are adjacent in \(\mathcal{G}'\) if and only if \(b = T(a)\) or \(a = T(b)\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:R_zero">
+<div class="proof_wrapper" id="a0000000063">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Immediate from the definition of the simple graph associated with a directed graph. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_reachable">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
@@ -190,9 +187,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#lemma:R_zero">#</a>
+    <a class="icon proof" href="sect0005.html#lemma:T_iter_reachable">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000063"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000064"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -201,7 +198,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L17" class="lean_decl">CollatzMapBasics.R_zero</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/TC.lean#L63" class="lean_decl">CollatzMapBasics.T_iter_reachable</a></li>
           
         </ul>
     </div>
@@ -209,11 +206,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>\(R(0) = 1\). </p>
+  <p>For any \(k, n \in \mathbb {N}\), \(T^k(n)\) is reachable from \(n\) in \(\mathcal{G}'\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000063">
+<div class="proof_wrapper" id="a0000000064">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -221,11 +218,11 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By definition, \(R(0) = \text{odd part of } (3 \cdot 0 + 1) = \text{odd part of } 1 = 1\). </p>
+  <p>By induction on \(k\), following the edges \((T^i(n), T^{i+1}(n))\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:R_one">
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:confluence_step">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
@@ -238,9 +235,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#lemma:R_one">#</a>
+    <a class="icon proof" href="sect0005.html#lemma:confluence_step">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000064"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000065"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -249,7 +246,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L21" class="lean_decl">CollatzMapBasics.R_one</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/TC.lean#L73" class="lean_decl">CollatzMapBasics.confluence_step</a></li>
           
         </ul>
     </div>
@@ -257,11 +254,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>\(R(1) = 1\). </p>
+  <p>If \(T^i(a) = T^j(b)\) and \(b\) is adjacent to \(c\) in \(\mathcal{G}'\), then there exist \(i', j'\) such that \(T^{i'}(a) = T^{j'}(c)\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000064">
+<div class="proof_wrapper" id="a0000000065">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -269,11 +266,11 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By definition, \(R(1) = \text{odd part of } (3 \cdot 1 + 1) = \text{odd part of } 4 = 1\). </p>
+  <p>If \(c = T(b)\), then \(T^i(a) = T^j(b)\), so \(T^{i+1}(a) = T(T^i(a)) = T(T^j(b)) = T^{j+1}(b) = T^j(c)\). If \(b = T(c)\), then \(T^i(a) = T^j(b) = T^j(T(c)) = T^{j+1}(c)\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:reduced_collatz_step_pos">
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:confluence_of_reachable">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
@@ -286,86 +283,18 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_pos">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000065"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L24" class="lean_decl">CollatzMapBasics.reduced_collatz_step_pos</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For all \(n \in \mathbb {N}\), \(R(n) \geq 1\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000065">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Since \(3n + 1 \geq 1\) for all \(n\), the odd part of \(3n+1\) is a positive divisor of a positive number, hence \(R(n) \geq 1\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:R_pos">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">43</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:R_pos">#</a>
+    <a class="icon proof" href="sect0005.html#lemma:confluence_of_reachable">#</a>
     
     <a class="icon proof" href="sect0005.html#a0000000066"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
-    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
-</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Uses</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="sect0005.html#lemma:reduced_collatz_step_pos">Lemma 42</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
-    
     
     <div class="lean_declarations">
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L28" class="lean_decl">CollatzMapBasics.R_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/TC.lean#L88" class="lean_decl">CollatzMapBasics.confluence_of_reachable</a></li>
           
         </ul>
     </div>
@@ -373,7 +302,7 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p> For all \(n, i \in \mathbb {N}\) with \(n \geq 1\), we have \(R^i(n) \geq 1\). </p>
+  <p>If \(a\) and \(b\) are reachable in \(\mathcal{G}'\), then they have a common descendant under \(T\), i.e., there exist \(i, j\) such that \(T^i(a) = T^j(b)\). </p>
 
   </div>
 </div>
@@ -385,16 +314,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>We proceed by induction on \(i\). The base case \(i = 0\) is immediate since \(R^0(n) = n \geq 1\). For the inductive step, \(R^{i+1}(n) = R^i(R(n))\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_pos">42</a>, \(R(n) \geq 1\), so the induction hypothesis gives \(R^i(R(n)) \geq 1\). </p>
+  <p>By induction on the path length between \(a\) and \(b\), using Lemma&#160;<a href="sect0005.html#lemma:confluence_step">41</a>. </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:reduced_collatz_step_odd">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
+<div class="theorem_thmwrapper theorem-style-plain" id="theorem:collatz_graph_weakly_connected_iff_collatz">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
     </span>
-    <span class="lemma_thmlabel">44</span>
+    <span class="theorem_thmlabel">43</span>
     <div class="thm_header_extras">
 
     
@@ -402,7 +331,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_odd">#</a>
+    <a class="icon proof" href="sect0005.html#theorem:collatz_graph_weakly_connected_iff_collatz">#</a>
     
     <a class="icon proof" href="sect0005.html#a0000000067"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -413,15 +342,15 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L33" class="lean_decl">CollatzMapBasics.reduced_collatz_step_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/TC.lean#L101" class="lean_decl">CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p>For all \(n \in \mathbb {N}\), \(R(n)\) is odd, i.e. \(R(n) \equiv 1 \pmod{2}\). </p>
+  <div class="theorem_thmcontent">
+  <p>The Collatz graph \(\mathcal{G}\) restricted to positive integers is weakly connected (i.e., any two \(a, b \ge 1\) are reachable in \(\mathcal{G}'\)) if and only if the Collatz conjecture holds. </p>
 
   </div>
 </div>
@@ -433,520 +362,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By definition, \(R(n)\) is the odd part of \(3n+1\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:R_odd">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">45</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:R_odd">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000068"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
-</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Uses</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="sect0005.html#lemma:reduced_collatz_step_odd">Lemma 44</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L38" class="lean_decl">CollatzMapBasics.R_odd</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p> For all \(n \in \mathbb {N}\) and \(i \geq 1\), \(R^i(n)\) is odd, i.e. \(R^i(n) \equiv 1 \pmod{2}\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000068">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We proceed by induction on \(i\). The base case \(i = 1\) follows directly from Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_odd">44</a>, since \(R^1(n) = R(n)\) is odd. For the inductive step, \(R^{i+1}(n) = R^i(R(n))\). If \(i \geq 1\), the induction hypothesis gives that \(R^i(R(n))\) is odd. If \(i = 0\), then \(R^{i+1}(n) = R^1(n) = R(n)\), which is odd by Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_odd">44</a>. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:not_exists_R_with_m_div3">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">46</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:not_exists_R_with_m_div3">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000069"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L48" class="lean_decl">CollatzMapBasics.not_exists_R_with_m_div3</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If \(m \equiv 0 \pmod{3}\), then there is no \(n \in \mathbb {N}\) such that \(R(n) = m\). In other words, multiples of \(3\) are not in the image of \(R\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000069">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Suppose for contradiction that \(R(n) = m\) for some \(n\), with \(3 \mid m\). Since \(R(n)\) is the odd part of \(3n+1\), we have \(R(n) \mid 3n+1\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:exists_R_with_m_not_div3">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">47</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:exists_R_with_m_not_div3">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000070"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L57" class="lean_decl">CollatzMapBasics.exists_R_with_m_not_div3</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(m {\gt} 0\) be odd with \(m \not\equiv 0 \pmod{3}\). Then there exists an odd \(n {\gt} 1\) such that \(R(n) = m\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000070">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>If \(m = 1\), take \(n = 5\); one checks \(R(5) = 1\) by computation. </p>
-<p>If \(m {\gt} 1\), we split on the residue of \(m\) modulo \(3\): </p>
-<ul class="itemize">
-  <li><p>If \(m \equiv 1 \pmod{3}\): set \(n = (4m - 1)/3\). Then \(3 \mid (4m-1)\) and \(3n + 1 = 4m = 2^2 \cdot m\). Since \(m\) is odd, the odd part of \(2^2 \cdot m\) is \(m\), so \(R(n) = m\). One verifies \(n\) is odd and \(n {\gt} 1\). </p>
-</li>
-  <li><p>If \(m \equiv 2 \pmod{3}\): set \(n = (2m - 1)/3\). Then \(3 \mid (2m-1)\) and \(3n + 1 = 2m = 2^1 \cdot m\). Since \(m\) is odd, the odd part of \(2m\) is \(m\), so \(R(n) = m\). One verifies \(n\) is odd and \(n {\gt} 1\). </p>
-</li>
-</ul>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:reduced_collatz_step_iff_mod4">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">48</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_iff_mod4">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000071"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L67" class="lean_decl">CollatzMapBasics.reduced_collatz_step_iff_mod4</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For any odd \(n {\gt} 0\), \(R(n) {\gt} n\) if and only if \(n \equiv 3 \pmod{4}\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000071">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>(\(\Rightarrow \)) Suppose \(n \equiv 1 \pmod{4}\), say \(n = 4k + 1\). Then \(3n + 1 = 12k + 4 = 2^2(3k + 1)\). The reduced step is \(R(n) = \text{odd part of } (3k + 1) \le 3k + 1\). Since \(3k + 1 {\lt} 4k + 1\) (for \(k \ge 0\)), we have \(R(n) {\lt} n\), a contradiction. Thus we must have \(n \equiv 3 \pmod{4}\). </p>
-<p>(\(\Leftarrow \)) Suppose \(n \equiv 3 \pmod{4}\), say \(n = 4k + 3\). Then \(3n + 1 = 12k + 10 = 2(6k + 5)\). Since \(6k + 5\) is odd, \(R(n) = 6k + 5\). Since \(k \ge 0\), we have \(6k + 5 {\gt} 4k + 3\), so \(R(n) {\gt} n\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:reduced_collatz_step_implies_collatz_iter">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">49</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_step_implies_collatz_iter">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000072"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L101" class="lean_decl">CollatzMapBasics.reduced_collatz_step_implies_collatz_iter</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If \(n {\gt} 0\) is odd and \(R(n) = m\), then there exists \(i \ge 1\) such that \(C^i(n) = m\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000072">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>By definition, \(R(n)\) is the odd part of \(3n+1\), so \(3n+1 = 2^k \cdot m\) for some \(k \in \mathbb {N}\). Since \(n\) is odd, \(3n+1\) is even, so \(k \ge 1\). One iteration of the Collatz map on \(n\) gives \(C^1(n) = 3n+1 = 2^k \cdot m\). By Lemma&#160;<a href="sect0003.html#lemma:collatz_iter_two_pow_mul">25</a>, applying the Collatz map \(k\) more times to \(2^k \cdot m\) yields \(C^k(2^k \cdot m) = m\). Thus \(C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:reduced_collatz_iter_implies_collatz_iter">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">50</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000073"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L119" class="lean_decl">CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If \(n\) is odd and \(R^k(n) = m\), then there exists \(i \ge k\) such that \(C^i(n) = m\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000073">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We proceed by induction on \(k\). The base case \(k=0\) is trivial as \(R^0(n) = n = C^0(n)\). For the inductive step \(k+1\), let \(n_1 = R(n)\). By the induction hypothesis, since \(R^k(n_1) = m\), there exists \(i \ge k\) such that \(C^i(n_1) = m\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_step_implies_collatz_iter">49</a>, there exists \(j \ge 1\) such that \(C^j(n) = n_1\). Then \(C^{i+j}(n) = C^i(C^j(n)) = C^i(n_1) = m\). Since \(i \ge k\) and \(j \ge 1\), we have \(i+j \ge k+1\). </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:count_odds">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">51</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#def:count_odds">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L129" class="lean_decl">CollatzMapBasics.count_odds</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>For \(d, n \in \mathbb {N}\), the number of odd steps in the first \(d\) iterations of the standard Collatz map starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000074">
-<p>
-  <div class="equation_content">
-    \begin{equation}  \text{countOdds}(d, n) = \sum _{j=0}^{d-1} [C^j(n) \text{ is odd}] \end{equation}
-  </div>
-  <span class="equation_label">20</span>
-</p>
-</div>
-<p> where \([P]\) is the Iverson bracket. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:ordCompl_collatz_iter">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">52</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:ordCompl_collatz_iter">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000075"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L164" class="lean_decl">CollatzMapBasics.ordCompl_collatz_iter</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(n \in \mathbb {N}\) be odd. For any \(d \in \mathbb {N}\), the odd part of \(C^d(n)\) is equal to \(R^k(n)\), where \(k = \text{countOdds}(d, n)\). That is, </p>
-<div class="equation" id="a0000000076">
-<p>
-  <div class="equation_content">
-    \begin{equation}  \text{odd part of } C^d(n) = R^k(n). \end{equation}
-  </div>
-  <span class="equation_label">21</span>
-</p>
-</div>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000075">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>We proceed by induction on \(d\). The base case \(d=0\) is trivial as \(C^0(n) = n\) is odd, its odd part is \(n\), and \(\text{count\_ odds}(0, n) = 0\), with \(R^0(n) = n\). </p>
-<p>For the inductive step \(d+1\), let \(C^d(n) = m\). By induction, the odd part of \(m\) is \(R^{\text{countOdds}(d, n)}(n)\). If \(m\) is even, then \(C^{d+1}(n) = m/2\). The odd part of \(m/2\) is the same as the odd part of \(m\). Since \(m\) is even, \(\text{countOdds}(d+1, n) = \text{countOdds}(d, n)\), and the equality holds. If \(m\) is odd, then \(C^{d+1}(n) = 3m+1\). Since \(m\) is odd, it equals its own odd part, \(m = R^{\text{countOdds}(d, n)}(n)\). The odd part of \(3m+1\) is \(R(m) = R(R^{\text{countOdds}(d, n)}(n)) = R^{\text{countOdds}(d, n) + 1}(n)\). Since \(m\) is odd, \(\text{countOdds}(d+1, n) = \text{countOdds}(d, n) + 1\), confirming the result. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:collatz_cycle_iff_reduced_collatz_cycle">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">53</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:collatz_cycle_iff_reduced_collatz_cycle">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000077"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L184" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(n \in \mathbb {N}\) be odd. There exists a cycle in the standard Collatz map starting from \(n\) if and only if there exists a cycle in the reduced Collatz map starting from \(n\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000077">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>(\(\Rightarrow \)) Suppose there exists \(k {\gt} 0\) such that \(C^k(n) = n\). By Lemma&#160;<a href="sect0005.html#lemma:ordCompl_collatz_iter">52</a>, the odd part of \(C^k(n)\) is \(R^j(n)\) where \(j = \text{countOdds}(k, n)\). Since \(n\) is odd, its odd part is \(n\), so \(R^j(n) = n\). Since \(n\) is odd and \(k {\gt} 0\), at least one standard Collatz step must have occurred, and since \(n \ge 1\), we must have \(j {\gt} 0\). Thus \(n\) is part of a reduced cycle. </p>
-<p>(\(\Leftarrow \)) Suppose there exists \(j {\gt} 0\) such that \(R^j(n) = n\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">50</a>, there exists \(k \ge j\) such that \(C^k(n) = n\). Since \(j {\gt} 0\), we have \(k {\gt} 0\), so \(n\) is part of a standard cycle. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:collatz_bounded_iff_reduced_collatz_bounded">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">54</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:collatz_bounded_iff_reduced_collatz_bounded">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000078"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Reduced.lean#L199" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(n \in \mathbb {N}\) be odd. The orbit of \(n\) under the standard Collatz map is bounded if and only if its orbit under the reduced Collatz map is bounded. </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000078">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>(\(\Rightarrow \)) Suppose there exists \(B\) such that \(C^k(n) \le B\) for all \(k \ge 0\). By Lemma&#160;<a href="sect0005.html#lemma:reduced_collatz_iter_implies_collatz_iter">50</a>, every reduced iterate \(R^j(n)\) is equal to some \(C^k(n)\), so \(R^j(n) \le B\) for all \(j \ge 0\). </p>
-<p>(\(\Leftarrow \)) Suppose there exists \(B\) such that \(R^j(n) \le B\) for all \(j \ge 0\). We claim that \(C^k(n) \le \max (n, 3B+1)\) for all \(k \ge 0\). We proceed by induction on \(k\). The base case \(k=0\) is \(C^0(n) = n\), which is clearly bounded. For the inductive step, let \(C^k(n) = m\). If \(m\) is even, \(C^{k+1}(n) = m/2 \le m\), which is bounded by the induction hypothesis. If \(m\) is odd, then by Lemma&#160;<a href="sect0005.html#lemma:ordCompl_collatz_iter">52</a>, \(m\) is the odd part of \(C^k(n)\), which is \(R^j(n)\) for \(j = \text{countOdds}(k, n)\). Thus \(m \le B\). Then \(C^{k+1}(n) = 3m+1 \le 3B+1\), which is within the bound. </p>
+  <p>(\(\Rightarrow \)) Assume connectivity. For any \(n \ge 1\), \(n\) is reachable from 1. By Lemma&#160;<a href="sect0005.html#lemma:confluence_of_reachable">42</a>, there exist \(i, j\) such that \(T^i(n) = T^j(1)\). Since 1 is in a cycle \(\{ 1, 2\} \), \(T^j(1) \in \{ 1, 2\} \), so \(T^i(n)\) eventually hits 1. By Lemma&#160;<a href="sect0013.html#lemma:T_iter_to_collatz_iter">108</a>, \(n\) eventually hits 1 under \(C\). (\(\Leftarrow \)) Assume the Collatz conjecture. For any \(n \ge 1\), \(n\) eventually hits 1 under \(C\), and by Lemma&#160;<a href="sect0013.html#lemma:collatz_iter_to_T_iter">109</a>, it also hits 1 under \(T\). By Lemma&#160;<a href="sect0005.html#lemma:T_iter_reachable">40</a>, \(n\) is reachable from 1 in \(\mathcal{G}'\). Thus any \(a, b \ge 1\) are both reachable from 1, and hence reachable from each other. </p>
 
   </div>
 </div>
@@ -965,7 +381,7 @@
 </a>
   <a href="sect0001.html" title="The Collatz Conjecture"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0006.html" title="Primitives of The Reduced Map"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0006.html" title="The Reduced Collatz Map"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

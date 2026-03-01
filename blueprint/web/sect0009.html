@@ -12,10 +12,10 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Collatz Map Basics: Parity Vectors</title>
-<link rel="next" href="sect0010.html" title="Linear Decomposition" />
-<link rel="prev" href="sect0008.html" title="Definitions" />
-<link rel="up" href="sect0007.html" title="The Terras Map" />
+<title>The Compact Map</title>
+<link rel="next" href="sect0010.html" title="Definitions" />
+<link rel="prev" href="sect0008.html" title="Primitives of The Reduced Map" />
+<link rel="up" href="index.html" title="Collatz Map Basics" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -46,26 +46,39 @@
   <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
  </li>
 <li class="">
-  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
- </li>
-<li class="">
-  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Collatz Graph</span></a>
  </li>
 
   </ul>
  </li>
-<li class=" active">
-  <a href="sect0007.html"><span class="toc_ref">2</span> <span class="toc_entry">The Terras Map</span></a>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">2</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="sect0009.html"><span class="toc_ref">3</span> <span class="toc_entry">The Compact Map</span></a>
   <span class="expand-toc">▼</span>
   <ul class="sub-toc-1 active">
      <li class="">
-  <a href="sect0008.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
- </li>
-<li class=" active current">
-  <a href="sect0009.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Parity Vectors</span></a>
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
  </li>
 <li class="">
-  <a href="sect0010.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
  </li>
 
   </ul>
@@ -79,465 +92,25 @@
 
 
 <div class="main-text">
-<h1 id="a0000000010">2.2 Parity Vectors</h1>
-<div class="definition_thmwrapper theorem-style-definition" id="def:ParityVector">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">77</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:ParityVector">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L7" class="lean_decl">CollatzMapBasics.ParityVector</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>A parity vector is a finite sequence of bits (0 and 1). In the formalization, it is represented as a list of boolean values, where <span class="ttfamily">false</span> corresponds to 0 and <span class="ttfamily">true</span> corresponds to 1. </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:ParityVector_q">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">78</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:ParityVector_q">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L19" class="lean_decl">CollatzMapBasics.ParityVector.q</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>For a parity vector \(v\), \(q(v)\) is the number of ones (true entries) in \(v\). </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:ParityVector_size">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">79</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:ParityVector_size">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L22" class="lean_decl">CollatzMapBasics.ParityVector.size</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>The size of a parity vector \(v\), denoted \(|v|\), is its length. </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:ParityVector_onesRatio">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">80</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:ParityVector_onesRatio">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L25" class="lean_decl">CollatzMapBasics.ParityVector.onesRatio</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>The ones-ratio of a parity vector \(v\) is the rational number \(q(v) / |v|\). If the vector is empty, the ratio is defined to be 0. </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:ParityVector_V">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">81</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:ParityVector_V">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L28" class="lean_decl">CollatzMapBasics.ParityVector.V</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>For \(j, n \in \mathbb {N}\), the parity vector \(V(j, n)\) of length \(j\) for the Collatz sequence starting at \(n\) is defined as </p>
-<div class="equation" id="a0000000097">
-<p>
-  <div class="equation_content">
-    \begin{equation}  V(j, n) = (X(n), X(T(n)), \dots , X(T^{j-1}(n))). \end{equation}
-  </div>
-  <span class="equation_label">3</span>
-</p>
-</div>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:V_length">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">82</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#lemma:V_length">#</a>
-    
-    <a class="icon proof" href="sect0009.html#a0000000098"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L32" class="lean_decl">CollatzMapBasics.ParityVector.V_length</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>The length of \(V(j, n)\) is \(j\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000098">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Immediate from the definition. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:V_get">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">83</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#lemma:V_get">#</a>
-    
-    <a class="icon proof" href="sect0009.html#a0000000099"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L35" class="lean_decl">CollatzMapBasics.ParityVector.V_get</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For any \(i {\lt} j\), the \(i\)-th entry of \(V(j, n)\) is \(X(T^i(n))\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000099">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Immediate from the definition. </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:ParityVector_Precedes">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">84</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:ParityVector_Precedes">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L46" class="lean_decl">CollatzMapBasics.ParityVector.Precedes</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>The elementary precedence relation \(\prec _e\) is defined by swapping a \(01\) subword with \(10\): </p>
-<div class="equation" id="a0000000100">
-<p>
-  <div class="equation_content">
-    \begin{equation}  w_1 01 w_2 \prec _e w_1 10 w_2. \end{equation}
-  </div>
-  <span class="equation_label">4</span>
-</p>
-</div>
-<p> The precedence relation \(\preceq \) is the reflexive transitive closure of \(\prec _e\). </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:E_vec">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
-    </span>
-    <span class="definition_thmlabel">85</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#def:E_vec">#</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L55" class="lean_decl">CollatzMapBasics.E_vec</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>For \(k, n \in \mathbb {N}\), the vector \(E(k, n)\) is the function from \(\{ 0, \dots , k-1\} \) to \(\{ 0, 1\} \) defined by </p>
-<div class="equation" id="a0000000101">
-<p>
-  <div class="equation_content">
-    \begin{equation}  E(k, n)(i) = X(T^i(n)). \end{equation}
-  </div>
-  <span class="equation_label">5</span>
-</p>
-</div>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_eq_E_vec_sum">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">86</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#lemma:num_odd_steps_eq_E_vec_sum">#</a>
-    
-    <a class="icon proof" href="sect0009.html#a0000000102"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L64" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_E_vec_sum</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>The number of odd steps \(Q(k, n)\) is equal to the sum of the entries of \(E(k, n)\): </p>
-<div class="equation" id="a0000000103">
-<p>
-  <div class="equation_content">
-    \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} E(k, n)(i). \end{equation}
-  </div>
-  <span class="equation_label">6</span>
-</p>
-</div>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000102">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>By definition of \(Q(k, n)\) and \(E(k, n)\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_eq_of_E_vec_eq">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">87</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0009.html#lemma:num_odd_steps_eq_of_E_vec_eq">#</a>
-    
-    <a class="icon proof" href="sect0009.html#a0000000104"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Parity.lean#L74" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If \(E(k, m) = E(k, n)\), then \(Q(k, m) = Q(k, n)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000104">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Directly from Lemma&#160;<a href="sect0009.html#lemma:num_odd_steps_eq_E_vec_sum">86</a>. </p>
-
-  </div>
-</div>
+<h1 id="a0000000010">3 The Compact Map</h1>
 
 </div> <!--main-text -->
+<nav class=local_toc>
+<ul>
+  <li>  
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
+  </li>
+  <li>  
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
+  </li>
+  <li>  
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+  </li>
+  <li>  
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
+  </li>
+</ul>
+</nav>
 </div> <!-- content-wrapper -->
 </div> <!-- content -->
 </div> <!-- wrapper -->
@@ -547,11 +120,11 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="sect0008.html" title="Definitions"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="sect0008.html" title="Primitives of The Reduced Map"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="sect0007.html" title="The Terras Map"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="index.html" title="Collatz Map Basics"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0010.html" title="Linear Decomposition"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0010.html" title="Definitions"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

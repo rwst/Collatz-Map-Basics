@@ -12,9 +12,10 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Collatz Map Basics: Linear Decomposition</title>
-<link rel="prev" href="sect0009.html" title="Parity Vectors" />
-<link rel="up" href="sect0007.html" title="The Terras Map" />
+<title>Collatz Map Basics: Definitions</title>
+<link rel="next" href="sect0011.html" title="Parity Vectors" />
+<link rel="prev" href="sect0009.html" title="The Compact Map" />
+<link rel="up" href="sect0009.html" title="The Compact Map" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -45,26 +46,39 @@
   <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
  </li>
 <li class="">
-  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Collatz Graph</span></a>
+ </li>
+
+  </ul>
  </li>
 <li class="">
-  <a href="sect0006.html"><span class="toc_ref">1.5</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+  <a href="sect0006.html"><span class="toc_ref">2</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
  </li>
 
   </ul>
  </li>
 <li class=" active">
-  <a href="sect0007.html"><span class="toc_ref">2</span> <span class="toc_entry">The Terras Map</span></a>
+  <a href="sect0009.html"><span class="toc_ref">3</span> <span class="toc_entry">The Compact Map</span></a>
   <span class="expand-toc">▼</span>
   <ul class="sub-toc-1 active">
-     <li class="">
-  <a href="sect0008.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+     <li class=" active current">
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
  </li>
 <li class="">
-  <a href="sect0009.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Parity Vectors</span></a>
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
  </li>
-<li class=" active current">
-  <a href="sect0010.html"><span class="toc_ref">2.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
  </li>
 
   </ul>
@@ -78,13 +92,13 @@
 
 
 <div class="main-text">
-<h1 id="a0000000011">2.3 Linear Decomposition</h1>
-<div class="definition_thmwrapper theorem-style-definition" id="def:decomposition_correction">
+<h1 id="a0000000011">3.1 Definitions</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:T">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">88</span>
+    <span class="definition_thmlabel">73</span>
     <div class="thm_header_extras">
 
     
@@ -92,7 +106,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#def:decomposition_correction">#</a>
+    <a class="icon proof" href="sect0010.html#def:T">#</a>
     
     
     
@@ -100,7 +114,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L11" class="lean_decl">CollatzMapBasics.decomposition_correction</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L11" class="lean_decl">CollatzMapBasics.T</a></li>
           
         </ul>
     </div>
@@ -108,24 +122,35 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>For \(k, n \in \mathbb {N}\), the accumulated correction term \(Q(k, n)\) of the Terras map is defined recursively by \(Q(0, n) = 0\) and </p>
-<div class="equation" id="a0000000105">
+  <p>The compact Collatz map \(T: \mathbb {N} \to \mathbb {N}\) is defined by </p>
+<div class="equation" id="a0000000098">
 <p>
   <div class="equation_content">
-    \begin{equation}  Q(k+1, n) = 3^{X(T^k(n))} Q(k, n) + 2^k X(T^k(n)). \end{equation}
+    \begin{equation}  T(n) = \frac{n \cdot 3^{X(n)} + X(n)}{2} \end{equation}
   </div>
-  <span class="equation_label">7</span>
+  <span class="equation_label">1</span>
 </p>
 </div>
+<p> where \(X(n) = n \pmod2\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:decomposition_correction_eq_of_E_vec_eq">
+<p> \(T(n)\) was independently introduced by Terras (1976)<span class="cite">
+	[
+	<a href="sect0013.html#terras76" >5</a>
+	]
+</span> and Everett (in an equivalent form, 1977)<span class="cite">
+	[
+	<a href="sect0013.html#everett77" >2</a>
+	]
+</span>. It is also called the <b class="bf">Syracuse map</b>. </p>
+<p>One of the advantages of using \(T\) instead of \(C\) or \(R\) is that the number of divisions by 2 per step is the same, regardless if \(n\) is even or odd. This leads to formulae for \(T^i(n)\) that can be handled better, although they are still not closed in the usual sense. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_even">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">89</span>
+    <span class="lemma_thmlabel">74</span>
     <div class="thm_header_extras">
 
     
@@ -133,9 +158,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#lemma:decomposition_correction_eq_of_E_vec_eq">#</a>
+    <a class="icon proof" href="sect0010.html#lemma:T_even">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000106"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000099"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -144,7 +169,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L15" class="lean_decl">CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L13" class="lean_decl">CollatzMapBasics.T_even</a></li>
           
         </ul>
     </div>
@@ -152,11 +177,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>If \(E(k, m) = E(k, n)\), then \(Q(k, m) = Q(k, n)\). </p>
+  <p>If \(n\) is even, \(T(n) = n/2\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000106">
+<div class="proof_wrapper" id="a0000000099">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -164,16 +189,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\). </p>
+  <p>If \(n\) is even, \(X(n) = 0\), so \(T(n) = (n \cdot 3^0 + 0) / 2 = n/2\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:linear_decomposition">
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_odd">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">90</span>
+    <span class="lemma_thmlabel">75</span>
     <div class="thm_header_extras">
 
     
@@ -181,9 +206,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#lemma:linear_decomposition">#</a>
+    <a class="icon proof" href="sect0010.html#lemma:T_odd">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000107"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000100"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -192,7 +217,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L30" class="lean_decl">CollatzMapBasics.linear_decomposition</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L16" class="lean_decl">CollatzMapBasics.T_odd</a></li>
           
         </ul>
     </div>
@@ -200,20 +225,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>For any \(k, n \in \mathbb {N}\), the \(k\)-fold iteration of the Terras map \(T^k(n)\) satisfies the linear identity </p>
-<div class="equation" id="a0000000108">
-<p>
-  <div class="equation_content">
-    \begin{equation}  2^k T^k(n) = 3^{Q(k, n)} n + Q(k, n) \end{equation}
-  </div>
-  <span class="equation_label">8</span>
-</p>
-</div>
-<p> where \(Q(k, n)\) is the number of odd iterates as defined in Definition&#160;<a href="sect0008.html#def:num_odd_steps">74</a>. </p>
+  <p>If \(n\) is odd, \(T(n) = (3n + 1)/2\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000107">
+<div class="proof_wrapper" id="a0000000100">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -221,112 +237,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\), using the identity \(2 T(m) = 3^{X(m)} m + X(m)\). </p>
+  <p>If \(n\) is odd, \(X(n) = 1\), so \(T(n) = (n \cdot 3^1 + 1) / 2 = (3n + 1)/2\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_mono">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">91</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0010.html#lemma:num_odd_steps_mono">#</a>
-    
-    <a class="icon proof" href="sect0010.html#a0000000109"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L49" class="lean_decl">CollatzMapBasics.num_odd_steps_mono</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If \(j \le k\), then \(Q(j, n) \le Q(k, n)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000109">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>By definition of \(Q(k, n)\) as a sum of non-negative terms. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_succ">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">92</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0010.html#lemma:num_odd_steps_succ">#</a>
-    
-    <a class="icon proof" href="sect0010.html#a0000000110"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L54" class="lean_decl">CollatzMapBasics.num_odd_steps_succ</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>\(Q(k+1, n) = Q(k, n) + X(T^k(n))\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000110">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Immediate from the definition of \(Q(k, n)\). </p>
-
-  </div>
-</div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:decomposition_correction_sum">
+<div class="definition_thmwrapper theorem-style-definition" id="def:T_iter">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">93</span>
+    <span class="definition_thmlabel">76</span>
     <div class="thm_header_extras">
 
     
@@ -334,7 +254,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#def:decomposition_correction_sum">#</a>
+    <a class="icon proof" href="sect0010.html#def:T_iter">#</a>
     
     
     
@@ -342,7 +262,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L61" class="lean_decl">CollatzMapBasics.decomposition_correction_sum</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L20" class="lean_decl">CollatzMapBasics.T_iter</a></li>
           
         </ul>
     </div>
@@ -350,24 +270,16 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>The correction term \(Q(k, n)\) has the closed-form expression </p>
-<div class="equation" id="a0000000111">
-<p>
-  <div class="equation_content">
-    \begin{equation}  Q(k, n) = \sum _{j=0}^{k-1} X(T^j(n)) 2^j 3^{Q(k, n) - Q(j+1, n)}. \end{equation}
-  </div>
-  <span class="equation_label">9</span>
-</p>
-</div>
+  <p>For any \(k \in \mathbb {N}\), the \(k\)-fold iteration of the map \(T\) is defined recursively by \(T^0(n) = n\) and \(T^{k+1}(n) = T(T^k(n))\). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:decomposition_correction_eq_sum">
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_pos">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">94</span>
+    <span class="lemma_thmlabel">77</span>
     <div class="thm_header_extras">
 
     
@@ -375,9 +287,9 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#lemma:decomposition_correction_eq_sum">#</a>
+    <a class="icon proof" href="sect0010.html#lemma:T_pos">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000112"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000101"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -386,7 +298,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L65" class="lean_decl">CollatzMapBasics.decomposition_correction_eq_sum</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L36" class="lean_decl">CollatzMapBasics.T_pos</a></li>
           
         </ul>
     </div>
@@ -394,11 +306,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>The recursive definition of \(Q(k, n)\) is equivalent to the closed-form sum. </p>
+  <p>If \(n \ge 1\), then \(T(n) \ge 1\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000112">
+<div class="proof_wrapper" id="a0000000101">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -406,16 +318,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\). </p>
+  <p>If \(n\) is even, \(n \ge 2\), so \(n/2 \ge 1\). If \(n\) is odd, \(3n+1 \ge 4\), so \((3n+1)/2 \ge 2\). </p>
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:C">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_pos">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
     </span>
-    <span class="definition_thmlabel">95</span>
+    <span class="lemma_thmlabel">78</span>
     <div class="thm_header_extras">
 
     
@@ -423,7 +335,10 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#def:C">#</a>
+    <a class="icon proof" href="sect0010.html#lemma:T_iter_pos">#</a>
+    
+    <a class="icon proof" href="sect0010.html#a0000000102"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
     
     
     
@@ -431,7 +346,100 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L89" class="lean_decl">CollatzMapBasics.C</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L41" class="lean_decl">CollatzMapBasics.T_iter_pos</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(n \ge 1\), then \(T^k(n) \ge 1\) for all \(k \in \mathbb {N}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000102">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(k\), using Lemma&#160;<a href="sect0010.html#lemma:T_pos">77</a>. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_congr">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">79</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0010.html#lemma:T_congr">#</a>
+    
+    <a class="icon proof" href="sect0010.html#a0000000103"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L69" class="lean_decl">CollatzMapBasics.T_congr</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For any \(k, m, n \in \mathbb {N}\), if \(m \equiv n \pmod{2^{k+1}}\), then \(T(m) \equiv T(n) \pmod{2^k}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000103">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(m \equiv n \pmod{2^{k+1}}\). This implies \(m \equiv n \pmod2\), so \(X(m) = X(n)\). We have \(2 T(m) = 3^{X(m)} m + X(m)\) and \(2 T(n) = 3^{X(n)} n + X(n)\). Subtracting these yields \(2(T(m) - T(n)) = 3^{X(m)}(m - n)\). Since \(2^{k+1} \mid (m - n)\), we have \(2^k \mid (T(m) - T(n))\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:num_odd_steps">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">80</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0010.html#def:num_odd_steps">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L56" class="lean_decl">CollatzMapBasics.num_odd_steps</a></li>
           
         </ul>
     </div>
@@ -439,24 +447,24 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>The decomposition coefficient \(C(k, n)\) is the rational number </p>
-<div class="equation" id="a0000000113">
+  <p>The number of odd steps in the first \(k\) iterations of \(T\) starting from \(n\) is defined by </p>
+<div class="equation" id="a0000000104">
 <p>
   <div class="equation_content">
-    \begin{equation}  C(k, n) = \frac{3^{Q(k, n)}}{2^k}. \end{equation}
+    \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} X(T^i(n)). \end{equation}
   </div>
-  <span class="equation_label">10</span>
+  <span class="equation_label">2</span>
 </p>
 </div>
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:coeff_stopping_time">
+<div class="definition_thmwrapper theorem-style-definition" id="def:stopping_time">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">96</span>
+    <span class="definition_thmlabel">81</span>
     <div class="thm_header_extras">
 
     
@@ -464,7 +472,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#def:coeff_stopping_time">#</a>
+    <a class="icon proof" href="sect0010.html#def:stopping_time">#</a>
     
     
     
@@ -472,7 +480,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L93" class="lean_decl">CollatzMapBasics.coeff_stopping_time</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L91" class="lean_decl">CollatzMapBasics.stopping_time</a></li>
           
         </ul>
     </div>
@@ -480,16 +488,16 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>The coefficient stopping time \(\tau (n)\) is the smallest \(j \ge 1\) such that \(C(j, n) {\lt} 1\). If no such \(j\) exists, \(\tau (n) = \infty \). </p>
+  <p>The stopping time \(\sigma (n)\) of \(n\) under \(T\) is the smallest \(k \ge 1\) such that \(T^k(n) {\lt} n\). If no such \(k\) exists, \(\sigma (n) = \infty \). </p>
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="def:E">
+<div class="definition_thmwrapper theorem-style-definition" id="def:total_stopping_time">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">97</span>
+    <span class="definition_thmlabel">82</span>
     <div class="thm_header_extras">
 
     
@@ -497,7 +505,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0010.html#def:E">#</a>
+    <a class="icon proof" href="sect0010.html#def:total_stopping_time">#</a>
     
     
     
@@ -505,7 +513,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L100" class="lean_decl">CollatzMapBasics.E</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/6e8930c83afd4def665bfd539b41fd713bf4c9e7/CollatzMapBasics/Terras.lean#L109" class="lean_decl">CollatzMapBasics.total_stopping_time</a></li>
           
         </ul>
     </div>
@@ -513,188 +521,10 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>The correction ratio \(E(j, n)\) is the rational number </p>
-<div class="equation" id="a0000000114">
-<p>
-  <div class="equation_content">
-    \begin{equation}  E(j, n) = \frac{Q(j, n)}{2^j}. \end{equation}
-  </div>
-  <span class="equation_label">11</span>
-</p>
-</div>
+  <p>The total stopping time \(\sigma _\infty (n)\) of \(n\) under \(T\) is the smallest \(k \ge 1\) such that \(T^k(n) = 1\). If no such \(k\) exists, \(\sigma _\infty (n) = \infty \). </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_zero">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">98</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0010.html#lemma:E_zero">#</a>
-    
-    <a class="icon proof" href="sect0010.html#a0000000115"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L102" class="lean_decl">CollatzMapBasics.E_zero</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>\(E(0, n) = 0\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000115">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Trivial by definition. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_succ">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">99</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0010.html#lemma:E_succ">#</a>
-    
-    <a class="icon proof" href="sect0010.html#a0000000116"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L105" class="lean_decl">CollatzMapBasics.E_succ</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>The ratio \(E\) satisfies the recurrence </p>
-<div class="equation" id="a0000000117">
-<p>
-  <div class="equation_content">
-    \begin{equation}  E(k+1, n) = \frac{3^{X(T^k(n))}}{2} E(k, n) + \frac{X(T^k(n))}{2}. \end{equation}
-  </div>
-  <span class="equation_label">12</span>
-</p>
-</div>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000116">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>By diving the recurrence for \(Q(k, n)\) by \(2^{k+1}\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_step_strict_mono">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">100</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0010.html#lemma:E_step_strict_mono">#</a>
-    
-    <a class="icon proof" href="sect0010.html#a0000000118"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c24b3550c8627d67713a75b1c9659fca89547d40/CollatzMapBasics/Decomposition.lean#L115" class="lean_decl">CollatzMapBasics.E_step_strict_mono</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For a fixed parity \(x \in \{ 0, 1\} \), the step map \(a \mapsto \frac{3^x}{2} a + \frac{x}{2}\) is strictly monotone. </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000118">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Since \(3^x/2 {\gt} 0\) for \(x \in \{ 0, 1\} \). </p>
-
-  </div>
-</div>
-<dl class="bibliography">
-  <dt><a name="crandall78">1</a></dt>
-  <dd><p><i class="sc">Crandall, Richard E.</i>, <em>"On the “3𝑥+ 1” problem."</em>, Mathematics of computation 32.144 (1978): 1281-1292. </p>
-</dd>
-  <dt><a name="everett77">2</a></dt>
-  <dd><p><i class="sc">Everett, C. J.</i>, <em>"Iteration of the number-theoretic function \(f(2n)= n, f(2n+1)= 3n+2\)."</em>, Advances in Mathematics 25.1 (1977): 42-45. </p>
-</dd>
-  <dt><a name="lagarias">3</a></dt>
-  <dd><p><i class="sc">Lagarias, Jeffrey C.</i>, "The 3x+ 1 problem: An overview.", in: <em>The ultimate challenge: The 3x+1 Problem</em> (2010): 3-29. </p>
-</dd>
-  <dt><a name="rozier2025paradoxical">4</a></dt>
-  <dd><p><i class="sc">Rozier, Olivier and Terracol, Claude</i>, <em>Paradoxical behavior in Collatz sequences</em>, arXiv preprint arXiv:2502.00948, 2025 </p>
-</dd>
-  <dt><a name="terras76">5</a></dt>
-  <dd><p><i class="sc">Terras, Riho</i>, <em>"A stopping time problem on the positive integers."</em>, Acta Arithmetica 30 (1976): 241-252. </p>
-</dd>
-</dl>
-<p> <br /> </p>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -706,9 +536,11 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="sect0009.html" title="Parity Vectors"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="sect0009.html" title="The Compact Map"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="sect0007.html" title="The Terras Map"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="sect0009.html" title="The Compact Map"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0011.html" title="Parity Vectors"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

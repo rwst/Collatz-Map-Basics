@@ -15,10 +15,11 @@ The ones-ratio of a parity vector $v$ is the rational number $q(v) / |v|$. If th
 \end{definition}
 
 \begin{definition}\label{def:ParityVector_V}\lean{CollatzMapBasics.ParityVector.V}\leanok
-For $j, n \in \mathbb{N}$, the parity vector $V(j, n)$ of length $j$ for the Collatz sequence starting at $n$ is defined as
-\begin{equation}
+For $j, n \in \mathbb{N}$, the parity vector $V(j, n)$ of length $j$ for the compact Collatz
+sequence starting at $n$ is defined as
+\[
     V(j, n) = (X(n), X(T(n)), \dots, X(T^{j-1}(n))).
-\end{equation}
+\]
 \end{definition}
 
 \begin{lemma}\label{lemma:V_length}\lean{CollatzMapBasics.ParityVector.V_length}\leanok

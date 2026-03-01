@@ -1,0 +1,24 @@
+\begin{lemma}\label{lemma:T_step_collatz}\lean{CollatzMapBasics.T_step_collatz}\leanok
+For any $n \in \mathbb{N}$, one step of the compact Collatz map $T$ can be simulated by one or two
+steps of the original Collatz map $C$. Specifically, there exists $j \in \{1, 2\}$ such that $C^j(n) = T(n)$.
+\end{lemma}
+\begin{proof}\leanok
+We split into cases based on the parity of $n$.
+If $n$ is even, $T(n) = n/2 = C(n)$, so $j=1$.
+If $n$ is odd, $T(n) = (3n+1)/2 = C(3n+1)/2 = C(C(n))$, so $j=2$ (since $3n+1$ is even).
+\end{proof}
+
+\begin{lemma}\label{lemma:T_iter_to_collatz_iter}\lean{CollatzMapBasics.T_iter_to_collatz_iter}\leanok
+For any $k, n \in \mathbb{N}$, there exists $j \in \mathbb{N}$ such that $C^j(n) = T^k(n)$.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$, using Lemma~\ref{lemma:T_step_collatz}.
+\end{proof}
+
+\begin{lemma}\label{lemma:collatz_iter_to_T_iter}\lean{CollatzMapBasics.collatz_iter_to_T_iter}\leanok
+If $n \ge 1$ and $C^j(n) = 1$ for some $j \in \mathbb{N}$, then there exists $k \in \mathbb{N}$ such that $T^k(n) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $j$. In the base case $j=0$, $n=1=T^0(n)$. For the inductive step $j+1$, if $n$ is even, then $C(n) = n/2 = T(n)$, so we apply the induction hypothesis to $T(n)$. If $n$ is odd, then $C(n) = 3n+1$, and $C(3n+1) = (3n+1)/2 = T(n)$. Since $C^j(3n+1) = 1$, we apply the induction hypothesis to $3n+1$, which reaches 1 under $T$. Since $T(n)$ is a step in that sequence, $n$ also reaches 1 under $T$.
+\end{proof}
+

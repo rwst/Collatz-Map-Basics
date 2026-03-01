@@ -206,6 +206,11 @@ INPUT ./sections/collatz-conjecture.tex
 INPUT ./sections/collatz-conjecture.tex
 INPUT ./sections/collatz-conjecture.tex
 INPUT sections/collatz-conjecture.tex
+INPUT ./sections/graph.tex
+INPUT ./sections/graph.tex
+INPUT ./sections/graph.tex
+INPUT ./sections/graph.tex
+INPUT sections/graph.tex
 INPUT ./sections/reduced-map.tex
 INPUT ./sections/reduced-map.tex
 INPUT ./sections/reduced-map.tex
@@ -231,6 +236,11 @@ INPUT ./sections/decomposition.tex
 INPUT ./sections/decomposition.tex
 INPUT ./sections/decomposition.tex
 INPUT sections/decomposition.tex
+INPUT ./sections/TC-correspondence.tex
+INPUT ./sections/TC-correspondence.tex
+INPUT ./sections/TC-correspondence.tex
+INPUT ./sections/TC-correspondence.tex
+INPUT sections/TC-correspondence.tex
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out
 INPUT /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out

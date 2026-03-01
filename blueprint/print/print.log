@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 12:59
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -720,22 +720,27 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
  [1
 
 ]) (./sections/collatz-map.tex
-[2] [3]) (./sections/collatz-conjecture.tex [4]) (./sections/reduced-map.tex
-[5] [6]
+[2] [3]) (./sections/collatz-conjecture.tex [4]) (./sections/graph.tex [5])
+[6]
+Chapter 2.
+(./sections/reduced-map.tex [7
+
+] [8]
 Overfull \hbox (9.86134pt too wide) in paragraph at lines 133--139
 []\TU/lmr/m/n/10 For the inductive step $[] [] []$, let $[][][][][] [] []$. By 
 induction, the odd part of $[]$ is $[][][][][]$.
  []
 
-[7]) (./sections/primitives-of-reduced.tex [8]) [9]
-Chapter 2.
-(./sections/terras-def.tex [10
+) (./sections/primitives-of-reduced.tex [9] [10]) [11]
+Chapter 3.
+(./sections/terras-def.tex [12
 
 ]) (./sections/parity.tex)
-(./sections/decomposition.tex [11]) [12]
+(./sections/decomposition.tex [13] [14]) (./sections/TC-correspondence.tex)
+[15]
 Missing character: There is no 𝑥 (U+1D465) in font [lmroman10-italic]:mapping=t
 ex-text;!
-[13
+[16
 
 ]) (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
  ***********
@@ -743,16 +748,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 98404D648A8928FF68621F98278A96C0;1546.
+(rerunfilecheck)             Checksum: 48DBC187BFE522E52F6B08D7C84E9FD4;2033.
  ) 
 Here is how much of TeX's memory you used:
- 17026 strings out of 475925
- 312532 string characters out of 5783280
+ 17052 strings out of 475925
+ 313249 string characters out of 5783280
  1950839 words of memory out of 5000000
- 38896 multiletter control sequences out of 15000+600000
+ 38916 multiletter control sequences out of 15000+600000
  563480 words of font info for 90 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
  90i,9n,114p,591b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf 
-(15 pages).
+(18 pages).

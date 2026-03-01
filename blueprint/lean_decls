@@ -35,6 +35,12 @@ collatz_conjecture
 cycle_implies_not_collatz
 unbounded_orbit_implies_not_collatz
 bounded_no_cycle_implies_collatz
+CollatzMapBasics.collatz_graph
+CollatzMapBasics.collatz_graph_adj_iff
+CollatzMapBasics.T_iter_reachable
+CollatzMapBasics.confluence_step
+CollatzMapBasics.confluence_of_reachable
+CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz
 CollatzMapBasics.reduced_collatz_step
 CollatzMapBasics.R_iter
 CollatzMapBasics.R_zero
@@ -98,3 +104,6 @@ CollatzMapBasics.E
 CollatzMapBasics.E_zero
 CollatzMapBasics.E_succ
 CollatzMapBasics.E_step_strict_mono
+CollatzMapBasics.T_step_collatz
+CollatzMapBasics.T_iter_to_collatz_iter
+CollatzMapBasics.collatz_iter_to_T_iter
