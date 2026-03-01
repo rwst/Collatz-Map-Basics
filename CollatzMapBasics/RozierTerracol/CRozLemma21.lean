@@ -1,4 +1,4 @@
-import CollatzMapBasics.Garner
+import CollatzMapBasics.Decomposition
 import CollatzMapBasics.Parity
 
 /-!
@@ -92,14 +92,14 @@ private lemma get_append_suffix_eq {α : Type*} (w1 : List α) (a1 b1 a2 b2 : α
   have hi2 : ¬ i < (w1 ++ [a2, b2]).length := by simp; omega
   simp only [List.getElem_append, hlen1, hlen2, show ¬ i < w1.length + 2 from by omega, ↓reduceDIte]
 
-lemma garner_correction_eq_of_V_prefix_eq (k j m n : ℕ) (hk : k ≤ j)
+lemma decomposition_correction_eq_of_V_prefix_eq (k j m n : ℕ) (hk : k ≤ j)
     (hpre : ∀ i : Fin k, (V j m).get ⟨i.val, by simp; omega⟩ =
       (V j n).get ⟨i.val, by simp; omega⟩) :
-    garner_correction k m = garner_correction k n := by
+    decomposition_correction k m = decomposition_correction k n := by
   induction k with
-  | zero => simp [garner_correction]
+  | zero => simp [decomposition_correction]
   | succ k ih =>
-    simp only [garner_correction]
+    simp only [decomposition_correction]
     have hk' : k ≤ j := by omega
     have ih' := ih hk' (fun i => hpre ⟨i.val, by omega⟩)
     -- Extract X equality from V prefix agreement
@@ -117,7 +117,7 @@ lemma E_eq_of_V_prefix_eq (k j m n : ℕ) (hk : k ≤ j)
     (hpre : ∀ i : Fin k, (V j m).get ⟨i.val, by simp; omega⟩ =
       (V j n).get ⟨i.val, by simp; omega⟩) :
     E k m = E k n := by
-  simp only [E, garner_correction_eq_of_V_prefix_eq k j m n hk hpre]
+  simp only [E, decomposition_correction_eq_of_V_prefix_eq k j m n hk hpre]
 
 lemma E_elementary_lt (v1 v2 : ParityVector)
     (hswap : ParityVector.ElementaryPrecedes v1 v2)

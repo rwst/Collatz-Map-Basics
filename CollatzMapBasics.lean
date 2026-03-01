@@ -1,8 +1,8 @@
 import CollatzMapBasics.Approximation
 import CollatzMapBasics.Basic
+import CollatzMapBasics.Decomposition
 import CollatzMapBasics.Elementary
 import CollatzMapBasics.Example
-import CollatzMapBasics.Garner
 import CollatzMapBasics.Parity
 import CollatzMapBasics.Periodicity
 import CollatzMapBasics.Reduced

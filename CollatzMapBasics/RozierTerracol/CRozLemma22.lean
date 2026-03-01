@@ -1,4 +1,4 @@
-import CollatzMapBasics.Garner
+import CollatzMapBasics.Decomposition
 import CollatzMapBasics.Parity
 
 

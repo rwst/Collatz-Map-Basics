@@ -5,6 +5,8 @@ The reduced Collatz map $R: \mathbb{N}\to \mathbb{N}$ is defined by
 \end{equation}
 where $v_2(m)$ is the dyadic valuation of $m$. In short $R(n)=$ odd part of $3n+1$.
 \end{definition}
+This map seems to have been introduced by Crandall\cite{crandall78}. One of its advantages is
+that multiplications by 3 are constant for each step, regardless if $n$ is even or odd.
 
 \begin{definition}\label{def:R_iter}\lean{CollatzMapBasics.R_iter}\leanok
 For any $k \in \mathbb{N}$, the $k$-fold iteration of the reduced Collatz map

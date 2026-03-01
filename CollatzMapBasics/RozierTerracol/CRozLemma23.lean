@@ -1,4 +1,4 @@
-import CollatzMapBasics.Garner
+import CollatzMapBasics.Decomposition
 import CollatzMapBasics.Periodicity
 import CollatzMapBasics.RozierTerracol.CRozLemma21
 import CollatzMapBasics.RozierTerracol.CRozLemma22
@@ -25,16 +25,16 @@ lemma X_T_iter_shift (j m : ℕ) : X (T_iter j m) + X (T_iter j (m + 2 ^ j)) = 1
     exact Nat.add_mod_right m (2 ^ j)
   have hS : num_odd_steps j (m + 2 ^ j) = num_odd_steps j m := by
     exact num_odd_steps_eq_of_E_vec_eq _ _ _ hE
-  have hQ : garner_correction j (m + 2 ^ j) = garner_correction j m := by
-    exact garner_correction_eq_of_E_vec_eq _ _ _ hE
-  have g1 := garner_formula j m
-  have g2 := garner_formula j (m + 2 ^ j)
+  have hQ : decomposition_correction j (m + 2 ^ j) = decomposition_correction j m := by
+    exact decomposition_correction_eq_of_E_vec_eq _ _ _ hE
+  have g1 := linear_decomposition j m
+  have g2 := linear_decomposition j (m + 2 ^ j)
   rw [hS, hQ] at g2
   have eq1 : 2 ^ j * T_iter j (m + 2 ^ j) = 2 ^ j * (T_iter j m + 3 ^ (num_odd_steps j m)) := by
     calc 2 ^ j * T_iter j (m + 2 ^ j)
-      _ = 3 ^ num_odd_steps j m * (m + 2 ^ j) + garner_correction j m := g2
-      _ = 3 ^ num_odd_steps j m * m + 3 ^ num_odd_steps j m * 2 ^ j + garner_correction j m := by ring
-      _ = (3 ^ num_odd_steps j m * m + garner_correction j m) + 2 ^ j * 3 ^ num_odd_steps j m := by ring
+      _ = 3 ^ num_odd_steps j m * (m + 2 ^ j) + decomposition_correction j m := g2
+      _ = 3 ^ num_odd_steps j m * m + 3 ^ num_odd_steps j m * 2 ^ j + decomposition_correction j m := by ring
+      _ = (3 ^ num_odd_steps j m * m + decomposition_correction j m) + 2 ^ j * 3 ^ num_odd_steps j m := by ring
       _ = 2 ^ j * T_iter j m + 2 ^ j * 3 ^ num_odd_steps j m := by rw [← g1]
       _ = 2 ^ j * (T_iter j m + 3 ^ (num_odd_steps j m)) := by ring
   have h2pos : 2 ^ j > 0 := by positivity

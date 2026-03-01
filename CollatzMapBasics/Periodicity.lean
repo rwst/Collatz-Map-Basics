@@ -1,6 +1,6 @@
 import Mathlib
 import CollatzMapBasics.Terras
-import CollatzMapBasics.Garner
+import CollatzMapBasics.Decomposition
 
 namespace CollatzMapBasics
 
@@ -28,12 +28,12 @@ lemma terras_backward (k : ℕ) : ∀ m n : ℕ, m % 2 ^ k = n % 2 ^ k →
 lemma terras_forward (k m n : ℕ) (_hm : m ≥ 1) (_hn : n ≥ 1)
     (h : E_vec k m = E_vec k n) : m % 2 ^ k = n % 2 ^ k := by
   have hS := num_odd_steps_eq_of_E_vec_eq k m n h
-  have hQ := garner_correction_eq_of_E_vec_eq k m n h
-  have gm := garner_formula k m
-  have gn := garner_formula k n
+  have hQ := decomposition_correction_eq_of_E_vec_eq k m n h
+  have gm := linear_decomposition k m
+  have gn := linear_decomposition k n
   rw [← hS, ← hQ] at gn
   set S := num_odd_steps k m
-  set Q := garner_correction k m
+  set Q := decomposition_correction k m
   have h_eq : (3 ^ S : ℤ) * ((m : ℤ) - (n : ℤ)) =
       (2 ^ k : ℤ) * ((T_iter k m : ℤ) - (T_iter k n : ℤ)) := by
     have gm' : (2 ^ k * T_iter k m : ℤ) = (3 ^ S * m + Q : ℤ) := by exact_mod_cast gm

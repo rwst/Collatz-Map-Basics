@@ -6,33 +6,33 @@ namespace CollatzMapBasics
 
 open Classical
 
-/-- The Garner correction term: `Q(0) = 0`, `Q(k+1) = 3^{x_k} · Q(k) + 2^k · x_k`,
+/-- The correction term: `Q(0) = 0`, `Q(k+1) = 3^{x_k} · Q(k) + 2^k · x_k`,
     where `x_k = X(T^k(n))`. -/
-def garner_correction : ℕ → ℕ → ℕ
+def decomposition_correction : ℕ → ℕ → ℕ
   | 0, _     => 0
-  | k + 1, n => 3 ^ X (T_iter k n) * garner_correction k n + 2 ^ k * X (T_iter k n)
+  | k + 1, n => 3 ^ X (T_iter k n) * decomposition_correction k n + 2 ^ k * X (T_iter k n)
 
-lemma garner_correction_eq_of_E_vec_eq (k m n : ℕ) (h : E_vec k m = E_vec k n) :
-    garner_correction k m = garner_correction k n := by
+lemma decomposition_correction_eq_of_E_vec_eq (k m n : ℕ) (h : E_vec k m = E_vec k n) :
+    decomposition_correction k m = decomposition_correction k n := by
   induction k with
-  | zero => simp [garner_correction]
+  | zero => simp [decomposition_correction]
   | succ k ih =>
-    simp only [garner_correction]
+    simp only [decomposition_correction]
     have hk : E_vec k m = E_vec k n := E_vec_restrict k m n h
     have hXk : X (T_iter k m) = X (T_iter k n) := by
       have := congr_fun h ⟨k, lt_add_one k⟩
       simpa [E_vec_apply] using this
     rw [hXk, ih hk]
 
-/-- **Garner's formula** [Gar81]. After `k` steps of the Collatz map `T`,
+/-- After `k` steps of the Collatz map `T`,
     `2^k · T^k(n) = 3^{S_k} · n + Q_k`
     where `S_k` is the number of odd iterates and `Q_k` is the accumulated correction. -/
-lemma garner_formula (k n : ℕ) :
-    2 ^ k * T_iter k n = 3 ^ num_odd_steps k n * n + garner_correction k n := by
+lemma linear_decomposition (k n : ℕ) :
+    2 ^ k * T_iter k n = 3 ^ num_odd_steps k n * n + decomposition_correction k n := by
   induction k with
-  | zero => simp [T_iter, num_odd_steps, garner_correction]
+  | zero => simp [T_iter, num_odd_steps, decomposition_correction]
   | succ k ih =>
-    simp only [T_iter, num_odd_steps, garner_correction, Finset.sum_range_succ]
+    simp only [T_iter, num_odd_steps, decomposition_correction, Finset.sum_range_succ]
     have hexp : 2 ^ (k + 1) = 2 * 2 ^ k := by ring
     rw [hexp]
     have hT := T_expand (T_iter k n)
@@ -40,10 +40,10 @@ lemma garner_formula (k n : ℕ) :
         = 2 ^ k * (2 * T (T_iter k n)) := by ring
       _ = 2 ^ k * (3 ^ X (T_iter k n) * T_iter k n + X (T_iter k n)) := by rw [hT]
       _ = 3 ^ X (T_iter k n) * (2 ^ k * T_iter k n) + 2 ^ k * X (T_iter k n) := by ring
-      _ = 3 ^ X (T_iter k n) * (3 ^ num_odd_steps k n * n + garner_correction k n)
+      _ = 3 ^ X (T_iter k n) * (3 ^ num_odd_steps k n * n + decomposition_correction k n)
           + 2 ^ k * X (T_iter k n) := by rw [ih]
       _ = 3 ^ (num_odd_steps k n + X (T_iter k n)) * n
-          + (3 ^ X (T_iter k n) * garner_correction k n + 2 ^ k * X (T_iter k n)) := by
+          + (3 ^ X (T_iter k n) * decomposition_correction k n + 2 ^ k * X (T_iter k n)) := by
         rw [pow_add]; ring
 
 lemma num_odd_steps_mono {j k : ℕ} (hjk : j ≤ k) (n : ℕ) :
@@ -55,25 +55,25 @@ lemma num_odd_steps_succ (k n : ℕ) :
     num_odd_steps (k + 1) n = num_odd_steps k n + X (T_iter k n) := by
   simp [num_odd_steps, Finset.sum_range_succ]
 
-/-- Closed-form expression for `garner_correction`:
+/-- Closed-form expression for `decomposition_correction`:
     `Q(k) = ∑_{j<k} X(T^j n) · 2^j · 3^{S_k - S_{j+1}}`,
     where `S_m = num_odd_steps m n`. -/
-def garner_correction_sum (k n : ℕ) : ℕ :=
+def decomposition_correction_sum (k n : ℕ) : ℕ :=
   (Finset.range k).sum (fun j =>
     X (T_iter j n) * 2 ^ j * 3 ^ (num_odd_steps k n - num_odd_steps (j + 1) n))
 
-lemma garner_correction_eq_sum (k n : ℕ) :
-    garner_correction k n = garner_correction_sum k n := by
+lemma decomposition_correction_eq_sum (k n : ℕ) :
+    decomposition_correction k n = decomposition_correction_sum k n := by
   induction k with
-  | zero => simp [garner_correction, garner_correction_sum]
+  | zero => simp [decomposition_correction, decomposition_correction_sum]
   | succ k ih =>
-    simp only [garner_correction, garner_correction_sum, Finset.sum_range_succ]
+    simp only [decomposition_correction, decomposition_correction_sum, Finset.sum_range_succ]
     -- last term: 3^(S_{k+1} - S_{k+1}) = 3^0 = 1
     have hlast : num_odd_steps (k + 1) n - num_odd_steps (k + 1) n = 0 := Nat.sub_self _
     rw [hlast, pow_zero, mul_one, mul_comm (2 ^ k)]
     -- prefix sum: factor out 3^{x_k}
     congr 1
-    rw [ih, garner_correction_sum, Finset.mul_sum]
+    rw [ih, decomposition_correction_sum, Finset.mul_sum]
     apply Finset.sum_congr rfl
     intro j hj
     rw [Finset.mem_range] at hj
@@ -85,7 +85,7 @@ lemma garner_correction_eq_sum (k n : ℕ) :
     rw [this, pow_add]
     ring
 
-/-- The Garner coefficient: `C k n = 3^(num_odd_steps k n) / 2^k` as a rational number. -/
+/-- The decomposition coefficient: `C k n = 3^(num_odd_steps k n) / 2^k` as a rational number. -/
 def C (k n : ℕ) : ℚ := (3 ^ num_odd_steps k n : ℚ) / (2 ^ k : ℚ)
 
 /-- The coefficient stopping time `τ(n)` is the least `j ≥ 1` such that `C j n < 1`,
@@ -96,16 +96,16 @@ noncomputable def coeff_stopping_time (n : ℕ) : ℕ∞ :=
   else
     ⊤
 
-/-- The Garner correction ratio: `E j n = Q_j(n) / 2^j`. -/
-def E (j n : ℕ) : ℚ := (garner_correction j n : ℚ) / (2 ^ j : ℚ)
+/-- The correction ratio: `E j n = Q_j(n) / 2^j`. -/
+def E (j n : ℕ) : ℚ := (decomposition_correction j n : ℚ) / (2 ^ j : ℚ)
 
 lemma E_zero (n : ℕ) : E 0 n = 0 := by
-  simp [E, garner_correction]
+  simp [E, decomposition_correction]
 
 lemma E_succ (k n : ℕ) :
     E (k + 1) n = (3 ^ X (T_iter k n) : ℚ) / 2 * E k n +
       (X (T_iter k n) : ℚ) / 2 := by
-  simp only [E, garner_correction]
+  simp only [E, decomposition_correction]
   rw [show (2 : ℚ) ^ (k + 1) = 2 * 2 ^ k from by ring]
   have h2k : (2 ^ k : ℚ) ≠ 0 := by positivity
   field_simp

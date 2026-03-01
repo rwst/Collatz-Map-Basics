@@ -1,4 +1,4 @@
-import CollatzMapBasics.Garner
+import CollatzMapBasics.Decomposition
 import CollatzMapBasics.Approximation
 import CollatzMapBasics.RozierTerracol.CRozLemma22
 import CollatzMapBasics.RozierTerracol.CRozLemma23
@@ -67,13 +67,13 @@ lemma num_odd_steps_shift (k j n : ℕ) :
     num_odd_steps (k + j) (2 ^ k * n) = num_odd_steps j n := by
   rw [num_odd_steps_add, num_odd_steps_pow_two_mul, T_iter_pow_two_mul, zero_add]
 
-lemma garner_correction_pow_two_mul (k n : ℕ) :
-    garner_correction k (2 ^ k * n) = 0 := by
+lemma decomposition_correction_pow_two_mul (k n : ℕ) :
+    decomposition_correction k (2 ^ k * n) = 0 := by
   induction k generalizing n with
   | zero => rfl
   | succ k ih =>
-    simp only [garner_correction]
-    have ih' : garner_correction k (2 ^ (k + 1) * n) = 0 := by
+    simp only [decomposition_correction]
+    have ih' : decomposition_correction k (2 ^ (k + 1) * n) = 0 := by
       have : 2 ^ (k + 1) * n = 2 ^ k * (2 * n) := by rw [pow_succ]; ring
       rw [this]
       exact ih (2 * n)
@@ -85,31 +85,31 @@ lemma garner_correction_pow_two_mul (k n : ℕ) :
     rw [h_T, X_even (by omega)]
     ring
 
-lemma garner_correction_add (k j n : ℕ) :
-    garner_correction (k + j) n =
-      3 ^ num_odd_steps j (T_iter k n) * garner_correction k n +
-      2 ^ k * garner_correction j (T_iter k n) := by
+lemma decomposition_correction_add (k j n : ℕ) :
+    decomposition_correction (k + j) n =
+      3 ^ num_odd_steps j (T_iter k n) * decomposition_correction k n +
+      2 ^ k * decomposition_correction j (T_iter k n) := by
   induction j with
-  | zero => simp [garner_correction, num_odd_steps]
+  | zero => simp [decomposition_correction, num_odd_steps]
   | succ j ih =>
-    rw [← add_assoc, garner_correction, ih]
+    rw [← add_assoc, decomposition_correction, ih]
     rw [num_odd_steps_succ]
     have ht : T_iter (k + j) n = T_iter j (T_iter k n) := T_iter_add_shift k j n
-    rw [ht, garner_correction]
+    rw [ht, decomposition_correction]
     have hpow : 3 ^ (num_odd_steps j (T_iter k n) + X (T_iter j (T_iter k n))) = 3 ^ X (T_iter j (T_iter k n)) * 3 ^ num_odd_steps j (T_iter k n) := by
       rw [pow_add, mul_comm]
     have hexp : 2 ^ (k + j) = 2 ^ j * 2 ^ k := by rw [pow_add, mul_comm]
     rw [hpow, hexp]
     ring
 
-lemma garner_correction_shift (k j n : ℕ) :
-    garner_correction (k + j) (2 ^ k * n) = 2 ^ k * garner_correction j n := by
-  rw [garner_correction_add, T_iter_pow_two_mul, garner_correction_pow_two_mul, mul_zero, zero_add]
+lemma decomposition_correction_shift (k j n : ℕ) :
+    decomposition_correction (k + j) (2 ^ k * n) = 2 ^ k * decomposition_correction j n := by
+  rw [decomposition_correction_add, T_iter_pow_two_mul, decomposition_correction_pow_two_mul, mul_zero, zero_add]
 
 lemma E_shift_mul (k j n : ℕ) : E (k + j) (2 ^ k * n) = E j n := by
   unfold E
-  have h1 : garner_correction (k + j) (2 ^ k * n) = 2 ^ k * garner_correction j n :=
-    garner_correction_shift k j n
+  have h1 : decomposition_correction (k + j) (2 ^ k * n) = 2 ^ k * decomposition_correction j n :=
+    decomposition_correction_shift k j n
   rw [h1]
   have h2 : (2 ^ (k + j) : ℚ) = (2 ^ k : ℚ) * (2 ^ j : ℚ) := by rw [pow_add]
   rw [h2]
@@ -219,22 +219,22 @@ lemma lemma32_case_2 (n a b j : ℕ) (hn : stopping_time n = ⊤)
     have hT_eq : T_iter b (2 ^ k * n) = T_iter j n := by
       conv_lhs => rw [hbkj]; rw [T_iter_add_shift, T_iter_pow_two_mul]
     rw [hT_eq]
-    have hgf := garner_formula j n
+    have hgf := linear_decomposition j n
     rw [h_j] at hgf
     have hE := (E_bounds j n hj_pos).1
     rw [h_j] at hE
     -- gc_j(n) ≥ (3^a - 2^a) in ℚ
-    have hgc_Q : (garner_correction j n : ℚ) ≥ (3 : ℚ) ^ a - (2 : ℚ) ^ a := by
+    have hgc_Q : (decomposition_correction j n : ℚ) ≥ (3 : ℚ) ^ a - (2 : ℚ) ^ a := by
       unfold L E at hE
       exact (div_le_div_iff_of_pos_right (by positivity : (0:ℚ) < 2 ^ j)).mp hE
-    -- Work in ℚ: cast garner_formula and combine with h_arith
+    -- Work in ℚ: cast linear_decomposition and combine with h_arith
     rw [ge_iff_le, ← Nat.cast_le (α := ℚ)]
     push_cast
-    have hgf_Q : (2 : ℚ) ^ j * ↑(T_iter j n) = (3 : ℚ) ^ a * ↑n + ↑(garner_correction j n) := by
+    have hgf_Q : (2 : ℚ) ^ j * ↑(T_iter j n) = (3 : ℚ) ^ a * ↑n + ↑(decomposition_correction j n) := by
       exact_mod_cast hgf
     -- Goal: 2^k * n ≤ T_iter j n (in ℚ)
     suffices h : (2 ^ k * n : ℚ) ≤ (T_iter j n : ℚ) by exact_mod_cast h
-    have h_eq : (T_iter j n : ℚ) = ((3 : ℚ) ^ a * ↑n + ↑(garner_correction j n)) / (2 : ℚ) ^ j := by
+    have h_eq : (T_iter j n : ℚ) = ((3 : ℚ) ^ a * ↑n + ↑(decomposition_correction j n)) / (2 : ℚ) ^ j := by
       field_simp; linarith [hgf_Q]
     rw [h_eq, le_div_iff₀ (show (0:ℚ) < 2 ^ j from by positivity)]
     rw [show (2 : ℚ) ^ k * ↑n * (2 : ℚ) ^ j = (2 : ℚ) ^ b * ↑n from by
