@@ -17,6 +17,7 @@ CollatzMapBasics.X_eq_mod
 CollatzMapBasics.X_congr
 collatz_step
 collatz_iter
+collatz_iter_succ_right'
 collatz_step_zero
 collatz_iter_zero
 collatz_step_pos
@@ -112,6 +113,8 @@ CollatzMapBasics.terras_periodicity
 CollatzMapBasics.T_step_collatz
 CollatzMapBasics.T_iter_to_collatz_iter
 CollatzMapBasics.collatz_iter_to_T_iter
+CollatzMapBasics.collatz_cycle_iff_compact_collatz_cycle
+CollatzMapBasics.collatz_bounded_iff_compact_collatz_bounded
 CollatzMapBasics.ξ
 CollatzMapBasics.irrational_xi
 CollatzMapBasics.delta

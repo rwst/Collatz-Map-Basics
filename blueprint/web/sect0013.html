@@ -111,7 +111,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">109</span>
+    <span class="lemma_thmlabel">110</span>
     <div class="thm_header_extras">
 
     
@@ -121,7 +121,7 @@
 
     <a class="icon proof" href="sect0013.html#lemma:terras_backward">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000132"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000134"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -130,7 +130,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
           
         </ul>
     </div>
@@ -142,7 +142,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000132">
+<div class="proof_wrapper" id="a0000000134">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -150,7 +150,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\). The base case \(k=0\) is trivial as \(E(0, n)\) is the empty function. For the inductive step \(k+1\), if \(m \equiv n \pmod{2^{k+1}}\), then \(m \equiv n \pmod2\), so \(X(m) = X(n)\). By the congruence properties of \(T\) (Lemma&#160;<a href="sect0010.html#lemma:T_congr">79</a>), \(T(m) \equiv T(n) \pmod{2^k}\). By the induction hypothesis, \(E(k, T(m)) = E(k, T(n))\), which implies agreement on the remaining \(k\) entries of the parity vector. </p>
+  <p>By induction on \(k\). The base case \(k=0\) is trivial as \(E(0, n)\) is the empty function. For the inductive step \(k+1\), if \(m \equiv n \pmod{2^{k+1}}\), then \(m \equiv n \pmod2\), so \(X(m) = X(n)\). By the congruence properties of \(T\) (Lemma&#160;<a href="sect0010.html#lemma:T_congr">80</a>), \(T(m) \equiv T(n) \pmod{2^k}\). By the induction hypothesis, \(E(k, T(m)) = E(k, T(n))\), which implies agreement on the remaining \(k\) entries of the parity vector. </p>
 
   </div>
 </div>
@@ -159,7 +159,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">110</span>
+    <span class="lemma_thmlabel">111</span>
     <div class="thm_header_extras">
 
     
@@ -169,7 +169,7 @@
 
     <a class="icon proof" href="sect0013.html#lemma:terras_forward">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000133"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000135"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -178,7 +178,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
           
         </ul>
     </div>
@@ -190,7 +190,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000133">
+<div class="proof_wrapper" id="a0000000135">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -198,8 +198,8 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Assume \(E(k, m) = E(k, n)\). Then \(Q(k, m) = Q(k, n) = S\) and \(Q(k, m) = Q(k, n) = Q\). From the linear decomposition (Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition">98</a>), we have: </p>
-<div class="displaymath" id="a0000000134">
+  <p>Assume \(E(k, m) = E(k, n)\). Then \(Q(k, m) = Q(k, n) = S\) and \(Q(k, m) = Q(k, n) = Q\). From the linear decomposition (Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition">99</a>), we have: </p>
+<div class="displaymath" id="a0000000136">
   \begin{align*}  2^k T^k(m) & = 3^S m + Q \\ 2^k T^k(n) & = 3^S n + Q \end{align*}
 </div>
 <p> Subtracting these yields \(2^k (T^k(m) - T^k(n)) = 3^S (m - n)\). Since \(2^k\) is coprime to \(3^S\) (Lemma&#160;<a href="sect0002.html#lemma:coprime_pow_three_pow_two">12</a>), \(2^k\) must divide \(m - n\), so \(m \equiv n \pmod{2^k}\). </p>
@@ -211,7 +211,7 @@
     <span class="theorem_thmcaption">
     Theorem
     </span>
-    <span class="theorem_thmlabel">111</span>
+    <span class="theorem_thmlabel">112</span>
     <div class="thm_header_extras">
 
     
@@ -221,7 +221,7 @@
 
     <a class="icon proof" href="sect0013.html#theorem:terras_periodicity">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000135"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000137"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -230,7 +230,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
           
         </ul>
     </div>
@@ -243,7 +243,7 @@
 	<a href="sect0016.html#terras76" >5</a>
 	]
 </span>) Two positive integers \(m, n \ge 1\) have the same parity vector of length \(k\) if and only if they are congruent modulo \(2^k\): </p>
-<div class="equation" id="a0000000136">
+<div class="equation" id="a0000000138">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k, m) = E(k, n) \iff m \equiv n \pmod{2^k}. \end{equation}
@@ -254,7 +254,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000135">
+<div class="proof_wrapper" id="a0000000137">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -262,7 +262,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>This follows directly from Lemma&#160;<a href="sect0013.html#lemma:terras_backward">109</a> and Lemma&#160;<a href="sect0013.html#lemma:terras_forward">110</a>. </p>
+  <p>This follows directly from Lemma&#160;<a href="sect0013.html#lemma:terras_backward">110</a> and Lemma&#160;<a href="sect0013.html#lemma:terras_forward">111</a>. </p>
 
   </div>
 </div>

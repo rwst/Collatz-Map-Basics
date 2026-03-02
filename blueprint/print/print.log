@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  1 MAR 2026 17:07
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  2 MAR 2026 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -755,10 +755,10 @@ Package rerunfilecheck Info: File `print.out' has not changed.
 (rerunfilecheck)             Checksum: 8CD943A2A6FD7CC031C4A04A8E982E29;2513.
  ) 
 Here is how much of TeX's memory you used:
- 17080 strings out of 475925
- 313937 string characters out of 5783280
+ 17083 strings out of 475925
+ 314067 string characters out of 5783280
  1950839 words of memory out of 5000000
- 38938 multiletter control sequences out of 15000+600000
+ 38941 multiletter control sequences out of 15000+600000
  563480 words of font info for 90 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
  90i,9n,114p,653b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s

@@ -21,6 +21,20 @@ and
 \end{equation}
 \end{definition}
 
+\begin{lemma}\label{lemma:collatz_iter_succ_right'}\lean{collatz_iter_succ_right'}\leanok
+For all $k, n \in \mathbb{N}$, we have $C^{k+1}(n) = C(C^k(n))$.
+\end{lemma}
+\begin{proof}\leanok
+We proceed by induction on $k \in \mathbb{N}$.
+For the base case $k=0$, $C^1(n) = C(C^0(n)) = C(n)$ by definition.
+For the inductive step $k+1$, we have:
+\begin{align*}
+    C^{k+2}(n) &= C^{k+1}(C(n)) \tag{by definition} \\
+    &= C(C^k(C(n))) \tag{by induction hypothesis applied to $C(n)$} \\
+    &= C(C^{k+1}(n)) \tag{by definition.}
+\end{align*}
+\end{proof}
+
 \begin{lemma}\label{lemma:collatz_step_zero}\lean{collatz_step_zero}\leanok
 $C(0) = 0$.
 \end{lemma}

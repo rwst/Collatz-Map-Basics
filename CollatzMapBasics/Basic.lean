@@ -21,8 +21,14 @@ lemma collatz_step_odd (n : ℕ) (h : n % 2 = 1) : collatz_step n = 3 * n + 1 :=
     omega
   simp [this]
 
+@[simp]
+lemma collatz_step_even (n : ℕ) (h : n % 2 = 0) : collatz_step n = n / 2 := by
+  have h_eq : (n % 2 == 0) = true := beq_iff_eq.mpr h
+  simp [collatz_step, h_eq]
+
 @[simp] lemma collatz_step_zero : collatz_step 0 = 0 := by native_decide
 
+@[simp]
 lemma collatz_iter_zero (k : ℕ) : collatz_iter k 0 = 0 := by
   induction k with
   | zero => rfl
@@ -42,15 +48,25 @@ lemma collatz_iter_pos (i n : ℕ) (hn : n ≥ 1) : collatz_iter i n ≥ 1 := by
   | zero => exact hn
   | succ i ih => exact ih _ (collatz_step_pos n hn)
 
+lemma collatz_iter_succ_right' (d n : ℕ) : collatz_iter (d + 1) n = collatz_step (collatz_iter d n) := by
+  induction d generalizing n with
+  | zero => rfl
+  | succ d ih =>
+    calc collatz_iter (d + 2) n = collatz_iter (d + 1) (collatz_step n) := rfl
+    _ = collatz_step (collatz_iter d (collatz_step n)) := ih (collatz_step n)
+    _ = collatz_step (collatz_iter (d + 1) n) := rfl
+
+@[simp]
 lemma collatz_step_pow_two (k : ℕ) (hk : k ≥ 1) : collatz_step (2^k) = 2^(k-1) := by
   rcases k with _ | k
   · contradiction
   · simp [collatz_step, Nat.pow_succ]
 
+@[simp]
 lemma collatz_iter_pow_two (l : ℕ) : collatz_iter l (2^l) = 1 := by
   induction l with
   | zero => rfl
-  | succ l ih => simp [collatz_iter, collatz_step_pow_two, ih]
+  | succ l ih => simp [collatz_iter, Nat.pow_succ, ih]
 
 lemma collatz_iter_two_pow_mul (k m : ℕ) : collatz_iter k (2^k * m) = m := by
   induction k with

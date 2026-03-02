@@ -111,7 +111,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">112</span>
+    <span class="lemma_thmlabel">113</span>
     <div class="thm_header_extras">
 
     
@@ -121,7 +121,7 @@
 
     <a class="icon proof" href="sect0014.html#lemma:T_step_collatz">#</a>
     
-    <a class="icon proof" href="sect0014.html#a0000000137"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0014.html#a0000000139"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -130,7 +130,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L11" class="lean_decl">CollatzMapBasics.T_step_collatz</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/TC.lean#L11" class="lean_decl">CollatzMapBasics.T_step_collatz</a></li>
           
         </ul>
     </div>
@@ -142,7 +142,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000137">
+<div class="proof_wrapper" id="a0000000139">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -159,7 +159,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">113</span>
+    <span class="lemma_thmlabel">114</span>
     <div class="thm_header_extras">
 
     
@@ -169,7 +169,7 @@
 
     <a class="icon proof" href="sect0014.html#lemma:T_iter_to_collatz_iter">#</a>
     
-    <a class="icon proof" href="sect0014.html#a0000000138"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0014.html#a0000000140"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -178,7 +178,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L21" class="lean_decl">CollatzMapBasics.T_iter_to_collatz_iter</a></li>
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.T_iter_to_collatz_iter#doc" class="lean_decl">CollatzMapBasics.T_iter_to_collatz_iter</a></li>
           
         </ul>
     </div>
@@ -190,7 +190,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000138">
+<div class="proof_wrapper" id="a0000000140">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -198,7 +198,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\), using Lemma&#160;<a href="sect0014.html#lemma:T_step_collatz">112</a>. </p>
+  <p>By induction on \(k\), using Lemma&#160;<a href="sect0014.html#lemma:T_step_collatz">113</a>. </p>
 
   </div>
 </div>
@@ -207,7 +207,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">114</span>
+    <span class="lemma_thmlabel">115</span>
     <div class="thm_header_extras">
 
     
@@ -217,7 +217,7 @@
 
     <a class="icon proof" href="sect0014.html#lemma:collatz_iter_to_T_iter">#</a>
     
-    <a class="icon proof" href="sect0014.html#a0000000139"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0014.html#a0000000141"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -226,7 +226,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/a18d48c6235ae6197c371f785bd4a1f99c610cd8/CollatzMapBasics/TC.lean#L37" class="lean_decl">CollatzMapBasics.collatz_iter_to_T_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/TC.lean#L136" class="lean_decl">CollatzMapBasics.collatz_iter_to_T_iter</a></li>
           
         </ul>
     </div>
@@ -238,7 +238,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000139">
+<div class="proof_wrapper" id="a0000000141">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -247,6 +247,102 @@
   </div>
   <div class="proof_content">
   <p>By induction on \(j\). In the base case \(j=0\), \(n=1=T^0(n)\). For the inductive step \(j+1\), if \(n\) is even, then \(C(n) = n/2 = T(n)\), so we apply the induction hypothesis to \(T(n)\). If \(n\) is odd, then \(C(n) = 3n+1\), and \(C(3n+1) = (3n+1)/2 = T(n)\). Since \(C^j(3n+1) = 1\), we apply the induction hypothesis to \(3n+1\), which reaches 1 under \(T\). Since \(T(n)\) is a step in that sequence, \(n\) also reaches 1 under \(T\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:collatz_cycle_iff_compact_collatz_cycle">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">116</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#lemma:collatz_cycle_iff_compact_collatz_cycle">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000142"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/TC.lean#L93" class="lean_decl">CollatzMapBasics.collatz_cycle_iff_compact_collatz_cycle</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For any odd \(n \in \mathbb {N}\), \(n\) belongs to a cycle under the original Collatz map \(C\) if and only if it belongs to a cycle under the compact map \(T\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000142">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\((\Rightarrow )\) If \(n\) is on a cycle of length \(k {\gt} 0\) under \(C\), we can count the number of even steps in the cycle to determine the corresponding number of steps under \(T\). The "halving" steps in the original sequence correspond exactly to the steps in the compact sequence. Since the sequence is periodic, it must eventually return to \(n\) under \(T\). \((\Leftarrow )\) If \(T^k(n) = n\) for some \(k {\gt} 0\), since every step of \(T\) can be simulated by one or two steps of \(C\) (Lemma&#160;<a href="sect0014.html#lemma:T_step_collatz">113</a>), it follows that \(C^j(n) = n\) for some \(j \ge k {\gt} 0\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:collatz_bounded_iff_compact_collatz_bounded">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">117</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#lemma:collatz_bounded_iff_compact_collatz_bounded">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000143"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/TC.lean#L115" class="lean_decl">CollatzMapBasics.collatz_bounded_iff_compact_collatz_bounded</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For any \(n \in \mathbb {N}\), the orbit of \(n\) under \(C\) is bounded if and only if the orbit of \(n\) under \(T\) is bounded. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000143">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\((\Rightarrow )\) Since every value in the \(T\)-orbit is also present in the \(C\)-orbit (Lemma&#160;<a href="sect0014.html#lemma:T_iter_to_collatz_iter">114</a>), if the \(C\)-orbit is bounded by \(B\), then the \(T\)-orbit is also bounded by \(B\). \((\Leftarrow )\) If the \(T\)-orbit is bounded by \(B\), then any value \(C^d(n)\) in the \(C\)-orbit is either a value \(T^k(n) \le B\), or it is an "intermediate" odd step \(m = C^d(n)\) such that \(C(m) = 3m+1\) is even and \(C(3m+1) = (3m+1)/2 = T^k(n) \le B\). In the latter case, \(3m+1 \le 2B\), so \(m \le (2B-1)/3 {\lt} B\). Thus the entire \(C\)-orbit is bounded by \(2B+1\). </p>
 
   </div>
 </div>

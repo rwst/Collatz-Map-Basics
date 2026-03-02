@@ -8,8 +8,8 @@ If $n$ is even, $T(n) = n/2 = C(n)$, so $j=1$.
 If $n$ is odd, $T(n) = (3n+1)/2 = C(3n+1)/2 = C(C(n))$, so $j=2$ (since $3n+1$ is even).
 \end{proof}
 
-\begin{lemma}\label{lemma:T_iter_to_collatz_iter}\lean{CollatzMapBasics.T_iter_to_collatz_iter}\leanok
-For any $k, n \in \mathbb{N}$, there exists $j \in \mathbb{N}$ such that $C^j(n) = T^k(n)$.
+\begin{lemma}\label{lemma:T_iter_implies_collatz_iter}\lean{CollatzMapBasics.T_iter_implies_collatz_iter}\leanok
+For any $k, n \in \mathbb{N}$, there exists $j\ge k \in \mathbb{N}$ such that $C^j(n) = T^k(n)$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$, using Lemma~\ref{lemma:T_step_collatz}.
@@ -22,3 +22,18 @@ If $n \ge 1$ and $C^j(n) = 1$ for some $j \in \mathbb{N}$, then there exists $k 
 By induction on $j$. In the base case $j=0$, $n=1=T^0(n)$. For the inductive step $j+1$, if $n$ is even, then $C(n) = n/2 = T(n)$, so we apply the induction hypothesis to $T(n)$. If $n$ is odd, then $C(n) = 3n+1$, and $C(3n+1) = (3n+1)/2 = T(n)$. Since $C^j(3n+1) = 1$, we apply the induction hypothesis to $3n+1$, which reaches 1 under $T$. Since $T(n)$ is a step in that sequence, $n$ also reaches 1 under $T$.
 \end{proof}
 
+\begin{lemma}\label{lemma:collatz_cycle_iff_compact_collatz_cycle}\lean{CollatzMapBasics.collatz_cycle_iff_compact_collatz_cycle}\leanok
+For any odd $n \in \mathbb{N}$, $n$ belongs to a cycle under the original Collatz map $C$ if and only if it belongs to a cycle under the compact map $T$.
+\end{lemma}
+\begin{proof}\leanok
+$(\Rightarrow)$ If $n$ is on a cycle of length $k > 0$ under $C$, we can count the number of even steps in the cycle to determine the corresponding number of steps under $T$. The "halving" steps in the original sequence correspond exactly to the steps in the compact sequence. Since the sequence is periodic, it must eventually return to $n$ under $T$.
+$(\Leftarrow)$ If $T^k(n) = n$ for some $k > 0$, since every step of $T$ can be simulated by one or two steps of $C$ (Lemma~\ref{lemma:T_step_collatz}), it follows that $C^j(n) = n$ for some $j \ge k > 0$.
+\end{proof}
+
+\begin{lemma}\label{lemma:collatz_bounded_iff_compact_collatz_bounded}\lean{CollatzMapBasics.collatz_bounded_iff_compact_collatz_bounded}\leanok
+For any $n \in \mathbb{N}$, the orbit of $n$ under $C$ is bounded if and only if the orbit of $n$ under $T$ is bounded.
+\end{lemma}
+\begin{proof}\leanok
+$(\Rightarrow)$ Since every value in the $T$-orbit is also present in the $C$-orbit (Lemma~\ref{lemma:T_iter_to_collatz_iter}), if the $C$-orbit is bounded by $B$, then the $T$-orbit is also bounded by $B$.
+$(\Leftarrow)$ If the $T$-orbit is bounded by $B$, then any value $C^d(n)$ in the $C$-orbit is either a value $T^k(n) \le B$, or it is an "intermediate" odd step $m = C^d(n)$ such that $C(m) = 3m+1$ is even and $C(3m+1) = (3m+1)/2 = T^k(n) \le B$. In the latter case, $3m+1 \le 2B$, so $m \le (2B-1)/3 < B$. Thus the entire $C$-orbit is bounded by $2B+1$.
+\end{proof}
