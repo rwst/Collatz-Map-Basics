@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1772551923.07604 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772551923.80847 0
+["pdflatex"] 1772554183.21072 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1772554183.93495 0
   "/etc/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772551923.76758 12122 9ce2af6be075bbcd56a5475411f9c5f5 "pdflatex"
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772551923.76858 3253 4c3a5f2159b05f2d277f04ecaea15016 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1772554183.895 12306 ac30a54bdbcdf14c56f0e639c24531d5 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1772554183.895 3347 c654fa52a7b686ffce987c85c6e39404 "pdflatex"
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -84,10 +84,11 @@
   "/usr/share/texmf/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1771858310 10663260 0e83f00fad4e17610da4ad9f49b5cd24 ""
-  "content.tex" 1772550901.20818 2535 c7f884002dab79b291169dcd71cf5780 ""
+  "content.tex" 1772553938.02993 1754 793c0167bb1219a7419b277bad93dadd ""
   "macros/common.tex" 1771787663.61047 826 2468ad0b6614f40a29d7ec803ebc006e ""
   "macros/print.tex" 1771787663.61047 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1771787663.61247 1133 4fae2f63dc1d7fe374dbc5fc881a291e ""
+  "ref.tex" 1772554158.28226 811 ecd56ceb6229c7ea657d0375bb92c85c ""
   "sections/TC-correspondence.tex" 1772551857.55672 3299 fae8e447c67509ba07687c8b3ff6981a ""
   "sections/collatz-conjecture.tex" 1772354723.34744 4341 6ac99f8dde73f726bf06e2f8a83e1b5b ""
   "sections/collatz-map.tex" 1772465653.59227 5435 ef7a6d912b19f83a7b4f8a83c359eb8e ""

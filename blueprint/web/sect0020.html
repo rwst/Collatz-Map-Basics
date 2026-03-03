@@ -13,6 +13,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Collatz Map Basics: Paradoxical Sequences</title>
+<link rel="next" href="sect0021.html" title="Literature" />
 <link rel="prev" href="sect0019.html" title="Diophantine Approximations" />
 <link rel="up" href="sect0015.html" title="Rozier & Terracol (2025)" />
 <link rel="stylesheet" href="styles/theme-white.css" />
@@ -107,6 +108,9 @@
 
   </ul>
  </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
+ </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
 </nav>
@@ -138,7 +142,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L20" class="lean_decl">IsParadoxical</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L20" class="lean_decl">IsParadoxical</a></li>
           
         </ul>
     </div>
@@ -147,7 +151,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>A pair \((j, n)\) consisting of a positive iteration count \(j\) and a starting integer \(n\) is called <em>paradoxical</em> if: </p>
-<div class="equation" id="a0000000182">
+<div class="equation" id="a0000000183">
 <p>
   <div class="equation_content">
     \begin{equation}  T^j(n) \ge n \quad \text{and} \quad C_j(n) {\lt} 1. \end{equation}
@@ -156,7 +160,7 @@
 </p>
 </div>
 <p> That is, the \(j\)-th iterate of the Terras map is at least as large as the starting value, and the decomposition coefficient at \(j\) is smaller than&#160;\(1\). The sequence of values </p>
-<div class="displaymath" id="a0000000183">
+<div class="displaymath" id="a0000000184">
   \[  n, T(n), T^2(n), \cdots , T^{j}(n)  \]
 </div>
 <p> is called a paradoxical sequence. </p>
@@ -178,7 +182,7 @@
 
     <a class="icon proof" href="sect0020.html#lemma:E_shift_mul">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000184"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000185"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -187,7 +191,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L108" class="lean_decl">E_shift_mul</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L108" class="lean_decl">E_shift_mul</a></li>
           
         </ul>
     </div>
@@ -196,7 +200,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>For any \(k, j, n \in \mathbb {N}\), the correction ratio behaves under powers of two as: </p>
-<div class="equation" id="a0000000185">
+<div class="equation" id="a0000000186">
 <p>
   <div class="equation_content">
     \begin{equation}  E_{k+j}(2^k n) = E_j(n). \end{equation}
@@ -207,7 +211,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000184">
+<div class="proof_wrapper" id="a0000000185">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -234,7 +238,7 @@
 
     <a class="icon proof" href="sect0020.html#lemma:num_odd_steps_unbounded">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000186"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000187"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -243,7 +247,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L271" class="lean_decl">num_odd_steps_unbounded</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L271" class="lean_decl">num_odd_steps_unbounded</a></li>
           
         </ul>
     </div>
@@ -255,7 +259,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000186">
+<div class="proof_wrapper" id="a0000000187">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -282,7 +286,7 @@
 
     <a class="icon proof" href="sect0020.html#lemma:num_odd_steps_hits_all">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000187"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000188"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -291,7 +295,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L341" class="lean_decl">num_odd_steps_hits_all</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L341" class="lean_decl">num_odd_steps_hits_all</a></li>
           
         </ul>
     </div>
@@ -303,7 +307,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000187">
+<div class="proof_wrapper" id="a0000000188">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -331,7 +335,7 @@
 
     <a class="icon proof" href="sect0020.html#theorem:CRoz_lemma_32">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000188"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000189"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -340,7 +344,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L425" class="lean_decl">CRoz_lemma_32</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L425" class="lean_decl">CRoz_lemma_32</a></li>
           
         </ul>
     </div>
@@ -352,7 +356,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000188">
+<div class="proof_wrapper" id="a0000000189">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -362,7 +366,7 @@
   <div class="proof_content">
   <p>We construct an infinite set of paradoxical pairs \((j', n')\) where \(n'\) is of the form \(2^k n\). Consider the set of Diophantine approximations \(S = \{  (a, b) \in \mathbb {N}^2 \mid 1 - \frac{1}{4n} {\lt} \frac{3^a}{2^b} {\lt} 1 \} \). By Theorem&#160;<a href="sect0019.html#theorem:exists_infinite_pairs_approx">138</a>, this set is infinite. For each \((a, b) \in S\), we use Lemma&#160;<a href="sect0020.html#lemma:num_odd_steps_hits_all">142</a> to find an iteration \(j\) such that \(q(j, n) = a\). Let \(j_{of}(a)\) be the smallest such \(j\). We distinguish two cases for each \((a, b) \in S\): </p>
 <p><b class="bfseries">Case 1: \(j_{of}(a) \ge b\).</b> We claim that \((j_{of}(a), n)\) is paradoxical. First, \(T^{j_{of}(a)}(n) \ge n\) because \(n\) has infinite stopping time. Second, \(C_{j_{of}(a)}(n) = \frac{3^a n + \mathcal{Q}_j(n)}{2^{j_{of}(a)}} \approx \frac{3^a}{2^{j_{of}(a)}} n\). Since \(j_{of}(a) \ge b\) and \(3^a/2^b {\lt} 1\), we have \(3^a/2^{j_{of}(a)} {\lt} 1\). More precisely, \(C_j(n) = \frac{3^a}{2^j} n + E_j(n)\). Using the bounds from Theorem&#160;<a href="sect0017.html#theorem:E_bounds">126</a>, \(E_j(n) \le R(a) = \frac{3^a - 2^a}{2^a}\). Then: </p>
-<div class="equation" id="a0000000189">
+<div class="equation" id="a0000000190">
 <p>
   <div class="equation_content">
     \begin{equation}  C_j(n) \le \frac{3^a}{2^b} n + \left(\frac{3}{2}\right)^a - 1. \end{equation}
@@ -372,7 +376,7 @@
 </div>
 <p> The condition \(3^a/2^b {\gt} 1 - 1/(4n)\) ensures that \(C_j(n) {\lt} 1\). </p>
 <p><b class="bfseries">Case 2: \(j_{of}(a) {\lt} b\).</b> Let \(k = b - j_{of}(a)\). We claim \((b, 2^k n)\) is paradoxical. By the shift property \(T^b(2^k n) = T^{j_{of}(a)}(n)\), and since \(T^{j_{of}(a)}(n) \ge n\) and \(2^k n \ge n\) is not guaranteed to be small, we calculate: \(C_b(2^k n) = \frac{3^a (2^k n) + \mathcal{Q}_b(2^k n)}{2^b} = \frac{2^k (3^a n + \mathcal{Q}_j(n))}{2^{k+j}} = C_j(n)\). Again, the Diophantine condition \(3^a/2^b {\gt} 1 - 1/(4n)\) implies \(C_b(2^k n) {\lt} 1\), and \(T^b(2^k n) \ge 2^k n\) follows from the linear decomposition: </p>
-<div class="equation" id="a0000000190">
+<div class="equation" id="a0000000191">
 <p>
   <div class="equation_content">
     \begin{equation}  2^j T^j(n) = 3^a n + \mathcal{Q}_j(n). \end{equation}
@@ -385,24 +389,6 @@
 
   </div>
 </div>
-<dl class="bibliography">
-  <dt><a name="crandall78">1</a></dt>
-  <dd><p><i class="sc">Crandall, Richard E.</i>, <em>"On the “3𝑥+ 1” problem."</em>, Mathematics of computation 32.144 (1978): 1281-1292. </p>
-</dd>
-  <dt><a name="everett77">2</a></dt>
-  <dd><p><i class="sc">Everett, C. J.</i>, <em>"Iteration of the number-theoretic function \(f(2n)= n, f(2n+1)= 3n+2\)."</em>, Advances in Mathematics 25.1 (1977): 42-45. </p>
-</dd>
-  <dt><a name="lagarias">3</a></dt>
-  <dd><p><i class="sc">Lagarias, Jeffrey C.</i>, "The 3x+ 1 problem: An overview.", in: <em>The ultimate challenge: The 3x+1 Problem</em> (2010): 3-29. </p>
-</dd>
-  <dt><a name="rozier2025paradoxical">4</a></dt>
-  <dd><p><i class="sc">Rozier, Olivier and Terracol, Claude</i>, <em>Paradoxical behavior in Collatz sequences</em>, arXiv preprint arXiv:2502.00948, 2025 </p>
-</dd>
-  <dt><a name="terras76">5</a></dt>
-  <dd><p><i class="sc">Terras, Riho</i>, <em>"A stopping time problem on the positive integers."</em>, Acta Arithmetica 30 (1976): 241-252. </p>
-</dd>
-</dl>
-<p> <br /> </p>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -417,6 +403,8 @@
   <a href="sect0019.html" title="Diophantine Approximations"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
   <a href="sect0015.html" title="Rozier & Terracol (2025)"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0021.html" title="Literature"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 
