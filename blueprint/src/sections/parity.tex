@@ -2,19 +2,19 @@
 A parity vector is a finite sequence of bits (0 and 1). In the formalization, it is represented as a list of boolean values, where \texttt{false} corresponds to 0 and \texttt{true} corresponds to 1.
 \end{definition}
 
-\begin{definition}\label{def:ParityVector_q}\lean{CollatzMapBasics.ParityVector.q}\leanok
+\begin{definition}\label{def:ParityVector_q}\lean{CollatzMapBasics.q}\leanok
 For a parity vector $v$, $q(v)$ is the number of ones (true entries) in $v$.
 \end{definition}
 
-\begin{definition}\label{def:ParityVector_size}\lean{CollatzMapBasics.ParityVector.size}\leanok
+\begin{definition}\label{def:ParityVector_size}\lean{CollatzMapBasics.size}\leanok
 The size of a parity vector $v$, denoted $|v|$, is its length.
 \end{definition}
 
-\begin{definition}\label{def:ParityVector_onesRatio}\lean{CollatzMapBasics.ParityVector.onesRatio}\leanok
+\begin{definition}\label{def:ParityVector_onesRatio}\lean{CollatzMapBasics.onesRatio}\leanok
 The ones-ratio of a parity vector $v$ is the rational number $q(v) / |v|$. If the vector is empty, the ratio is defined to be 0.
 \end{definition}
 
-\begin{definition}\label{def:ParityVector_V}\lean{CollatzMapBasics.ParityVector.V}\leanok
+\begin{definition}\label{def:ParityVector_V}\lean{CollatzMapBasics.V}\leanok
 For $j, n \in \mathbb{N}$, the parity vector $V(j, n)$ of length $j$ for the compact Collatz
 sequence starting at $n$ is defined as
 \[
@@ -22,21 +22,21 @@ sequence starting at $n$ is defined as
 \]
 \end{definition}
 
-\begin{lemma}\label{lemma:V_length}\lean{CollatzMapBasics.ParityVector.V_length}\leanok
+\begin{lemma}\label{lemma:V_length}\lean{CollatzMapBasics.V_length}\leanok
 The length of $V(j, n)$ is $j$.
 \end{lemma}
 \begin{proof}\leanok
 Immediate from the definition.
 \end{proof}
 
-\begin{lemma}\label{lemma:V_get}\lean{CollatzMapBasics.ParityVector.V_get}\leanok
+\begin{lemma}\label{lemma:V_get}\lean{CollatzMapBasics.V_get}\leanok
 For any $i < j$, the $i$-th entry of $V(j, n)$ is $X(T^i(n))$.
 \end{lemma}
 \begin{proof}\leanok
 Immediate from the definition.
 \end{proof}
 
-\begin{definition}\label{def:ParityVector_Precedes}\lean{CollatzMapBasics.ParityVector.Precedes}\leanok
+\begin{definition}\label{def:ParityVector_Precedes}\lean{CollatzMapBasics.Precedes}\leanok
 The elementary precedence relation $\prec_e$ is defined by swapping a $01$ subword with $10$:
 \begin{equation}
     w_1 01 w_2 \prec_e w_1 10 w_2.

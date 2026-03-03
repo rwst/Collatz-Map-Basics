@@ -93,6 +93,18 @@
      <li class="">
   <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Diophantine Approximations</span></a>
  </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">4.2</span> <span class="toc_entry">Rozier–Terracol Lemma 2.1</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">4.3</span> <span class="toc_entry">Rozier–Terracol Theorem 2.2</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">4.4</span> <span class="toc_entry">Rozier–Terracol Lemma 2.3</span></a>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
+ </li>
 
   </ul>
  </li>
@@ -127,7 +139,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L11" class="lean_decl">CollatzMapBasics.T</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L11" class="lean_decl">CollatzMapBasics.T</a></li>
           
         </ul>
     </div>
@@ -136,7 +148,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>The compact Collatz map \(T: \mathbb {N} \to \mathbb {N}\) is defined by </p>
-<div class="equation" id="a0000000103">
+<div class="equation" id="a0000000107">
 <p>
   <div class="equation_content">
     \begin{equation}  T(n) = \frac{n \cdot 3^{X(n)} + X(n)}{2} \end{equation}
@@ -150,11 +162,11 @@
 </div>
 <p> \(T(n)\) was independently introduced by Terras (1976)<span class="cite">
 	[
-	<a href="sect0016.html#terras76" >5</a>
+	<a href="sect0020.html#terras76" >5</a>
 	]
 </span> and Everett (in an equivalent form, 1977)<span class="cite">
 	[
-	<a href="sect0016.html#everett77" >2</a>
+	<a href="sect0020.html#everett77" >2</a>
 	]
 </span>. It is also called the <b class="bf">Syracuse map</b>. </p>
 <p>One of the advantages of using \(T\) instead of \(C\) or \(R\) is that the number of divisions by 2 per step is the same, regardless if \(n\) is even or odd. This leads to formulae for \(T^i(n)\) that can be handled better, although they are still not closed in the usual sense. </p>
@@ -173,7 +185,7 @@
 
     <a class="icon proof" href="sect0010.html#lemma:T_even">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000104"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000108"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -182,7 +194,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L13" class="lean_decl">CollatzMapBasics.T_even</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L13" class="lean_decl">CollatzMapBasics.T_even</a></li>
           
         </ul>
     </div>
@@ -194,7 +206,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000104">
+<div class="proof_wrapper" id="a0000000108">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -221,7 +233,7 @@
 
     <a class="icon proof" href="sect0010.html#lemma:T_odd">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000105"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000109"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -230,7 +242,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L16" class="lean_decl">CollatzMapBasics.T_odd</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L16" class="lean_decl">CollatzMapBasics.T_odd</a></li>
           
         </ul>
     </div>
@@ -242,7 +254,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000105">
+<div class="proof_wrapper" id="a0000000109">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -275,7 +287,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L20" class="lean_decl">CollatzMapBasics.T_iter</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L20" class="lean_decl">CollatzMapBasics.T_iter</a></li>
           
         </ul>
     </div>
@@ -302,7 +314,7 @@
 
     <a class="icon proof" href="sect0010.html#lemma:T_pos">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000106"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000110"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -311,7 +323,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L36" class="lean_decl">CollatzMapBasics.T_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L36" class="lean_decl">CollatzMapBasics.T_pos</a></li>
           
         </ul>
     </div>
@@ -323,7 +335,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000106">
+<div class="proof_wrapper" id="a0000000110">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -350,7 +362,7 @@
 
     <a class="icon proof" href="sect0010.html#lemma:T_iter_pos">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000107"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000111"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -359,7 +371,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L41" class="lean_decl">CollatzMapBasics.T_iter_pos</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L41" class="lean_decl">CollatzMapBasics.T_iter_pos</a></li>
           
         </ul>
     </div>
@@ -371,7 +383,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000107">
+<div class="proof_wrapper" id="a0000000111">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -398,7 +410,7 @@
 
     <a class="icon proof" href="sect0010.html#lemma:T_congr">#</a>
     
-    <a class="icon proof" href="sect0010.html#a0000000108"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0010.html#a0000000112"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -407,7 +419,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L69" class="lean_decl">CollatzMapBasics.T_congr</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L69" class="lean_decl">CollatzMapBasics.T_congr</a></li>
           
         </ul>
     </div>
@@ -419,7 +431,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000108">
+<div class="proof_wrapper" id="a0000000112">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -452,7 +464,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L56" class="lean_decl">CollatzMapBasics.num_odd_steps</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L56" class="lean_decl">CollatzMapBasics.num_odd_steps</a></li>
           
         </ul>
     </div>
@@ -461,7 +473,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>The number of odd steps in the first \(k\) iterations of \(T\) starting from \(n\) is defined by </p>
-<div class="equation" id="a0000000109">
+<div class="equation" id="a0000000113">
 <p>
   <div class="equation_content">
     \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} X(T^i(n)). \end{equation}
@@ -493,7 +505,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L91" class="lean_decl">CollatzMapBasics.stopping_time</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L91" class="lean_decl">CollatzMapBasics.stopping_time</a></li>
           
         </ul>
     </div>
@@ -526,7 +538,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Terras.lean#L109" class="lean_decl">CollatzMapBasics.total_stopping_time</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Terras.lean#L109" class="lean_decl">CollatzMapBasics.total_stopping_time</a></li>
           
         </ul>
     </div>

@@ -1,0 +1,40 @@
+\begin{definition}\label{def:L}\lean{L}\leanok
+The lower bound sequence $L_j(q)$ is defined for $j, q \in \mathbb{N}$ by:
+\begin{equation}
+    L_j(q) = \frac{3^q - 2^q}{2^j}.
+\end{equation}
+\end{definition}
+
+\begin{definition}\label{def:R}\lean{R}\leanok
+The upper bound $R(q)$ is defined for $q \in \mathbb{N}$ by:
+\begin{equation}
+    R(q) = \frac{3^q - 2^q}{2^q} = \left(\frac{3}{2}\right)^q - 1.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Rozier--Terracol Theorem 2.2]\label{theorem:E_bounds}\lean{E_bounds}\leanok
+For every positive integer $j$ and any $n \in \mathbb{N}$, let $q$ be the number of odd steps in the first $j$ iterations of the compact Collatz map on $n$. Then the correction ratio $E_j(n)$ satisfies:
+\begin{equation}
+    L_j(q) \le E_j(n) \le R(q).
+\end{equation}
+\end{theorem}
+\begin{proof}\leanok
+We proceed by induction on $j$. The base case $j=1$ is trivial. For the inductive step $j+1$, let $q$ be the number of odd steps in the first $j$ iterations and $x \in \{0, 1\}$ be the $(j+1)$-th parity bit. Then the number of odd steps in $j+1$ iterations is $q+x$.
+By the recursive definition, $E_{j+1}(n) = \frac{3^x}{2} E_j(n) + \frac{x}{2}$.
+If $x=0$, $E_{j+1}(n) = E_j(n)/2$. Since $L_{j+1}(q) = L_j(q)/2$ and $R(q)/2 \le R(q)$, the bounds hold.
+If $x=1$, $E_{j+1}(n) = (3E_j(n) + 1)/2$. Since $L_{j+1}(q+1) = (3L_j(q) + 2^q/2^j)/2$ and $2^q/2^j \le 1$ (as $q \le j$), and $R(q+1) = (3R(q) + 1)/2$, the bounds follow from the induction hypothesis.
+\end{proof}
+
+\begin{theorem}\label{theorem:E_upper_bound_iff}\lean{E_upper_bound_iff}\leanok
+For $j > 0$, the upper bound $E_j(n) = R(q)$ is reached if and only if all $q$ odd steps occur at the end of the first $j$ iterations. That is, the parity vector $V_j(n)$ consists of $j-q$ zeros followed by $q$ ones.
+\end{theorem}
+\begin{proof}\leanok
+By induction on $j$. The condition $E_{j+1}(n) = R(q+x)$ requires $E_j(n) = R(q)$ and $x=1$ (if $q>0$), or $E_j(n)=0$ and $q=0$ and $x=0$. This forces the bits to align at the end.
+\end{proof}
+
+\begin{theorem}\label{theorem:E_lower_bound_iff}\lean{E_lower_bound_iff}\leanok
+For $j > 0$, the lower bound $E_j(n) = L_j(q)$ is reached if and only if all $q$ odd steps occur at the beginning of the first $j$ iterations. That is, the parity vector $V_j(n)$ consists of $q$ ones followed by $j-q$ zeros.
+\end{theorem}
+\begin{proof}\leanok
+Similar to the upper bound, by induction on $j$. Equality $E_{j+1}(n) = L_{j+1}(q+x)$ forces the bits to be "front-loaded."
+\end{proof}

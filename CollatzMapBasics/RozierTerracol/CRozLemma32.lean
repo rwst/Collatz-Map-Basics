@@ -1,4 +1,5 @@
 import CollatzMapBasics.Decomposition
+import CollatzMapBasics.Parity
 import CollatzMapBasics.Approximation
 import CollatzMapBasics.RozierTerracol.CRozLemma22
 import CollatzMapBasics.RozierTerracol.CRozLemma23
@@ -16,17 +17,15 @@ open Classical
 
 open CollatzMapBasics
 
-open ParityVector
-
 def IsParadoxical (j n : ℕ) : Prop := T_iter j n ≥ n ∧ C j n < 1
 
--- ===== Helper lemmas for T_iter and Garner formula shifts =====
+-- ===== Helper lemmas for T_iter and decomposition formula shifts =====
 
-lemma T_iter_add_shift (k j n : ℕ) :
+private lemma T_iter_add_shift (k j n : ℕ) :
     T_iter (k + j) n = T_iter j (T_iter k n) := by
   rw [add_comm, T_iter_add]
 
-lemma T_iter_pow_two_mul (k n : ℕ) : T_iter k (2 ^ k * n) = n := by
+private lemma T_iter_pow_two_mul (k n : ℕ) : T_iter k (2 ^ k * n) = n := by
   induction k with
   | zero => simp [T_iter]
   | succ k ih =>
@@ -269,7 +268,7 @@ private lemma even_run_exact (J n : ℕ) :
       rw [hsucc, T_even h_ek, heq, pow_succ, Nat.div_div_eq_div_mul]
 
 /-- If n has infinite stopping time and n ≥ 1, then num_odd_steps is unbounded. -/
-private lemma num_odd_steps_unbounded (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥ 1) :
+lemma num_odd_steps_unbounded (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥ 1) :
     ∀ M, ∃ j, num_odd_steps j n ≥ M := by
   by_contra h
   push_neg at h
@@ -339,7 +338,7 @@ private lemma num_odd_steps_unbounded (n : ℕ) (hn : stopping_time n = ⊤) (hn
   omega
 
 /-- If n has infinite stopping time and n ≥ 1, num_odd_steps hits every natural number. -/
-private lemma num_odd_steps_hits_all (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥ 1) :
+lemma num_odd_steps_hits_all (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥ 1) :
     ∀ a, ∃ j, num_odd_steps j n = a := by
   -- Follows from: step size ≤ 1, starts at 0, unbounded
   suffices hub : ∀ M, ∃ j, num_odd_steps j n ≥ M from by
@@ -379,7 +378,7 @@ private lemma num_odd_steps_hits_all (n : ℕ) (hn : stopping_time n = ⊤) (hn1
   exact num_odd_steps_unbounded n hn hn1
 
 /-- Cast helper: ℝ inequality for 3^a/2^b implies ℚ inequality. -/
-private lemma real_to_rat_approx (a b n : ℕ)
+lemma real_to_rat_approx (a b n : ℕ)
     (h_lower : (1 - 1 / (4 * (n : ℝ))) < (3 : ℝ) ^ a / (2 : ℝ) ^ b)
     (h_upper : (3 : ℝ) ^ a / (2 : ℝ) ^ b < 1) :
     1 - (1 : ℚ) / (4 * n) < (3 : ℚ) ^ a / 2 ^ b ∧ (3 : ℚ) ^ a / 2 ^ b < 1 := by
@@ -392,7 +391,7 @@ private lemma real_to_rat_approx (a b n : ℕ)
     exact_mod_cast this
 
 /-- For each a, there is at most one b with 3^a/2^b ∈ (1-1/(4n), 1) when n ≥ 1. -/
-private lemma unique_b_for_a (a b₁ b₂ n : ℕ) (hn : n ≥ 1)
+lemma unique_b_for_a (a b₁ b₂ n : ℕ) (hn : n ≥ 1)
     (h1 : (1 - 1 / (4 * (n : ℝ))) < (3 : ℝ) ^ a / (2 : ℝ) ^ b₁)
     (h1' : (3 : ℝ) ^ a / (2 : ℝ) ^ b₁ < 1)
     (h2 : (1 - 1 / (4 * (n : ℝ))) < (3 : ℝ) ^ a / (2 : ℝ) ^ b₂)

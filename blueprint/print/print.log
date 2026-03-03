@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  2 MAR 2026 16:51
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  3 MAR 2026 16:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -720,8 +720,12 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
  [1
 
 ]) (./sections/collatz-map.tex
-[2] [3]) (./sections/collatz-conjecture.tex [4]) (./sections/graph.tex [5])
-[6]
+[2] [3]) (./sections/collatz-conjecture.tex [4]) (./sections/graph.tex [5]
+
+LaTeX Warning: Reference `lemma:T_iter_to_collatz_iter' on page 6 undefined on 
+input line 38.
+
+) [6]
 Chapter 2.
 (./sections/reduced-map.tex [7
 
@@ -737,31 +741,42 @@ Chapter 3.
 
 ]) (./sections/parity.tex [13])
 (./sections/decomposition.tex [14]) (./sections/periodicity.tex)
-(./sections/TC-correspondence.tex [15]) [16]
+(./sections/TC-correspondence.tex [15]
+
+LaTeX Warning: Reference `lemma:T_iter_to_collatz_iter' on page 16 undefined on
+ input line 37.
+
+) [16]
 Chapter 4.
 (./sections/log2div3.tex [17
 
-]) [18]
+]) (./sections/croz-lemma-21.tex [18])
+(./sections/croz-lemma-22.tex [19]) (./sections/croz-lemma-23.tex [20])
+(./sections/croz-lemma-32.tex [21]) [22]
 Missing character: There is no 𝑥 (U+1D465) in font [lmroman10-italic]:mapping=t
 ex-text;!
-[19
+[23
 
 ]) (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 8CD943A2A6FD7CC031C4A04A8E982E29;2513.
+(rerunfilecheck)             Checksum: C0A93DFDF375E99B2D41838C46DE1B23;3253.
  ) 
 Here is how much of TeX's memory you used:
- 17083 strings out of 475925
- 314067 string characters out of 5783280
+ 17137 strings out of 475925
+ 315516 string characters out of 5783280
  1950839 words of memory out of 5000000
- 38941 multiletter control sequences out of 15000+600000
+ 38983 multiletter control sequences out of 15000+600000
  563480 words of font info for 90 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
  90i,9n,114p,653b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf 
-(21 pages).
+(25 pages).

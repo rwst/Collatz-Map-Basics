@@ -93,6 +93,18 @@
      <li class="">
   <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Diophantine Approximations</span></a>
  </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">4.2</span> <span class="toc_entry">Rozier–Terracol Lemma 2.1</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">4.3</span> <span class="toc_entry">Rozier–Terracol Theorem 2.2</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">4.4</span> <span class="toc_entry">Rozier–Terracol Lemma 2.3</span></a>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
+ </li>
 
   </ul>
  </li>
@@ -127,7 +139,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L7" class="lean_decl">CollatzMapBasics.ParityVector</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L7" class="lean_decl">CollatzMapBasics.ParityVector</a></li>
           
         </ul>
     </div>
@@ -160,7 +172,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L19" class="lean_decl">CollatzMapBasics.ParityVector.q</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L17" class="lean_decl">CollatzMapBasics.q</a></li>
           
         </ul>
     </div>
@@ -193,7 +205,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L22" class="lean_decl">CollatzMapBasics.ParityVector.size</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L20" class="lean_decl">CollatzMapBasics.size</a></li>
           
         </ul>
     </div>
@@ -226,7 +238,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L25" class="lean_decl">CollatzMapBasics.ParityVector.onesRatio</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L23" class="lean_decl">CollatzMapBasics.onesRatio</a></li>
           
         </ul>
     </div>
@@ -259,7 +271,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L28" class="lean_decl">CollatzMapBasics.ParityVector.V</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L26" class="lean_decl">CollatzMapBasics.V</a></li>
           
         </ul>
     </div>
@@ -268,7 +280,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>For \(j, n \in \mathbb {N}\), the parity vector \(V(j, n)\) of length \(j\) for the compact Collatz sequence starting at \(n\) is defined as </p>
-<div class="displaymath" id="a0000000110">
+<div class="displaymath" id="a0000000114">
   \[  V(j, n) = (X(n), X(T(n)), \dots , X(T^{j-1}(n))).  \]
 </div>
 
@@ -289,7 +301,7 @@
 
     <a class="icon proof" href="sect0011.html#lemma:V_length">#</a>
     
-    <a class="icon proof" href="sect0011.html#a0000000111"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0011.html#a0000000115"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -298,7 +310,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L32" class="lean_decl">CollatzMapBasics.ParityVector.V_length</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L30" class="lean_decl">CollatzMapBasics.V_length</a></li>
           
         </ul>
     </div>
@@ -310,7 +322,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000111">
+<div class="proof_wrapper" id="a0000000115">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -337,7 +349,7 @@
 
     <a class="icon proof" href="sect0011.html#lemma:V_get">#</a>
     
-    <a class="icon proof" href="sect0011.html#a0000000112"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0011.html#a0000000116"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -346,7 +358,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L35" class="lean_decl">CollatzMapBasics.ParityVector.V_get</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L33" class="lean_decl">CollatzMapBasics.V_get</a></li>
           
         </ul>
     </div>
@@ -358,7 +370,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000112">
+<div class="proof_wrapper" id="a0000000116">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -391,7 +403,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L46" class="lean_decl">CollatzMapBasics.ParityVector.Precedes</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L44" class="lean_decl">CollatzMapBasics.Precedes</a></li>
           
         </ul>
     </div>
@@ -400,7 +412,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>The elementary precedence relation \(\prec _e\) is defined by swapping a \(01\) subword with \(10\): </p>
-<div class="equation" id="a0000000113">
+<div class="equation" id="a0000000117">
 <p>
   <div class="equation_content">
     \begin{equation}  w_1 01 w_2 \prec _e w_1 10 w_2. \end{equation}
@@ -433,7 +445,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L55" class="lean_decl">CollatzMapBasics.E_vec</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L51" class="lean_decl">CollatzMapBasics.E_vec</a></li>
           
         </ul>
     </div>
@@ -442,7 +454,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>For \(k, n \in \mathbb {N}\), the vector \(E(k, n)\) is the function from \(\{ 0, \dots , k-1\} \) to \(\{ 0, 1\} \) defined by </p>
-<div class="equation" id="a0000000114">
+<div class="equation" id="a0000000118">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k, n)(i) = X(T^i(n)). \end{equation}
@@ -468,7 +480,7 @@
 
     <a class="icon proof" href="sect0011.html#lemma:E_vec_le_one">#</a>
     
-    <a class="icon proof" href="sect0011.html#a0000000115"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0011.html#a0000000119"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -477,7 +489,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L61" class="lean_decl">CollatzMapBasics.E_vec_le_one</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L57" class="lean_decl">CollatzMapBasics.E_vec_le_one</a></li>
           
         </ul>
     </div>
@@ -489,7 +501,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000115">
+<div class="proof_wrapper" id="a0000000119">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -516,7 +528,7 @@
 
     <a class="icon proof" href="sect0011.html#lemma:num_odd_steps_eq_E_vec_sum">#</a>
     
-    <a class="icon proof" href="sect0011.html#a0000000116"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0011.html#a0000000120"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -525,7 +537,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L64" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_E_vec_sum</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L60" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_E_vec_sum</a></li>
           
         </ul>
     </div>
@@ -534,7 +546,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>The number of odd steps \(Q(k, n)\) is equal to the sum of the entries of \(E(k, n)\): </p>
-<div class="equation" id="a0000000117">
+<div class="equation" id="a0000000121">
 <p>
   <div class="equation_content">
     \begin{equation}  Q(k, n) = \sum _{i=0}^{k-1} E(k, n)(i). \end{equation}
@@ -545,7 +557,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000116">
+<div class="proof_wrapper" id="a0000000120">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -572,7 +584,7 @@
 
     <a class="icon proof" href="sect0011.html#lemma:E_vec_restrict">#</a>
     
-    <a class="icon proof" href="sect0011.html#a0000000118"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0011.html#a0000000122"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -581,7 +593,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L68" class="lean_decl">CollatzMapBasics.E_vec_restrict</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L64" class="lean_decl">CollatzMapBasics.E_vec_restrict</a></li>
           
         </ul>
     </div>
@@ -593,7 +605,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000118">
+<div class="proof_wrapper" id="a0000000122">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -620,7 +632,7 @@
 
     <a class="icon proof" href="sect0011.html#lemma:num_odd_steps_eq_of_E_vec_eq">#</a>
     
-    <a class="icon proof" href="sect0011.html#a0000000119"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0011.html#a0000000123"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -629,7 +641,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0f1cfd28f530bb6116c6476e506e3bdf52f48f4d/CollatzMapBasics/Parity.lean#L74" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/Parity.lean#L70" class="lean_decl">CollatzMapBasics.num_odd_steps_eq_of_E_vec_eq</a></li>
           
         </ul>
     </div>
@@ -641,7 +653,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000119">
+<div class="proof_wrapper" id="a0000000123">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof

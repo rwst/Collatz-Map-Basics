@@ -12,7 +12,8 @@ import CollatzMapBasics.Parity
 
 open Classical
 open CollatzMapBasics
-open CollatzMapBasics.ParityVector
+
+namespace CollatzMapBasics
 
 /-- If `E k n < E k m` and the parity bits agree from position `k` to `j-1`,
     then `E j n < E j m`. -/
@@ -120,7 +121,7 @@ lemma E_eq_of_V_prefix_eq (k j m n : ℕ) (hk : k ≤ j)
   simp only [E, decomposition_correction_eq_of_V_prefix_eq k j m n hk hpre]
 
 lemma E_elementary_lt (v1 v2 : ParityVector)
-    (hswap : ParityVector.ElementaryPrecedes v1 v2)
+    (hswap : ElementaryPrecedes v1 v2)
     (j m n : ℕ) (hv1 : V j m = v1) (hv2 : V j n = v2) :
     E j n < E j m := by
   cases hswap with
@@ -225,7 +226,7 @@ private lemma foldl_E_step_lt (xs : List Bool) (a1 a2 : ℚ) (h : a1 < a2) :
 
 /-- An elementary swap strictly decreases E_pv. -/
 private lemma E_pv_elementary_lt {v1 v2 : ParityVector}
-    (h : ParityVector.ElementaryPrecedes v1 v2) : E_pv v2 < E_pv v1 := by
+    (h : ElementaryPrecedes v1 v2) : E_pv v2 < E_pv v1 := by
   cases h with
   | swap w1 w2 =>
     simp only [E_pv, List.foldl_append, List.foldl_cons, List.foldl_nil]
@@ -268,8 +269,8 @@ private lemma E_pv_eq_E (j n : ℕ) : E_pv (V j n) = E j n := by
     simp only [hbnat]
 
 /-- TransGen of ElementaryPrecedes strictly decreases E_pv. -/
-private lemma E_pv_transGen_lt {v1 v2 : ParityVector}
-    (h : Relation.TransGen ParityVector.ElementaryPrecedes v1 v2) : E_pv v2 < E_pv v1 := by
+lemma E_pv_transGen_lt {v1 v2 : ParityVector}
+    (h : Relation.TransGen ElementaryPrecedes v1 v2) : E_pv v2 < E_pv v1 := by
   induction h with
   | single h => exact E_pv_elementary_lt h
   | tail _ h ih => exact lt_trans (E_pv_elementary_lt h) ih
@@ -278,7 +279,7 @@ private lemma E_pv_transGen_lt {v1 v2 : ParityVector}
     If `V j m` strictly precedes `V j n` in the parity-vector partial order
     (i.e., at least one elementary swap), then `E_j(m) > E_j(n)`. -/
 lemma E_lt_of_V_precedes (j m n : ℕ)
-    (hprec : Relation.TransGen ParityVector.ElementaryPrecedes (V j m) (V j n)) :
+    (hprec : Relation.TransGen ElementaryPrecedes (V j m) (V j n)) :
     E j n < E j m := by
   have h := E_pv_transGen_lt hprec
   rwa [E_pv_eq_E, E_pv_eq_E] at h

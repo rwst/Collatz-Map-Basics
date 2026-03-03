@@ -11,8 +11,6 @@ deriving instance DecidableEq for ParityVector
 instance : GetElem ParityVector ℕ Bool fun v i => i < v.length :=
   inferInstanceAs (GetElem (List Bool) ℕ Bool _)
 
-namespace ParityVector
-
 def toNat (b : Bool) : ℕ := if b then 1 else 0
 
 /-- `q v` is the number of ones (true entries) in the parity vector `v`. -/
@@ -47,8 +45,6 @@ def Precedes (v1 v2 : ParityVector) : Prop :=
   Relation.ReflTransGen ElementaryPrecedes v1 v2
 
 infix:50 " ≼ " => Precedes
-
-end ParityVector
 
 /-- `E_vec k n` is the parity vector `(X(n), X(T n), …, X(T^{k-1} n))` as a function `Fin k → ℕ`,
     where each entry is 0 or 1. -/

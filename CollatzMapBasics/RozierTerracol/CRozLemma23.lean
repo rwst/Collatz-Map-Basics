@@ -1,4 +1,5 @@
 import CollatzMapBasics.Decomposition
+import CollatzMapBasics.Parity
 import CollatzMapBasics.Periodicity
 import CollatzMapBasics.RozierTerracol.CRozLemma21
 import CollatzMapBasics.RozierTerracol.CRozLemma22
@@ -15,8 +16,6 @@ import CollatzMapBasics.RozierTerracol.CRozLemma22
 open Classical
 
 open CollatzMapBasics
-
-open ParityVector
 
 /-- Shift lemma: T^j(m + 2^j) and T^j(m) are related, which implies they have opposite parity. -/
 lemma X_T_iter_shift (j m : ℕ) : X (T_iter j m) + X (T_iter j (m + 2 ^ j)) = 1 := by

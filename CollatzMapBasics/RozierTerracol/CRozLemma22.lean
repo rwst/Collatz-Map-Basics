@@ -15,8 +15,6 @@ open Classical
 
 open CollatzMapBasics
 
-open ParityVector
-
 /-- The lower bound sequence: `L_j(q) = (3^q - 2^q) / 2^j`. -/
 def L (j q : ℕ) : ℚ := ((3 : ℚ) ^ q - 2 ^ q) / 2 ^ j
 
@@ -107,12 +105,13 @@ theorem E_bounds (j n : ℕ) (hj : 0 < j) :
             _ ≤ (3 * R q + 1) / 2 := by gcongr
             _ = R (q + 1) := by rw [R_succ_odd]
 
-lemma V_succ (j n : ℕ) : (V (j + 1) n : List Bool) = List.append (V j n : List Bool) [decide (X (T_iter j n) = 1)] := by
+private lemma V_succ (j n : ℕ) : (V (j + 1) n : List Bool) = List.append (V j n : List Bool)
+    [decide (X (T_iter j n) = 1)] := by
   simp only [V, List.finRange_succ_last, List.map_append, List.map_map, Function.comp_def,
     Fin.castSucc, Fin.last, List.map_cons, List.map_nil, Fin.val_castAdd]
   rfl
 
-lemma R_eq_zero_iff (q : ℕ) : R q = 0 ↔ q = 0 := by
+private lemma R_eq_zero_iff (q : ℕ) : R q = 0 ↔ q = 0 := by
   constructor
   · intro h
     unfold R at h
@@ -128,7 +127,7 @@ lemma R_eq_zero_iff (q : ℕ) : R q = 0 ↔ q = 0 := by
     · linarith
   · rintro rfl; simp [R]
 
-lemma L_eq_zero_iff (j q : ℕ) : L j q = 0 ↔ q = 0 := by
+private lemma L_eq_zero_iff (j q : ℕ) : L j q = 0 ↔ q = 0 := by
   constructor
   · intro h
     unfold L at h
