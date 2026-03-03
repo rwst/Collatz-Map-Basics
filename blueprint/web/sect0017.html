@@ -12,9 +12,9 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Collatz Map Basics: Rozier–Terracol Lemma 2.1</title>
-<link rel="next" href="sect0018.html" title="Rozier–Terracol Theorem 2.2" />
-<link rel="prev" href="sect0016.html" title="Diophantine Approximations" />
+<title>Collatz Map Basics: Rozier–Terracol Theorem 2.2</title>
+<link rel="next" href="sect0018.html" title="Rozier–Terracol Lemma 2.3" />
+<link rel="prev" href="sect0016.html" title="Rozier–Terracol Lemma 2.1" />
 <link rel="up" href="sect0015.html" title="Rozier & Terracol (2025)" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
@@ -91,16 +91,16 @@
   <span class="expand-toc">▼</span>
   <ul class="sub-toc-1 active">
      <li class="">
-  <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Diophantine Approximations</span></a>
+  <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Rozier–Terracol Lemma 2.1</span></a>
  </li>
 <li class=" active current">
-  <a href="sect0017.html"><span class="toc_ref">4.2</span> <span class="toc_entry">Rozier–Terracol Lemma 2.1</span></a>
+  <a href="sect0017.html"><span class="toc_ref">4.2</span> <span class="toc_entry">Rozier–Terracol Theorem 2.2</span></a>
  </li>
 <li class="">
-  <a href="sect0018.html"><span class="toc_ref">4.3</span> <span class="toc_entry">Rozier–Terracol Theorem 2.2</span></a>
+  <a href="sect0018.html"><span class="toc_ref">4.3</span> <span class="toc_entry">Rozier–Terracol Lemma 2.3</span></a>
  </li>
 <li class="">
-  <a href="sect0019.html"><span class="toc_ref">4.4</span> <span class="toc_entry">Rozier–Terracol Lemma 2.3</span></a>
+  <a href="sect0019.html"><span class="toc_ref">4.4</span> <span class="toc_entry">Diophantine Approximations</span></a>
  </li>
 <li class="">
   <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
@@ -117,13 +117,13 @@
 
 
 <div class="main-text">
-<h1 id="a0000000018">4.2 Rozier–Terracol Lemma 2.1</h1>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_suffix_preserves_lt">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
+<h1 id="a0000000018">4.2 Rozier–Terracol Theorem 2.2</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:L">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
     </span>
-    <span class="lemma_thmlabel">124</span>
+    <span class="definition_thmlabel">124</span>
     <div class="thm_header_extras">
 
     
@@ -131,7 +131,90 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0017.html#lemma:E_suffix_preserves_lt">#</a>
+    <a class="icon proof" href="sect0017.html#def:L">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma22.lean#L19" class="lean_decl">L</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The lower bound sequence \(L_j(q)\) is defined for \(j, q \in \mathbb {N}\) by: </p>
+<div class="equation" id="a0000000156">
+<p>
+  <div class="equation_content">
+    \begin{equation}  L_j(q) = \frac{3^q - 2^q}{2^j}. \end{equation}
+  </div>
+  <span class="equation_label">2</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:R">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">125</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0017.html#def:R">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma22.lean#L22" class="lean_decl">R</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The upper bound \(R(q)\) is defined for \(q \in \mathbb {N}\) by: </p>
+<div class="equation" id="a0000000157">
+<p>
+  <div class="equation_content">
+    \begin{equation}  R(q) = \frac{3^q - 2^q}{2^q} = \left(\frac{3}{2}\right)^q - 1. \end{equation}
+  </div>
+  <span class="equation_label">3</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="theorem:E_bounds">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">126</span>
+    <span class="theorem_thmtitle">Rozier–Terracol Theorem 2.2</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0017.html#theorem:E_bounds">#</a>
     
     <a class="icon proof" href="sect0017.html#a0000000158"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -142,15 +225,23 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L20" class="lean_decl">CollatzMapBasics.E_suffix_preserves_lt</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma22.lean#L56" class="lean_decl">E_bounds</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p>Let \(k \le j\). If \(E_k(n) {\lt} E_k(m)\) and the parity bits of \(n\) and \(m\) agree for steps \(i \in \{ k, \dots , j-1\} \) (i.e., \(X(T^i(n)) = X(T^i(m))\) for \(k \le i {\lt} j\)), then \(E_j(n) {\lt} E_j(m)\). </p>
+  <div class="theorem_thmcontent">
+  <p>For every positive integer \(j\) and any \(n \in \mathbb {N}\), let \(q\) be the number of odd steps in the first \(j\) iterations of the compact Collatz map on \(n\). Then the correction ratio \(E_j(n)\) satisfies: </p>
+<div class="equation" id="a0000000159">
+<p>
+  <div class="equation_content">
+    \begin{equation}  L_j(q) \le E_j(n) \le R(q). \end{equation}
+  </div>
+  <span class="equation_label">4</span>
+</p>
+</div>
 
   </div>
 </div>
@@ -162,25 +253,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>We proceed by induction on \(j\). The base case \(j=k\) follows from the hypothesis. For the inductive step \(j \to j+1\), we assume \(E_j(n) {\lt} E_j(m)\) and \(X(T^j(n)) = X(T^j(m)) = x\). Then: </p>
-<div class="equation" id="a0000000159">
-<p>
-  <div class="equation_content">
-    \begin{equation}  E_{j+1}(n) = \frac{3^x}{2} E_j(n) + \frac{x}{2} {\lt} \frac{3^x}{2} E_j(m) + \frac{x}{2} = E_{j+1}(m) \end{equation}
-  </div>
-  <span class="equation_label">6</span>
-</p>
-</div>
-<p> since \(3^x/2 {\gt} 0\). </p>
+  <p>We proceed by induction on \(j\). The base case \(j=1\) is trivial. For the inductive step \(j+1\), let \(q\) be the number of odd steps in the first \(j\) iterations and \(x \in \{ 0, 1\} \) be the \((j+1)\)-th parity bit. Then the number of odd steps in \(j+1\) iterations is \(q+x\). By the recursive definition, \(E_{j+1}(n) = \frac{3^x}{2} E_j(n) + \frac{x}{2}\). If \(x=0\), \(E_{j+1}(n) = E_j(n)/2\). Since \(L_{j+1}(q) = L_j(q)/2\) and \(R(q)/2 \le R(q)\), the bounds hold. If \(x=1\), \(E_{j+1}(n) = (3E_j(n) + 1)/2\). Since \(L_{j+1}(q+1) = (3L_j(q) + 2^q/2^j)/2\) and \(2^q/2^j \le 1\) (as \(q \le j\)), and \(R(q+1) = (3R(q) + 1)/2\), the bounds follow from the induction hypothesis. </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:X_of_V_true_false">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
+<div class="theorem_thmwrapper theorem-style-plain" id="theorem:E_upper_bound_iff">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
     </span>
-    <span class="lemma_thmlabel">125</span>
+    <span class="theorem_thmlabel">127</span>
     <div class="thm_header_extras">
 
     
@@ -188,7 +270,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0017.html#lemma:X_of_V_true_false">#</a>
+    <a class="icon proof" href="sect0017.html#theorem:E_upper_bound_iff">#</a>
     
     <a class="icon proof" href="sect0017.html#a0000000160"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -199,17 +281,15 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L35" class="lean_decl">CollatzMapBasics.X_of_V_true</a></li>
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L39" class="lean_decl">CollatzMapBasics.X_of_V_false</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma22.lean#L148" class="lean_decl">E_upper_bound_iff</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p>For any \(i {\lt} j\), the \(i\)-th entry of the parity vector \(V_j(n)\) is true if and only if \(X(T^i(n)) = 1\). It is false if and only if \(X(T^i(n)) = 0\). </p>
+  <div class="theorem_thmcontent">
+  <p>For \(j {\gt} 0\), the upper bound \(E_j(n) = R(q)\) is reached if and only if all \(q\) odd steps occur at the end of the first \(j\) iterations. That is, the parity vector \(V_j(n)\) consists of \(j-q\) zeros followed by \(q\) ones. </p>
 
   </div>
 </div>
@@ -221,16 +301,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Immediate from the definition of \(V_j(n)\). </p>
+  <p>By induction on \(j\). The condition \(E_{j+1}(n) = R(q+x)\) requires \(E_j(n) = R(q)\) and \(x=1\) (if \(q{\gt}0\)), or \(E_j(n)=0\) and \(q=0\) and \(x=0\). This forces the bits to align at the end. </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_eq_of_V_prefix_eq">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
+<div class="theorem_thmwrapper theorem-style-plain" id="theorem:E_lower_bound_iff">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
     </span>
-    <span class="lemma_thmlabel">126</span>
+    <span class="theorem_thmlabel">128</span>
     <div class="thm_header_extras">
 
     
@@ -238,7 +318,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0017.html#lemma:E_eq_of_V_prefix_eq">#</a>
+    <a class="icon proof" href="sect0017.html#theorem:E_lower_bound_iff">#</a>
     
     <a class="icon proof" href="sect0017.html#a0000000161"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -249,15 +329,15 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L117" class="lean_decl">CollatzMapBasics.E_eq_of_V_prefix_eq</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/da2135659f88db2cc7d6152b2596215094ee1888/CollatzMapBasics/RozierTerracol/CRozLemma22.lean#L238" class="lean_decl">E_lower_bound_iff</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p>If the parity vectors \(V_j(m)\) and \(V_j(n)\) agree on their first \(k\) entries (\(k \le j\)), then \(E_k(m) = E_k(n)\). </p>
+  <div class="theorem_thmcontent">
+  <p>For \(j {\gt} 0\), the lower bound \(E_j(n) = L_j(q)\) is reached if and only if all \(q\) odd steps occur at the beginning of the first \(j\) iterations. That is, the parity vector \(V_j(n)\) consists of \(q\) ones followed by \(j-q\) zeros. </p>
 
   </div>
 </div>
@@ -269,156 +349,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Since \(E_k(n)\) depends only on the parity bits \(X(T^0(n)), \dots , X(T^{k-1}(n))\), agreement of the first \(k\) entries of the parity vector implies equality of these bits, and thus equality of the correction terms and \(E_k\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_elementary_lt">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">127</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0017.html#lemma:E_elementary_lt">#</a>
-    
-    <a class="icon proof" href="sect0017.html#a0000000162"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L123" class="lean_decl">CollatzMapBasics.E_elementary_lt</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>If \(V_j(m)\) and \(V_j(n)\) differ by a single elementary swap \(01 \to 10\) (i.e., \(V_j(m) \prec _{el} V_j(n)\)), then \(E_j(n) {\lt} E_j(m)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000162">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Let the swap occur at positions \(k\) and \(k+1\). Before position \(k\), the parity vectors agree, so \(E_k(n) = E_k(m)\). In \(V_j(m)\), we have bits \((0, 1)\) at \((k, k+1)\), while in \(V_j(n)\) we have \((1, 0)\). Calculating the two-step increase: </p>
-<div class="displaymath" id="a0000000163">
-  \begin{align*}  E_{k+2}(m) & = \frac{3^1}{2} \left( \frac{3^0}{2} E_k(m) + \frac{0}{2} \right) + \frac{1}{2} = \frac{3}{4} E_k(m) + \frac{1}{2} \\ E_{k+2}(n) & = \frac{3^0}{2} \left( \frac{3^1}{2} E_k(n) + \frac{1}{2} \right) + \frac{0}{2} = \frac{3}{4} E_k(n) + \frac{1}{4} \end{align*}
-</div>
-<p> Thus \(E_{k+2}(n) {\lt} E_{k+2}(m)\). Since the bits agree for all positions \(i {\gt} k+1\), Lemma&#160;<a href="sect0017.html#lemma:E_suffix_preserves_lt">124</a> implies \(E_j(n) {\lt} E_j(m)\). </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:E_pv_transGen_lt">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">128</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0017.html#lemma:E_pv_transGen_lt">#</a>
-    
-    <a class="icon proof" href="sect0017.html#a0000000164"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L272" class="lean_decl">CollatzMapBasics.E_pv_transGen_lt</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>The correction ratio \(E\) is strictly monotonic with respect to the transitive closure of the elementary precedence relation on parity vectors. </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000164">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>This follows by induction on the number of elementary swaps, applying Lemma&#160;<a href="sect0017.html#lemma:E_elementary_lt">127</a> at each step. </p>
-
-  </div>
-</div>
-<div class="theorem_thmwrapper theorem-style-plain" id="theorem:E_lt_of_V_precedes">
-  <div class="theorem_thmheading">
-    <span class="theorem_thmcaption">
-    Theorem
-    </span>
-    <span class="theorem_thmlabel">129</span>
-    <span class="theorem_thmtitle">Rozier–Terracol Lemma 2.1</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0017.html#theorem:E_lt_of_V_precedes">#</a>
-    
-    <a class="icon proof" href="sect0017.html#a0000000165"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/c922b396c2bfb1f1624db47567ca15baf224473f/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L281" class="lean_decl">CollatzMapBasics.E_lt_of_V_precedes</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="theorem_thmcontent">
-  <p>If \(V_j(m)\) strictly precedes \(V_j(n)\) in the partial order generated by elementary swaps (i.e., \(V_j(m) \prec V_j(n)\)), then \(E_j(n) {\lt} E_j(m)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000165">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>This is exactly the statement that the precedence relation \(V_j(m) \prec V_j(n)\) implies \(E_j(n) {\lt} E_j(m)\), which follows from Lemma&#160;<a href="sect0017.html#lemma:E_pv_transGen_lt">128</a> by identifying the sequence-based \(E_j\) with the vector-based calculation. </p>
+  <p>Similar to the upper bound, by induction on \(j\). Equality \(E_{j+1}(n) = L_{j+1}(q+x)\) forces the bits to be "front-loaded." </p>
 
   </div>
 </div>
@@ -433,11 +364,11 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="sect0016.html" title="Diophantine Approximations"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="sect0016.html" title="Rozier–Terracol Lemma 2.1"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
   <a href="sect0015.html" title="Rozier & Terracol (2025)"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0018.html" title="Rozier–Terracol Theorem 2.2"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0018.html" title="Rozier–Terracol Lemma 2.3"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

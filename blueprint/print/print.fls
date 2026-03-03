@@ -246,11 +246,6 @@ INPUT ./sections/TC-correspondence.tex
 INPUT ./sections/TC-correspondence.tex
 INPUT ./sections/TC-correspondence.tex
 INPUT sections/TC-correspondence.tex
-INPUT ./sections/log2div3.tex
-INPUT ./sections/log2div3.tex
-INPUT ./sections/log2div3.tex
-INPUT ./sections/log2div3.tex
-INPUT sections/log2div3.tex
 INPUT ./sections/croz-lemma-21.tex
 INPUT ./sections/croz-lemma-21.tex
 INPUT ./sections/croz-lemma-21.tex
@@ -266,6 +261,11 @@ INPUT ./sections/croz-lemma-23.tex
 INPUT ./sections/croz-lemma-23.tex
 INPUT ./sections/croz-lemma-23.tex
 INPUT sections/croz-lemma-23.tex
+INPUT ./sections/log2div3.tex
+INPUT ./sections/log2div3.tex
+INPUT ./sections/log2div3.tex
+INPUT ./sections/log2div3.tex
+INPUT sections/log2div3.tex
 INPUT ./sections/croz-lemma-32.tex
 INPUT ./sections/croz-lemma-32.tex
 INPUT ./sections/croz-lemma-32.tex

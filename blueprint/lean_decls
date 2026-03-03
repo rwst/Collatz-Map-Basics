@@ -115,12 +115,6 @@ CollatzMapBasics.T_iter_implies_collatz_iter
 CollatzMapBasics.collatz_iter_to_T_iter
 CollatzMapBasics.collatz_cycle_iff_compact_collatz_cycle
 CollatzMapBasics.collatz_bounded_iff_compact_collatz_bounded
-CollatzMapBasics.ξ
-CollatzMapBasics.irrational_xi
-CollatzMapBasics.delta
-CollatzMapBasics.inequality_equiv
-CollatzMapBasics.infinite_rat_approx_from_below
-CollatzMapBasics.exists_infinite_pairs_approx
 CollatzMapBasics.E_suffix_preserves_lt
 CollatzMapBasics.X_of_V_true
 CollatzMapBasics.X_of_V_false
@@ -137,6 +131,12 @@ X_T_iter_shift
 E_shift
 E_succ_pair_sum
 CRoz_lemma_23
+CollatzMapBasics.ξ
+CollatzMapBasics.irrational_xi
+CollatzMapBasics.delta
+CollatzMapBasics.inequality_equiv
+CollatzMapBasics.infinite_rat_approx_from_below
+CollatzMapBasics.exists_infinite_pairs_approx
 IsParadoxical
 E_shift_mul
 num_odd_steps_unbounded

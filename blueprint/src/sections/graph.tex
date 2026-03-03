@@ -35,6 +35,6 @@ By induction on the path length between $a$ and $b$, using Lemma~\ref{lemma:conf
 The Collatz graph $\mathcal{G}$ restricted to positive integers is weakly connected (i.e., any two $a, b \ge 1$ are reachable in $\mathcal{G}'$) if and only if the Collatz conjecture holds.
 \end{theorem}
 \begin{proof}\leanok
-($\Rightarrow$) Assume connectivity. For any $n \ge 1$, $n$ is reachable from 1. By Lemma~\ref{lemma:confluence_of_reachable}, there exist $i, j$ such that $T^i(n) = T^j(1)$. Since 1 is in a cycle $\{1, 2\}$, $T^j(1) \in \{1, 2\}$, so $T^i(n)$ eventually hits 1. By Lemma~\ref{lemma:T_iter_to_collatz_iter}, $n$ eventually hits 1 under $C$.
+($\Rightarrow$) Assume connectivity. For any $n \ge 1$, $n$ is reachable from 1. By Lemma~\ref{lemma:confluence_of_reachable}, there exist $i, j$ such that $T^i(n) = T^j(1)$. Since 1 is in a cycle $\{1, 2\}$, $T^j(1) \in \{1, 2\}$, so $T^i(n)$ eventually hits 1. By Lemma~\ref{lemma:T_iter_implies_collatz_iter}, $n$ eventually hits 1 under $C$.
 ($\Leftarrow$) Assume the Collatz conjecture. For any $n \ge 1$, $n$ eventually hits 1 under $C$, and by Lemma~\ref{lemma:collatz_iter_to_T_iter}, it also hits 1 under $T$. By Lemma~\ref{lemma:T_iter_reachable}, $n$ is reachable from 1 in $\mathcal{G}'$. Thus any $a, b \ge 1$ are both reachable from 1, and hence reachable from each other.
 \end{proof}
