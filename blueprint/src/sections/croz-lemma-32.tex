@@ -1,4 +1,4 @@
-\begin{definition}\label{def:IsParadoxical}\lean{IsParadoxical}\leanok
+\begin{definition}\label{def:IsParadoxical}\lean{CollatzMapBasics.IsParadoxical}\leanok
 A pair $(j, n)$ consisting of a positive iteration count $j$ and a starting integer $n$ is called \emph{paradoxical} if:
 \begin{equation}
     T^j(n) \ge n \quad \text{and} \quad C_j(n) < 1.
@@ -12,7 +12,7 @@ n, T(n), T^2(n), \cdots, T^{j}(n)
 is called a paradoxical sequence.
 \end{definition}
 
-\begin{lemma}\label{lemma:E_shift_mul}\lean{E_shift_mul}\leanok
+\begin{lemma}\label{lemma:E_shift_mul}\lean{CollatzMapBasics.E_shift_mul}\leanok
 For any $k, j, n \in \mathbb{N}$, the correction ratio behaves under powers of two as:
 \begin{equation}
     E_{k+j}(2^k n) = E_j(n).
@@ -24,7 +24,7 @@ $q(k+j, 2^k n) = q(j, n)$ and the decomposition correction $\mathcal{Q}_{k+j}(2^
 \mathcal{Q}_j(n)$. Substituting these into the definition of $E$ clears the $2^k$ factor.
 \end{proof}
 
-\begin{lemma}\label{lemma:num_odd_steps_unbounded}\lean{num_odd_steps_unbounded}\leanok
+\begin{lemma}\label{lemma:num_odd_steps_unbounded}\lean{CollatzMapBasics.num_odd_steps_unbounded}\leanok
 If $n \ge 1$ has an infinite stopping time, then the number of odd steps $q(j, n)$ is unbounded as $j
 \to \infty$.
 \end{lemma}
@@ -35,7 +35,7 @@ so they are repeatedly divided by 2. This contradicts the infinite stopping time
 would eventually drop below $n$ (or reach 1 and then cycle).
 \end{proof}
 
-\begin{lemma}\label{lemma:num_odd_steps_hits_all}\lean{num_odd_steps_hits_all}\leanok
+\begin{lemma}\label{lemma:num_odd_steps_hits_all}\lean{CollatzMapBasics.num_odd_steps_hits_all}\leanok
 If $n \ge 1$ has an infinite stopping time, then for every $a \in \mathbb{N}$, there exists an
 iteration count $j$ such that $q(j, n) = a$.
 \end{lemma}
@@ -44,7 +44,7 @@ Since $q(0, n) = 0$, $q(j, n)$ is unbounded, and $q(j+1, n) - q(j, n) \in \{0, 1
 intermediate value theorem implies that $q$ must hit every natural number.
 \end{proof}
 
-\begin{theorem}[Rozier--Terracol Theorem 3.2]\label{theorem:CRoz_lemma_32}\lean{CRoz_lemma_32}\leanok
+\begin{theorem}[Rozier--Terracol Theorem 3.2]\label{theorem:CRoz_lemma_32}\lean{CollatzMapBasics.CRoz_lemma_32}\leanok
 If the integer $n$ has an infinite stopping time, then there exist infinitely many paradoxical
 sequences starting from integers of the form $2^k n$ with $k \ge 0$.
 \end{theorem}
@@ -82,4 +82,25 @@ Substituting $T^b(2^k n) = T^j(n)$, we need $T^j(n) \ge 2^k n$. Multiplying by $
 The condition $3^a/2^b > 1 - 1/(4n)$ provides exactly the separation needed to satisfy this inequality when $n$ is large or when $\mathcal{Q}_j$ is at least $3^a - 2^a$.
 
 Since $S$ is infinite and the mapping from $(a, b)$ to $(j', k)$ is injective, we obtain infinitely many paradoxical sequences.
+\end{proof}
+
+\begin{corollary}[Rozier--Terracol Corollary 3.3]\label{corollary:CRoz_cor_33}\lean{CollatzMapBasics.CRoz_cor_33}\leanok
+If the set of paradoxical sequences $(j, m)$ with $m > 2$ is finite, then the Collatz conjecture is true.
+\end{corollary}
+\begin{proof}\leanok
+Assume the set of paradoxical sequences with $m > 2$ is finite. Let $n$ be an arbitrary natural number. If $n = 0$, the conjecture is vacuously true. Suppose $n > 0$ and $n$ never reaches 1 under Collatz iteration.
+
+Let $\mathcal{O}(n)$ be the orbit of $n$ under the Terras map $T$. Let $m = \min \mathcal{O}(n)$.
+\begin{enumerate}
+    \item $m \ge 1$ since $n \ge 1$.
+    \item $m \neq 1$ because if $1 \in \mathcal{O}(n)$, then $n$ would reach 1.
+    \item $m \neq 2$ because if $2 \in \mathcal{O}(n)$, its next iterate $T(2) = 1$ would also be in $\mathcal{O}(n)$.
+    \item Thus, $m > 2$.
+    \item Since $m$ is the minimal element of the orbit, for any $k \ge 1$, $T^k(m) \ge m$. This means the stopping time of $m$ is infinite.
+\end{enumerate}
+
+By Theorem~\ref{theorem:CRoz_lemma_32}, there exist infinitely many paradoxical sequences starting from integers of the form $2^k m$.
+Since $m > 2$, all such integers $2^k m$ are also strictly greater than 2.
+This demonstrates the existence of infinitely many paradoxical sequences with starting value greater than 2, which contradicts our initial hypothesis.
+Therefore, every $n > 0$ must eventually reach 1.
 \end{proof}

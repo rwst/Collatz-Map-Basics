@@ -105,11 +105,14 @@
 <li class="">
   <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
  </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">4.6</span> <span class="toc_entry">More Paradoxical Sequences</span></a>
+ </li>
 
   </ul>
  </li>
 <li class="">
-  <a href="sect0021.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -126,7 +129,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">129</span>
+    <span class="lemma_thmlabel">130</span>
     <div class="thm_header_extras">
 
     
@@ -136,7 +139,7 @@
 
     <a class="icon proof" href="sect0018.html#lemma:X_T_iter_shift">#</a>
     
-    <a class="icon proof" href="sect0018.html#a0000000163"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0018.html#a0000000166"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -145,7 +148,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L21" class="lean_decl">X_T_iter_shift</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L21" class="lean_decl">X_T_iter_shift</a></li>
           
         </ul>
     </div>
@@ -154,7 +157,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>For any \(j, m \in \mathbb {N}\), the parity of the iterates at \(m\) and \(m + 2^j\) are opposite: </p>
-<div class="equation" id="a0000000164">
+<div class="equation" id="a0000000167">
 <p>
   <div class="equation_content">
     \begin{equation}  X(T^j(m)) + X(T^j(m + 2^j)) = 1. \end{equation}
@@ -165,7 +168,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000163">
+<div class="proof_wrapper" id="a0000000166">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -182,7 +185,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">130</span>
+    <span class="lemma_thmlabel">131</span>
     <div class="thm_header_extras">
 
     
@@ -192,7 +195,7 @@
 
     <a class="icon proof" href="sect0018.html#lemma:E_shift">#</a>
     
-    <a class="icon proof" href="sect0018.html#a0000000165"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0018.html#a0000000168"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -201,7 +204,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L51" class="lean_decl">E_shift</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L51" class="lean_decl">E_shift</a></li>
           
         </ul>
     </div>
@@ -210,7 +213,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>The correction ratio \(E_j(n)\) is periodic with period \(2^j\): </p>
-<div class="equation" id="a0000000166">
+<div class="equation" id="a0000000169">
 <p>
   <div class="equation_content">
     \begin{equation}  E_j(m + 2^j) = E_j(m). \end{equation}
@@ -221,7 +224,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000165">
+<div class="proof_wrapper" id="a0000000168">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -238,7 +241,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">131</span>
+    <span class="lemma_thmlabel">132</span>
     <div class="thm_header_extras">
 
     
@@ -247,66 +250,6 @@
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0018.html#lemma:E_succ_pair_sum">#</a>
-    
-    <a class="icon proof" href="sect0018.html#a0000000167"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L64" class="lean_decl">E_succ_pair_sum</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>For any \(j, m \in \mathbb {N}\), we have the identity: </p>
-<div class="equation" id="a0000000168">
-<p>
-  <div class="equation_content">
-    \begin{equation}  E_{j+1}(m) + E_{j+1}(m + 2^j) = 2 E_j(m) + \frac{1}{2}. \end{equation}
-  </div>
-  <span class="equation_label">7</span>
-</p>
-</div>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000167">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Using the recurrence \(E_{j+1}(n) = \frac{3^{X(T^j(n))}}{2} E_j(n) + \frac{X(T^j(n))}{2}\) and the shift properties: </p>
-<div class="displaymath" id="a0000000169">
-  \begin{align*}  E_{j+1}(m) + E_{j+1}(m + 2^j) & = \frac{3^{X(T^j(m))} + 3^{X(T^j(m + 2^j))}}{2} E_j(m) + \frac{X(T^j(m)) + X(T^j(m + 2^j))}{2} \\ & = \frac{3^0 + 3^1}{2} E_j(m) + \frac{1}{2} \\ & = 2 E_j(m) + \frac{1}{2}. \end{align*}
-</div>
-
-  </div>
-</div>
-<div class="theorem_thmwrapper theorem-style-plain" id="theorem:CRoz_lemma_23">
-  <div class="theorem_thmheading">
-    <span class="theorem_thmcaption">
-    Theorem
-    </span>
-    <span class="theorem_thmlabel">132</span>
-    <span class="theorem_thmtitle">Rozier–Terracol Lemma 2.3</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0018.html#theorem:CRoz_lemma_23">#</a>
     
     <a class="icon proof" href="sect0018.html#a0000000170"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -317,21 +260,21 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L83" class="lean_decl">CRoz_lemma_23</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L64" class="lean_decl">E_succ_pair_sum</a></li>
           
         </ul>
     </div>
     
         </div>
   </div>
-  <div class="theorem_thmcontent">
-  <p>For every positive integer \(j\), the average value of the correction ratio \(E_j(n)\) over a full period is \(j/4\): </p>
+  <div class="lemma_thmcontent">
+  <p>For any \(j, m \in \mathbb {N}\), we have the identity: </p>
 <div class="equation" id="a0000000171">
 <p>
   <div class="equation_content">
-    \begin{equation}  \frac{1}{2^j} \sum _{n=1}^{2^j} E_j(n) = \frac{j}{4}. \end{equation}
+    \begin{equation}  E_{j+1}(m) + E_{j+1}(m + 2^j) = 2 E_j(m) + \frac{1}{2}. \end{equation}
   </div>
-  <span class="equation_label">8</span>
+  <span class="equation_label">7</span>
 </p>
 </div>
 
@@ -345,8 +288,68 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(j\). For \(j=1\), the average is \((E_1(1) + E_1(2))/2 = (1/2 + 0)/2 = 1/4\). For the inductive step \(j+1\), we split the sum over \(\{ 1, \dots , 2^{j+1}\} \) into two halves and use Lemma&#160;<a href="sect0018.html#lemma:E_succ_pair_sum">131</a>: </p>
+  <p>Using the recurrence \(E_{j+1}(n) = \frac{3^{X(T^j(n))}}{2} E_j(n) + \frac{X(T^j(n))}{2}\) and the shift properties: </p>
 <div class="displaymath" id="a0000000172">
+  \begin{align*}  E_{j+1}(m) + E_{j+1}(m + 2^j) & = \frac{3^{X(T^j(m))} + 3^{X(T^j(m + 2^j))}}{2} E_j(m) + \frac{X(T^j(m)) + X(T^j(m + 2^j))}{2} \\ & = \frac{3^0 + 3^1}{2} E_j(m) + \frac{1}{2} \\ & = 2 E_j(m) + \frac{1}{2}. \end{align*}
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="theorem:CRoz_lemma_23">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">133</span>
+    <span class="theorem_thmtitle">Rozier–Terracol Lemma 2.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0018.html#theorem:CRoz_lemma_23">#</a>
+    
+    <a class="icon proof" href="sect0018.html#a0000000173"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma23.lean#L83" class="lean_decl">CRoz_lemma_23</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>For every positive integer \(j\), the average value of the correction ratio \(E_j(n)\) over a full period is \(j/4\): </p>
+<div class="equation" id="a0000000174">
+<p>
+  <div class="equation_content">
+    \begin{equation}  \frac{1}{2^j} \sum _{n=1}^{2^j} E_j(n) = \frac{j}{4}. \end{equation}
+  </div>
+  <span class="equation_label">8</span>
+</p>
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000173">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(j\). For \(j=1\), the average is \((E_1(1) + E_1(2))/2 = (1/2 + 0)/2 = 1/4\). For the inductive step \(j+1\), we split the sum over \(\{ 1, \dots , 2^{j+1}\} \) into two halves and use Lemma&#160;<a href="sect0018.html#lemma:E_succ_pair_sum">132</a>: </p>
+<div class="displaymath" id="a0000000175">
   \begin{align*}  \sum _{n=1}^{2^{j+1}} E_{j+1}(n) & = \sum _{n=1}^{2^j} (E_{j+1}(n) + E_{j+1}(n + 2^j)) \\ & = \sum _{n=1}^{2^j} \left( 2 E_j(n) + \frac{1}{2} \right) \\ & = 2 \left( \frac{j}{4} \cdot 2^j \right) + \frac{2^j}{2} \\ & = \frac{j \cdot 2^j + 2^j}{2} = \frac{(j+1) 2^{j+1}}{4}. \end{align*}
 </div>
 <p> Dividing by \(2^{j+1}\) yields \((j+1)/4\). </p>

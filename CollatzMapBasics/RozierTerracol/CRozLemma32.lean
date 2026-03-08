@@ -3,6 +3,7 @@ import CollatzMapBasics.Parity
 import CollatzMapBasics.Approximation
 import CollatzMapBasics.RozierTerracol.CRozLemma22
 import CollatzMapBasics.RozierTerracol.CRozLemma23
+import CollatzMapBasics.TC
 
 /-!
 * [Gar81] Garner, Lynn E. "On the Collatz 3𝑛+ 1 algorithm." Proceedings of the American
@@ -16,6 +17,8 @@ import CollatzMapBasics.RozierTerracol.CRozLemma23
 open Classical
 
 open CollatzMapBasics
+
+namespace CollatzMapBasics
 
 def IsParadoxical (j n : ℕ) : Prop := T_iter j n ≥ n ∧ C j n < 1
 
@@ -503,3 +506,49 @@ lemma CRoz_lemma_32 (n : ℕ) (hn : stopping_time n = ⊤) :
     intro p hp
     obtain ⟨q, hq, rfl⟩ := hp
     exact hf_mem q hq
+
+/-- **Corollary 3.3** (Rozier–Terracol). If there are only finitely many paradoxical sequences
+whose first term is greater than 2, then the Collatz conjecture is true. -/
+lemma CRoz_cor_33 (h_fin : { p : ℕ × ℕ | let (j, m) := p; IsParadoxical j m ∧ m > 2 }.Finite) :
+    ∀ (n : ℕ), n = 0 ∨ ∃ k, collatz_iter k n = 1 := by
+  intro n
+  by_cases hn : n = 0
+  · left; exact hn
+  · right
+    by_contra h_collatz
+    have hx_pos : n ≥ 1 := Nat.pos_of_ne_zero hn
+    have h_ex : ∃ m j, T_iter j n = m := ⟨n, 0, rfl⟩
+    set m := Nat.find h_ex
+    obtain ⟨K, hK⟩ : ∃ K, T_iter K n = m := Nat.find_spec h_ex
+    have hm_min : ∀ x, (∃ j, T_iter j n = x) → m ≤ x := fun x h => Nat.find_min' h_ex h
+    have hm_pos : m ≥ 1 := hK ▸ T_iter_pos hx_pos K
+    have hm_ne_one : m ≠ 1 := by
+      intro heq
+      obtain ⟨k, _, hk⟩ := T_iter_implies_collatz_iter K n
+      have h_eq : collatz_iter k n = 1 := by
+        calc collatz_iter k n = T_iter K n := hk
+             _ = m := hK
+             _ = 1 := heq
+      exact h_collatz ⟨k, h_eq⟩
+    have hm_ne_two : m ≠ 2 := by
+      intro heq
+      obtain ⟨k, _, hk⟩ := T_iter_implies_collatz_iter (K + 1) n
+      exact h_collatz ⟨k, by rw [hk]; change T (T_iter K n) = 1; rw [hK, heq, T_two]⟩
+    have hm_gt_2 : m > 2 := by omega
+    have h_stop : stopping_time m = ⊤ := by
+      by_contra h_not_top
+      have h_not_top2 : stopping_time m ≠ ⊤ := h_not_top
+      rw [stopping_time_ne_top_iff] at h_not_top2
+      obtain ⟨k, _, hk_lt⟩ := h_not_top2
+      exact absurd (hm_min (T_iter k m) ⟨k + K, by rw [T_iter_add, hK]⟩) (by omega)
+    let f : ℕ × ℕ → ℕ × ℕ := fun p => (p.1, 2 ^ p.2 * m)
+    have hf_inj : Set.InjOn f {p' : ℕ × ℕ | IsParadoxical p'.1 (2 ^ p'.2 * m)} := by
+      rintro ⟨j1, k1⟩ _ ⟨j2, k2⟩ _ heq
+      simp only [f, Prod.mk.injEq] at heq
+      obtain ⟨hj, hk⟩ := heq
+      obtain rfl : j1 = j2 := hj
+      have : 2 ^ k1 = 2 ^ k2 := Nat.eq_of_mul_eq_mul_right (by omega) hk
+      exact Prod.ext rfl (Nat.pow_right_injective (by decide) this)
+    exact (((CRoz_lemma_32 m h_stop).image hf_inj).mono <| by
+      rintro _ ⟨⟨j, k⟩, hp, rfl⟩
+      exact ⟨hp, by dsimp; have := Nat.one_le_two_pow (n := k); nlinarith⟩) h_fin

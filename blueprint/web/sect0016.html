@@ -105,11 +105,14 @@
 <li class="">
   <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
  </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">4.6</span> <span class="toc_entry">More Paradoxical Sequences</span></a>
+ </li>
 
   </ul>
  </li>
 <li class="">
-  <a href="sect0021.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -126,7 +129,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">118</span>
+    <span class="lemma_thmlabel">119</span>
     <div class="thm_header_extras">
 
     
@@ -136,7 +139,7 @@
 
     <a class="icon proof" href="sect0016.html#lemma:E_suffix_preserves_lt">#</a>
     
-    <a class="icon proof" href="sect0016.html#a0000000149"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0016.html#a0000000152"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -145,7 +148,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L20" class="lean_decl">CollatzMapBasics.E_suffix_preserves_lt</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L20" class="lean_decl">CollatzMapBasics.E_suffix_preserves_lt</a></li>
           
         </ul>
     </div>
@@ -157,7 +160,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000149">
+<div class="proof_wrapper" id="a0000000152">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -166,7 +169,7 @@
   </div>
   <div class="proof_content">
   <p>We proceed by induction on \(j\). The base case \(j=k\) follows from the hypothesis. For the inductive step \(j \to j+1\), we assume \(E_j(n) {\lt} E_j(m)\) and \(X(T^j(n)) = X(T^j(m)) = x\). Then: </p>
-<div class="equation" id="a0000000150">
+<div class="equation" id="a0000000153">
 <p>
   <div class="equation_content">
     \begin{equation}  E_{j+1}(n) = \frac{3^x}{2} E_j(n) + \frac{x}{2} {\lt} \frac{3^x}{2} E_j(m) + \frac{x}{2} = E_{j+1}(m) \end{equation}
@@ -183,7 +186,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">119</span>
+    <span class="lemma_thmlabel">120</span>
     <div class="thm_header_extras">
 
     
@@ -193,7 +196,7 @@
 
     <a class="icon proof" href="sect0016.html#lemma:X_of_V_true_false">#</a>
     
-    <a class="icon proof" href="sect0016.html#a0000000151"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0016.html#a0000000154"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -202,9 +205,9 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L35" class="lean_decl">CollatzMapBasics.X_of_V_true</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L35" class="lean_decl">CollatzMapBasics.X_of_V_true</a></li>
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L39" class="lean_decl">CollatzMapBasics.X_of_V_false</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L39" class="lean_decl">CollatzMapBasics.X_of_V_false</a></li>
           
         </ul>
     </div>
@@ -216,7 +219,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000151">
+<div class="proof_wrapper" id="a0000000154">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -233,7 +236,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">120</span>
+    <span class="lemma_thmlabel">121</span>
     <div class="thm_header_extras">
 
     
@@ -243,7 +246,7 @@
 
     <a class="icon proof" href="sect0016.html#lemma:E_eq_of_V_prefix_eq">#</a>
     
-    <a class="icon proof" href="sect0016.html#a0000000152"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0016.html#a0000000155"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -252,7 +255,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L117" class="lean_decl">CollatzMapBasics.E_eq_of_V_prefix_eq</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L117" class="lean_decl">CollatzMapBasics.E_eq_of_V_prefix_eq</a></li>
           
         </ul>
     </div>
@@ -264,7 +267,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000152">
+<div class="proof_wrapper" id="a0000000155">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -281,7 +284,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">121</span>
+    <span class="lemma_thmlabel">122</span>
     <div class="thm_header_extras">
 
     
@@ -291,7 +294,7 @@
 
     <a class="icon proof" href="sect0016.html#lemma:E_elementary_lt">#</a>
     
-    <a class="icon proof" href="sect0016.html#a0000000153"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0016.html#a0000000156"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -300,7 +303,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L123" class="lean_decl">CollatzMapBasics.E_elementary_lt</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L123" class="lean_decl">CollatzMapBasics.E_elementary_lt</a></li>
           
         </ul>
     </div>
@@ -312,7 +315,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000153">
+<div class="proof_wrapper" id="a0000000156">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -321,10 +324,10 @@
   </div>
   <div class="proof_content">
   <p>Let the swap occur at positions \(k\) and \(k+1\). Before position \(k\), the parity vectors agree, so \(E_k(n) = E_k(m)\). In \(V_j(m)\), we have bits \((0, 1)\) at \((k, k+1)\), while in \(V_j(n)\) we have \((1, 0)\). Calculating the two-step increase: </p>
-<div class="displaymath" id="a0000000154">
+<div class="displaymath" id="a0000000157">
   \begin{align*}  E_{k+2}(m) & = \frac{3^1}{2} \left( \frac{3^0}{2} E_k(m) + \frac{0}{2} \right) + \frac{1}{2} = \frac{3}{4} E_k(m) + \frac{1}{2} \\ E_{k+2}(n) & = \frac{3^0}{2} \left( \frac{3^1}{2} E_k(n) + \frac{1}{2} \right) + \frac{0}{2} = \frac{3}{4} E_k(n) + \frac{1}{4} \end{align*}
 </div>
-<p> Thus \(E_{k+2}(n) {\lt} E_{k+2}(m)\). Since the bits agree for all positions \(i {\gt} k+1\), Lemma&#160;<a href="sect0016.html#lemma:E_suffix_preserves_lt">118</a> implies \(E_j(n) {\lt} E_j(m)\). </p>
+<p> Thus \(E_{k+2}(n) {\lt} E_{k+2}(m)\). Since the bits agree for all positions \(i {\gt} k+1\), Lemma&#160;<a href="sect0016.html#lemma:E_suffix_preserves_lt">119</a> implies \(E_j(n) {\lt} E_j(m)\). </p>
 
   </div>
 </div>
@@ -333,7 +336,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">122</span>
+    <span class="lemma_thmlabel">123</span>
     <div class="thm_header_extras">
 
     
@@ -343,7 +346,7 @@
 
     <a class="icon proof" href="sect0016.html#lemma:E_pv_transGen_lt">#</a>
     
-    <a class="icon proof" href="sect0016.html#a0000000155"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0016.html#a0000000158"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -352,7 +355,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L272" class="lean_decl">CollatzMapBasics.E_pv_transGen_lt</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L272" class="lean_decl">CollatzMapBasics.E_pv_transGen_lt</a></li>
           
         </ul>
     </div>
@@ -364,7 +367,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000155">
+<div class="proof_wrapper" id="a0000000158">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -372,7 +375,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>This follows by induction on the number of elementary swaps, applying Lemma&#160;<a href="sect0016.html#lemma:E_elementary_lt">121</a> at each step. </p>
+  <p>This follows by induction on the number of elementary swaps, applying Lemma&#160;<a href="sect0016.html#lemma:E_elementary_lt">122</a> at each step. </p>
 
   </div>
 </div>
@@ -381,7 +384,7 @@
     <span class="theorem_thmcaption">
     Theorem
     </span>
-    <span class="theorem_thmlabel">123</span>
+    <span class="theorem_thmlabel">124</span>
     <span class="theorem_thmtitle">Rozier–Terracol Lemma 2.1</span>
     <div class="thm_header_extras">
 
@@ -392,7 +395,7 @@
 
     <a class="icon proof" href="sect0016.html#theorem:E_lt_of_V_precedes">#</a>
     
-    <a class="icon proof" href="sect0016.html#a0000000156"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0016.html#a0000000159"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -401,7 +404,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L281" class="lean_decl">CollatzMapBasics.E_lt_of_V_precedes</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/RozierTerracol/CRozLemma21.lean#L281" class="lean_decl">CollatzMapBasics.E_lt_of_V_precedes</a></li>
           
         </ul>
     </div>
@@ -413,7 +416,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000156">
+<div class="proof_wrapper" id="a0000000159">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -421,7 +424,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>This is exactly the statement that the precedence relation \(V_j(m) \prec V_j(n)\) implies \(E_j(n) {\lt} E_j(m)\), which follows from Lemma&#160;<a href="sect0016.html#lemma:E_pv_transGen_lt">122</a> by identifying the sequence-based \(E_j\) with the vector-based calculation. </p>
+  <p>This is exactly the statement that the precedence relation \(V_j(m) \prec V_j(n)\) implies \(E_j(n) {\lt} E_j(m)\), which follows from Lemma&#160;<a href="sect0016.html#lemma:E_pv_transGen_lt">123</a> by identifying the sequence-based \(E_j\) with the vector-based calculation. </p>
 
   </div>
 </div>

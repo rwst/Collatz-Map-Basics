@@ -117,4 +117,11 @@ lemma E_step_strict_mono (x : ℕ) (a b : ℚ) (hab : a < b) :
   have h3 : (3 ^ x : ℚ) / 2 > 0 := by positivity
   nlinarith
 
+lemma linear_decomposition' (j n : ℕ) : T_iter j n = C j n * n + E j n := by
+  rw [C, E]
+  field_simp
+  norm_cast
+  rw [mul_comm]
+  exact linear_decomposition j n
+
 end CollatzMapBasics

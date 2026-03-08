@@ -105,11 +105,14 @@
 <li class="">
   <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
  </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">4.6</span> <span class="toc_entry">More Paradoxical Sequences</span></a>
+ </li>
 
   </ul>
  </li>
 <li class="">
-  <a href="sect0021.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -126,7 +129,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">110</span>
+    <span class="lemma_thmlabel">111</span>
     <div class="thm_header_extras">
 
     
@@ -136,7 +139,7 @@
 
     <a class="icon proof" href="sect0013.html#lemma:terras_backward">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000139"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000142"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -145,7 +148,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/Periodicity.lean#L8" class="lean_decl">CollatzMapBasics.terras_backward</a></li>
           
         </ul>
     </div>
@@ -157,7 +160,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000139">
+<div class="proof_wrapper" id="a0000000142">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -174,7 +177,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">111</span>
+    <span class="lemma_thmlabel">112</span>
     <div class="thm_header_extras">
 
     
@@ -184,7 +187,7 @@
 
     <a class="icon proof" href="sect0013.html#lemma:terras_forward">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000140"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000143"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -193,7 +196,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/Periodicity.lean#L28" class="lean_decl">CollatzMapBasics.terras_forward</a></li>
           
         </ul>
     </div>
@@ -205,7 +208,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000140">
+<div class="proof_wrapper" id="a0000000143">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -213,8 +216,8 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Assume \(E(k, m) = E(k, n)\). Then \(Q(k, m) = Q(k, n) = S\) and \(Q(k, m) = Q(k, n) = Q\). From the linear decomposition (Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition">99</a>), we have: </p>
-<div class="displaymath" id="a0000000141">
+  <p>Assume \(E(k, m) = E(k, n)\). Then \(Q(k, m) = Q(k, n) = S\) and \(Q(k, m) = Q(k, n) = Q\). From the linear decomposition (Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition">100</a>), we have: </p>
+<div class="displaymath" id="a0000000144">
   \begin{align*}  2^k T^k(m) & = 3^S m + Q \\ 2^k T^k(n) & = 3^S n + Q \end{align*}
 </div>
 <p> Subtracting these yields \(2^k (T^k(m) - T^k(n)) = 3^S (m - n)\). Since \(2^k\) is coprime to \(3^S\) (Lemma&#160;<a href="sect0002.html#lemma:coprime_pow_three_pow_two">12</a>), \(2^k\) must divide \(m - n\), so \(m \equiv n \pmod{2^k}\). </p>
@@ -226,7 +229,7 @@
     <span class="theorem_thmcaption">
     Theorem
     </span>
-    <span class="theorem_thmlabel">112</span>
+    <span class="theorem_thmlabel">113</span>
     <div class="thm_header_extras">
 
     
@@ -236,7 +239,7 @@
 
     <a class="icon proof" href="sect0013.html#theorem:terras_periodicity">#</a>
     
-    <a class="icon proof" href="sect0013.html#a0000000142"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0013.html#a0000000145"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -245,7 +248,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/926777829d222fbfb2d584f1d3d9f6b5cadb1935/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8e4d61845e3f9fe6ca211ea6c4bef530f8129120/CollatzMapBasics/Periodicity.lean#L50" class="lean_decl">CollatzMapBasics.terras_periodicity</a></li>
           
         </ul>
     </div>
@@ -255,21 +258,21 @@
   <div class="theorem_thmcontent">
   <p>(Theorem 1.2 in Terras (1976)<span class="cite">
 	[
-	<a href="sect0021.html#terras76" >5</a>
+	<a href="sect0022.html#terras76" >5</a>
 	]
 </span>) Two positive integers \(m, n \ge 1\) have the same parity vector of length \(k\) if and only if they are congruent modulo \(2^k\): </p>
-<div class="equation" id="a0000000143">
+<div class="equation" id="a0000000146">
 <p>
   <div class="equation_content">
     \begin{equation}  E(k, m) = E(k, n) \iff m \equiv n \pmod{2^k}. \end{equation}
   </div>
-  <span class="equation_label">12</span>
+  <span class="equation_label">13</span>
 </p>
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000142">
+<div class="proof_wrapper" id="a0000000145">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -277,7 +280,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>This follows directly from Lemma&#160;<a href="sect0013.html#lemma:terras_backward">110</a> and Lemma&#160;<a href="sect0013.html#lemma:terras_forward">111</a>. </p>
+  <p>This follows directly from Lemma&#160;<a href="sect0013.html#lemma:terras_backward">111</a> and Lemma&#160;<a href="sect0013.html#lemma:terras_forward">112</a>. </p>
 
   </div>
 </div>

@@ -271,6 +271,11 @@ INPUT ./sections/croz-lemma-32.tex
 INPUT ./sections/croz-lemma-32.tex
 INPUT ./sections/croz-lemma-32.tex
 INPUT sections/croz-lemma-32.tex
+INPUT ./sections/more-paradoxical.tex
+INPUT ./sections/more-paradoxical.tex
+INPUT ./sections/more-paradoxical.tex
+INPUT ./sections/more-paradoxical.tex
+INPUT sections/more-paradoxical.tex
 INPUT ./ref.tex
 INPUT ./ref.tex
 INPUT ./ref.tex

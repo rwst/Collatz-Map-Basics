@@ -10,5 +10,6 @@ import CollatzMapBasics.RozierTerracol.CRozLemma21
 import CollatzMapBasics.RozierTerracol.CRozLemma22
 import CollatzMapBasics.RozierTerracol.CRozLemma23
 import CollatzMapBasics.RozierTerracol.CRozLemma32
+import CollatzMapBasics.RozierTerracol.MoreParadoxical
 import CollatzMapBasics.TC
 import CollatzMapBasics.Terras

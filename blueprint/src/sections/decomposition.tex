@@ -5,25 +5,6 @@ For $k, n \in \mathbb{N}$, the accumulated correction term $Q(k, n)$ of the Terr
 \end{equation}
 \end{definition}
 
-\begin{lemma}\label{lemma:decomposition_correction_eq_of_E_vec_eq}\lean{CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq}\leanok
-If $E(k, m) = E(k, n)$, then $Q(k, m) = Q(k, n)$.
-\end{lemma}
-\begin{proof}\leanok
-By induction on $k$.
-\end{proof}
-
-\begin{lemma}\label{lemma:linear_decomposition}\lean{CollatzMapBasics.linear_decomposition}\leanok
-For any $k, n \in \mathbb{N}$, the $k$-fold iteration of the Terras map $T^k(n)$ satisfies the linear identity
-\begin{equation}
-    2^k T^k(n) = 3^{Q(k, n)} n + Q(k, n)
-\end{equation}
-where $Q(k, n)$ is the number of odd iterates as defined in Definition~\ref{def:num_odd_steps}.
-\end{lemma}
-\begin{proof}\leanok
-By induction on $k$, using the identity $2 T(m) = 3^{X(m)} m + X(m)$.
-\end{proof}
-This appeared first in Terras (1976)\cite{terras76}.
-
 \begin{lemma}\label{lemma:num_odd_steps_mono}\lean{CollatzMapBasics.num_odd_steps_mono}\leanok
 If $j \le k$, then $Q(j, n) \le Q(k, n)$.
 \end{lemma}
@@ -37,6 +18,19 @@ $Q(k+1, n) = Q(k, n) + X(T^k(n))$.
 \begin{proof}\leanok
 Immediate from the definition of $Q(k, n)$.
 \end{proof}
+
+\begin{lemma}\label{lemma:linear_decomposition}\lean{CollatzMapBasics.linear_decomposition}\leanok
+For any $k, n \in \mathbb{N}$, the $k$-fold iteration of the Terras map $T^k(n)$ satisfies the linear identity
+\begin{equation}
+    2^k T^k(n) = 3^{Q(k, n)} n + Q(k, n)
+\end{equation}
+where $Q(k, n)$ is the number of odd iterates as defined in Definition~\ref{def:num_odd_steps}.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$, using the identity $2 T(m) = 3^{X(m)} m + X(m)$.
+\end{proof}
+This appeared first in Terras (1976)\cite{terras76}. See Lemma \ref{lemma:linear_decomposition'}
+below for a variant of this formula.
 
 \begin{definition}\label{def:decomposition_correction_sum}\lean{CollatzMapBasics.decomposition_correction_sum}\leanok
 The correction term $Q(k, n)$ has the closed-form expression
@@ -57,11 +51,6 @@ The decomposition coefficient $C(k, n)$ is the rational number
 \begin{equation}
     C(k, n) = \frac{3^{Q(k, n)}}{2^k}.
 \end{equation}
-\end{definition}
-
-\begin{definition}\label{def:coeff_stopping_time}\lean{CollatzMapBasics.coeff_stopping_time}\leanok
-The coefficient stopping time $\tau(n)$ is the smallest $j \ge 1$ such that $C(j, n) < 1$.
-If no such $j$ exists, $\tau(n) = \infty$.
 \end{definition}
 
 \begin{definition}\label{def:E}\lean{CollatzMapBasics.E}\leanok
@@ -94,3 +83,26 @@ For a fixed parity $x \in \{0, 1\}$, the step map $a \mapsto \frac{3^x}{2} a + \
 \begin{proof}\leanok
 Since $3^x/2 > 0$ for $x \in \{0, 1\}$.
 \end{proof}
+
+\begin{lemma}\label{lemma:decomposition_correction_eq_of_E_vec_eq}\lean{CollatzMapBasics.decomposition_correction_eq_of_E_vec_eq}\leanok
+If $E(k, m) = E(k, n)$, then $Q(k, m) = Q(k, n)$.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$.
+\end{proof}
+
+\begin{lemma}\label{lemma:linear_decomposition'}\lean{CollatzMapBasics.linear_decomposition'}\leanok
+Another form of the linear identity is given by:
+\begin{equation}
+    T^j(n) = C(j, n) \cdot n + E(j, n).
+\end{equation}
+\end{lemma}
+\begin{proof}\leanok
+By substituting the definitions $C(j, n) = 3^{q(j, n)}/2^j$ and $E(j, n) = Q(j, n)/2^j$ into the
+linear identity $2^j T^j(n) = 3^{q(j, n)} n + Q(j, n)$.
+\end{proof}
+
+\begin{definition}\label{def:coeff_stopping_time}\lean{CollatzMapBasics.coeff_stopping_time}\leanok
+The coefficient stopping time $\tau(n)$ is the smallest $j \ge 1$ such that $C(j, n) < 1$.
+If no such $j$ exists, $\tau(n) = \infty$.
+\end{definition}
