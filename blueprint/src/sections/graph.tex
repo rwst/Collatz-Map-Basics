@@ -2,21 +2,21 @@
 The Collatz graph $\mathcal{G}$ is a directed graph on $\mathbb{N}$ with an edge from $n$ to $T(n)$ for all $n \in \mathbb{N}$. We consider its associated simple undirected graph $\mathcal{G}'$.
 \end{definition}
 
-\begin{lemma}\label{lemma:collatz_graph_adj_iff}\lean{CollatzMapBasics.collatz_graph_adj_iff}\leanok
+\begin{lemma}\label{lemma:collatz_graph_adj_iff}\lean{CollatzMapBasics.collatz_graph_adj_iff}\uses{def:collatz_graph}\leanok
 Two distinct vertices $a, b$ are adjacent in $\mathcal{G}'$ if and only if $b = T(a)$ or $a = T(b)$.
 \end{lemma}
 \begin{proof}\leanok
 Immediate from the definition of the simple graph associated with a directed graph.
 \end{proof}
 
-\begin{lemma}\label{lemma:T_iter_reachable}\lean{CollatzMapBasics.T_iter_reachable}\leanok
+\begin{lemma}\label{lemma:T_iter_reachable}\lean{CollatzMapBasics.T_iter_reachable}\uses{def:collatz_graph}\leanok
 For any $k, n \in \mathbb{N}$, $T^k(n)$ is reachable from $n$ in $\mathcal{G}'$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$, following the edges $(T^i(n), T^{i+1}(n))$.
 \end{proof}
 
-\begin{lemma}\label{lemma:confluence_step}\lean{CollatzMapBasics.confluence_step}\leanok
+\begin{lemma}\label{lemma:confluence_step}\lean{CollatzMapBasics.confluence_step}\uses{def:collatz_graph}\leanok
 If $T^i(a) = T^j(b)$ and $b$ is adjacent to $c$ in $\mathcal{G}'$, then there exist $i', j'$ such that $T^{i'}(a) = T^{j'}(c)$.
 \end{lemma}
 \begin{proof}\leanok

@@ -10,7 +10,7 @@ The Collatz map $C: \mathbb{N} \to \mathbb{N}$ is defined by
 \end{definition}
 Lagarias reviewed the history of the map and the conjecture in \cite{lagarias}.
 
-\begin{definition}\label{def:collatz_iter}\lean{collatz_iter}\leanok
+\begin{definition}\label{def:collatz_iter}\lean{collatz_iter}\uses{def:collatz_step}\leanok
 For any $k \in \mathbb{N}$, the $k$-fold iteration of the Collatz map $C^k: \mathbb{N} \to \mathbb{N}$ is defined recursively by
 \begin{equation}
     C^0(n) = n
@@ -21,7 +21,7 @@ and
 \end{equation}
 \end{definition}
 
-\begin{lemma}\label{lemma:collatz_iter_succ_right'}\lean{collatz_iter_succ_right'}\leanok
+\begin{lemma}\label{lemma:collatz_iter_succ_right'}\lean{collatz_iter_succ_right'}\uses{def:collatz_iter}\leanok
 For all $k, n \in \mathbb{N}$, we have $C^{k+1}(n) = C(C^k(n))$.
 \end{lemma}
 \begin{proof}\leanok
@@ -35,42 +35,42 @@ For the inductive step $k+1$, we have:
 \end{align*}
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_step_zero}\lean{collatz_step_zero}\leanok
+\begin{lemma}\label{lemma:collatz_step_zero}\lean{collatz_step_zero}\uses{def:collatz_iter}\leanok
 $C(0) = 0$.
 \end{lemma}
 \begin{proof}\leanok
 Trivial by definition.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_zero}\lean{collatz_iter_zero}\leanok
+\begin{lemma}\label{lemma:collatz_iter_zero}\lean{collatz_iter_zero}\uses{def:collatz_iter}\leanok
 For all $k \in \mathbb{N}$, $C^k(0) = 0$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_step_pos}\lean{collatz_step_pos}\leanok
+\begin{lemma}\label{lemma:collatz_step_pos}\lean{collatz_step_pos}\uses{def:collatz_iter}\leanok
 If $n \ge 1$, then $C(n) \ge 1$.
 \end{lemma}
 \begin{proof}\leanok
 If $n$ is even, then $n \ge 2$, so $n/2 \ge 1$. If $n$ is odd, then $3n+1 \ge 4 \ge 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_pos}\lean{collatz_iter_pos}\uses{lemma:collatz_step_pos}\leanok
+\begin{lemma}\label{lemma:collatz_iter_pos}\lean{collatz_iter_pos}\uses{lemma:collatz_step_pos}\uses{def:collatz_iter}\leanok
 If $n \ge 1$, then for all $k \in \mathbb{N}$, $C^k(n) \ge 1$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$, using Lemma~\ref{lemma:collatz_step_pos}.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_step_pow_two}\lean{collatz_step_pow_two}\leanok
+\begin{lemma}\label{lemma:collatz_step_pow_two}\lean{collatz_step_pow_two}\uses{def:collatz_iter}\leanok
 For all $k \ge 1$, $C(2^k) = 2^{k-1}$.
 \end{lemma}
 \begin{proof}\leanok
 Since $2^k$ is even for $k \ge 1$, $C(2^k) = 2^k/2 = 2^{k-1}$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_two_pow_mul}\lean{collatz_iter_two_pow_mul}\leanok
+\begin{lemma}\label{lemma:collatz_iter_two_pow_mul}\lean{collatz_iter_two_pow_mul}\uses{def:collatz_iter}\leanok
 For any $k, m \in \mathbb{N}$, $C^k(2^k \cdot m) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -83,14 +83,14 @@ For the inductive step $k+1$, we have
 \end{align*}
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_pow_two}\lean{collatz_iter_pow_two}\uses{lemma:collatz_step_pow_two}\leanok
+\begin{lemma}\label{lemma:collatz_iter_pow_two}\lean{collatz_iter_pow_two}\uses{lemma:collatz_step_pow_two}\uses{def:collatz_iter}\leanok
 For all $l \in \mathbb{N}$, $C^l(2^l) = 1$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $l$, using Lemma~\ref{lemma:collatz_step_pow_two}.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_pow_two_ne_one}\lean{collatz_iter_pow_two_ne_one}\uses{lemma:collatz_step_pow_two}\leanok
+\begin{lemma}\label{lemma:collatz_iter_pow_two_ne_one}\lean{collatz_iter_pow_two_ne_one}\uses{lemma:collatz_step_pow_two}\uses{def:collatz_iter}\leanok
 For all $k < l$, $C^k(2^l) \neq 1$.
 \end{lemma}
 \begin{proof}\leanok
@@ -104,7 +104,7 @@ For all $l \in \mathbb{N}$, there exists $n \in \mathbb{N}$ such that $C^l(n) = 
 Choose $n = 2^l$ and apply Lemmas~\ref{lemma:collatz_iter_pow_two} and \ref{lemma:collatz_iter_pow_two_ne_one}.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_add}\lean{collatz_iter_add}\leanok
+\begin{lemma}\label{lemma:collatz_iter_add}\lean{collatz_iter_add}\uses{def:collatz_iter}\leanok
 For all $a, b, n \in \mathbb{N}$, $C^{a+b}(n) = C^a(C^b(n))$.
 \end{lemma}
 \begin{proof}\leanok
@@ -118,7 +118,7 @@ If $C^k(n) = n$, then for all $m \in \mathbb{N}$, $C^{m \cdot k}(n) = n$.
 By induction on $m$, using Lemma~\ref{lemma:collatz_iter_add}.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_mem_124}\lean{collatz_iter_mem_124}\leanok
+\begin{lemma}\label{lemma:collatz_iter_mem_124}\lean{collatz_iter_mem_124}\uses{def:collatz_iter}\leanok
 If $n \in \{1, 2, 4\}$, then for all $i \in \mathbb{N}$, $C^i(n) \in \{1, 2, 4\}$.
 \end{lemma}
 \begin{proof}\leanok
@@ -132,7 +132,7 @@ For all $i \in \mathbb{N}$, $C^i(1) \le 4$.
 Since $1 \in \{1, 2, 4\}$, we have $C^i(1) \in \{1, 2, 4\}$ by Lemma~\ref{lemma:collatz_iter_mem_124}, so $C^i(1) \le 4$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_step_closed_form}\lean{collatz_step_closed_form}\leanok
+\begin{lemma}\label{lemma:collatz_step_closed_form}\lean{collatz_step_closed_form}\uses{def:collatz_iter}\leanok
 The Collatz map $C(n)$ has the closed form
 \begin{equation}
     C(n) = \frac{(7n + 2) - (5n + 2)(-1)^n}{4}

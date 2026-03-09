@@ -8,7 +8,7 @@ where $v_2(m)$ is the dyadic valuation of $m$. In short $R(n)=$ odd part of $3n+
 This map seems to have been introduced by Crandall\cite{crandall78}. One of its advantages is
 that multiplications by 3 are constant for each step, regardless if $n$ is even or odd.
 
-\begin{definition}\label{def:R_iter}\lean{CollatzMapBasics.R_iter}\leanok
+\begin{definition}\label{def:R_iter}\lean{CollatzMapBasics.R_iter}\uses{def:reduced_collatz_step}\leanok
 For any $k \in \mathbb{N}$, the $k$-fold iteration of the reduced Collatz map
 $R^k: \mathbb{N} \to \mathbb{N}$ is defined recursively by
 \begin{equation}
@@ -20,21 +20,21 @@ and
 \end{equation}
 \end{definition}
 
-\begin{lemma}\label{lemma:R_zero}\lean{CollatzMapBasics.R_zero}\leanok
+\begin{lemma}\label{lemma:R_zero}\lean{CollatzMapBasics.R_zero}\uses{def:reduced_collatz_step}\leanok
 $R(0) = 1$.
 \end{lemma}
 \begin{proof}\leanok
 By definition, $R(0) = \text{odd part of } (3 \cdot 0 + 1) = \text{odd part of } 1 = 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:R_one}\lean{CollatzMapBasics.R_one}\leanok
+\begin{lemma}\label{lemma:R_one}\lean{CollatzMapBasics.R_one}\uses{def:reduced_collatz_step}\leanok
 $R(1) = 1$.
 \end{lemma}
 \begin{proof}\leanok
 By definition, $R(1) = \text{odd part of } (3 \cdot 1 + 1) = \text{odd part of } 4 = 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_pos}\lean{CollatzMapBasics.reduced_collatz_step_pos}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_pos}\lean{CollatzMapBasics.reduced_collatz_step_pos}\uses{def:reduced_collatz_step}\leanok
 For all $n \in \mathbb{N}$, $R(n) \geq 1$.
 \end{lemma}
 \begin{proof}\leanok
@@ -48,7 +48,7 @@ For all $n, i \in \mathbb{N}$ with $n \geq 1$, we have $R^i(n) \geq 1$.
 We proceed by induction on $i$. The base case $i = 0$ is immediate since $R^0(n) = n \geq 1$. For the inductive step, $R^{i+1}(n) = R^i(R(n))$. By Lemma~\ref{lemma:reduced_collatz_step_pos}, $R(n) \geq 1$, so the induction hypothesis gives $R^i(R(n)) \geq 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_odd}\lean{CollatzMapBasics.reduced_collatz_step_odd}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_odd}\lean{CollatzMapBasics.reduced_collatz_step_odd}\uses{def:reduced_collatz_step}\leanok
 For all $n \in \mathbb{N}$, $R(n)$ is odd, i.e.\ $R(n) \equiv 1 \pmod{2}$.
 \end{lemma}
 \begin{proof}\leanok
@@ -62,7 +62,7 @@ For all $n \in \mathbb{N}$ and $i \geq 1$, $R^i(n)$ is odd, i.e.\ $R^i(n) \equiv
 We proceed by induction on $i$. The base case $i = 1$ follows directly from Lemma~\ref{lemma:reduced_collatz_step_odd}, since $R^1(n) = R(n)$ is odd. For the inductive step, $R^{i+1}(n) = R^i(R(n))$. If $i \geq 1$, the induction hypothesis gives that $R^i(R(n))$ is odd. If $i = 0$, then $R^{i+1}(n) = R^1(n) = R(n)$, which is odd by Lemma~\ref{lemma:reduced_collatz_step_odd}.
 \end{proof}
 
-\begin{lemma}\label{lemma:not_exists_R_with_m_div3}\lean{CollatzMapBasics.not_exists_R_with_m_div3}\leanok
+\begin{lemma}\label{lemma:not_exists_R_with_m_div3}\lean{CollatzMapBasics.not_exists_R_with_m_div3}\uses{def:reduced_collatz_step}\leanok
 If $m \equiv 0 \pmod{3}$, then there is no $n \in \mathbb{N}$ such that $R(n) = m$. In other words, multiples of $3$ are not in the image of $R$.
 \end{lemma}
 \begin{proof}\leanok
@@ -83,7 +83,7 @@ If $m > 1$, we split on the residue of $m$ modulo $3$:
 \end{itemize}
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{CollatzMapBasics.reduced_collatz_step_iff_mod4}\uses{lemma:ordCompl_two_pow_mul,lemma:ordCompl_two_mul_pow}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{CollatzMapBasics.reduced_collatz_step_iff_mod4}\uses{lemma:ordCompl_two_pow_mul,lemma:ordCompl_two_mul_pow,def:reduced_collatz_step}\leanok
 For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
 \end{lemma}
 \begin{proof}\leanok
@@ -92,7 +92,7 @@ For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
 ($\Leftarrow$) Suppose $n \equiv 3 \pmod{4}$, say $n = 4k + 3$. Then $3n + 1 = 12k + 10 = 2(6k + 5)$. Since $6k + 5$ is odd, $R(n) = 6k + 5$. Since $k \ge 0$, we have $6k + 5 > 4k + 3$, so $R(n) > n$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_step_implies_collatz_iter}\uses{lemma:collatz_iter_two_pow_mul}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_step_implies_collatz_iter}\uses{lemma:collatz_iter_two_pow_mul}\uses{def:reduced_collatz_step,def:collatz_iter}\leanok
 If $n > 0$ is odd and $R(n) = m$, then there exists $i \ge 1$ such that $C^i(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
