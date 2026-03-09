@@ -56,7 +56,7 @@ If $n \ge 1$, then $C(n) \ge 1$.
 If $n$ is even, then $n \ge 2$, so $n/2 \ge 1$. If $n$ is odd, then $3n+1 \ge 4 \ge 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_pos}\lean{collatz_iter_pos}\leanok
+\begin{lemma}\label{lemma:collatz_iter_pos}\lean{collatz_iter_pos}\uses{lemma:collatz_step_pos}\leanok
 If $n \ge 1$, then for all $k \in \mathbb{N}$, $C^k(n) \ge 1$.
 \end{lemma}
 \begin{proof}\leanok
@@ -83,21 +83,21 @@ For the inductive step $k+1$, we have
 \end{align*}
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_pow_two}\lean{collatz_iter_pow_two}\leanok
+\begin{lemma}\label{lemma:collatz_iter_pow_two}\lean{collatz_iter_pow_two}\uses{lemma:collatz_step_pow_two}\leanok
 For all $l \in \mathbb{N}$, $C^l(2^l) = 1$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $l$, using Lemma~\ref{lemma:collatz_step_pow_two}.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_pow_two_ne_one}\lean{collatz_iter_pow_two_ne_one}\leanok
+\begin{lemma}\label{lemma:collatz_iter_pow_two_ne_one}\lean{collatz_iter_pow_two_ne_one}\uses{lemma:collatz_step_pow_two}\leanok
 For all $k < l$, $C^k(2^l) \neq 1$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$, using Lemma~\ref{lemma:collatz_step_pow_two}.
 \end{proof}
 
-\begin{lemma}\label{lemma:exists_collatz_reverse_strict}\lean{exists_collatz_reverse_strict}\leanok
+\begin{lemma}\label{lemma:exists_collatz_reverse_strict}\lean{exists_collatz_reverse_strict}\uses{lemma:collatz_iter_pow_two,lemma:collatz_iter_pow_two_ne_one}\leanok
 For all $l \in \mathbb{N}$, there exists $n \in \mathbb{N}$ such that $C^l(n) = 1$ and for all $k < l$, $C^k(n) \neq 1$.
 \end{lemma}
 \begin{proof}\leanok
@@ -111,7 +111,7 @@ For all $a, b, n \in \mathbb{N}$, $C^{a+b}(n) = C^a(C^b(n))$.
 By induction on $b$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_mul_cycle}\lean{collatz_iter_mul_cycle}\leanok
+\begin{lemma}\label{lemma:collatz_iter_mul_cycle}\lean{collatz_iter_mul_cycle}\uses{lemma:collatz_iter_add}\leanok
 If $C^k(n) = n$, then for all $m \in \mathbb{N}$, $C^{m \cdot k}(n) = n$.
 \end{lemma}
 \begin{proof}\leanok
@@ -125,7 +125,7 @@ If $n \in \{1, 2, 4\}$, then for all $i \in \mathbb{N}$, $C^i(n) \in \{1, 2, 4\}
 By induction on $i$, checking the cases $n=1, 2, 4$ for $C(n)$.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_iter_one_le_four}\lean{collatz_iter_one_le_four}\leanok
+\begin{lemma}\label{lemma:collatz_iter_one_le_four}\lean{collatz_iter_one_le_four}\uses{lemma:collatz_iter_mem_124}\leanok
 For all $i \in \mathbb{N}$, $C^i(1) \le 4$.
 \end{lemma}
 \begin{proof}\leanok

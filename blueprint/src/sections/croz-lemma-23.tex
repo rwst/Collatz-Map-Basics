@@ -1,4 +1,4 @@
-\begin{lemma}\label{lemma:X_T_iter_shift}\lean{X_T_iter_shift}\leanok
+\begin{lemma}\label{lemma:X_T_iter_shift}\lean{X_T_iter_shift}\uses{lemma:terras_backward,lemma:num_odd_steps_eq_of_E_vec_eq,lemma:decomposition_correction_eq_of_E_vec_eq,lemma:linear_decomposition,lemma:X_eq_mod}\leanok
 For any $j, m \in \mathbb{N}$, the parity of the iterates at $m$ and $m + 2^j$ are opposite:
 \begin{equation}
     X(T^j(m)) + X(T^j(m + 2^j)) = 1.
@@ -8,7 +8,7 @@ For any $j, m \in \mathbb{N}$, the parity of the iterates at $m$ and $m + 2^j$ a
 By the linear decomposition $2^j T^j(n) = 3^{q} n + \mathcal{Q}_j(n)$, and the fact that $V_j(m + 2^j) = V_j(m)$, we have $T^j(m + 2^j) = T^j(m) + 3^q$. Since $3^q$ is always odd, $T^j(m + 2^j)$ and $T^j(m)$ have opposite parity.
 \end{proof}
 
-\begin{lemma}\label{lemma:E_shift}\lean{E_shift}\leanok
+\begin{lemma}\label{lemma:E_shift}\lean{E_shift}\uses{lemma:E_eq_of_V_prefix_eq,lemma:terras_backward}\leanok
 The correction ratio $E_j(n)$ is periodic with period $2^j$:
 \begin{equation}
     E_j(m + 2^j) = E_j(m).
@@ -18,7 +18,7 @@ The correction ratio $E_j(n)$ is periodic with period $2^j$:
 Since $E_j(n)$ depends only on the parity vector $V_j(n)$, and $V_j(n)$ is periodic with period $2^j$, the result follows.
 \end{proof}
 
-\begin{lemma}\label{lemma:E_succ_pair_sum}\lean{E_succ_pair_sum}\leanok
+\begin{lemma}\label{lemma:E_succ_pair_sum}\lean{E_succ_pair_sum}\uses{lemma:E_succ,lemma:E_shift,lemma:X_T_iter_shift,lemma:X_eq_mod}\leanok
 For any $j, m \in \mathbb{N}$, we have the identity:
 \begin{equation}
     E_{j+1}(m) + E_{j+1}(m + 2^j) = 2 E_j(m) + \frac{1}{2}.
@@ -33,7 +33,7 @@ Using the recurrence $E_{j+1}(n) = \frac{3^{X(T^j(n))}}{2} E_j(n) + \frac{X(T^j(
 \end{align*}
 \end{proof}
 
-\begin{theorem}[Rozier--Terracol Lemma 2.3]\label{theorem:CRoz_lemma_23}\lean{CRoz_lemma_23}\leanok
+\begin{theorem}[Rozier--Terracol Lemma 2.3]\label{theorem:CRoz_lemma_23}\lean{CRoz_lemma_23}\uses{lemma:E_succ_pair_sum}\leanok
 For every positive integer $j$, the average value of the correction ratio $E_j(n)$ over a full period is $j/4$:
 \begin{equation}
     \frac{1}{2^j} \sum_{n=1}^{2^j} E_j(n) = \frac{j}{4}.

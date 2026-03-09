@@ -33,7 +33,7 @@ The right-hand side gives $a \log 3 - b \log 2 < 0$, which is equivalent to $a \
 These steps are reversible.
 \end{proof}
 
-\begin{lemma}\label{lemma:infinite_rat_approx_from_below}\lean{CollatzMapBasics.infinite_rat_approx_from_below}\leanok
+\begin{lemma}\label{lemma:infinite_rat_approx_from_below}\lean{CollatzMapBasics.infinite_rat_approx_from_below}\uses{lemma:irrational_xi}\leanok
 There are infinitely many rational numbers $q = n/d < \xi$ such that
 \begin{equation}
     |\xi - q| < \frac{1}{d^2}.
@@ -43,7 +43,7 @@ There are infinitely many rational numbers $q = n/d < \xi$ such that
 This is a standard consequence of the theory of continued fractions. The continued fraction convergents of an irrational number $\xi$ alternate in being strictly less than and strictly greater than $\xi$. The even convergents $q_k = p_{2k}/q_{2k}$ provide an infinite sequence of rational approximations strictly smaller than $\xi$, satisfying the well-known approximation bound $|\xi - q_k| < 1 / (q_k)^2$. Since $\xi$ is irrational, the set of such convergents is infinite.
 \end{proof}
 
-\begin{theorem}\label{theorem:exists_infinite_pairs_approx}\lean{CollatzMapBasics.exists_infinite_pairs_approx}\leanok
+\begin{theorem}\label{theorem:exists_infinite_pairs_approx}\lean{CollatzMapBasics.exists_infinite_pairs_approx}\uses{lemma:infinite_rat_approx_from_below,lemma:inequality_equiv}\leanok
 (Lemma 3.1 in Rozier-Terracol 2025) For any $\varepsilon \in (0, 1)$, there exist infinitely many
 pairs of positive integers $(a, b)$ such that:
 \begin{equation}

@@ -24,14 +24,14 @@ If $c = T(b)$, then $T^i(a) = T^j(b)$, so $T^{i+1}(a) = T(T^i(a)) = T(T^j(b)) = 
 If $b = T(c)$, then $T^i(a) = T^j(b) = T^j(T(c)) = T^{j+1}(c)$.
 \end{proof}
 
-\begin{lemma}\label{lemma:confluence_of_reachable}\lean{CollatzMapBasics.confluence_of_reachable}\leanok
+\begin{lemma}\label{lemma:confluence_of_reachable}\lean{CollatzMapBasics.confluence_of_reachable}\uses{lemma:confluence_step}\leanok
 If $a$ and $b$ are reachable in $\mathcal{G}'$, then they have a common descendant under $T$, i.e., there exist $i, j$ such that $T^i(a) = T^j(b)$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on the path length between $a$ and $b$, using Lemma~\ref{lemma:confluence_step}.
 \end{proof}
 
-\begin{theorem}\label{theorem:collatz_graph_weakly_connected_iff_collatz}\lean{CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz}\leanok
+\begin{theorem}\label{theorem:collatz_graph_weakly_connected_iff_collatz}\lean{CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz}\uses{lemma:confluence_of_reachable,lemma:T_iter_reachable,lemma:collatz_iter_to_T_iter,lemma:T_iter_implies_collatz_iter}\leanok
 The Collatz graph $\mathcal{G}$ restricted to positive integers is weakly connected (i.e., any two $a, b \ge 1$ are reachable in $\mathcal{G}'$) if and only if the Collatz conjecture holds.
 \end{theorem}
 \begin{proof}\leanok

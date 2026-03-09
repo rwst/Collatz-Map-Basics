@@ -1,4 +1,4 @@
-\begin{lemma}\label{lemma:isParadoxical_bound}\lean{CollatzMapBasics.isParadoxical_bound}\leanok
+\begin{lemma}\label{lemma:isParadoxical_bound}\lean{CollatzMapBasics.isParadoxical_bound}\uses{lemma:linear_decomposition'}\leanok
 Let $j, n \in \mathbb{N}$ with $n > 0$. If the pair $(j, n)$ is paradoxical, then:
 \begin{equation}
     0 < 1 - C(j, n) \le \frac{E(j, n)}{n}.
@@ -37,7 +37,7 @@ Combining with the inductive hypothesis $T^j(n) \le n(3 + 1/m)^q/2^j$ and using 
 \end{equation}
 \end{proof}
 
-\begin{lemma}\label{lemma:correction_ratio_bound_theorem_4_1}\lean{CollatzMapBasics.correction_ratio_bound_theorem_4_1}\leanok
+\begin{lemma}\label{lemma:correction_ratio_bound_theorem_4_1}\lean{CollatzMapBasics.correction_ratio_bound_theorem_4_1}\uses{lemma:odd_iter_bound_theorem_4_1,lemma:linear_decomposition'}\leanok
 Under the same hypotheses as Lemma~\ref{lemma:odd_iter_bound_theorem_4_1}, we have:
 \begin{equation}
     \frac{E(j, n)}{n} \le \frac{\left(3 + \frac{1}{m}\right)^q - 3^q}{2^j}.
@@ -76,7 +76,7 @@ For the upper bound, $1 - 3^q/2^j > 0$ implies $3^q < 2^j$. Taking logs gives $q
 For the lower bound, the second inequality implies $2^j - 3^q \le (3+1/m)^q - 3^q$, which simplifies to $2^j \le (3+1/m)^q$. Taking logs gives $j \log 2 \le q \log(3+1/m)$, yielding the final result.
 \end{proof}
 
-\begin{corollary}\label{lemma:paradoxical_ratio_bounds}\lean{CollatzMapBasics.paradoxical_ratio_bounds}\leanok
+\begin{corollary}\label{lemma:paradoxical_ratio_bounds}\lean{CollatzMapBasics.paradoxical_ratio_bounds}\uses{lemma:isParadoxical_bound,lemma:correction_ratio_bound_theorem_4_1,lemma:paradoxical_ratio_real}\leanok
 Let $(j, n)$ be a paradoxical sequence starting at $n > 0$. Let $m > 0$ be a lower bound for all odd iterates $T^i(n)$ with $i < j$. Let $q$ be the number of odd steps. Then:
 \begin{equation}
     \frac{\log 2}{\log(3 + 1/m)} \le \frac{q}{j} < \frac{\log 2}{\log 3}.
@@ -89,7 +89,7 @@ This follows from Lemma~\ref{lemma:correction_ratio_bound_theorem_4_1} and the a
   Since the harmonic mean $h$ is not less than the minimum $m$ of the odd iterates of $T$,
   Lemma~\ref{lemma:paradoxical_ratio_bounds} is a weaker version of Corollary~$4.2$ in Rozier--Terracol.
 
-\begin{lemma}\label{lemma:log_ratio_not_int}\lean{CollatzMapBasics.log_ratio_not_int}\leanok
+\begin{lemma}\label{lemma:log_ratio_not_int}\lean{CollatzMapBasics.log_ratio_not_int}\uses{lemma:irrational_xi}\leanok
 For any $j \ge 2$ and any $k \in \mathbb{N}$, the value $j \cdot \log 2 / \log 3$ is not an integer:
 \begin{equation}
     \frac{j \log 2}{\log 3} \neq k.
@@ -99,7 +99,7 @@ For any $j \ge 2$ and any $k \in \mathbb{N}$, the value $j \cdot \log 2 / \log 3
 If $j \log 2 / \log 3 = k$, then $\xi = \log 2 / \log 3 = k/j \in \mathbb{Q}$, contradicting the irrationality of $\xi$ (Lemma~\ref{lemma:irrational_xi}).
 \end{proof}
 
-\begin{lemma}\label{lemma:strict_floor_log_ratio}\lean{CollatzMapBasics.strict_floor_log_ratio}\leanok
+\begin{lemma}\label{lemma:strict_floor_log_ratio}\lean{CollatzMapBasics.strict_floor_log_ratio}\uses{lemma:log_ratio_not_int}\leanok
 For any $j \ge 2$, the floor of $j \log 2 / \log 3$ is strictly less than $j \log 2 / \log 3$:
 \begin{equation}
     \left\lfloor \frac{j \log 2}{\log 3} \right\rfloor < \frac{j \log 2}{\log 3}.
@@ -126,7 +126,7 @@ The upper bound $q/j < \log 2 / \log 3$ implies $q \log 3 < j \log 2$, hence $\l
 The lower bound $\log 2 / \log(3+1/m) \le q/j$ implies $j \log 2 \le q \log(3+1/m)$, i.e., $(j/q)\log 2 \le \log(3+1/m)$, so $2^{j/q} \le 3 + 1/m$. This gives $2^{j/q} - 3 \le 1/m$, and since $2^{j/q} - 3 > 0$, we can take reciprocals (reversing the inequality) to get $m \le 1/(2^{j/q} - 3)$.
 \end{proof}
 
-\begin{lemma}\label{lemma:paradoxical_m_bound_floor_real}\lean{CollatzMapBasics.paradoxical_m_bound_floor_real}\leanok
+\begin{lemma}\label{lemma:paradoxical_m_bound_floor_real}\lean{CollatzMapBasics.paradoxical_m_bound_floor_real}\uses{lemma:paradoxical_m_bound_q_real,lemma:strict_floor_log_ratio}\leanok
 Let $j, q, m \in \mathbb{N}$ with $j \ge 2$ and $m > 0$. Suppose the ratio bounds of Lemma~\ref{lemma:paradoxical_ratio_real} hold for $q/j$. Define:
 \begin{equation}
     r = \frac{j}{\left\lfloor j \log 2 / \log 3 \right\rfloor}.
@@ -141,7 +141,7 @@ By Lemma~\ref{lemma:paradoxical_m_bound_q_real}, $m \le 1/(2^{j/q}-3) \le 1/(2^r
 To show $2^r > 3$: since $\lfloor j\log 2/\log 3 \rfloor < j \log 2/\log 3$ (strictly, by Lemma~\ref{lemma:strict_floor_log_ratio}), $r = j/\lfloor j\log 2/\log 3 \rfloor > j/(j\log 2/\log 3) = \log 3/\log 2$.  Therefore $r \log 2 > \log 3$, i.e., $\log(2^r) > \log 3$, so $2^r > 3$.
 \end{proof}
 
-\begin{corollary}\label{corollary:paradoxical_m_bound}\lean{CollatzMapBasics.paradoxical_m_bound}\leanok
+\begin{corollary}\label{corollary:paradoxical_m_bound}\lean{CollatzMapBasics.paradoxical_m_bound}\uses{lemma:paradoxical_ratio_bounds,lemma:paradoxical_m_bound_floor_real}\leanok
 Let $(j, n)$ be a paradoxical pair with $j \ge 2$ and $n > 0$. Let $m > 0$ be a lower bound for all odd iterates $T^k(n)$ with $k < j$. Define $r = j / \lfloor j \log 2 / \log 3 \rfloor$. Then:
 \begin{equation}
     2^r - 3 > 0 \quad \text{and} \quad m \le \frac{1}{2^r - 3}.

@@ -1,11 +1,11 @@
-\begin{lemma}\label{lemma:terras_backward}\lean{CollatzMapBasics.terras_backward}\leanok
+\begin{lemma}\label{lemma:terras_backward}\lean{CollatzMapBasics.terras_backward}\uses{lemma:parity_of_mod_pow_succ,lemma:T_congr,lemma:X_congr}\leanok
 For any $k \in \mathbb{N}$ and $m, n \in \mathbb{N}$, if $m \equiv n \pmod{2^k}$, then $E(k, m) = E(k, n)$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$. The base case $k=0$ is trivial as $E(0, n)$ is the empty function. For the inductive step $k+1$, if $m \equiv n \pmod{2^{k+1}}$, then $m \equiv n \pmod 2$, so $X(m) = X(n)$. By the congruence properties of $T$ (Lemma~\ref{lemma:T_congr}), $T(m) \equiv T(n) \pmod{2^k}$. By the induction hypothesis, $E(k, T(m)) = E(k, T(n))$, which implies agreement on the remaining $k$ entries of the parity vector.
 \end{proof}
 
-\begin{lemma}\label{lemma:terras_forward}\lean{CollatzMapBasics.terras_forward}\leanok
+\begin{lemma}\label{lemma:terras_forward}\lean{CollatzMapBasics.terras_forward}\uses{lemma:num_odd_steps_eq_of_E_vec_eq,lemma:decomposition_correction_eq_of_E_vec_eq,lemma:linear_decomposition,lemma:coprime_pow_three_pow_two,lemma:nat_mod_eq_of_int_dvd_sub}\leanok
 For $m, n \ge 1$, if $E(k, m) = E(k, n)$, then $m \equiv n \pmod{2^k}$.
 \end{lemma}
 \begin{proof}\leanok
@@ -17,7 +17,7 @@ Assume $E(k, m) = E(k, n)$. Then $Q(k, m) = Q(k, n) = S$ and $Q(k, m) = Q(k, n) 
 Subtracting these yields $2^k (T^k(m) - T^k(n)) = 3^S (m - n)$. Since $2^k$ is coprime to $3^S$ (Lemma~\ref{lemma:coprime_pow_three_pow_two}), $2^k$ must divide $m - n$, so $m \equiv n \pmod{2^k}$.
 \end{proof}
 
-\begin{theorem}\label{theorem:terras_periodicity}\lean{CollatzMapBasics.terras_periodicity}\leanok
+\begin{theorem}\label{theorem:terras_periodicity}\lean{CollatzMapBasics.terras_periodicity}\uses{lemma:terras_forward,lemma:terras_backward}\leanok
 (Theorem 1.2 in Terras (1976)\cite{terras76}) Two positive integers $m, n \ge 1$ have the same parity vector of length $k$ if and only if they
 are congruent modulo $2^k$:
 \begin{equation}

@@ -25,7 +25,7 @@ For any $k, x \in \mathbb{N}$, the odd part of $2^k \cdot x$ is equal to the odd
 This is a standard property of the odd part (dyadic valuation). Multiplying by a power of 2 only changes the valuation, not the odd part.
 \end{proof}
 
-\begin{lemma}\label{lemma:ordCompl_two_mul_pow}\lean{CollatzMapBasics.ordCompl_two_mul_pow}\leanok
+\begin{lemma}\label{lemma:ordCompl_two_mul_pow}\lean{CollatzMapBasics.ordCompl_two_mul_pow}\uses{lemma:ordCompl_two_pow_mul}\leanok
 For any $k \in \mathbb{N}$ and any odd $m \in \mathbb{N}$, the odd part of $2^k \cdot m$ is $m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -140,14 +140,14 @@ If $n \equiv 1 \pmod 2$, then $X(n) = 1$.
 If $n$ is odd, $(-1)^n = -1$, so $X(n) = (1 - (-1))/2 = 1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:X_eq_mod}\lean{CollatzMapBasics.X_eq_mod}\leanok
+\begin{lemma}\label{lemma:X_eq_mod}\lean{CollatzMapBasics.X_eq_mod}\uses{lemma:X_even,lemma:X_odd}\leanok
 For all $n \in \mathbb{N}$, $X(n) = n \pmod 2$.
 \end{lemma}
 \begin{proof}\leanok
 By cases on the parity of $n$.
 \end{proof}
 
-\begin{lemma}\label{lemma:X_congr}\lean{CollatzMapBasics.X_congr}\leanok
+\begin{lemma}\label{lemma:X_congr}\lean{CollatzMapBasics.X_congr}\uses{lemma:X_eq_mod}\leanok
 If $m \equiv n \pmod 2$, then $X(m) = X(n)$.
 \end{lemma}
 \begin{proof}\leanok

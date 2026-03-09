@@ -37,14 +37,14 @@ If $n \ge 1$, then $T(n) \ge 1$.
 If $n$ is even, $n \ge 2$, so $n/2 \ge 1$. If $n$ is odd, $3n+1 \ge 4$, so $(3n+1)/2 \ge 2$.
 \end{proof}
 
-\begin{lemma}\label{lemma:T_iter_pos}\lean{CollatzMapBasics.T_iter_pos}\leanok
+\begin{lemma}\label{lemma:T_iter_pos}\lean{CollatzMapBasics.T_iter_pos}\uses{lemma:T_pos}\leanok
 If $n \ge 1$, then $T^k(n) \ge 1$ for all $k \in \mathbb{N}$.
 \end{lemma}
 \begin{proof}\leanok
 By induction on $k$, using Lemma~\ref{lemma:T_pos}.
 \end{proof}
 
-\begin{lemma}\label{lemma:T_congr}\lean{CollatzMapBasics.T_congr}\leanok
+\begin{lemma}\label{lemma:T_congr}\lean{CollatzMapBasics.T_congr}\uses{lemma:parity_of_mod_pow_succ,lemma:X_congr,lemma:int_dvd_sub_of_mod_eq,lemma:nat_mod_eq_of_int_dvd_sub}\leanok
 For any $k, m, n \in \mathbb{N}$, if $m \equiv n \pmod{2^{k+1}}$, then $T(m) \equiv T(n) \pmod{2^k}$.
 \end{lemma}
 \begin{proof}\leanok

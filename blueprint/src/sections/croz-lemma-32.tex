@@ -24,7 +24,7 @@ $q(k+j, 2^k n) = q(j, n)$ and the decomposition correction $\mathcal{Q}_{k+j}(2^
 \mathcal{Q}_j(n)$. Substituting these into the definition of $E$ clears the $2^k$ factor.
 \end{proof}
 
-\begin{lemma}\label{lemma:num_odd_steps_unbounded}\lean{CollatzMapBasics.num_odd_steps_unbounded}\leanok
+\begin{lemma}\label{lemma:num_odd_steps_unbounded}\lean{CollatzMapBasics.num_odd_steps_unbounded}\uses{lemma:X_eq_mod,lemma:num_odd_steps_succ,lemma:num_odd_steps_mono}\leanok
 If $n \ge 1$ has an infinite stopping time, then the number of odd steps $q(j, n)$ is unbounded as $j
 \to \infty$.
 \end{lemma}
@@ -35,7 +35,7 @@ so they are repeatedly divided by 2. This contradicts the infinite stopping time
 would eventually drop below $n$ (or reach 1 and then cycle).
 \end{proof}
 
-\begin{lemma}\label{lemma:num_odd_steps_hits_all}\lean{CollatzMapBasics.num_odd_steps_hits_all}\leanok
+\begin{lemma}\label{lemma:num_odd_steps_hits_all}\lean{CollatzMapBasics.num_odd_steps_hits_all}\uses{lemma:num_odd_steps_unbounded,lemma:num_odd_steps_mono,lemma:num_odd_steps_succ,lemma:X_eq_mod}\leanok
 If $n \ge 1$ has an infinite stopping time, then for every $a \in \mathbb{N}$, there exists an
 iteration count $j$ such that $q(j, n) = a$.
 \end{lemma}
@@ -44,7 +44,7 @@ Since $q(0, n) = 0$, $q(j, n)$ is unbounded, and $q(j+1, n) - q(j, n) \in \{0, 1
 intermediate value theorem implies that $q$ must hit every natural number.
 \end{proof}
 
-\begin{theorem}[Rozier--Terracol Theorem 3.2]\label{theorem:CRoz_lemma_32}\lean{CollatzMapBasics.CRoz_lemma_32}\leanok
+\begin{theorem}[Rozier--Terracol Theorem 3.2]\label{theorem:CRoz_lemma_32}\lean{CollatzMapBasics.CRoz_lemma_32}\uses{theorem:exists_infinite_pairs_approx,lemma:num_odd_steps_hits_all,theorem:E_bounds}\leanok
 If the integer $n$ has an infinite stopping time, then there exist infinitely many paradoxical
 sequences starting from integers of the form $2^k n$ with $k \ge 0$.
 \end{theorem}
@@ -84,7 +84,7 @@ The condition $3^a/2^b > 1 - 1/(4n)$ provides exactly the separation needed to s
 Since $S$ is infinite and the mapping from $(a, b)$ to $(j', k)$ is injective, we obtain infinitely many paradoxical sequences.
 \end{proof}
 
-\begin{corollary}[Rozier--Terracol Corollary 3.3]\label{corollary:CRoz_cor_33}\lean{CollatzMapBasics.CRoz_cor_33}\leanok
+\begin{corollary}[Rozier--Terracol Corollary 3.3]\label{corollary:CRoz_cor_33}\lean{CollatzMapBasics.CRoz_cor_33}\uses{theorem:CRoz_lemma_32,lemma:T_iter_implies_collatz_iter}\leanok
 If the set of paradoxical sequences $(j, m)$ with $m > 2$ is finite, then the Collatz conjecture is true.
 \end{corollary}
 \begin{proof}\leanok

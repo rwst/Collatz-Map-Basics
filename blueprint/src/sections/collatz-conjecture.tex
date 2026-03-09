@@ -6,7 +6,7 @@ $C^k(n) = 1$.
 No proof exists.
 \end{proof}
 
-\begin{lemma}\label{lemma:cycle_implies_not_collatz}\lean{cycle_implies_not_collatz}\leanok
+\begin{lemma}\label{lemma:cycle_implies_not_collatz}\lean{cycle_implies_not_collatz}\uses{lemma:collatz_iter_mul_cycle,lemma:collatz_iter_one_le_four,lemma:collatz_iter_add}\leanok
 If there exists a natural number $n > 4$ and $k \ge 1$ such that $C^k(n) = n$, then the Collatz
 conjecture is false {\bf (No-cycle condition)}.
 \end{lemma}
@@ -21,7 +21,7 @@ Thus, $C^{j \cdot k - j}(1) \le 4$, which implies $n \le 4$.
 This contradicts our initial assumption that $n > 4$, so the conjecture must be false.
 \end{proof}
 
-\begin{lemma}\label{lemma:unbounded_orbit_implies_not_collatz}\lean{unbounded_orbit_implies_not_collatz}\leanok
+\begin{lemma}\label{lemma:unbounded_orbit_implies_not_collatz}\lean{unbounded_orbit_implies_not_collatz}\uses{lemma:collatz_iter_one_le_four,lemma:collatz_iter_add}\leanok
 If there exists a natural number $n$ such that its orbit under $C$ is unbounded, then the Collatz
 conjecture is false {\bf (No-unbounded-orbit condition)}.
 \end{lemma}
@@ -38,7 +38,7 @@ This implies $C^k(n) \le 4$, which contradicts $C^k(n) > M + 4 \ge 4$.
 Thus, the assumption that the conjecture is true must be false.
 \end{proof}
 
-\begin{lemma}\label{lemma:bounded_no_cycle_implies_collatz}\lean{bounded_no_cycle_implies_collatz}\leanok
+\begin{lemma}\label{lemma:bounded_no_cycle_implies_collatz}\lean{bounded_no_cycle_implies_collatz}\uses{lemma:collatz_iter_pos,lemma:collatz_iter_one_le_four,lemma:collatz_iter_add}\leanok
 If no natural number $n > 4$ lies on a nontrivial cycle and every orbit under $C$ is bounded, then
 the Collatz conjecture is true.
 $$ \left( \forall n k, n > 4 \to k \ge 1 \to C^k(n) \neq n \right) \to \left( \forall n, \exists B, \forall k, C^k(n) \le B \right) \to \forall m, m = 0 \lor \exists j, C^j(m) = 1 $$

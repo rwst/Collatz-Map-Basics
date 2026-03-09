@@ -39,7 +39,7 @@ The correction term $Q(k, n)$ has the closed-form expression
 \end{equation}
 \end{definition}
 
-\begin{lemma}\label{lemma:decomposition_correction_eq_sum}\lean{CollatzMapBasics.decomposition_correction_eq_sum}\leanok
+\begin{lemma}\label{lemma:decomposition_correction_eq_sum}\lean{CollatzMapBasics.decomposition_correction_eq_sum}\uses{lemma:num_odd_steps_succ}\leanok
 The recursive definition of $Q(k, n)$ is equivalent to the closed-form sum.
 \end{lemma}
 \begin{proof}\leanok
@@ -91,7 +91,7 @@ If $E(k, m) = E(k, n)$, then $Q(k, m) = Q(k, n)$.
 By induction on $k$.
 \end{proof}
 
-\begin{lemma}\label{lemma:linear_decomposition'}\lean{CollatzMapBasics.linear_decomposition'}\leanok
+\begin{lemma}\label{lemma:linear_decomposition'}\lean{CollatzMapBasics.linear_decomposition'}\uses{lemma:linear_decomposition}\leanok
 Another form of the linear identity is given by:
 \begin{equation}
     T^j(n) = C(j, n) \cdot n + E(j, n).

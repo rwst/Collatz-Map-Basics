@@ -70,7 +70,7 @@ Suppose for contradiction that $R(n) = m$ for some $n$, with $3 \mid m$. Since $
 part of $3n+1$, we have $R(n) \mid 3n+1$.
 \end{proof}
 
-\begin{lemma}\label{lemma:exists_R_with_m_not_div3}\lean{CollatzMapBasics.exists_R_with_m_not_div3}\leanok
+\begin{lemma}\label{lemma:exists_R_with_m_not_div3}\lean{CollatzMapBasics.exists_R_with_m_not_div3}\uses{lemma:ordCompl_two_mul_pow}\leanok
 Let $m > 0$ be odd with $m \not\equiv 0 \pmod{3}$. Then there exists an odd $n > 1$ such that $R(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -83,7 +83,7 @@ If $m > 1$, we split on the residue of $m$ modulo $3$:
 \end{itemize}
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{CollatzMapBasics.reduced_collatz_step_iff_mod4}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_iff_mod4}\lean{CollatzMapBasics.reduced_collatz_step_iff_mod4}\uses{lemma:ordCompl_two_pow_mul,lemma:ordCompl_two_mul_pow}\leanok
 For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
 \end{lemma}
 \begin{proof}\leanok
@@ -92,7 +92,7 @@ For any odd $n > 0$, $R(n) > n$ if and only if $n \equiv 3 \pmod{4}$.
 ($\Leftarrow$) Suppose $n \equiv 3 \pmod{4}$, say $n = 4k + 3$. Then $3n + 1 = 12k + 10 = 2(6k + 5)$. Since $6k + 5$ is odd, $R(n) = 6k + 5$. Since $k \ge 0$, we have $6k + 5 > 4k + 3$, so $R(n) > n$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_step_implies_collatz_iter}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_step_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_step_implies_collatz_iter}\uses{lemma:collatz_iter_two_pow_mul}\leanok
 If $n > 0$ is odd and $R(n) = m$, then there exists $i \ge 1$ such that $C^i(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -102,7 +102,7 @@ By Lemma~\ref{lemma:collatz_iter_two_pow_mul}, applying the Collatz map $k$ more
 Thus $C^{k+1}(n) = C^k(C(n)) = C^k(2^k \cdot m) = m$.
 \end{proof}
 
-\begin{lemma}\label{lemma:reduced_collatz_iter_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter}\leanok
+\begin{lemma}\label{lemma:reduced_collatz_iter_implies_collatz_iter}\lean{CollatzMapBasics.reduced_collatz_iter_implies_collatz_iter}\uses{lemma:reduced_collatz_step_implies_collatz_iter}\leanok
 If $n$ is odd and $R^k(n) = m$, then there exists $i \ge k$ such that $C^i(n) = m$.
 \end{lemma}
 \begin{proof}\leanok
@@ -121,7 +121,7 @@ For $d, n \in \mathbb{N}$, the number of odd steps in the first $d$ iterations o
 where $[P]$ is the Iverson bracket.
 \end{definition}
 
-\begin{lemma}\label{lemma:ordCompl_collatz_iter}\lean{CollatzMapBasics.ordCompl_collatz_iter}\leanok
+\begin{lemma}\label{lemma:ordCompl_collatz_iter}\lean{CollatzMapBasics.ordCompl_collatz_iter}\uses{lemma:ordCompl_two_div_two}\leanok
 Let $n \in \mathbb{N}$ be odd. For any $d \in \mathbb{N}$, the odd part of $C^d(n)$ is equal to $R^k(n)$, where $k = \text{countOdds}(d, n)$. That is,
 \begin{equation}
     \text{odd part of } C^d(n) = R^k(n).
@@ -138,7 +138,7 @@ The odd part of $3m+1$ is $R(m) = R(R^{\text{countOdds}(d, n)}(n)) = R^{\text{co
 Since $m$ is odd, $\text{countOdds}(d+1, n) = \text{countOdds}(d, n) + 1$, confirming the result.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_cycle_iff_reduced_collatz_cycle}\lean{CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle}\leanok
+\begin{lemma}\label{lemma:collatz_cycle_iff_reduced_collatz_cycle}\lean{CollatzMapBasics.collatz_cycle_iff_reduced_collatz_cycle}\uses{lemma:ordCompl_collatz_iter,lemma:reduced_collatz_iter_implies_collatz_iter}\leanok
 Let $n \in \mathbb{N}$ be odd. There exists a cycle in the standard Collatz map starting from $n$ if and only if there exists a cycle in the reduced Collatz map starting from $n$.
 \end{lemma}
 \begin{proof}\leanok
@@ -147,7 +147,7 @@ Let $n \in \mathbb{N}$ be odd. There exists a cycle in the standard Collatz map 
 ($\Leftarrow$) Suppose there exists $j > 0$ such that $R^j(n) = n$. By Lemma~\ref{lemma:reduced_collatz_iter_implies_collatz_iter}, there exists $k \ge j$ such that $C^k(n) = n$. Since $j > 0$, we have $k > 0$, so $n$ is part of a standard cycle.
 \end{proof}
 
-\begin{lemma}\label{lemma:collatz_bounded_iff_reduced_collatz_bounded}\lean{CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded}\leanok
+\begin{lemma}\label{lemma:collatz_bounded_iff_reduced_collatz_bounded}\lean{CollatzMapBasics.collatz_bounded_iff_reduced_collatz_bounded}\uses{lemma:reduced_collatz_iter_implies_collatz_iter,lemma:ordCompl_collatz_iter}\leanok
 Let $n \in \mathbb{N}$ be odd. The orbit of $n$ under the standard Collatz map is bounded if and only if its orbit under the reduced Collatz map is bounded.
 \end{lemma}
 \begin{proof}\leanok
