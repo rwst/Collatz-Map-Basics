@@ -1,4 +1,8 @@
-import Mathlib
+import Mathlib.Tactic
+import Mathlib.Algebra.EuclideanDomain.Basic
+import Mathlib.Algebra.EuclideanDomain.Int
+import Mathlib.Analysis.Normed.Ring.Lemmas
+import Mathlib.Data.Nat.Factorization.Basic
 
 namespace CollatzMapBasics
 

@@ -1,6 +1,6 @@
-import Mathlib
 import CollatzMapBasics.Elementary
-
+import Mathlib.Algebra.Order.Ring.Star
+import Mathlib.Data.Int.Star
 
 namespace CollatzMapBasics
 

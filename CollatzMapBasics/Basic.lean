@@ -1,5 +1,7 @@
-import Mathlib
 import CollatzMapBasics.Elementary
+import Mathlib.Analysis.Normed.Ring.Lemmas
+import Mathlib.Tactic.IntervalCases
+
 
 /-- do a single collatz-step. `collatz_step n` returns 1 if `n < 2`, otherwise `n/2` if `n` is even, otherwise `3 * n + 1`-/
 def collatz_step (n : ℕ) : ℕ :=
