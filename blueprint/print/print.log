@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  9 MAR 2026 19:06
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=xelatex 2026.2.23)  17 MAR 2026 13:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -758,9 +758,24 @@ Overfull \hbox (27.87317pt too wide) in paragraph at lines 141--142
 
 [24]) [25]
 Chapter 5.
-(./ref.tex [26
+(./sections/uniform-distribution-correspondence.tex [26
 
-]) [27
+] [27]
+Missing character: There is no ✓ (U+2713) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✓ (U+2713) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ✓ (U+2713) in font [lmroman10-regular]:mapping=t
+ex-text;!
+
+Package amsthm Warning: The \qedhere command may not work correctly here on inp
+ut line 215.
+
+[28] [29]) [30]
+Chapter 6.
+(./ref.tex [31
+
+]) [32
 
 ])
 (/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux)
@@ -769,16 +784,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 665FAF5D1246FCF04D03BD4E3DA4AF2E;3538.
+(rerunfilecheck)             Checksum: 322C6186EE703097744350FB9EE46338;3986.
  ) 
 Here is how much of TeX's memory you used:
- 17165 strings out of 475925
- 316279 string characters out of 5783280
+ 17191 strings out of 475925
+ 317120 string characters out of 5783280
  1954839 words of memory out of 5000000
- 39006 multiletter control sequences out of 15000+600000
+ 39029 multiletter control sequences out of 15000+600000
  563480 words of font info for 90 fonts, out of 8000000 for 9000
  450 hyphenation exceptions out of 8191
- 90i,9n,114p,653b,503s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,114p,653b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf 
-(29 pages).
+(34 pages).

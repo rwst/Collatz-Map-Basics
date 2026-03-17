@@ -15,20 +15,11 @@ open Classical Filter
 /-- `num_odd_steps` splits over concatenation of orbits. -/
 lemma num_odd_steps_split (a b n : ℕ) :
     num_odd_steps (a + b) n = num_odd_steps a n + num_odd_steps b (T_iter a n) := by
-  simp only [num_odd_steps, Finset.sum_range_add]
-  congr 1
-  apply Finset.sum_congr rfl
-  intro i _
-  congr 1
-  rw [Nat.add_comm a i, T_iter_add]
+  simp [num_odd_steps, Finset.sum_range_add, Nat.add_comm, ← T_iter_add]
 
 /-- T applied 2j times to 1 gives 1. -/
 lemma T_iter_one_even (j : ℕ) : T_iter (2 * j) 1 = 1 := by
-  induction j with
-  | zero => rfl
-  | succ j ih =>
-    have : 2 * (j + 1) = (2 * j + 1) + 1 := by ring
-    rw [this, T_iter, T_iter, ih, T_one, T_two]
+  induction j <;> simp_all [mul_add, T_iter, T_one, T_two]
 
 /-- T applied 2j+1 times to 1 gives 2. -/
 lemma T_iter_one_odd (j : ℕ) : T_iter (2 * j + 1) 1 = 2 := by
@@ -36,38 +27,24 @@ lemma T_iter_one_odd (j : ℕ) : T_iter (2 * j + 1) 1 = 2 := by
 
 /-- The parity indicator of T^i(1): 1 when i is even, 0 when i is odd. -/
 lemma X_T_iter_one (i : ℕ) : X (T_iter i 1) = if i % 2 = 0 then 1 else 0 := by
-  rcases Nat.even_or_odd i with ⟨j, rfl⟩ | ⟨j, rfl⟩
-  · have : j + j = 2 * j := by ring
-    rw [this, T_iter_one_even, X_odd (by omega : (1 : ℕ) % 2 = 1)]
-    simp [Nat.mul_mod_right]
-  · have : 2 * j + 1 = 2 * j + 1 := rfl
-    rw [T_iter_one_odd, X_even (by omega : (2 : ℕ) % 2 = 0)]
-    simp [show (2 * j + 1) % 2 = 1 from by omega]
+  rcases Nat.even_or_odd i with ⟨j, rfl⟩ | ⟨j, rfl⟩ <;>
+  simp [show j + j = 2 * j by ring, T_iter_one_even, T_iter_one_odd, X_odd, X_even]
 
 /-- The number of odd steps starting from 1 over 2j steps is exactly j. -/
 lemma num_odd_steps_one_even (j : ℕ) : num_odd_steps (2 * j) 1 = j := by
-  induction j with
-  | zero => simp [num_odd_steps]
-  | succ j ih =>
-    rw [show 2 * (j + 1) = 2 * j + 2 from by ring, num_odd_steps_split (2 * j) 2,
-        ih, T_iter_one_even]
-    simp only [num_odd_steps, Finset.sum_range_succ, Finset.sum_range_zero, T_iter]
-    rw [X_odd (show (1 : ℕ) % 2 = 1 by omega), T_one,
-        X_even (show (2 : ℕ) % 2 = 0 by omega)]
+  induction j with | zero => rfl | succ j ih =>
+    rw [Nat.mul_succ, num_odd_steps_split, ih, T_iter_one_even, num_odd_steps]; rfl
 
 /-- The number of odd steps starting from 1 over 2j+1 steps is j+1. -/
 lemma num_odd_steps_one_odd (j : ℕ) : num_odd_steps (2 * j + 1) 1 = j + 1 := by
-  rw [num_odd_steps_split (2 * j) 1, num_odd_steps_one_even, T_iter_one_even]
-  simp only [num_odd_steps, Finset.sum_range_succ, Finset.sum_range_zero, T_iter]
-  rw [X_odd (show (1 : ℕ) % 2 = 1 by omega)]
+  rw [num_odd_steps_split (2 * j) 1, num_odd_steps_one_even, T_iter_one_even, num_odd_steps]; rfl
 
 /-- The number of odd steps from 1 over m steps satisfies 2·s ∈ {m, m+1}. -/
 lemma num_odd_steps_one_bounds (m : ℕ) :
     m ≤ 2 * num_odd_steps m 1 + 1 ∧ 2 * num_odd_steps m 1 ≤ m + 1 := by
   rcases Nat.even_or_odd m with ⟨j, rfl⟩ | ⟨j, rfl⟩
-  · have : j + j = 2 * j := by ring
-    rw [this, num_odd_steps_one_even]; constructor <;> omega
-  · rw [num_odd_steps_one_odd]; constructor <;> omega
+  · simp [← two_mul, num_odd_steps_one_even]
+  · simp [num_odd_steps_one_odd]; omega
 
 /-- After reaching 1, the even proportion of iterates tends to 1/2. -/
 lemma forward (n : ℕ) (_hn : n ≥ 1) (k₀ : ℕ) (hk₀ : k₀ ≥ 1) (hreach : T_iter k₀ n = 1) :
@@ -225,12 +202,11 @@ lemma orbit_lower_bound (m : ℕ) (hm : m ≥ 1)
     (h_never : ∀ k, k ≥ 1 → T_iter k m ≠ 1)
     (h_min : ∀ n, n < m → n ≥ 1 → ∃ k, k ≥ 1 ∧ T_iter k n = 1) :
     ∀ j, T_iter j m ≥ m := by
-  intro j
-  by_contra hlt; push_neg at hlt
-  rcases j with _ | j
-  · simp [T_iter] at hlt
-  · have hpos : T_iter (j + 1) m ≥ 1 := T_iter_pos hm (j + 1)
-    obtain ⟨k, hk, hreach⟩ := h_min (T_iter (j + 1) m) hlt hpos
+  intro j; by_contra hlt; push_neg at hlt
+  cases j with
+  | zero => simp [T_iter] at hlt
+  | succ j =>
+    obtain ⟨k, hk, hreach⟩ := h_min _ hlt (T_iter_pos hm _)
     have := h_never (k + (j + 1)) (by omega)
     rw [T_iter_add] at this
     exact this hreach
@@ -240,32 +216,16 @@ lemma exists_ratio_bound_of_tendsto (n : ℕ)
     (ht : Tendsto (fun k => (↑(k - num_odd_steps k n) : ℚ) / ↑k)
       atTop (nhds (1 / 2 : ℚ))) :
     ∃ k : ℕ, k ≥ 1 ∧ 5 * num_odd_steps k n + 1 ≤ 3 * k := by
-  -- The even proportion → 1/2 ∈ (2/5, 3/5), so eventually in that interval.
   have hev : ∀ᶠ k in atTop,
       (↑(k - num_odd_steps k n) : ℚ) / ↑k ∈ Set.Ioo (2/5 : ℚ) (3/5) :=
     ht.eventually (Ioo_mem_nhds (by norm_num) (by norm_num))
-  rw [Filter.eventually_atTop] at hev
-  obtain ⟨N, hN⟩ := hev
-  -- Pick k = max N 1 to ensure k ≥ 1
+  obtain ⟨N, hN⟩ := eventually_atTop.mp hev
   refine ⟨max N 1, le_max_right _ _, ?_⟩
-  set k := max N 1
-  have hk1 : k ≥ 1 := le_max_right _ _
-  have hk_pos : (0 : ℚ) < k := by exact_mod_cast show 0 < k by omega
-  have hmemk := hN k (le_max_left _ _)
-  rw [Set.mem_Ioo] at hmemk
-  -- hmemk.1 : 2/5 < (↑(k - s) : ℚ) / k
-  have hs_le : num_odd_steps k n ≤ k := num_odd_steps_le k n
-  have hcast : (↑(k - num_odd_steps k n) : ℚ) = (k : ℚ) - (num_odd_steps k n : ℚ) := by
-    rw [Nat.cast_sub hs_le]
-  rw [hcast] at hmemk
-  -- From 2/5 < (k - s)/k, multiply by 5k > 0:
-  -- 2k < 5(k - s) = 5k - 5s, so 5s < 3k
-  obtain ⟨hmemk_lo, _⟩ := hmemk
-  rw [lt_div_iff₀ hk_pos] at hmemk_lo
-  -- hmemk_lo : 2/5 * k < k - s
-  have : 5 * (num_odd_steps k n : ℚ) < 3 * ↑k := by nlinarith
-  have : 5 * num_odd_steps k n < 3 * k := by exact_mod_cast this
-  omega
+  have hmemk := (hN (max N 1) (le_max_left _ _)).1
+  have hk_pos : (0 : ℚ) < ↑(max N 1) := by norm_cast; omega
+  rw [Nat.cast_sub (num_odd_steps_le _ _), lt_div_iff₀ hk_pos] at hmemk
+  have : 5 * (num_odd_steps (max N 1) n : ℚ) < 3 * ↑(max N 1) := by linarith
+  exact_mod_cast this
 
 -- ============================================================
 -- Main theorem

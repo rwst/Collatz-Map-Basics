@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1773079618.07907 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1773079618.91592 0
+["pdflatex"] 1773748953.54012 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1773748954.37302 0
   "/etc/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1773079618.87475 13295 07a76c6d0438aaf402e643a646b5dbe1 "pdflatex"
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1773079618.87475 3538 665faf5d1246fcf04d03bd4e3da4af2e "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1773748954.33059 14724 323cafd1370deca70e7f7b3a15254267 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1773748954.33059 3986 322c6186ee703097744350fb9ee46338 "pdflatex"
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -84,11 +84,11 @@
   "/usr/share/texmf/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1771858310 10663260 0e83f00fad4e17610da4ad9f49b5cd24 ""
-  "content.tex" 1772638607.5663 1826 b4790967f5ad983f0cb6f7713e1e34e5 ""
+  "content.tex" 1773742557.38711 1968 9bd77e59c042f11e1dd307a5c0c34405 ""
   "macros/common.tex" 1771787663.61047 826 2468ad0b6614f40a29d7ec803ebc006e ""
   "macros/print.tex" 1771787663.61047 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1771787663.61247 1133 4fae2f63dc1d7fe374dbc5fc881a291e ""
-  "ref.tex" 1772554158.28226 811 ecd56ceb6229c7ea657d0375bb92c85c ""
+  "ref.tex" 1773747931.91348 1013 af2f5c63f276756b2558eb971d0d2068 ""
   "sections/TC-correspondence.tex" 1773058082.02901 3427 a4dd6f394c03551bdb0ec557b2e10019 ""
   "sections/collatz-conjecture.tex" 1773058103.18964 4573 8dd4f92f6abb4f68f548d2d64b9ad85e ""
   "sections/collatz-map.tex" 1773078936.65071 5958 21e7d8ac5f46a6379f8ceae99f081c8d ""
@@ -106,6 +106,7 @@
   "sections/primitives-of-reduced.tex" 1773058130.76746 7813 6e3b61e29760aed808929814ed0317be ""
   "sections/reduced-map.tex" 1773079496.96615 10810 60af34a4098b45566d85dd4b579ac78e ""
   "sections/terras-def.tex" 1773057970.5587 3270 26affe84882c29c5213fc4e66410785a ""
+  "sections/uniform-distribution-correspondence.tex" 1773748938.05311 13752 1d96f5b53235994c013307a4d85e0f02 ""
   (generated)
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux"
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.log"

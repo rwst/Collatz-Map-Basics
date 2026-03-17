@@ -1,0 +1,322 @@
+\label{sec:uniform_distribution_correspondence}
+
+Using the compact map $T$, Eliahou \& Verger-Gaugry (2025)\cite{eli25}
+established that their Conjecture~2.4 (every positive integer
+eventually reaches $1$ under the map $T$) is equivalent to Conjecture~2.5 (for every
+positive integer $n$, the proportion of even iterates among the first $k$ iterates of $T$
+tends to $1/2$ as $k \to \infty$).
+
+See Definition~\ref{def:num_odd_steps} for $Q(k,n)$ as the number of odd steps in the first $k$
+iterations of $T$ starting from $n$.
+
+% ============================================================
+% Forward direction helpers
+% ============================================================
+
+\begin{lemma}\label{lemma:num_odd_steps_split}\lean{CollatzMapBasics.num_odd_steps_split}\leanok
+For all $a, b, n \in \mathbb{N}$,
+\[
+  Q(a + b,\, n)
+  = Q(a,\, n)
+    + Q(b,\, T^a(n)).
+\]
+\end{lemma}
+\begin{proof}\leanok
+The count of odd steps over the first $a+b$ iterates splits into the count over the first $a$ iterates starting from $n$, plus the count over the next $b$ iterates starting from $T^a(n)$.
+This follows directly from the additivity of finite sums and the identity $T^{a+j}(n) = T^j(T^a(n))$.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_iter_one_even}\lean{CollatzMapBasics.T_iter_one_even}\leanok
+For all $j \in \mathbb{N}$,
+\[
+  T^{2j}(1) = 1.
+\]
+\end{lemma}
+\begin{proof}\leanok
+By induction on $j$. The base case $j = 0$ is trivial. For the inductive step, one uses $T(1) = 2$ (since $1$ is odd: $T(1) = (3 \cdot 1 + 1)/2 = 2$) and $T(2) = 1$ (since $2$ is even: $T(2) = 2/2 = 1$), so $T^{2(j+1)}(1) = T^2(T^{2j}(1)) = T^2(1) = T(2) = 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_iter_one_odd}\lean{CollatzMapBasics.T_iter_one_odd}\leanok
+For all $j \in \mathbb{N}$,
+\[
+  T^{2j+1}(1) = 2.
+\]
+\end{lemma}
+\begin{proof}\leanok
+We have $T^{2j+1}(1) = T(T^{2j}(1)) = T(1) = 2$ by Lemma~\ref{lemma:T_iter_one_even} and the fact that $T(1) = 2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:X_T_iter_one}\lean{CollatzMapBasics.X_T_iter_one}\leanok
+For all $i \in \mathbb{N}$, the parity indicator of $T^i(1)$ satisfies
+\[
+  X(T^i(1)) =
+  \begin{cases}
+    1 & \text{if } i \equiv 0 \pmod{2}, \\
+    0 & \text{if } i \equiv 1 \pmod{2}.
+  \end{cases}
+\]
+\end{lemma}
+\begin{proof}\leanok
+Write $i = 2j$ or $i = 2j + 1$.
+In the even case, $T^{2j}(1) = 1$ by Lemma~\ref{lemma:T_iter_one_even}, and $1$ is odd so $X(1) = 1$.
+In the odd case, $T^{2j+1}(1) = 2$ by Lemma~\ref{lemma:T_iter_one_odd}, and $2$ is even so $X(2) = 0$.
+\end{proof}
+
+\begin{lemma}\label{lemma:num_odd_steps_one_even}\lean{CollatzMapBasics.num_odd_steps_one_even}\leanok
+For all $j \in \mathbb{N}$,
+\[
+  Q(2j,\, 1) = j.
+\]
+\end{lemma}
+\begin{proof}\leanok
+By induction on $j$. The base case is trivial. For the inductive step, use Lemma~\ref{lemma:num_odd_steps_split} to split the $2(j+1)$ steps as $2j$ steps followed by $2$ steps starting from $T^{2j}(1) = 1$ (by Lemma~\ref{lemma:T_iter_one_even}). The count for the last $2$ steps starting from $1$ is $1$ (since $T^0(1) = 1$ is odd and $T^1(1) = 2$ is even), so the total is $j + 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:num_odd_steps_one_odd}\lean{CollatzMapBasics.num_odd_steps_one_odd}\leanok
+For all $j \in \mathbb{N}$,
+\[
+  Q(2j+1,\, 1) = j + 1.
+\]
+\end{lemma}
+\begin{proof}\leanok
+Apply Lemma~\ref{lemma:num_odd_steps_split} to split the $2j+1$ steps as $2j$ steps followed by $1$ step starting from $T^{2j}(1) = 1$ (by Lemma~\ref{lemma:T_iter_one_even}). The count for the first $2j$ steps is $j$ by Lemma~\ref{lemma:num_odd_steps_one_even}, and the single additional step starts at $1$ which is odd, contributing $1$ more. Total: $j + 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:num_odd_steps_one_bounds}\lean{CollatzMapBasics.num_odd_steps_one_bounds}\leanok
+For all $m \in \mathbb{N}$, letting $s = Q(m,\, 1)$,
+\[
+  m \le 2s + 1 \quad \text{and} \quad 2s \le m + 1.
+\]
+In other words, $2s \in \{m, m+1\}$.
+\end{lemma}
+\begin{proof}\leanok
+Consider the two cases according to the parity of $m$.
+\begin{itemize}
+\item If $m = 2j$, then $s = j$ by Lemma~\ref{lemma:num_odd_steps_one_even}, so $2s = m$ and both bounds hold with equality (up to $\pm 1$).
+\item If $m = 2j + 1$, then $s = j + 1$ by Lemma~\ref{lemma:num_odd_steps_one_odd}, so $2s = 2j + 2 = m + 1$, and again both bounds hold.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}\label{lemma:forward}\lean{CollatzMapBasics.forward}\uses{lemma:num_odd_steps_one_bounds,lemma:num_odd_steps_split}\leanok
+Let $n \ge 1$ and suppose there exists $k_0 \ge 1$ such that $T^{k_0}(n) = 1$.
+Then the proportion of even iterates satisfies
+\[
+  \lim_{k \to \infty} \frac{k - Q(k,\, n)}{k} = \frac{1}{2}.
+\]
+\end{lemma}
+\begin{proof}\leanok
+Let $s_k = Q(k, n)$.
+For $k \ge k_0$, write $k = k_0 + (k - k_0)$ and apply Lemma~\ref{lemma:num_odd_steps_split}:
+\[
+  s_k = Q(k_0, n) + Q(k - k_0, 1),
+\]
+using that $T^{k_0}(n) = 1$.
+Let $c = Q(k_0, n)$, which is a fixed constant with $c \le k_0$.
+By Lemma~\ref{lemma:num_odd_steps_one_bounds} applied to $m = k - k_0$, we have $2Q(k-k_0, 1) \in \{k-k_0,\, k-k_0+1\}$, so:
+\[
+  2s_k \le k + (k_0 + 1) \quad \text{and} \quad k \le 2s_k + (k_0 + 1).
+\]
+Using the order-topology characterisation of convergence, we show the limit equals $1/2$:
+\begin{itemize}
+\item \emph{Lower bound:} For $a < 1/2$, set $\varepsilon = 1 - 2a > 0$.
+  Choose $N$ large enough that $(k_0 + 1)/\varepsilon < N$ and $k \ge \max(N, k_0+1)$.
+  Then from $k \le 2s_k + (k_0 + 1)$ we get $(k - s_k)/k > a$.
+\item \emph{Upper bound:} For $b > 1/2$, set $\varepsilon = 2b - 1 > 0$.
+  Choose $N$ large enough that $(k_0 + 1)/\varepsilon < N$ and $k \ge \max(N, k_0+1)$.
+  Then from $2s_k \le k + (k_0 + 1)$ we get $(k - s_k)/k < b$.
+\end{itemize}
+In both cases, the bound follows by a simple linear arithmetic argument once $k$ is large enough relative to $(k_0 + 1)/\varepsilon$.
+\end{proof}
+
+% ============================================================
+% Backward direction helpers
+% ============================================================
+
+\begin{lemma}\label{lemma:small_cases}\lean{CollatzMapBasics.small_cases}\leanok
+For every $n$ with $1 \le n \le 9$, there exists $k \ge 1$ such that $T^k(n) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+Verified by explicit computation for each value $n \in \{1, 2, \ldots, 9\}$:
+$T^2(1)=1$, $T^1(2)=1$, $T^5(3)=1$, $T^2(4)=1$, $T^4(5)=1$, $T^6(6)=1$, $T^{11}(7)=1$, $T^3(8)=1$, $T^{13}(9)=1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_odd_upper}\lean{CollatzMapBasics.T_odd_upper}\leanok
+For every odd $n \ge 10$,
+\[
+  10 \cdot (3n + 1) \le 31 n.
+\]
+\end{lemma}
+\begin{proof}\leanok
+This is equivalent to $30n + 10 \le 31n$, i.e.\ $10 \le n$, which holds by assumption.
+\end{proof}
+
+\begin{lemma}\label{lemma:T_iter_bound}\lean{CollatzMapBasics.T_iter_bound}\uses{lemma:T_odd_upper}\leanok
+Let $k, n \in \mathbb{N}$ and suppose that $T^j(n) \ge 10$ for all $j \le k$.
+Let $s = Q(k, n)$. Then
+\[
+  10^s \cdot 2^k \cdot T^k(n) \le 31^s \cdot n.
+\]
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$.
+
+\emph{Base case} ($k = 0$): both sides equal $n$.
+
+\emph{Inductive step}: Assume the bound holds for $k$, with $s_k = Q(k,n)$, and that $T^j(n) \ge 10$ for all $j \le k+1$.
+Let $n_k = T^k(n)$ and $s_{k+1} = s_k + X(n_k)$, where $X(n_k) \in \{0,1\}$ is the parity indicator.
+
+\emph{Case $n_k$ even} ($X(n_k) = 0$): Then $T(n_k) = n_k/2$, so $2T(n_k) = n_k$, and $s_{k+1} = s_k$.
+\begin{align*}
+  10^{s_k} \cdot 2^{k+1} \cdot T(n_k)
+  &= 10^{s_k} \cdot 2^k \cdot (2 T(n_k)) \\
+  &= 10^{s_k} \cdot 2^k \cdot n_k \\
+  &\le 31^{s_k} \cdot n,
+\end{align*}
+where the last step uses the induction hypothesis.
+
+\emph{Case $n_k$ odd} ($X(n_k) = 1$): Then $T(n_k) = (3n_k+1)/2$, so $2T(n_k) = 3n_k + 1$, and $s_{k+1} = s_k + 1$.
+Since $n_k \ge 10$ and $n_k$ is odd, Lemma~\ref{lemma:T_odd_upper} gives $10(3n_k+1) \le 31 n_k$.
+\begin{align*}
+  10^{s_k+1} \cdot 2^{k+1} \cdot T(n_k)
+  &= 10^{s_k} \cdot 2^k \cdot \bigl(10 \cdot (3n_k + 1)\bigr) \\
+  &\le 10^{s_k} \cdot 2^k \cdot (31 \, n_k) \\
+  &= 31 \cdot \bigl(10^{s_k} \cdot 2^k \cdot n_k\bigr) \\
+  &\le 31 \cdot 31^{s_k} \cdot n \\
+  &= 31^{s_k+1} \cdot n,
+\end{align*}
+where the second-to-last step uses the induction hypothesis.
+\end{proof}
+
+\begin{lemma}\label{lemma:ratio_bound}\lean{CollatzMapBasics.ratio_bound}\leanok
+For all $s, k \in \mathbb{N}$ with $5s + 1 \le 3k$,
+\[
+  31^s < 2^k \cdot 10^s.
+\]
+\end{lemma}
+\begin{proof}\leanok
+By strong induction on $s$, with step size $3$.
+
+\emph{Base cases:}
+\begin{itemize}
+  \item $s = 0$: Need $1 < 2^k$. From the hypothesis $5 \cdot 0 + 1 \le 3k$ we get $k \ge 1$, so $2^k \ge 2 > 1$. \checkmark
+  \item $s = 1$: Need $31 < 2^k \cdot 10$. From $5 + 1 \le 3k$ we get $k \ge 2$, so $2^k \cdot 10 \ge 40 > 31$. \checkmark
+  \item $s = 2$: Need $961 < 2^k \cdot 100$. From $11 \le 3k$ we get $k \ge 4$, so $2^k \cdot 100 \ge 1600 > 961$. \checkmark
+\end{itemize}
+
+\emph{Inductive step} ($s \ge 3$, write $s = s' + 3$): Assume $31^{s'} < 2^{k'} \cdot 10^{s'}$ for all valid $k'$, where $5s' + 1 \le 3k'$.
+Apply the induction hypothesis with $k' = k - 5$ (valid since $5(s'+3)+1 \le 3k$ implies $5s'+1 \le 3(k-5)$, and $k \ge 6$):
+\[
+  31^{s'+3} = 31^3 \cdot 31^{s'} < 31^3 \cdot 2^{k-5} \cdot 10^{s'}.
+\]
+Using the key arithmetic fact $31^3 = 29791 < 32000 = 2^5 \cdot 10^3$:
+\[
+  31^3 \cdot 2^{k-5} \cdot 10^{s'}
+  \le 2^5 \cdot 10^3 \cdot 2^{k-5} \cdot 10^{s'}
+  = 2^k \cdot 10^{s'+3}. \qedhere
+\]
+\end{proof}
+
+\begin{lemma}\label{lemma:orbit_lower_bound}\lean{CollatzMapBasics.orbit_lower_bound}\leanok
+Let $m \ge 1$ be a minimal counterexample to Conjecture~2.4, meaning:
+\begin{itemize}
+  \item $T^k(m) \ne 1$ for all $k \ge 1$;
+  \item for every $n < m$ with $n \ge 1$, there exists $k \ge 1$ with $T^k(n) = 1$.
+\end{itemize}
+Then $T^j(m) \ge m$ for all $j \in \mathbb{N}$.
+\end{lemma}
+\begin{proof}\leanok
+Suppose for contradiction that $T^j(m) < m$ for some $j$.
+The case $j = 0$ gives $m < m$, a contradiction.
+For $j = j' + 1$: let $n' = T^{j'+1}(m)$. Since $n' < m$ and $n' \ge 1$ (because iterates of positive integers stay positive), the minimality of $m$ gives some $k \ge 1$ with $T^k(n') = 1$.
+But then $T^{k + (j'+1)}(m) = T^k(T^{j'+1}(m)) = T^k(n') = 1$, contradicting the assumption that $m$ never reaches $1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:exists_ratio_bound_of_tendsto}\lean{CollatzMapBasics.exists_ratio_bound_of_tendsto}\leanok
+Let $n \in \mathbb{N}$ and suppose that
+\[
+  \lim_{k \to \infty} \frac{k - Q(k,\, n)}{k} = \frac{1}{2}.
+\]
+Then there exists $k \ge 1$ such that
+\[
+  5 \cdot Q(k,\, n) + 1 \le 3k.
+\]
+\end{lemma}
+\begin{proof}\leanok
+Since the limit is $1/2$, the sequence eventually lies in the open interval $(2/5, 3/5)$.
+Choose $N$ such that for all $k \ge N$ the ratio $(k - s_k)/k > 2/5$, where $s_k = Q(k,n)$.
+Set $k_0 = \max(N, 1)$. Then $(k_0 - s_{k_0})/k_0 > 2/5$, i.e.\
+\[
+  k_0 - s_{k_0} > \tfrac{2}{5} k_0,
+\]
+so $\tfrac{3}{5} k_0 > s_{k_0}$, which gives $5 s_{k_0} < 3 k_0$, i.e.\ $5 s_{k_0} + 1 \le 3 k_0$.
+\end{proof}
+
+% ============================================================
+% Main theorem
+% ============================================================
+
+\begin{lemma}\label{lemma:conjecture_2_4_iff_2_5}\lean{CollatzMapBasics.conjecture_2_4_iff_2_5}\uses{lemma:forward,lemma:small_cases,lemma:orbit_lower_bound,lemma:exists_ratio_bound_of_tendsto,lemma:T_iter_bound,lemma:ratio_bound}\leanok
+Conjectures~2.4 and~2.5 are equivalent:
+\begin{itemize}
+  \item \emph{Conjecture~2.4:} For every $n \ge 1$, there exists $k \ge 1$ such that $T^k(n) = 1$.
+  \item \emph{Conjecture~2.5:} For every $n \ge 1$,
+    \[
+      \lim_{k \to \infty} \frac{k - Q(k,\, n)}{k} = \frac{1}{2}.
+    \]
+\end{itemize}
+\end{lemma}
+\begin{proof}\leanok
+\textbf{(2.4 $\Rightarrow$ 2.5).}
+Let $n \ge 1$. By Conjecture~2.4, there exists $k_0 \ge 1$ with $T^{k_0}(n) = 1$.
+Lemma~\ref{lemma:forward} then directly gives the desired Tendsto conclusion.
+
+\textbf{(2.5 $\Rightarrow$ 2.4).}
+Suppose for contradiction that Conjecture~2.4 fails.
+Then there exists some $n_0 \ge 1$ with $T^k(n_0) \ne 1$ for all $k \ge 1$.
+Among all such counterexamples, let $m$ be the minimal one (using Nat.find); formally, let
+\[
+  P(n) \;\equiv\; (n \ge 1) \land (\forall k \ge 1,\; T^k(n) \ne 1),
+\]
+and set $m = \min\{n : P(n)\}$. The properties of $m$ are:
+\begin{enumerate}
+  \item $m \ge 1$ and $T^k(m) \ne 1$ for all $k \ge 1$.
+  \item For every $n < m$ with $n \ge 1$, there exists $k \ge 1$ with $T^k(n) = 1$.
+\end{enumerate}
+
+\emph{Step 1: $m \ge 10$.}
+By Lemma~\ref{lemma:small_cases}, every $n$ with $1 \le n \le 9$ reaches $1$.
+So if $m \le 9$, property (1) would be contradicted. Hence $m \ge 10$.
+
+\emph{Step 2: $T^j(m) \ge m$ for all $j$.}
+This is Lemma~\ref{lemma:orbit_lower_bound} applied to $m$ with its minimality property.
+In particular, all iterates satisfy $T^j(m) \ge m \ge 10$.
+
+\emph{Step 3: Extract $k$ with a good odd-step ratio.}
+Since Conjecture~2.5 holds (by assumption), the ratio $(k - s_k)/k \to 1/2$ for $n = m$.
+By Lemma~\ref{lemma:exists_ratio_bound_of_tendsto}, there exists $k \ge 1$ with
+\[
+  5 \cdot Q(k, m) + 1 \le 3k.
+\]
+
+\emph{Step 4: Derive a contradiction.}
+Let $s = Q(k, m)$.
+\begin{itemize}
+  \item From Step~2, all iterates $T^j(m) \ge 10$ for $j \le k$, so Lemma~\ref{lemma:T_iter_bound} gives:
+    \[
+      10^s \cdot 2^k \cdot T^k(m) \le 31^s \cdot m.
+    \]
+  \item Lemma~\ref{lemma:ratio_bound} with $5s + 1 \le 3k$ gives:
+    \[
+      31^s < 2^k \cdot 10^s.
+    \]
+\end{itemize}
+Combining these two inequalities with $T^k(m) \ge m$ (Step~2):
+\[
+  31^s \cdot m \ge 10^s \cdot 2^k \cdot T^k(m) \ge 10^s \cdot 2^k \cdot m.
+\]
+Dividing by $10^s \cdot m > 0$:
+\[
+  (31/10)^s \ge 2^k,
+\]
+i.e.\ $31^s \ge 2^k \cdot 10^s$, contradicting Lemma~\ref{lemma:ratio_bound}.
+\end{proof}

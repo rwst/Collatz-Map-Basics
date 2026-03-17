@@ -13,7 +13,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Collatz Map Basics: More Paradoxical Sequences</title>
-<link rel="next" href="sect0022.html" title="Literature" />
+<link rel="next" href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)" />
 <link rel="prev" href="sect0020.html" title="Paradoxical Sequences" />
 <link rel="up" href="sect0015.html" title="Rozier & Terracol (2025)" />
 <link rel="stylesheet" href="styles/theme-white.css" />
@@ -112,7 +112,17 @@
   </ul>
  </li>
 <li class="">
-  <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Eliahou &amp; Verger-Gaugry (2025)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sec-uniform_distribution_correspondence.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Uniform Distribution Correspondence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -139,7 +149,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:isParadoxical_bound">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000196"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000197"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -168,7 +178,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L21" class="lean_decl">CollatzMapBasics.isParadoxical_bound</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L21" class="lean_decl">CollatzMapBasics.isParadoxical_bound</a></li>
           
         </ul>
     </div>
@@ -177,7 +187,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(j, n \in \mathbb {N}\) with \(n {\gt} 0\). If the pair \((j, n)\) is paradoxical, then: </p>
-<div class="equation" id="a0000000197">
+<div class="equation" id="a0000000198">
 <p>
   <div class="equation_content">
     \begin{equation}  0 {\lt} 1 - C(j, n) \le \frac{E(j, n)}{n}. \end{equation}
@@ -188,7 +198,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000196">
+<div class="proof_wrapper" id="a0000000197">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -215,7 +225,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:odd_iter_bound_theorem_4_1">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000198"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000199"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -224,7 +234,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L57" class="lean_decl">CollatzMapBasics.odd_iter_bound_theorem_4_1</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L57" class="lean_decl">CollatzMapBasics.odd_iter_bound_theorem_4_1</a></li>
           
         </ul>
     </div>
@@ -233,7 +243,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(j, n, m \in \mathbb {N}\) with \(m {\gt} 0\). Suppose that every odd iterate \(T^k(n)\) with \(k {\lt} j\) satisfies \(T^k(n) \ge m\). Let \(q = \mathit{q}(j, n)\) be the number of odd steps in the first \(j\) iterations. Then: </p>
-<div class="equation" id="a0000000199">
+<div class="equation" id="a0000000200">
 <p>
   <div class="equation_content">
     \begin{equation}  T^j(n) \le \frac{n \cdot \left(3 + \frac{1}{m}\right)^q}{2^j}. \end{equation}
@@ -244,7 +254,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000198">
+<div class="proof_wrapper" id="a0000000199">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -255,7 +265,7 @@
   <p>By induction on \(j\). The base case \(j = 0\) is trivial. </p>
 <p>For the inductive step, assume the bound holds for \(j\). We consider two cases depending on the parity of \(T^j(n)\): </p>
 <p><b class="bfseries">Odd case</b> (\(X(T^j(n)) = 1\)): By definition, </p>
-<div class="equation" id="a0000000200">
+<div class="equation" id="a0000000201">
 <p>
   <div class="equation_content">
     \begin{equation}  T^{j+1}(n) = T(T^j(n)) \le T^j(n) \cdot \frac{3 + 1/m}{2}. \end{equation}
@@ -264,7 +274,7 @@
 </p>
 </div>
 <p> Combining with the inductive hypothesis \(T^j(n) \le n(3 + 1/m)^q/2^j\) and using \(q_{\text{new}} = q + 1\): </p>
-<div class="equation" id="a0000000201">
+<div class="equation" id="a0000000202">
 <p>
   <div class="equation_content">
     \begin{equation}  T^{j+1}(n) \le \frac{n(3+1/m)^q}{2^j} \cdot \frac{3+1/m}{2} = \frac{n(3+1/m)^{q+1}}{2^{j+1}}. \end{equation}
@@ -273,7 +283,7 @@
 </p>
 </div>
 <p><b class="bfseries">Even case</b> (\(X(T^j(n)) = 0\)): By definition, \(T^{j+1}(n) = T^j(n)/2\). Since \(q\) stays the same, </p>
-<div class="equation" id="a0000000202">
+<div class="equation" id="a0000000203">
 <p>
   <div class="equation_content">
     \begin{equation}  T^{j+1}(n) \le \frac{n(3+1/m)^q}{2^j \cdot 2} = \frac{n(3+1/m)^q}{2^{j+1}}. \qedhere \end{equation}
@@ -299,7 +309,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:correction_ratio_bound_theorem_4_1">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000203"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000204"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -330,7 +340,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L98" class="lean_decl">CollatzMapBasics.correction_ratio_bound_theorem_4_1</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L98" class="lean_decl">CollatzMapBasics.correction_ratio_bound_theorem_4_1</a></li>
           
         </ul>
     </div>
@@ -339,7 +349,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Under the same hypotheses as Lemma&#160;<a href="sect0021.html#lemma:odd_iter_bound_theorem_4_1">147</a>, we have: </p>
-<div class="equation" id="a0000000204">
+<div class="equation" id="a0000000205">
 <p>
   <div class="equation_content">
     \begin{equation}  \frac{E(j, n)}{n} \le \frac{\left(3 + \frac{1}{m}\right)^q - 3^q}{2^j}. \end{equation}
@@ -350,7 +360,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000203">
+<div class="proof_wrapper" id="a0000000204">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -359,7 +369,7 @@
   </div>
   <div class="proof_content">
   <p>By Lemma&#160;<a href="sect0021.html#lemma:odd_iter_bound_theorem_4_1">147</a>: </p>
-<div class="equation" id="a0000000205">
+<div class="equation" id="a0000000206">
 <p>
   <div class="equation_content">
     \begin{equation}  T^j(n) \le \frac{n(3+1/m)^q}{2^j}. \end{equation}
@@ -368,7 +378,7 @@
 </p>
 </div>
 <p> Substituting the factored form \(T^j(n) = C(j,n) \cdot n + E(j,n)\) from Lemma&#160;<a href="sect0012.html#lemma:linear_decomposition'">109</a> and dividing through by \(n {\gt} 0\): </p>
-<div class="equation" id="a0000000206">
+<div class="equation" id="a0000000207">
 <p>
   <div class="equation_content">
     \begin{equation}  C(j,n) + \frac{E(j,n)}{n} \le \frac{(3+1/m)^q}{2^j}. \end{equation}
@@ -396,7 +406,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:paradoxical_ratio_real">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000207"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000208"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -405,7 +415,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L134" class="lean_decl">CollatzMapBasics.paradoxical_ratio_real</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L134" class="lean_decl">CollatzMapBasics.paradoxical_ratio_real</a></li>
           
         </ul>
     </div>
@@ -414,7 +424,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(j, q, m \in \mathbb {N}\) with \(j {\gt} 0\) and \(m {\gt} 0\). Suppose the following inequalities hold for the rationals \(3^q/2^j\) and \((3+1/m)^q/2^j\): </p>
-<div class="equation" id="a0000000208">
+<div class="equation" id="a0000000209">
 <p>
   <div class="equation_content">
     \begin{equation}  1 - \frac{3^q}{2^j} {\gt} 0 \quad \text{and} \quad 1 - \frac{3^q}{2^j} \le \frac{(3 + 1/m)^q - 3^q}{2^j}. \end{equation}
@@ -423,7 +433,7 @@
 </p>
 </div>
 <p> Then the ratio \(q/j\) satisfies: </p>
-<div class="equation" id="a0000000209">
+<div class="equation" id="a0000000210">
 <p>
   <div class="equation_content">
     \begin{equation}  \frac{\log 2}{\log (3 + 1/m)} \le \frac{q}{j} {\lt} \frac{\log 2}{\log 3}. \end{equation}
@@ -434,7 +444,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000207">
+<div class="proof_wrapper" id="a0000000208">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -461,7 +471,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:paradoxical_ratio_bounds">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000210"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000211"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -494,7 +504,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L184" class="lean_decl">CollatzMapBasics.paradoxical_ratio_bounds</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L184" class="lean_decl">CollatzMapBasics.paradoxical_ratio_bounds</a></li>
           
         </ul>
     </div>
@@ -503,7 +513,7 @@
   </div>
   <div class="corollary_thmcontent">
   <p>Let \((j, n)\) be a paradoxical sequence starting at \(n {\gt} 0\). Let \(m {\gt} 0\) be a lower bound for all odd iterates \(T^i(n)\) with \(i {\lt} j\). Let \(q\) be the number of odd steps. Then: </p>
-<div class="equation" id="a0000000211">
+<div class="equation" id="a0000000212">
 <p>
   <div class="equation_content">
     \begin{equation}  \frac{\log 2}{\log (3 + 1/m)} \le \frac{q}{j} {\lt} \frac{\log 2}{\log 3}. \end{equation}
@@ -514,7 +524,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000210">
+<div class="proof_wrapper" id="a0000000211">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -542,7 +552,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:log_ratio_not_int">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000212"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000213"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -571,7 +581,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L221" class="lean_decl">CollatzMapBasics.log_ratio_not_int</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L221" class="lean_decl">CollatzMapBasics.log_ratio_not_int</a></li>
           
         </ul>
     </div>
@@ -580,7 +590,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>For any \(j \ge 2\) and any \(k \in \mathbb {N}\), the value \(j \cdot \log 2 / \log 3\) is not an integer: </p>
-<div class="equation" id="a0000000213">
+<div class="equation" id="a0000000214">
 <p>
   <div class="equation_content">
     \begin{equation}  \frac{j \log 2}{\log 3} \neq k. \end{equation}
@@ -591,7 +601,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000212">
+<div class="proof_wrapper" id="a0000000213">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -618,7 +628,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:strict_floor_log_ratio">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000214"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000215"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -647,7 +657,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L234" class="lean_decl">CollatzMapBasics.strict_floor_log_ratio</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L234" class="lean_decl">CollatzMapBasics.strict_floor_log_ratio</a></li>
           
         </ul>
     </div>
@@ -656,7 +666,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>For any \(j \ge 2\), the floor of \(j \log 2 / \log 3\) is strictly less than \(j \log 2 / \log 3\): </p>
-<div class="equation" id="a0000000215">
+<div class="equation" id="a0000000216">
 <p>
   <div class="equation_content">
     \begin{equation}  \left\lfloor \frac{j \log 2}{\log 3} \right\rfloor {\lt} \frac{j \log 2}{\log 3}. \end{equation}
@@ -667,7 +677,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000214">
+<div class="proof_wrapper" id="a0000000215">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -694,7 +704,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:paradoxical_m_bound_q_real">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000216"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000217"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -703,7 +713,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L252" class="lean_decl">CollatzMapBasics.paradoxical_m_bound_q_real</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L252" class="lean_decl">CollatzMapBasics.paradoxical_m_bound_q_real</a></li>
           
         </ul>
     </div>
@@ -712,7 +722,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(j, q, m \in \mathbb {N}\) with \(j, q, m {\gt} 0\). Suppose the ratio bounds </p>
-<div class="equation" id="a0000000217">
+<div class="equation" id="a0000000218">
 <p>
   <div class="equation_content">
     \begin{equation}  \frac{\log 2}{\log (3 + 1/m)} \le \frac{q}{j} {\lt} \frac{\log 2}{\log 3} \end{equation}
@@ -730,7 +740,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000216">
+<div class="proof_wrapper" id="a0000000217">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -758,7 +768,7 @@
 
     <a class="icon proof" href="sect0021.html#lemma:paradoxical_m_bound_floor_real">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000218"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000219"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -789,7 +799,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L312" class="lean_decl">CollatzMapBasics.paradoxical_m_bound_floor_real</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L312" class="lean_decl">CollatzMapBasics.paradoxical_m_bound_floor_real</a></li>
           
         </ul>
     </div>
@@ -798,7 +808,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>Let \(j, q, m \in \mathbb {N}\) with \(j \ge 2\) and \(m {\gt} 0\). Suppose the ratio bounds of Lemma&#160;<a href="sect0021.html#lemma:paradoxical_ratio_real">149</a> hold for \(q/j\). Define: </p>
-<div class="equation" id="a0000000219">
+<div class="equation" id="a0000000220">
 <p>
   <div class="equation_content">
     \begin{equation}  r = \frac{j}{\left\lfloor j \log 2 / \log 3 \right\rfloor }. \end{equation}
@@ -810,7 +820,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000218">
+<div class="proof_wrapper" id="a0000000219">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -838,7 +848,7 @@
 
     <a class="icon proof" href="sect0021.html#corollary:paradoxical_m_bound">#</a>
     
-    <a class="icon proof" href="sect0021.html#a0000000220"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0021.html#a0000000221"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -869,7 +879,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/8b887053ae631a057b60587877689db0eefed6e1/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L408" class="lean_decl">CollatzMapBasics.paradoxical_m_bound</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/RozierTerracol/MoreParadoxical.lean#L408" class="lean_decl">CollatzMapBasics.paradoxical_m_bound</a></li>
           
         </ul>
     </div>
@@ -878,7 +888,7 @@
   </div>
   <div class="corollary_thmcontent">
   <p>Let \((j, n)\) be a paradoxical pair with \(j \ge 2\) and \(n {\gt} 0\). Let \(m {\gt} 0\) be a lower bound for all odd iterates \(T^k(n)\) with \(k {\lt} j\). Define \(r = j / \lfloor j \log 2 / \log 3 \rfloor \). Then: </p>
-<div class="equation" id="a0000000221">
+<div class="equation" id="a0000000222">
 <p>
   <div class="equation_content">
     \begin{equation}  2^r - 3 {\gt} 0 \quad \text{and} \quad m \le \frac{1}{2^r - 3}. \end{equation}
@@ -889,7 +899,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000220">
+<div class="proof_wrapper" id="a0000000221">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -917,7 +927,7 @@
 </a>
   <a href="sect0015.html" title="Rozier & Terracol (2025)"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
-  <a href="sect0022.html" title="Literature"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+  <a href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 

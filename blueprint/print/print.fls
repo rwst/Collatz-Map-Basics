@@ -276,6 +276,11 @@ INPUT ./sections/more-paradoxical.tex
 INPUT ./sections/more-paradoxical.tex
 INPUT ./sections/more-paradoxical.tex
 INPUT sections/more-paradoxical.tex
+INPUT ./sections/uniform-distribution-correspondence.tex
+INPUT ./sections/uniform-distribution-correspondence.tex
+INPUT ./sections/uniform-distribution-correspondence.tex
+INPUT ./sections/uniform-distribution-correspondence.tex
+INPUT sections/uniform-distribution-correspondence.tex
 INPUT ./ref.tex
 INPUT ./ref.tex
 INPUT ./ref.tex

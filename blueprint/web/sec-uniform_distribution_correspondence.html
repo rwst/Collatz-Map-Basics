@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Collatz Map Basics: Uniform Distribution Correspondence</title>
+<link rel="next" href="sect0023.html" title="Literature" />
+<link rel="prev" href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)" />
+<link rel="up" href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Collatz Map Basics</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">The Collatz Conjecture</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html"><span class="toc_ref">1.1</span> <span class="toc_entry">Elementary Number Theory</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">1.2</span> <span class="toc_entry">The Collatz Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">1.3</span> <span class="toc_entry">The Collatz Conjecture</span></a>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">1.4</span> <span class="toc_entry">The Collatz Graph</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">2</span> <span class="toc_entry">The Reduced Collatz Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0007.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Primitives of The Reduced Map</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">3</span> <span class="toc_entry">The Compact Map</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0010.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">3.2</span> <span class="toc_entry">Parity Vectors</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">3.3</span> <span class="toc_entry">Linear Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">3.4</span> <span class="toc_entry">Periodicity</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">3.5</span> <span class="toc_entry">Correspondence to the Original Map</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">4</span> <span class="toc_entry">Rozier &amp; Terracol (2025)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0016.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Rozier–Terracol Lemma 2.1</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">4.2</span> <span class="toc_entry">Rozier–Terracol Theorem 2.2</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">4.3</span> <span class="toc_entry">Rozier–Terracol Lemma 2.3</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">4.4</span> <span class="toc_entry">Diophantine Approximations</span></a>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">4.5</span> <span class="toc_entry">Paradoxical Sequences</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">4.6</span> <span class="toc_entry">More Paradoxical Sequences</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active">
+  <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Eliahou &amp; Verger-Gaugry (2025)</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class=" active current">
+  <a href="sec-uniform_distribution_correspondence.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Uniform Distribution Correspondence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="sec:uniform_distribution_correspondence">5.1 Uniform Distribution Correspondence</h1>
+
+<p>Using the compact map \(T\), Eliahou &amp; Verger-Gaugry (2025)<span class="cite">
+	[
+	<a href="sect0023.html#eli25" >2</a>
+	]
+</span> established that their Conjecture&#160;2.4 (every positive integer eventually reaches \(1\) under the map \(T\)) is equivalent to Conjecture&#160;2.5 (for every positive integer \(n\), the proportion of even iterates among the first \(k\) iterates of \(T\) tends to \(1/2\) as \(k \to \infty \)). </p>
+<p>See Definition&#160;<a href="sect0010.html#def:num_odd_steps">81</a> for \(Q(k,n)\) as the number of odd steps in the first \(k\) iterations of \(T\) starting from \(n\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_split">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">156</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_split">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000223"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L16" class="lean_decl">CollatzMapBasics.num_odd_steps_split</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(a, b, n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000224">
+  \[  Q(a + b,\,  n) = Q(a,\,  n) + Q(b,\,  T^a(n)).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000223">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The count of odd steps over the first \(a+b\) iterates splits into the count over the first \(a\) iterates starting from \(n\), plus the count over the next \(b\) iterates starting from \(T^a(n)\). This follows directly from the additivity of finite sums and the identity \(T^{a+j}(n) = T^j(T^a(n))\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_one_even">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">157</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_even">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000225"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L21" class="lean_decl">CollatzMapBasics.T_iter_one_even</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(j \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000226">
+  \[  T^{2j}(1) = 1.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000225">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(j\). The base case \(j = 0\) is trivial. For the inductive step, one uses \(T(1) = 2\) (since \(1\) is odd: \(T(1) = (3 \cdot 1 + 1)/2 = 2\)) and \(T(2) = 1\) (since \(2\) is even: \(T(2) = 2/2 = 1\)), so \(T^{2(j+1)}(1) = T^2(T^{2j}(1)) = T^2(1) = T(2) = 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_one_odd">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">158</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_odd">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000227"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L25" class="lean_decl">CollatzMapBasics.T_iter_one_odd</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(j \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000228">
+  \[  T^{2j+1}(1) = 2.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000227">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We have \(T^{2j+1}(1) = T(T^{2j}(1)) = T(1) = 2\) by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_even">157</a> and the fact that \(T(1) = 2\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:X_T_iter_one">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">159</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:X_T_iter_one">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000229"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L29" class="lean_decl">CollatzMapBasics.X_T_iter_one</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(i \in \mathbb {N}\), the parity indicator of \(T^i(1)\) satisfies </p>
+<div class="displaymath" id="a0000000230">
+  \[  X(T^i(1)) = \begin{cases}  1 &  \text{if } i \equiv 0 \pmod{2}, \\ 0 &  \text{if } i \equiv 1 \pmod{2}. \end{cases}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000229">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Write \(i = 2j\) or \(i = 2j + 1\). In the even case, \(T^{2j}(1) = 1\) by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_even">157</a>, and \(1\) is odd so \(X(1) = 1\). In the odd case, \(T^{2j+1}(1) = 2\) by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_odd">158</a>, and \(2\) is even so \(X(2) = 0\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_one_even">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">160</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_even">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000231"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L34" class="lean_decl">CollatzMapBasics.num_odd_steps_one_even</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(j \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000232">
+  \[  Q(2j,\,  1) = j.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000231">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(j\). The base case is trivial. For the inductive step, use Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_split">156</a> to split the \(2(j+1)\) steps as \(2j\) steps followed by \(2\) steps starting from \(T^{2j}(1) = 1\) (by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_even">157</a>). The count for the last \(2\) steps starting from \(1\) is \(1\) (since \(T^0(1) = 1\) is odd and \(T^1(1) = 2\) is even), so the total is \(j + 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_one_odd">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">161</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_odd">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000233"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L39" class="lean_decl">CollatzMapBasics.num_odd_steps_one_odd</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(j \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000234">
+  \[  Q(2j+1,\,  1) = j + 1.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000233">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Apply Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_split">156</a> to split the \(2j+1\) steps as \(2j\) steps followed by \(1\) step starting from \(T^{2j}(1) = 1\) (by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_one_even">157</a>). The count for the first \(2j\) steps is \(j\) by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_even">160</a>, and the single additional step starts at \(1\) which is odd, contributing \(1\) more. Total: \(j + 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:num_odd_steps_one_bounds">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">162</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_bounds">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000235"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L43" class="lean_decl">CollatzMapBasics.num_odd_steps_one_bounds</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(m \in \mathbb {N}\), letting \(s = Q(m,\,  1)\), </p>
+<div class="displaymath" id="a0000000236">
+  \[  m \le 2s + 1 \quad \text{and} \quad 2s \le m + 1.  \]
+</div>
+<p> In other words, \(2s \in \{ m, m+1\} \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000235">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Consider the two cases according to the parity of \(m\). </p>
+<ul class="itemize">
+  <li><p>If \(m = 2j\), then \(s = j\) by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_even">160</a>, so \(2s = m\) and both bounds hold with equality (up to \(\pm 1\)). </p>
+</li>
+  <li><p>If \(m = 2j + 1\), then \(s = j + 1\) by Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_odd">161</a>, so \(2s = 2j + 2 = m + 1\), and again both bounds hold. </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:forward">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">163</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:forward">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000237"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_bounds">Lemma 162</a></li>
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_split">Lemma 156</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L50" class="lean_decl">CollatzMapBasics.forward</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(n \ge 1\) and suppose there exists \(k_0 \ge 1\) such that \(T^{k_0}(n) = 1\). Then the proportion of even iterates satisfies </p>
+<div class="displaymath" id="a0000000238">
+  \[  \lim _{k \to \infty } \frac{k - Q(k,\,  n)}{k} = \frac{1}{2}.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000237">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(s_k = Q(k, n)\). For \(k \ge k_0\), write \(k = k_0 + (k - k_0)\) and apply Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_split">156</a>: </p>
+<div class="displaymath" id="a0000000239">
+  \[  s_k = Q(k_0, n) + Q(k - k_0, 1),  \]
+</div>
+<p> using that \(T^{k_0}(n) = 1\). Let \(c = Q(k_0, n)\), which is a fixed constant with \(c \le k_0\). By Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:num_odd_steps_one_bounds">162</a> applied to \(m = k - k_0\), we have \(2Q(k-k_0, 1) \in \{ k-k_0,\,  k-k_0+1\} \), so: </p>
+<div class="displaymath" id="a0000000240">
+  \[  2s_k \le k + (k_0 + 1) \quad \text{and} \quad k \le 2s_k + (k_0 + 1).  \]
+</div>
+<p> Using the order-topology characterisation of convergence, we show the limit equals \(1/2\): </p>
+<ul class="itemize">
+  <li><p><em>Lower bound:</em> For \(a {\lt} 1/2\), set \(\varepsilon = 1 - 2a {\gt} 0\). Choose \(N\) large enough that \((k_0 + 1)/\varepsilon {\lt} N\) and \(k \ge \max (N, k_0+1)\). Then from \(k \le 2s_k + (k_0 + 1)\) we get \((k - s_k)/k {\gt} a\). </p>
+</li>
+  <li><p><em>Upper bound:</em> For \(b {\gt} 1/2\), set \(\varepsilon = 2b - 1 {\gt} 0\). Choose \(N\) large enough that \((k_0 + 1)/\varepsilon {\lt} N\) and \(k \ge \max (N, k_0+1)\). Then from \(2s_k \le k + (k_0 + 1)\) we get \((k - s_k)/k {\lt} b\). </p>
+</li>
+</ul>
+<p> In both cases, the bound follows by a simple linear arithmetic argument once \(k\) is large enough relative to \((k_0 + 1)/\varepsilon \). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:small_cases">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">164</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:small_cases">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000241"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L104" class="lean_decl">CollatzMapBasics.small_cases</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For every \(n\) with \(1 \le n \le 9\), there exists \(k \ge 1\) such that \(T^k(n) = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000241">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Verified by explicit computation for each value \(n \in \{ 1, 2, \ldots , 9\} \): \(T^2(1)=1\), \(T^1(2)=1\), \(T^5(3)=1\), \(T^2(4)=1\), \(T^4(5)=1\), \(T^6(6)=1\), \(T^{11}(7)=1\), \(T^3(8)=1\), \(T^{13}(9)=1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_odd_upper">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">165</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:T_odd_upper">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000242"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L118" class="lean_decl">CollatzMapBasics.T_odd_upper</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For every odd \(n \ge 10\), </p>
+<div class="displaymath" id="a0000000243">
+  \[  10 \cdot (3n + 1) \le 31 n.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000242">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is equivalent to \(30n + 10 \le 31n\), i.e. \(10 \le n\), which holds by assumption. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_bound">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">166</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:T_iter_bound">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000244"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:T_odd_upper">Lemma 165</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L123" class="lean_decl">CollatzMapBasics.T_iter_bound</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(k, n \in \mathbb {N}\) and suppose that \(T^j(n) \ge 10\) for all \(j \le k\). Let \(s = Q(k, n)\). Then </p>
+<div class="displaymath" id="a0000000245">
+  \[  10^s \cdot 2^k \cdot T^k(n) \le 31^s \cdot n.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000244">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(k\). </p>
+<p><em>Base case</em> (\(k = 0\)): both sides equal \(n\). </p>
+<p><em>Inductive step</em>: Assume the bound holds for \(k\), with \(s_k = Q(k,n)\), and that \(T^j(n) \ge 10\) for all \(j \le k+1\). Let \(n_k = T^k(n)\) and \(s_{k+1} = s_k + X(n_k)\), where \(X(n_k) \in \{ 0,1\} \) is the parity indicator. </p>
+<p><em>Case \(n_k\) even</em> (\(X(n_k) = 0\)): Then \(T(n_k) = n_k/2\), so \(2T(n_k) = n_k\), and \(s_{k+1} = s_k\). </p>
+<div class="displaymath" id="a0000000246">
+  \begin{align*}  10^{s_k} \cdot 2^{k+1} \cdot T(n_k) & = 10^{s_k} \cdot 2^k \cdot (2 T(n_k)) \\ & = 10^{s_k} \cdot 2^k \cdot n_k \\ & \le 31^{s_k} \cdot n, \end{align*}
+</div>
+<p> where the last step uses the induction hypothesis. </p>
+<p><em>Case \(n_k\) odd</em> (\(X(n_k) = 1\)): Then \(T(n_k) = (3n_k+1)/2\), so \(2T(n_k) = 3n_k + 1\), and \(s_{k+1} = s_k + 1\). Since \(n_k \ge 10\) and \(n_k\) is odd, Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_odd_upper">165</a> gives \(10(3n_k+1) \le 31 n_k\). </p>
+<div class="displaymath" id="a0000000247">
+  \begin{align*}  10^{s_k+1} \cdot 2^{k+1} \cdot T(n_k) & = 10^{s_k} \cdot 2^k \cdot \bigl(10 \cdot (3n_k + 1)\bigr) \\ & \le 10^{s_k} \cdot 2^k \cdot (31 \,  n_k) \\ & = 31 \cdot \bigl(10^{s_k} \cdot 2^k \cdot n_k\bigr) \\ & \le 31 \cdot 31^{s_k} \cdot n \\ & = 31^{s_k+1} \cdot n, \end{align*}
+</div>
+<p> where the second-to-last step uses the induction hypothesis. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:ratio_bound">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">167</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:ratio_bound">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000248"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L165" class="lean_decl">CollatzMapBasics.ratio_bound</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(s, k \in \mathbb {N}\) with \(5s + 1 \le 3k\), </p>
+<div class="displaymath" id="a0000000249">
+  \[  31^s {\lt} 2^k \cdot 10^s.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000248">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By strong induction on \(s\), with step size \(3\). </p>
+<p><em>Base cases:</em> </p>
+<ul class="itemize">
+  <li><p>\(s = 0\): Need \(1 {\lt} 2^k\). From the hypothesis \(5 \cdot 0 + 1 \le 3k\) we get \(k \ge 1\), so \(2^k \ge 2 {\gt} 1\). </p>
+</li>
+  <li><p>\(s = 1\): Need \(31 {\lt} 2^k \cdot 10\). From \(5 + 1 \le 3k\) we get \(k \ge 2\), so \(2^k \cdot 10 \ge 40 {\gt} 31\). </p>
+</li>
+  <li><p>\(s = 2\): Need \(961 {\lt} 2^k \cdot 100\). From \(11 \le 3k\) we get \(k \ge 4\), so \(2^k \cdot 100 \ge 1600 {\gt} 961\). </p>
+</li>
+</ul>
+<p><em>Inductive step</em> (\(s \ge 3\), write \(s = s' + 3\)): Assume \(31^{s'} {\lt} 2^{k'} \cdot 10^{s'}\) for all valid \(k'\), where \(5s' + 1 \le 3k'\). Apply the induction hypothesis with \(k' = k - 5\) (valid since \(5(s'+3)+1 \le 3k\) implies \(5s'+1 \le 3(k-5)\), and \(k \ge 6\)): </p>
+<div class="displaymath" id="a0000000250">
+  \[  31^{s'+3} = 31^3 \cdot 31^{s'} {\lt} 31^3 \cdot 2^{k-5} \cdot 10^{s'}.  \]
+</div>
+<p> Using the key arithmetic fact \(31^3 = 29791 {\lt} 32000 = 2^5 \cdot 10^3\): </p>
+<div class="displaymath" id="a0000000251">
+  \[  31^3 \cdot 2^{k-5} \cdot 10^{s'} \le 2^5 \cdot 10^3 \cdot 2^{k-5} \cdot 10^{s'} = 2^k \cdot 10^{s'+3}. \qedhere  \]
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:orbit_lower_bound">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">168</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:orbit_lower_bound">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000252"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L201" class="lean_decl">CollatzMapBasics.orbit_lower_bound</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(m \ge 1\) be a minimal counterexample to Conjecture&#160;2.4, meaning: </p>
+<ul class="itemize">
+  <li><p>\(T^k(m) \ne 1\) for all \(k \ge 1\); </p>
+</li>
+  <li><p>for every \(n {\lt} m\) with \(n \ge 1\), there exists \(k \ge 1\) with \(T^k(n) = 1\). </p>
+</li>
+</ul>
+<p> Then \(T^j(m) \ge m\) for all \(j \in \mathbb {N}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000252">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Suppose for contradiction that \(T^j(m) {\lt} m\) for some \(j\). The case \(j = 0\) gives \(m {\lt} m\), a contradiction. For \(j = j' + 1\): let \(n' = T^{j'+1}(m)\). Since \(n' {\lt} m\) and \(n' \ge 1\) (because iterates of positive integers stay positive), the minimality of \(m\) gives some \(k \ge 1\) with \(T^k(n') = 1\). But then \(T^{k + (j'+1)}(m) = T^k(T^{j'+1}(m)) = T^k(n') = 1\), contradicting the assumption that \(m\) never reaches \(1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:exists_ratio_bound_of_tendsto">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">169</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:exists_ratio_bound_of_tendsto">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000253"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L215" class="lean_decl">CollatzMapBasics.exists_ratio_bound_of_tendsto</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Let \(n \in \mathbb {N}\) and suppose that </p>
+<div class="displaymath" id="a0000000254">
+  \[  \lim _{k \to \infty } \frac{k - Q(k,\,  n)}{k} = \frac{1}{2}.  \]
+</div>
+<p> Then there exists \(k \ge 1\) such that </p>
+<div class="displaymath" id="a0000000255">
+  \[  5 \cdot Q(k,\,  n) + 1 \le 3k.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000253">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since the limit is \(1/2\), the sequence eventually lies in the open interval \((2/5, 3/5)\). Choose \(N\) such that for all \(k \ge N\) the ratio \((k - s_k)/k {\gt} 2/5\), where \(s_k = Q(k,n)\). Set \(k_0 = \max (N, 1)\). Then \((k_0 - s_{k_0})/k_0 {\gt} 2/5\), i.e. </p>
+<div class="displaymath" id="a0000000256">
+  \[  k_0 - s_{k_0} {\gt} \tfrac {2}{5} k_0,  \]
+</div>
+<p> so \(\tfrac {3}{5} k_0 {\gt} s_{k_0}\), which gives \(5 s_{k_0} {\lt} 3 k_0\), i.e. \(5 s_{k_0} + 1 \le 3 k_0\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:conjecture_2_4_iff_2_5">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">170</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#lemma:conjecture_2_4_iff_2_5">#</a>
+    
+    <a class="icon proof" href="sec-uniform_distribution_correspondence.html#a0000000257"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:forward">Lemma 163</a></li>
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:small_cases">Lemma 164</a></li>
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:orbit_lower_bound">Lemma 168</a></li>
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:exists_ratio_bound_of_tendsto">Lemma 169</a></li>
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_bound">Lemma 166</a></li>
+          
+          <li><a href="sec-uniform_distribution_correspondence.html#lemma:ratio_bound">Lemma 167</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/0fbd01e3c1e97f8e09fcc735b1a1b2073dddbebb/CollatzMapBasics/UniformCorrespondence.lean#L237" class="lean_decl">CollatzMapBasics.conjecture_2_4_iff_2_5</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Conjectures&#160;2.4 and&#160;2.5 are equivalent: </p>
+<ul class="itemize">
+  <li><p><em>Conjecture&#160;2.4:</em> For every \(n \ge 1\), there exists \(k \ge 1\) such that \(T^k(n) = 1\). </p>
+</li>
+  <li><p><em>Conjecture&#160;2.5:</em> For every \(n \ge 1\), </p>
+<div class="displaymath" id="a0000000258">
+  \[  \lim _{k \to \infty } \frac{k - Q(k,\,  n)}{k} = \frac{1}{2}.  \]
+</div>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000257">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p><b class="bfseries">(2.4 \(\Rightarrow \) 2.5).</b> Let \(n \ge 1\). By Conjecture&#160;2.4, there exists \(k_0 \ge 1\) with \(T^{k_0}(n) = 1\). Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:forward">163</a> then directly gives the desired Tendsto conclusion. </p>
+<p><b class="bfseries">(2.5 \(\Rightarrow \) 2.4).</b> Suppose for contradiction that Conjecture&#160;2.4 fails. Then there exists some \(n_0 \ge 1\) with \(T^k(n_0) \ne 1\) for all \(k \ge 1\). Among all such counterexamples, let \(m\) be the minimal one (using Nat.find); formally, let </p>
+<div class="displaymath" id="a0000000259">
+  \[  P(n) \; \equiv \;  (n \ge 1) \land (\forall k \ge 1,\;  T^k(n) \ne 1),  \]
+</div>
+<p> and set \(m = \min \{ n : P(n)\} \). The properties of \(m\) are: </p>
+<ol class="enumerate">
+  <li><p>\(m \ge 1\) and \(T^k(m) \ne 1\) for all \(k \ge 1\). </p>
+</li>
+  <li><p>For every \(n {\lt} m\) with \(n \ge 1\), there exists \(k \ge 1\) with \(T^k(n) = 1\). </p>
+</li>
+</ol>
+<p><em>Step 1: \(m \ge 10\).</em> By Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:small_cases">164</a>, every \(n\) with \(1 \le n \le 9\) reaches \(1\). So if \(m \le 9\), property (1) would be contradicted. Hence \(m \ge 10\). </p>
+<p><em>Step 2: \(T^j(m) \ge m\) for all \(j\).</em> This is Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:orbit_lower_bound">168</a> applied to \(m\) with its minimality property. In particular, all iterates satisfy \(T^j(m) \ge m \ge 10\). </p>
+<p><em>Step 3: Extract \(k\) with a good odd-step ratio.</em> Since Conjecture&#160;2.5 holds (by assumption), the ratio \((k - s_k)/k \to 1/2\) for \(n = m\). By Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:exists_ratio_bound_of_tendsto">169</a>, there exists \(k \ge 1\) with </p>
+<div class="displaymath" id="a0000000260">
+  \[  5 \cdot Q(k, m) + 1 \le 3k.  \]
+</div>
+<p><em>Step 4: Derive a contradiction.</em> Let \(s = Q(k, m)\). </p>
+<ul class="itemize">
+  <li><p>From Step&#160;2, all iterates \(T^j(m) \ge 10\) for \(j \le k\), so Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:T_iter_bound">166</a> gives: </p>
+<div class="displaymath" id="a0000000261">
+  \[  10^s \cdot 2^k \cdot T^k(m) \le 31^s \cdot m.  \]
+</div>
+</li>
+  <li><p>Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:ratio_bound">167</a> with \(5s + 1 \le 3k\) gives: </p>
+<div class="displaymath" id="a0000000262">
+  \[  31^s {\lt} 2^k \cdot 10^s.  \]
+</div>
+</li>
+</ul>
+<p> Combining these two inequalities with \(T^k(m) \ge m\) (Step&#160;2): </p>
+<div class="displaymath" id="a0000000263">
+  \[  31^s \cdot m \ge 10^s \cdot 2^k \cdot T^k(m) \ge 10^s \cdot 2^k \cdot m.  \]
+</div>
+<p> Dividing by \(10^s \cdot m {\gt} 0\): </p>
+<div class="displaymath" id="a0000000264">
+  \[  (31/10)^s \ge 2^k,  \]
+</div>
+<p> i.e. \(31^s \ge 2^k \cdot 10^s\), contradicting Lemma&#160;<a href="sec-uniform_distribution_correspondence.html#lemma:ratio_bound">167</a>. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0023.html" title="Literature"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>
