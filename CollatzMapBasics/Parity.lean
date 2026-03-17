@@ -1,4 +1,3 @@
-import Mathlib
 import CollatzMapBasics.Terras
 
 namespace CollatzMapBasics

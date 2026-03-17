@@ -1,5 +1,3 @@
-import Mathlib
-import CollatzMapBasics.Terras
 import CollatzMapBasics.Parity
 
 namespace CollatzMapBasics
