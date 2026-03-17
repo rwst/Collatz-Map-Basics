@@ -13,3 +13,4 @@ import CollatzMapBasics.RozierTerracol.CRozLemma32
 import CollatzMapBasics.RozierTerracol.MoreParadoxical
 import CollatzMapBasics.TC
 import CollatzMapBasics.Terras
+import CollatzMapBasics.UniformCorrespondence
