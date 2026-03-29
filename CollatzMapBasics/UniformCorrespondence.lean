@@ -1,5 +1,6 @@
 import CollatzMapBasics.Terras
 import CollatzMapBasics.Decomposition
+import CollatzMapBasics.Base3div2.Base3div2Basics
 import Mathlib.Topology.Order.Basic
 import Mathlib.Topology.Algebra.Order.Field
 import Mathlib.Order.Filter.AtTopBot.Basic
@@ -286,5 +287,47 @@ lemma conjecture_2_4_iff_2_5 :
         (Nat.mul_le_mul_left (2 ^ k) hge)]
     -- Contradiction
     exact absurd (h_orbit k) (not_le.mpr h_lt)
+
+-- ============================================================
+-- Conjectures 4.2 and 4.3 (Eliahou–Verger-Gaugry, §4)
+-- ============================================================
+
+open Base3div2
+
+/-- The j-th digit of the infinite saturated word ⟨sat(∞)⟩ = limₖ ⟨sat(k)⟩.
+    By Proposition 3.9, digit j is `1` when `sat j` is odd, `2` when even. -/
+def satWord (j : ℕ) : ℕ := if sat j % 2 = 1 then 1 else 2
+
+/-- Number of `1`-digits among the first `k` digits of ⟨sat(∞)⟩. -/
+def numOnesSat (k : ℕ) : ℕ :=
+  ((Finset.range k).filter (fun j => sat j % 2 = 1)).card
+
+/-- Conjecture 4.2: The proportion of digits `1` in ⟨sat(k)⟩ tends to 1/2. -/
+def conjecture_4_2 : Prop :=
+  Tendsto (fun k => (numOnesSat k : ℚ) / ↑k) atTop (nhds (1 / 2 : ℚ))
+
+/-- Number of positions `i < n` where the length-`|w|` subword of ⟨sat(∞)⟩
+    starting at position `i` equals `w`. -/
+def subwordCount (w : List ℕ) (n : ℕ) : ℕ :=
+  ((Finset.range n).filter (fun i =>
+    (List.range w.length).map (fun j => satWord (i + j)) = w)).card
+
+/-- Conjecture 4.3: The infinite word ⟨sat(∞)⟩ is **normal** over {1, 2}.
+    Every word of length ℓ over {1, 2} appears with asymptotic frequency 1/2^ℓ. -/
+def conjecture_4_3 : Prop :=
+  ∀ (w : List ℕ), (∀ d ∈ w, d = 1 ∨ d = 2) →
+    Tendsto (fun n => (subwordCount w n : ℚ) / ↑n) atTop (nhds (1 / 2 ^ w.length : ℚ))
+
+/-- Conjecture 4.3 (normality) implies Conjecture 4.2 (digit-1 density). -/
+theorem conjecture_4_3_implies_4_2 : conjecture_4_3 → conjecture_4_2 := by
+  intro h43
+  have h := h43 [1] (by simp)
+  simp only [List.length_cons, List.length_nil, pow_one] at h
+  suffices heq : ∀ n, subwordCount [1] n = numOnesSat n by
+    simp only [heq] at h; exact h
+  intro n
+  simp only [subwordCount, numOnesSat, satWord, List.range_one, List.map_cons,
+    List.map_nil, Nat.add_zero]
+  congr 1; ext j; simp [List.cons.injEq]
 
 end CollatzMapBasics
