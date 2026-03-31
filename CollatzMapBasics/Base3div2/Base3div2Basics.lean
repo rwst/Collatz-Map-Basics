@@ -1,7 +1,4 @@
 /-
-Copyright (c) 2025. All rights reserved.
-Released under Apache 2.0 license as described in the file LICENSE.
-
 Definitions and basic properties of the number system in rational base 3/2,
 following Eliahou–Verger-Gaugry (arXiv:2504.13716v1) and Akiyama–Frougny–Sakarovitch.
 

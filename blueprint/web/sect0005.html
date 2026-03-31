@@ -117,10 +117,13 @@
   <ul class="sub-toc-1">
      <li class="">
   <a href="sec-uniform_distribution_correspondence.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Uniform Distribution Correspondence</span></a>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">5.2</span> <span class="toc_entry">Base 3/2 Number System</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-2">
      <li class="">
-  <a href="sec-uniform_distribution_correspondence.html#sec:base3div2"><span class="toc_ref">5.1.1</span> <span class="toc_entry">The Number System in Rational Base \(3/2\)</span></a>
+  <a href="sect0023.html#sec:base3div2"><span class="toc_ref">5.2.1</span> <span class="toc_entry">The Number System in Rational Base \(3/2\)</span></a>
  </li>
 
   </ul>
@@ -129,7 +132,7 @@
   </ul>
  </li>
 <li class="">
-  <a href="sect0023.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0024.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -162,7 +165,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/TC.lean#L155" class="lean_decl">CollatzMapBasics.collatz_graph</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/TC.lean#L155" class="lean_decl">CollatzMapBasics.collatz_graph</a></li>
           
         </ul>
     </div>
@@ -188,74 +191,6 @@
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0005.html#lemma:collatz_graph_adj_iff">#</a>
-    
-    <a class="icon proof" href="sect0005.html#a0000000075"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
-</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Uses</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="sect0005.html#def:collatz_graph">Definition 39</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
-    
-    
-    <div class="lean_declarations">
-        <strong>Lean declarations:</strong>
-        <ul class="uses">
-          
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/TC.lean#L158" class="lean_decl">CollatzMapBasics.collatz_graph_adj_iff</a></li>
-          
-        </ul>
-    </div>
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>Two distinct vertices \(a, b\) are adjacent in \(\mathcal{G}'\) if and only if \(b = T(a)\) or \(a = T(b)\). </p>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000075">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p>Immediate from the definition of the simple graph associated with a directed graph. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_reachable">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">41</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0005.html#lemma:T_iter_reachable">#</a>
     
     <a class="icon proof" href="sect0005.html#a0000000076"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -286,7 +221,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/TC.lean#L162" class="lean_decl">CollatzMapBasics.T_iter_reachable</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/TC.lean#L158" class="lean_decl">CollatzMapBasics.collatz_graph_adj_iff</a></li>
           
         </ul>
     </div>
@@ -294,7 +229,7 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>For any \(k, n \in \mathbb {N}\), \(T^k(n)\) is reachable from \(n\) in \(\mathcal{G}'\). </p>
+  <p>Two distinct vertices \(a, b\) are adjacent in \(\mathcal{G}'\) if and only if \(b = T(a)\) or \(a = T(b)\). </p>
 
   </div>
 </div>
@@ -306,16 +241,16 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>By induction on \(k\), following the edges \((T^i(n), T^{i+1}(n))\). </p>
+  <p>Immediate from the definition of the simple graph associated with a directed graph. </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lemma:confluence_step">
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:T_iter_reachable">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">42</span>
+    <span class="lemma_thmlabel">41</span>
     <div class="thm_header_extras">
 
     
@@ -323,7 +258,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0005.html#lemma:confluence_step">#</a>
+    <a class="icon proof" href="sect0005.html#lemma:T_iter_reachable">#</a>
     
     <a class="icon proof" href="sect0005.html#a0000000077"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -354,7 +289,75 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/TC.lean#L172" class="lean_decl">CollatzMapBasics.confluence_step</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/TC.lean#L162" class="lean_decl">CollatzMapBasics.T_iter_reachable</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For any \(k, n \in \mathbb {N}\), \(T^k(n)\) is reachable from \(n\) in \(\mathcal{G}'\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000077">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(k\), following the edges \((T^i(n), T^{i+1}(n))\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:confluence_step">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">42</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0005.html#lemma:confluence_step">#</a>
+    
+    <a class="icon proof" href="sect0005.html#a0000000078"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:collatz_graph">Definition 39</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/TC.lean#L172" class="lean_decl">CollatzMapBasics.confluence_step</a></li>
           
         </ul>
     </div>
@@ -366,7 +369,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000077">
+<div class="proof_wrapper" id="a0000000078">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -393,7 +396,7 @@
 
     <a class="icon proof" href="sect0005.html#lemma:confluence_of_reachable">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000078"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000079"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -422,7 +425,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/TC.lean#L187" class="lean_decl">CollatzMapBasics.confluence_of_reachable</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/TC.lean#L187" class="lean_decl">CollatzMapBasics.confluence_of_reachable</a></li>
           
         </ul>
     </div>
@@ -434,7 +437,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000078">
+<div class="proof_wrapper" id="a0000000079">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -461,7 +464,7 @@
 
     <a class="icon proof" href="sect0005.html#theorem:collatz_graph_weakly_connected_iff_collatz">#</a>
     
-    <a class="icon proof" href="sect0005.html#a0000000079"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0005.html#a0000000080"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -496,7 +499,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/TC.lean#L200" class="lean_decl">CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/TC.lean#L200" class="lean_decl">CollatzMapBasics.collatz_graph_weakly_connected_iff_collatz</a></li>
           
         </ul>
     </div>
@@ -508,7 +511,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000079">
+<div class="proof_wrapper" id="a0000000080">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof

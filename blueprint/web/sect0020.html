@@ -117,10 +117,13 @@
   <ul class="sub-toc-1">
      <li class="">
   <a href="sec-uniform_distribution_correspondence.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Uniform Distribution Correspondence</span></a>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">5.2</span> <span class="toc_entry">Base 3/2 Number System</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-2">
      <li class="">
-  <a href="sec-uniform_distribution_correspondence.html#sec:base3div2"><span class="toc_ref">5.1.1</span> <span class="toc_entry">The Number System in Rational Base \(3/2\)</span></a>
+  <a href="sect0023.html#sec:base3div2"><span class="toc_ref">5.2.1</span> <span class="toc_entry">The Number System in Rational Base \(3/2\)</span></a>
  </li>
 
   </ul>
@@ -129,7 +132,7 @@
   </ul>
  </li>
 <li class="">
-  <a href="sect0023.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0024.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -162,7 +165,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L23" class="lean_decl">CollatzMapBasics.IsParadoxical</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L23" class="lean_decl">CollatzMapBasics.IsParadoxical</a></li>
           
         </ul>
     </div>
@@ -171,7 +174,7 @@
   </div>
   <div class="definition_thmcontent">
   <p>A pair \((j, n)\) consisting of a positive iteration count \(j\) and a starting integer \(n\) is called <em>paradoxical</em> if: </p>
-<div class="equation" id="a0000000187">
+<div class="equation" id="a0000000188">
 <p>
   <div class="equation_content">
     \begin{equation}  T^j(n) \ge n \quad \text{and} \quad C_j(n) {\lt} 1. \end{equation}
@@ -180,7 +183,7 @@
 </p>
 </div>
 <p> That is, the \(j\)-th iterate of the Terras map is at least as large as the starting value, and the decomposition coefficient at \(j\) is smaller than&#160;\(1\). The sequence of values </p>
-<div class="displaymath" id="a0000000188">
+<div class="displaymath" id="a0000000189">
   \[  n, T(n), T^2(n), \cdots , T^{j}(n)  \]
 </div>
 <p> is called a paradoxical sequence. </p>
@@ -202,7 +205,7 @@
 
     <a class="icon proof" href="sect0020.html#lemma:E_shift_mul">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000189"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000190"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -211,7 +214,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L111" class="lean_decl">CollatzMapBasics.E_shift_mul</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L111" class="lean_decl">CollatzMapBasics.E_shift_mul</a></li>
           
         </ul>
     </div>
@@ -220,7 +223,7 @@
   </div>
   <div class="lemma_thmcontent">
   <p>For any \(k, j, n \in \mathbb {N}\), the correction ratio behaves under powers of two as: </p>
-<div class="equation" id="a0000000190">
+<div class="equation" id="a0000000191">
 <p>
   <div class="equation_content">
     \begin{equation}  E_{k+j}(2^k n) = E_j(n). \end{equation}
@@ -231,7 +234,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000189">
+<div class="proof_wrapper" id="a0000000190">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -258,7 +261,7 @@
 
     <a class="icon proof" href="sect0020.html#lemma:num_odd_steps_unbounded">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000191"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000192"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -291,7 +294,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L274" class="lean_decl">CollatzMapBasics.num_odd_steps_unbounded</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L274" class="lean_decl">CollatzMapBasics.num_odd_steps_unbounded</a></li>
           
         </ul>
     </div>
@@ -303,7 +306,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000191">
+<div class="proof_wrapper" id="a0000000192">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -330,7 +333,7 @@
 
     <a class="icon proof" href="sect0020.html#lemma:num_odd_steps_hits_all">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000192"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000193"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -365,7 +368,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L344" class="lean_decl">CollatzMapBasics.num_odd_steps_hits_all</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L344" class="lean_decl">CollatzMapBasics.num_odd_steps_hits_all</a></li>
           
         </ul>
     </div>
@@ -377,7 +380,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000192">
+<div class="proof_wrapper" id="a0000000193">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -405,7 +408,7 @@
 
     <a class="icon proof" href="sect0020.html#theorem:CRoz_lemma_32">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000193"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000194"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -438,7 +441,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L428" class="lean_decl">CollatzMapBasics.CRoz_lemma_32</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L428" class="lean_decl">CollatzMapBasics.CRoz_lemma_32</a></li>
           
         </ul>
     </div>
@@ -450,7 +453,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000193">
+<div class="proof_wrapper" id="a0000000194">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -460,7 +463,7 @@
   <div class="proof_content">
   <p>We construct an infinite set of paradoxical pairs \((j', n')\) where \(n'\) is of the form \(2^k n\). Consider the set of Diophantine approximations \(S = \{  (a, b) \in \mathbb {N}^2 \mid 1 - \frac{1}{4n} {\lt} \frac{3^a}{2^b} {\lt} 1 \} \). By Theorem&#160;<a href="sect0019.html#theorem:exists_infinite_pairs_approx">139</a>, this set is infinite. For each \((a, b) \in S\), we use Lemma&#160;<a href="sect0020.html#lemma:num_odd_steps_hits_all">143</a> to find an iteration \(j\) such that \(q(j, n) = a\). Let \(j_{of}(a)\) be the smallest such \(j\). We distinguish two cases for each \((a, b) \in S\): </p>
 <p><b class="bfseries">Case 1: \(j_{of}(a) \ge b\).</b> We claim that \((j_{of}(a), n)\) is paradoxical. First, \(T^{j_{of}(a)}(n) \ge n\) because \(n\) has infinite stopping time. Second, \(C_{j_{of}(a)}(n) = \frac{3^a n + \mathcal{Q}_j(n)}{2^{j_{of}(a)}} \approx \frac{3^a}{2^{j_{of}(a)}} n\). Since \(j_{of}(a) \ge b\) and \(3^a/2^b {\lt} 1\), we have \(3^a/2^{j_{of}(a)} {\lt} 1\). More precisely, \(C_j(n) = \frac{3^a}{2^j} n + E_j(n)\). Using the bounds from Theorem&#160;<a href="sect0017.html#theorem:E_bounds">127</a>, \(E_j(n) \le R(a) = \frac{3^a - 2^a}{2^a}\). Then: </p>
-<div class="equation" id="a0000000194">
+<div class="equation" id="a0000000195">
 <p>
   <div class="equation_content">
     \begin{equation}  C_j(n) \le \frac{3^a}{2^b} n + \left(\frac{3}{2}\right)^a - 1. \end{equation}
@@ -470,7 +473,7 @@
 </div>
 <p> The condition \(3^a/2^b {\gt} 1 - 1/(4n)\) ensures that \(C_j(n) {\lt} 1\). </p>
 <p><b class="bfseries">Case 2: \(j_{of}(a) {\lt} b\).</b> Let \(k = b - j_{of}(a)\). We claim \((b, 2^k n)\) is paradoxical. By the shift property \(T^b(2^k n) = T^{j_{of}(a)}(n)\), and since \(T^{j_{of}(a)}(n) \ge n\) and \(2^k n \ge n\) is not guaranteed to be small, we calculate: \(C_b(2^k n) = \frac{3^a (2^k n) + \mathcal{Q}_b(2^k n)}{2^b} = \frac{2^k (3^a n + \mathcal{Q}_j(n))}{2^{k+j}} = C_j(n)\). Again, the Diophantine condition \(3^a/2^b {\gt} 1 - 1/(4n)\) implies \(C_b(2^k n) {\lt} 1\), and \(T^b(2^k n) \ge 2^k n\) follows from the linear decomposition: </p>
-<div class="equation" id="a0000000195">
+<div class="equation" id="a0000000196">
 <p>
   <div class="equation_content">
     \begin{equation}  2^j T^j(n) = 3^a n + \mathcal{Q}_j(n). \end{equation}
@@ -499,7 +502,7 @@
 
     <a class="icon proof" href="sect0020.html#corollary:CRoz_cor_33">#</a>
     
-    <a class="icon proof" href="sect0020.html#a0000000196"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0020.html#a0000000197"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -530,7 +533,7 @@
         <strong>Lean declarations:</strong>
         <ul class="uses">
           
-          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/3c49ef20ba5d36d31aef2771b63c53750aec59d9/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L512" class="lean_decl">CollatzMapBasics.CRoz_cor_33</a></li>
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/RozierTerracol/CRozLemma32.lean#L512" class="lean_decl">CollatzMapBasics.CRoz_cor_33</a></li>
           
         </ul>
     </div>
@@ -542,7 +545,7 @@
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000196">
+<div class="proof_wrapper" id="a0000000197">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof

@@ -12,9 +12,10 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Literature</title>
+<title>Collatz Map Basics: Base 3/2 Number System</title>
+<link rel="next" href="sect0024.html" title="Literature" />
 <link rel="prev" href="sec-uniform_distribution_correspondence.html" title="Uniform Distribution Correspondence" />
-<link rel="up" href="index.html" title="Collatz Map Basics" />
+<link rel="up" href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -110,25 +111,28 @@
 
   </ul>
  </li>
-<li class="">
+<li class=" active">
   <a href="sect0022.html"><span class="toc_ref">5</span> <span class="toc_entry">Eliahou &amp; Verger-Gaugry (2025)</span></a>
-  <span class="expand-toc">▶</span>
-  <ul class="sub-toc-1">
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
      <li class="">
   <a href="sec-uniform_distribution_correspondence.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Uniform Distribution Correspondence</span></a>
-  <span class="expand-toc">▶</span>
-  <ul class="sub-toc-2">
-     <li class="">
-  <a href="sec-uniform_distribution_correspondence.html#sec:base3div2"><span class="toc_ref">5.1.1</span> <span class="toc_entry">The Number System in Rational Base \(3/2\)</span></a>
- </li>
-
-  </ul>
- </li>
-
-  </ul>
  </li>
 <li class=" active current">
-  <a href="sect0023.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
+  <a href="sect0023.html"><span class="toc_ref">5.2</span> <span class="toc_entry">Base 3/2 Number System</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-2 active">
+     <li class="">
+  <a href="sect0023.html#sec:base3div2"><span class="toc_ref">5.2.1</span> <span class="toc_entry">The Number System in Rational Base \(3/2\)</span></a>
+ </li>
+
+  </ul>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0024.html"><span class="toc_ref">6</span> <span class="toc_entry">Literature</span></a>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -139,28 +143,2750 @@
 
 
 <div class="main-text">
-<h1 id="a0000000024">6 Literature</h1>
-<dl class="bibliography">
-  <dt><a name="crandall78">1</a></dt>
-  <dd><p><i class="sc">Crandall, Richard E.</i>, <em>"On the “3x+1” problem."</em>, Mathematics of computation 32.144 (1978): 1281-1292. </p>
-</dd>
-  <dt><a name="eli25">2</a></dt>
-  <dd><p><i class="sc">Eliahou, Shalom, and Jean-Louis Verger-Gaugry</i>, <em>"The number system in rational base \(3/2\) and the \(3x+ 1\) problem."</em>, Comptes Rendus. Mathématique 363.G4 (2025): 329-336. </p>
-</dd>
-  <dt><a name="everett77">3</a></dt>
-  <dd><p><i class="sc">Everett, C. J.</i>, <em>"Iteration of the number-theoretic function \(f(2n)= n, f(2n+1)= 3n+2\)."</em>, Advances in Mathematics 25.1 (1977): 42-45. </p>
-</dd>
-  <dt><a name="lagarias">4</a></dt>
-  <dd><p><i class="sc">Lagarias, Jeffrey C.</i>, "The 3x+ 1 problem: An overview.", in: <em>The ultimate challenge: The 3x+1 Problem</em> (2010): 3-29. </p>
-</dd>
-  <dt><a name="rozier2025paradoxical">5</a></dt>
-  <dd><p><i class="sc">Rozier, Olivier and Terracol, Claude</i>, <em>Paradoxical behavior in Collatz sequences</em>, arXiv preprint arXiv:2502.00948, 2025 </p>
-</dd>
-  <dt><a name="terras76">6</a></dt>
-  <dd><p><i class="sc">Terras, Riho</i>, <em>"A stopping time problem on the positive integers."</em>, Acta Arithmetica 30 (1976): 241-252. </p>
-</dd>
-</dl>
-<p><br /> </p>
+<h1 id="a0000000024">5.2 Base 3/2 Number System</h1>
+<h2 id="sec:base3div2">5.2.1 The Number System in Rational Base \(3/2\)</h2>
+
+<p>The following definitions and results formalise portions of the paper by Eliahou and Verger-Gaugry&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>, which studies the representation of natural numbers in the rational base \(3/2\) and its connections to the Collatz problem. Every natural number \(n\) admits a unique representation </p>
+<div class="displaymath" id="a0000000266">
+  \[  n = \frac{1}{2}\sum _{i=0}^{k} a_i \Bigl(\frac{3}{2}\Bigr)^{\! i}, \qquad a_i \in \{ 0,1,2\} ,  \]
+</div>
+<p> and the digits \(a_i\) can be extracted by repeated division of \(2n\) by \(3\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="def:lsd">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">171</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:lsd">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L19" class="lean_decl">CollatzMapBasics.Base3div2.lsd</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>least-significant digit</em> of \(n\) in rational base \(3/2\) is </p>
+<div class="displaymath" id="a0000000267">
+  \[  \operatorname {lsd}(n) = (2n) \bmod 3.  \]
+</div>
+<p> This is the digit \(a_0\) of Proposition&#160;2.2 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:parent">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">172</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:parent">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L23" class="lean_decl">CollatzMapBasics.Base3div2.parent</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>parent</em> of \(n\) in the base-\(3/2\) digit tree is </p>
+<div class="displaymath" id="a0000000268">
+  \[  \operatorname {parent}(n) = \lfloor 2n / 3 \rfloor .  \]
+</div>
+<p> Removing the least-significant digit from \(\langle n \rangle \) gives \(\langle \operatorname {parent}(n) \rangle \). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:two_mul_eq">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">173</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:two_mul_eq">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000269"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L26" class="lean_decl">CollatzMapBasics.Base3div2.two_mul_eq</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000270">
+  \[  2n = 3 \cdot \operatorname {parent}(n) + \operatorname {lsd}(n).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000269">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is the division algorithm applied to \(2n\) divided by \(3\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:lsd_lt_three">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">174</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:lsd_lt_three">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000271"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L30" class="lean_decl">CollatzMapBasics.Base3div2.lsd_lt_three</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), \(\operatorname {lsd}(n) {\lt} 3\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000271">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By the definition of the remainder modulo \(3\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:parent_lt">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">175</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:parent_lt">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000272"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L33" class="lean_decl">CollatzMapBasics.Base3div2.parent_lt</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \ge 1\), \(\operatorname {parent}(n) {\lt} n\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000272">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We have \(\operatorname {parent}(n) = \lfloor 2n/3 \rfloor \le 2n/3 {\lt} n\) whenever \(n \ge 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:lsd_mod_two_eq_parent">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">176</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:lsd_mod_two_eq_parent">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000273"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L37" class="lean_decl">CollatzMapBasics.Base3div2.lsd_mod_two_eq_parent</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000274">
+  \[  \operatorname {lsd}(n) \equiv \operatorname {parent}(n) \pmod{2}.  \]
+</div>
+<p> This is part of Proposition&#160;2.2 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000273">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>From \(2n = 3 \cdot \operatorname {parent}(n) + \operatorname {lsd}(n)\), reducing modulo \(2\) gives \(0 \equiv \operatorname {parent}(n) + \operatorname {lsd}(n) \pmod{2}\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:digits32">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">177</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:digits32">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>base-\(3/2\) representation</em> of \(n\), written \(\langle n \rangle \), is the list of digits (least-significant first) defined recursively: </p>
+<div class="displaymath" id="a0000000275">
+  \[  \operatorname {digits}_{3/2}(n) = \begin{cases}  [] &  \text{if } n = 0, \\ \operatorname {lsd}(n) :: \operatorname {digits}_{3/2}(\operatorname {parent}(n)) &  \text{if } n \ge 1. \end{cases}  \]
+</div>
+<p> Termination is guaranteed by Lemma&#160;<a href="sect0023.html#lemma:parent_lt">175</a>. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:mem_digits32_lt_three">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">178</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:mem_digits32_lt_three">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000276"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.mem_digits₃₂_lt_three#doc" class="lean_decl">CollatzMapBasics.Base3div2.mem_digits₃₂_lt_three</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Every digit in \(\operatorname {digits}_{3/2}(n)\) is less than \(3\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000276">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By strong induction on \(n\). If \(n = 0\) the digit list is empty. Otherwise the first digit is \(\operatorname {lsd}(n) {\lt} 3\) (Lemma&#160;<a href="sect0023.html#lemma:lsd_lt_three">174</a>), and the remaining digits belong to \(\operatorname {digits}_{3/2}(\operatorname {parent}(n))\), which satisfy the bound by the induction hypothesis (since \(\operatorname {parent}(n) {\lt} n\)). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:digits32_length_eq_zero_iff">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">179</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:digits32_length_eq_zero_iff">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000277"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂_length_eq_zero_iff#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂_length_eq_zero_iff</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>\(|\operatorname {digits}_{3/2}(n)| = 0\) if and only if \(n = 0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000277">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>If \(n = 0\) the list is empty. Conversely, if \(n \ge 1\) the list has the form \(\operatorname {lsd}(n) :: (\cdots )\), whose length is at least \(1\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:eval32">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">180</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:eval32">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.eval₃₂#doc" class="lean_decl">CollatzMapBasics.Base3div2.eval₃₂</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>evaluation</em> of a list of base-\(3/2\) digits (least-significant first) is </p>
+<div class="displaymath" id="a0000000278">
+  \[  \operatorname {eval}_{3/2}([]) = 0, \qquad \operatorname {eval}_{3/2}(a :: \mathit{rest}) = \frac{a + 3 \cdot \operatorname {eval}_{3/2}(\mathit{rest})}{2}.  \]
+</div>
+<p> For admissible digit lists (those produced by \(\operatorname {digits}_{3/2}\)), the division is always exact. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:eval32_digits32">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">181</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:eval32_digits32">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000279"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:eval32">Definition 180</a></li>
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.eval₃₂_digits₃₂#doc" class="lean_decl">CollatzMapBasics.Base3div2.eval₃₂_digits₃₂</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000280">
+  \[  \operatorname {eval}_{3/2}(\operatorname {digits}_{3/2}(n)) = n.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000279">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By strong induction on \(n\). For \(n = 0\) both sides are \(0\). For \(n \ge 1\): </p>
+<div class="displaymath" id="a0000000281">
+  \begin{align*}  \operatorname {eval}_{3/2}(\operatorname {lsd}(n) :: \operatorname {digits}_{3/2}(\operatorname {parent}(n))) & = \frac{\operatorname {lsd}(n) + 3 \cdot \operatorname {parent}(n)}{2} \tag {by the induction hypothesis} \\ & = \frac{2n}{2} = n, \tag {by Lemma~ \ref{lemma:two_mul_eq}} \end{align*}
+</div>
+<p> where the division is exact since \(\operatorname {lsd}(n) + 3 \cdot \operatorname {parent}(n) = 2n\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:U">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">182</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:U">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L109" class="lean_decl">CollatzMapBasics.Base3div2.U</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The function \(U : \mathbb {N} \to \mathbb {N}\) (Notation&#160;3.7 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>) is defined by </p>
+<div class="displaymath" id="a0000000282">
+  \[  U(n) = \begin{cases}  (3n + 2)/2 &  \text{if } n \text{ is even}, \\ (3n + 1)/2 &  \text{if } n \text{ is odd}. \end{cases}  \]
+</div>
+<p> Equivalently, \(U(n) = (3n + 2 - (n \bmod 2))/2\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:U_odd_eq_T">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">183</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:U_odd_eq_T">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000283"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+          <li><a href="sect0010.html#def:T">Definition 74</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L117" class="lean_decl">CollatzMapBasics.Base3div2.U_odd_eq_T</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>When \(n\) is odd, \(U(n) = T(n)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000283">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Both evaluate to \((3n + 1)/2\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:U_mod_two">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">184</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:U_mod_two">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000284"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+          <li><a href="sect0010.html#def:T">Definition 74</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L121" class="lean_decl">CollatzMapBasics.Base3div2.U_mod_two</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000285">
+  \[  U(n) \equiv T(n) + n + 1 \pmod{2}.  \]
+</div>
+<p> This is Remark&#160;3.8 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000284">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Split into cases according to the parity of \(n\) and verify by direct computation: </p>
+<ul class="itemize">
+  <li><p>If \(n = 2k\), then \(U(n) = 3k+1\) and \(T(n) = k\), so \(U(n) \bmod 2 = (k+1) \bmod 2 = (k + 2k + 1) \bmod 2 = (T(n) + n + 1) \bmod 2\). </p>
+</li>
+  <li><p>If \(n = 2k+1\), then \(U(n) = 3k+2\) and \(T(n) = 3k+2\), and again both sides match modulo&#160;\(2\). </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:parent_U">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">185</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:parent_U">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000286"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L129" class="lean_decl">CollatzMapBasics.Base3div2.parent_U</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000287">
+  \[  \operatorname {parent}(U(n)) = n.  \]
+</div>
+<p> This is Proposition&#160;3.9 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000286">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Split by parity of \(n\) and verify the integer arithmetic: </p>
+<ul class="itemize">
+  <li><p>If \(n\) is even: \(U(n) = (3n+2)/2\), so \(\operatorname {parent}(U(n)) = \lfloor 2 \cdot (3n+2)/2 \, /\,  3 \rfloor = \lfloor (3n+2)/3 \rfloor = n\). </p>
+</li>
+  <li><p>If \(n\) is odd: \(U(n) = (3n+1)/2\), so \(\operatorname {parent}(U(n)) = \lfloor (3n+1)/3 \rfloor = n\). </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:lsd_U_odd">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">186</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:lsd_U_odd">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000288"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L133" class="lean_decl">CollatzMapBasics.Base3div2.lsd_U_odd</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>When \(n\) is odd, \(\operatorname {lsd}(U(n)) = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000288">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\(U(n) = (3n+1)/2\), so \(\operatorname {lsd}(U(n)) = (2 \cdot (3n+1)/2) \bmod 3 = (3n+1) \bmod 3 = 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:lsd_U_even">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">187</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:lsd_U_even">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000289"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L137" class="lean_decl">CollatzMapBasics.Base3div2.lsd_U_even</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>When \(n\) is even, \(\operatorname {lsd}(U(n)) = 2\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000289">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\(U(n) = (3n+2)/2\), so \(\operatorname {lsd}(U(n)) = (3n+2) \bmod 3 = 2\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:U_pos">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">188</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:U_pos">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000290"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L141" class="lean_decl">CollatzMapBasics.Base3div2.U_pos</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), \(U(n) \ge 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000290">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>In both cases \((3n+2)/2 \ge 1\) and \((3n+1)/2 \ge 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:digits32_U">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">189</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:digits32_U">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000291"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+          <li><a href="sect0023.html#lemma:parent_U">Lemma 185</a></li>
+          
+          <li><a href="sect0023.html#lemma:lsd_U_odd">Lemma 186</a></li>
+          
+          <li><a href="sect0023.html#lemma:lsd_U_even">Lemma 187</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂_U#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂_U</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), the base-\(3/2\) digits of \(U(n)\) are obtained by prepending \(1\) (if \(n\) is odd) or \(2\) (if \(n\) is even) to \(\langle n \rangle \): </p>
+<div class="displaymath" id="a0000000292">
+  \[  \langle U(n) \rangle = \begin{cases}  1 :: \langle n \rangle &  \text{if } n \text{ is odd}, \\ 2 :: \langle n \rangle &  \text{if } n \text{ is even}. \end{cases}  \]
+</div>
+<p> This is Proposition&#160;3.9 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span> (combined form). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000291">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(U(n) \ge 1\) (Lemma&#160;<a href="sect0023.html#lemma:U_pos">188</a>), we can unfold the recursive definition to get \(\langle U(n) \rangle = \operatorname {lsd}(U(n)) :: \langle \operatorname {parent}(U(n)) \rangle \). By Lemma&#160;<a href="sect0023.html#lemma:parent_U">185</a>, \(\operatorname {parent}(U(n)) = n\). The digit is \(1\) when \(n\) is odd (Lemma&#160;<a href="sect0023.html#lemma:lsd_U_odd">186</a>) and \(2\) when \(n\) is even (Lemma&#160;<a href="sect0023.html#lemma:lsd_U_even">187</a>). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:digits32_T_odd">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">190</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:digits32_T_odd">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000293"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+          <li><a href="sect0010.html#def:T">Definition 74</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂_T_odd#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂_T_odd</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For odd \(n\) (Corollary&#160;3.2 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>), </p>
+<div class="displaymath" id="a0000000294">
+  \[  \langle T(n) \rangle = 1 :: \langle n \rangle .  \]
+</div>
+<p> That is, the base-\(3/2\) representation of \(T(n) = (3n+1)/2\) is obtained by prepending digit&#160;\(1\) to \(\langle n \rangle \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000293">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(n\) is odd, \(T(n) = (3n+1)/2 \ge 1\). We verify that \(\operatorname {lsd}(T(n)) = 1\) and \(\operatorname {parent}(T(n)) = n\) by direct arithmetic. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:digits32_extend_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">191</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:digits32_extend_zero">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000295"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂_extend_zero#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂_extend_zero</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For even \(n \ge 1\) (Proposition&#160;3.1, digit&#160;\(0\)), </p>
+<div class="displaymath" id="a0000000296">
+  \[  \langle 3n/2 \rangle = 0 :: \langle n \rangle .  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000295">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We verify \(\operatorname {lsd}(3n/2) = 0\) and \(\operatorname {parent}(3n/2) = n\) by the arithmetic of even&#160;\(n\): since \(n\) is even, \(3n/2\) is an integer and \(2 \cdot (3n/2) = 3n\), whose remainder modulo \(3\) is \(0\) and whose quotient by \(3\) is \(n\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:digits32_extend_two">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">192</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:digits32_extend_two">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000297"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂_extend_two#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂_extend_two</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For even \(n\) (Proposition&#160;3.1, digit&#160;\(2\)), </p>
+<div class="displaymath" id="a0000000298">
+  \[  \langle (3n+2)/2 \rangle = 2 :: \langle n \rangle .  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000297">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(n\) is even, \((3n+2)/2\) is a positive integer. We verify \(\operatorname {lsd}((3n+2)/2) = 2\) and \(\operatorname {parent}((3n+2)/2) = n\) by computing \(2 \cdot (3n+2)/2 = 3n + 2\), which gives remainder \(2\) and quotient \(n\) upon division by \(3\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:odd_of_lsd_one">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">193</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:odd_of_lsd_one">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000299"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+          <li><a href="sect0023.html#lemma:lsd_mod_two_eq_parent">Lemma 176</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L200" class="lean_decl">CollatzMapBasics.Base3div2.odd_of_lsd_one</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(\operatorname {lsd}(n) = 1\), then \(\operatorname {parent}(n)\) is odd. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000299">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(\operatorname {lsd}(n) \equiv \operatorname {parent}(n) \pmod{2}\) (Lemma&#160;<a href="sect0023.html#lemma:lsd_mod_two_eq_parent">176</a>) and \(\operatorname {lsd}(n) = 1\), we have \(\operatorname {parent}(n) \bmod 2 = 1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:even_of_lsd_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">194</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:even_of_lsd_zero">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000300"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+          <li><a href="sect0023.html#lemma:lsd_mod_two_eq_parent">Lemma 176</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L204" class="lean_decl">CollatzMapBasics.Base3div2.even_of_lsd_zero</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(\operatorname {lsd}(n) = 0\), then \(\operatorname {parent}(n)\) is even. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000300">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Same reasoning: \(\operatorname {lsd}(n) = 0\) and the parity congruence give \(\operatorname {parent}(n) \bmod 2 = 0\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:even_of_lsd_two">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">195</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:even_of_lsd_two">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000301"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+          <li><a href="sect0023.html#lemma:lsd_mod_two_eq_parent">Lemma 176</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L208" class="lean_decl">CollatzMapBasics.Base3div2.even_of_lsd_two</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(\operatorname {lsd}(n) = 2\), then \(\operatorname {parent}(n)\) is even. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000301">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(2 \bmod 2 = 0\), the parity congruence gives \(\operatorname {parent}(n) \bmod 2 = 0\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:U_iter">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">196</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:U_iter">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U">Definition 182</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L214" class="lean_decl">CollatzMapBasics.Base3div2.U_iter</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The \(k\)-fold iteration of \(U\) is defined by \(U^0(n) = n\) and \(U^{k+1}(n) = U(U^k(n))\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:sat">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">197</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:sat">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U_iter">Definition 196</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L223" class="lean_decl">CollatzMapBasics.Base3div2.sat</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>saturated number</em> \(\operatorname {sat}(k) = U^k(0)\) is the largest natural number whose base-\(3/2\) representation has length&#160;\(k\) (Proposition&#160;3.10 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>). </p>
+
+  </div>
+</div>
+<p>The first few values are \(\operatorname {sat}(0)=0\), \(\operatorname {sat}(1)=1\), \(\operatorname {sat}(2)=2\), \(\operatorname {sat}(3)=4\), \(\operatorname {sat}(4)=7\), \(\operatorname {sat}(5)=11\), \(\operatorname {sat}(6)=17\), \(\operatorname {sat}(7)=26\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:digits32_sat_no_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">198</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:digits32_sat_no_zero">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000302"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+          <li><a href="sect0023.html#def:sat">Definition 197</a></li>
+          
+          <li><a href="sect0023.html#lemma:digits32_U">Lemma 189</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.digits₃₂_sat_no_zero#doc" class="lean_decl">CollatzMapBasics.Base3div2.digits₃₂_sat_no_zero</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For \(k \ge 1\), every digit in \(\langle \operatorname {sat}(k) \rangle \) is either \(1\) or \(2\) (no digit \(0\) appears). This is Proposition&#160;3.5 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000302">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By induction on \(k\). For \(k = 0\) the claim is vacuously true (the list is empty). For \(k + 1\), we have \(\operatorname {sat}(k+1) = U(\operatorname {sat}(k))\), so by Lemma&#160;<a href="sect0023.html#lemma:digits32_U">189</a>, \(\langle \operatorname {sat}(k+1) \rangle \) is \(\langle \operatorname {sat}(k) \rangle \) with either \(1\) or \(2\) prepended. The prepended digit is in \(\{ 1,2\} \) by construction, and the remaining digits are in \(\{ 1,2\} \) by the induction hypothesis (or are empty when \(k = 0\)). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:sat_digits_prefix">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">199</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:sat_digits_prefix">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000303"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:sat">Definition 197</a></li>
+          
+          <li><a href="sect0023.html#lemma:digits32_U">Lemma 189</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L254" class="lean_decl">CollatzMapBasics.Base3div2.sat_digits_prefix</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(k \in \mathbb {N}\) (Proposition&#160;3.6 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>), </p>
+<div class="displaymath" id="a0000000304">
+  \[  \langle \operatorname {sat}(k+1) \rangle = \begin{cases}  1 :: \langle \operatorname {sat}(k) \rangle &  \text{if } \operatorname {sat}(k) \text{ is odd}, \\ 2 :: \langle \operatorname {sat}(k) \rangle &  \text{if } \operatorname {sat}(k) \text{ is even}. \end{cases}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000303">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is a direct application of Lemma&#160;<a href="sect0023.html#lemma:digits32_U">189</a> to \(n = \operatorname {sat}(k)\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:sigma">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">200</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:sigma">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.σ#doc" class="lean_decl">CollatzMapBasics.Base3div2.σ</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>cyclic permutation</em> \(\sigma = (2\; 1\; 0)\) on the digit set \(\{ 0,1,2\} \): </p>
+<div class="displaymath" id="a0000000305">
+  \[  \sigma (0) = 2, \quad \sigma (1) = 0, \quad \sigma (2) = 1.  \]
+</div>
+<p> Formally, \(\sigma (d) = (d + 2) \bmod 3\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:splitAtFirstZero">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">201</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:splitAtFirstZero">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L283" class="lean_decl">CollatzMapBasics.Base3div2.splitAtFirstZero</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>Given a digit list (least-significant first), \(\operatorname {splitAtFirstZero}\) returns the pair \((\mathit{prefix}, \mathit{suffix})\) where \(\mathit{prefix}\) consists of all nonzero digits before the first \(0\), and \(\mathit{suffix}\) consists of the digits after the first \(0\). If no \(0\) is present, the suffix is empty. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:lsd_succ">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">202</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:lsd_succ">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000306"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+          <li><a href="sect0023.html#def:sigma">Definition 200</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L268" class="lean_decl">CollatzMapBasics.Base3div2.lsd_succ</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \ge 1\), </p>
+<div class="displaymath" id="a0000000307">
+  \[  \operatorname {lsd}(n+1) = \sigma (\operatorname {lsd}(n)).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000306">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Direct arithmetic: \(\operatorname {lsd}(n+1) = (2(n+1)) \bmod 3 = (2n + 2) \bmod 3 = ((2n) \bmod 3 + 2) \bmod 3 = \sigma (\operatorname {lsd}(n))\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:parent_succ_of_lsd_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">203</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:parent_succ_of_lsd_zero">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000308"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L272" class="lean_decl">CollatzMapBasics.Base3div2.parent_succ_of_lsd_zero</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(n \ge 1\) and \(\operatorname {lsd}(n) = 0\), then \(\operatorname {parent}(n+1) = \operatorname {parent}(n)\) (no carry). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000308">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>When \(\operatorname {lsd}(n) = 0\), we have \(2n \equiv 0 \pmod{3}\), so \(\lfloor 2(n+1)/3 \rfloor = \lfloor (2n+2)/3 \rfloor = \lfloor 2n/3 \rfloor \) since the remainder goes from \(0\) to \(2\) without crossing \(3\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:parent_succ_of_lsd_pos">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">204</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:parent_succ_of_lsd_pos">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000309"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:parent">Definition 172</a></li>
+          
+          <li><a href="sect0023.html#def:lsd">Definition 171</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L277" class="lean_decl">CollatzMapBasics.Base3div2.parent_succ_of_lsd_pos</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(n \ge 1\) and \(\operatorname {lsd}(n) \ne 0\), then \(\operatorname {parent}(n+1) = \operatorname {parent}(n) + 1\) (carry propagates). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000309">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>When \(\operatorname {lsd}(n) \in \{ 1, 2\} \), we have \(2n \bmod 3 \ge 1\), so adding \(2\) causes the quotient \(\lfloor 2n/3 \rfloor \) to increase by \(1\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:odometer">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">205</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:odometer">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000310"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+          <li><a href="sect0023.html#def:sigma">Definition 200</a></li>
+          
+          <li><a href="sect0023.html#def:splitAtFirstZero">Definition 201</a></li>
+          
+          <li><a href="sect0023.html#lemma:lsd_succ">Lemma 202</a></li>
+          
+          <li><a href="sect0023.html#lemma:parent_succ_of_lsd_zero">Lemma 203</a></li>
+          
+          <li><a href="sect0023.html#lemma:parent_succ_of_lsd_pos">Lemma 204</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L306" class="lean_decl">CollatzMapBasics.Base3div2.odometer</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p><b class="bfseries">(Proposition&#160;2.3, Odometer.)</b> Let \(\langle n \rangle = u\,  0\,  v\) where \(v \in \{ 1,2\} ^*\) (i.e. \(v\) is the block of nonzero digits before the first&#160;\(0\), reading from the least-significant end, and \(u\) is the part after the&#160;\(0\)). Then </p>
+<div class="displaymath" id="a0000000311">
+  \[  \langle n + 1 \rangle = u\;  2\;  v^\sigma ,  \]
+</div>
+<p> where \(v^\sigma \) denotes the list obtained by applying \(\sigma \) to each digit of \(v\). In other words, incrementing by one applies \(\sigma \) to all leading nonzero digits (carrying), replaces the first \(0\) with \(2\), and leaves the remaining digits unchanged. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000310">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By strong induction on \(n\). </p>
+<p><em>Base case (\(n = 0\)):</em> \(\langle 0 \rangle = []\) splits trivially, and \(\langle 1 \rangle = [2]\) (since \(\operatorname {lsd}(1) = 2\) and \(\operatorname {parent}(1) = 0\)). The formula gives \([] \cdot 2 \cdot [] = [2]\). </p>
+<p><em>Inductive step (\(n \ge 1\)):</em> Write \(\langle n \rangle = \operatorname {lsd}(n) :: \langle \operatorname {parent}(n) \rangle \). </p>
+<p><em>Case \(\operatorname {lsd}(n) = 0\) (no carry):</em> The split gives prefix \(= []\) and suffix \(= \langle \operatorname {parent}(n) \rangle \). By Lemma&#160;<a href="sect0023.html#lemma:lsd_succ">202</a>, \(\operatorname {lsd}(n+1) = \sigma (0) = 2\). By Lemma&#160;<a href="sect0023.html#lemma:parent_succ_of_lsd_zero">203</a>, \(\operatorname {parent}(n+1) = \operatorname {parent}(n)\). So \(\langle n+1 \rangle = 2 :: \langle \operatorname {parent}(n) \rangle \), which matches the formula. </p>
+<p><em>Case \(\operatorname {lsd}(n) \ne 0\) (carry):</em> The split prefix is \(\operatorname {lsd}(n) :: (\text{prefix from rest})\). By Lemma&#160;<a href="sect0023.html#lemma:lsd_succ">202</a>, the first digit becomes \(\sigma (\operatorname {lsd}(n))\). By Lemma&#160;<a href="sect0023.html#lemma:parent_succ_of_lsd_pos">204</a>, \(\operatorname {parent}(n+1) = \operatorname {parent}(n) + 1\). The induction hypothesis (applied to \(\operatorname {parent}(n) {\lt} n\)) handles the remaining digits. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:scaledEval">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">206</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:scaledEval">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L335" class="lean_decl">CollatzMapBasics.Base3div2.scaledEval</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>scaled evaluation</em> of a digit list \([a_0, \ldots , a_k]\) is </p>
+<div class="displaymath" id="a0000000312">
+  \[  \operatorname {scaledEval}([a_0, \ldots , a_k]) = \sum _{i=0}^{k} 2^{k-i} \cdot 3^i \cdot a_i.  \]
+</div>
+<p> Recursively: \(\operatorname {scaledEval}([]) = 0\) and \(\operatorname {scaledEval}(a :: \mathit{rest}) = 2^{|\mathit{rest}|} \cdot a + 3 \cdot \operatorname {scaledEval}(\mathit{rest})\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:scaledEval_digits32">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">207</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:scaledEval_digits32">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000313"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:scaledEval">Definition 206</a></li>
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+          <li><a href="sect0023.html#lemma:two_mul_eq">Lemma 173</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://rwst.github.io/Collatz-Map-Basics/docs/find/?pattern=CollatzMapBasics.Base3div2.scaledEval_digits₃₂#doc" class="lean_decl">CollatzMapBasics.Base3div2.scaledEval_digits₃₂</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>For all \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000314">
+  \[  \operatorname {scaledEval}(\operatorname {digits}_{3/2}(n)) = 2^{|\operatorname {digits}_{3/2}(n)|} \cdot n.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000313">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By strong induction on \(n\). For \(n = 0\), both sides are \(0\). For \(n \ge 1\), let \(L = |\operatorname {digits}_{3/2}(\operatorname {parent}(n))|\). Then \(|\operatorname {digits}_{3/2}(n)| = L + 1\) and: </p>
+<div class="displaymath" id="a0000000315">
+  \begin{align*}  \operatorname {scaledEval}(\langle n \rangle ) & = 2^L \cdot \operatorname {lsd}(n) + 3 \cdot \operatorname {scaledEval}(\langle \operatorname {parent}(n) \rangle ) \\ & = 2^L \cdot \operatorname {lsd}(n) + 3 \cdot 2^L \cdot \operatorname {parent}(n) \tag {by IH} \\ & = 2^L \cdot (\operatorname {lsd}(n) + 3 \cdot \operatorname {parent}(n)) \\ & = 2^L \cdot 2n \tag {by Lemma~ \ref{lemma:two_mul_eq}} \\ & = 2^{L+1} \cdot n. \qedhere \end{align*}
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:parity_criterion">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">208</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:parity_criterion">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000316"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:scaledEval">Definition 206</a></li>
+          
+          <li><a href="sect0023.html#def:digits32">Definition 177</a></li>
+          
+          <li><a href="sect0023.html#lemma:scaledEval_digits32">Lemma 207</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/Base3div2/Base3div2Basics.lean#L364" class="lean_decl">CollatzMapBasics.Base3div2.parity_criterion</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p><b class="bfseries">(Proposition&#160;4.5 of&#160;<span class="cite">
+	[
+	<a href="sect0024.html#eli25" >2</a>
+	]
+</span>.)</b> Let \(n \ge 1\) with \(\langle n \rangle = a_k \cdots a_0\) having \(k+1\) digits. Then \(n\) is even if and only if </p>
+<div class="displaymath" id="a0000000317">
+  \[  \sum _{i=0}^{k} 2^{k-i} \cdot 3^i \cdot a_i \equiv 0 \pmod{2^{k+2}}.  \]
+</div>
+<p> Equivalently, using the scaled evaluation: </p>
+<div class="displaymath" id="a0000000318">
+  \[  n \bmod 2 = 0 \quad \iff \quad \operatorname {scaledEval}(\langle n \rangle ) \bmod 2^{L+1} = 0,  \]
+</div>
+<p> where \(L = |\langle n \rangle |\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000316">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By Lemma&#160;<a href="sect0023.html#lemma:scaledEval_digits32">207</a>, \(\operatorname {scaledEval}(\langle n \rangle ) = 2^L \cdot n\), so modulo \(2^{L+1} = 2^L \cdot 2\): </p>
+<div class="displaymath" id="a0000000319">
+  \[  2^L \cdot n \bmod (2^L \cdot 2) = 2^L \cdot (n \bmod 2).  \]
+</div>
+<p> The left-hand side is \(0\) if and only if \(n \bmod 2 = 0\) (since \(2^L \ge 1\), so \(2^L \cdot (n \bmod 2) = 0\) implies \(n \bmod 2 = 0\)). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:numOddU">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">209</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:numOddU">#</a>
+    
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/UniformCorrespondence.lean#L337" class="lean_decl">CollatzMapBasics.numOddU</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The number of odd values among the first \(k\) terms of the \(U\)-orbit starting from \(n_0\) is </p>
+<div class="displaymath" id="a0000000320">
+  \[  \operatorname {numOddU}(k, n_0) = \# \bigl\{ j \in \{ 0, \ldots , k-1\}  : U^j(n_0) \text{ is odd}\bigr\} .  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:U_orbit_density">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">210</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:U_orbit_density">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:numOddU">Definition 209</a></li>
+          
+          <li><a href="sect0023.html#def:U_iter">Definition 196</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/UniformCorrespondence.lean#L342" class="lean_decl">CollatzMapBasics.U_orbit_density</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>\(U\)-orbit density conjecture</em> for a fixed starting point \(n_0\) asserts that </p>
+<div class="displaymath" id="a0000000321">
+  \[  \lim _{k \to \infty } \frac{\operatorname {numOddU}(k, n_0)}{k} = \frac{1}{2}.  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:conjecture_U_orbit_density">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">211</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#def:conjecture_U_orbit_density">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U_orbit_density">Definition 210</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/UniformCorrespondence.lean#L347" class="lean_decl">CollatzMapBasics.conjecture_U_orbit_density</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The <em>universal \(U\)-orbit density conjecture</em> asserts that \(U\text{-orbit density}(n_0)\) holds for every \(n_0 \in \mathbb {N}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lemma:conjecture_4_2_eq_U_orbit_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">212</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0023.html#lemma:conjecture_4_2_eq_U_orbit_zero">#</a>
+    
+    <a class="icon proof" href="sect0023.html#a0000000322"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0023.html#def:U_orbit_density">Definition 210</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <div class="lean_declarations">
+        <strong>Lean declarations:</strong>
+        <ul class="uses">
+          
+          <li><a href="https://github.com/rwst/Collatz-Map-Basics/blob/cac3fd57b008b2ac2b7adaba5cc584226f5c8744/CollatzMapBasics/UniformCorrespondence.lean#L351" class="lean_decl">CollatzMapBasics.conjecture_4_2_eq_U_orbit_zero</a></li>
+          
+        </ul>
+    </div>
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Conjecture&#160;4.2 (Definition&#160;??) is equivalent to the \(U\)-orbit density conjecture for \(n_0 = 0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000322">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(\operatorname {sat}(j) = U^j(0)\), the count of odd values \(\operatorname {numOnesSat}(k)\) is exactly \(\operatorname {numOddU}(k, 0)\). The two statements are definitionally equal. </p>
+
+  </div>
+</div>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -174,7 +2900,9 @@
 
   <a href="sec-uniform_distribution_correspondence.html" title="Uniform Distribution Correspondence"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="index.html" title="Collatz Map Basics"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="sect0022.html" title="Eliahou & Verger-Gaugry (2025)"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0024.html" title="Literature"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>
 </nav>
 
