@@ -1,0 +1,538 @@
+
+\subsection{The Number System in Rational Base \texorpdfstring{$3/2$}{3/2}}
+\label{sec:base3div2}
+
+The following definitions and results formalise portions of the paper by
+Eliahou and Verger-Gaugry~\cite{eli25}, which studies the representation
+of natural numbers in the rational base $3/2$ and its connections to the
+Collatz problem.  Every natural number $n$ admits a unique representation
+\[
+  n = \frac{1}{2}\sum_{i=0}^{k} a_i \Bigl(\frac{3}{2}\Bigr)^{\!i},
+  \qquad a_i \in \{0,1,2\},
+\]
+and the digits $a_i$ can be extracted by repeated division of $2n$ by $3$.
+
+% ============================================================
+% Digit extraction
+% ============================================================
+
+\begin{definition}\label{def:lsd}\lean{CollatzMapBasics.Base3div2.lsd}\leanok
+The \emph{least-significant digit} of $n$ in rational base $3/2$ is
+\[
+  \operatorname{lsd}(n) = (2n) \bmod 3.
+\]
+This is the digit $a_0$ of Proposition~2.2 of~\cite{eli25}.
+\end{definition}
+
+\begin{definition}\label{def:parent}\lean{CollatzMapBasics.Base3div2.parent}\leanok
+The \emph{parent} of $n$ in the base-$3/2$ digit tree is
+\[
+  \operatorname{parent}(n) = \lfloor 2n / 3 \rfloor.
+\]
+Removing the least-significant digit from $\langle n \rangle$ gives
+$\langle \operatorname{parent}(n) \rangle$.
+\end{definition}
+
+\begin{lemma}\label{lemma:two_mul_eq}\lean{CollatzMapBasics.Base3div2.two_mul_eq}\uses{def:lsd,def:parent}\leanok
+For all $n \in \mathbb{N}$,
+\[
+  2n = 3 \cdot \operatorname{parent}(n) + \operatorname{lsd}(n).
+\]
+\end{lemma}
+\begin{proof}\leanok
+This is the division algorithm applied to $2n$ divided by $3$.
+\end{proof}
+
+\begin{lemma}\label{lemma:lsd_lt_three}\lean{CollatzMapBasics.Base3div2.lsd_lt_three}\uses{def:lsd}\leanok
+For all $n \in \mathbb{N}$, $\operatorname{lsd}(n) < 3$.
+\end{lemma}
+\begin{proof}\leanok
+By the definition of the remainder modulo $3$.
+\end{proof}
+
+\begin{lemma}\label{lemma:parent_lt}\lean{CollatzMapBasics.Base3div2.parent_lt}\uses{def:parent}\leanok
+For all $n \ge 1$, $\operatorname{parent}(n) < n$.
+\end{lemma}
+\begin{proof}\leanok
+We have $\operatorname{parent}(n) = \lfloor 2n/3 \rfloor \le 2n/3 < n$ whenever $n \ge 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:lsd_mod_two_eq_parent}\lean{CollatzMapBasics.Base3div2.lsd_mod_two_eq_parent}\uses{def:lsd,def:parent}\leanok
+For all $n \in \mathbb{N}$,
+\[
+  \operatorname{lsd}(n) \equiv \operatorname{parent}(n) \pmod{2}.
+\]
+This is part of Proposition~2.2 of~\cite{eli25}.
+\end{lemma}
+\begin{proof}\leanok
+From $2n = 3 \cdot \operatorname{parent}(n) + \operatorname{lsd}(n)$, reducing modulo $2$
+gives $0 \equiv \operatorname{parent}(n) + \operatorname{lsd}(n) \pmod{2}$.
+\end{proof}
+
+% ============================================================
+% Representation: digits in base 3/2
+% ============================================================
+
+\begin{definition}\label{def:digits32}\lean{CollatzMapBasics.Base3div2.digits₃₂}\uses{def:lsd,def:parent}\leanok
+The \emph{base-$3/2$ representation} of $n$, written $\langle n \rangle$,
+is the list of digits (least-significant first) defined recursively:
+\[
+  \operatorname{digits}_{3/2}(n) =
+  \begin{cases}
+    [] & \text{if } n = 0, \\
+    \operatorname{lsd}(n) :: \operatorname{digits}_{3/2}(\operatorname{parent}(n)) & \text{if } n \ge 1.
+  \end{cases}
+\]
+Termination is guaranteed by Lemma~\ref{lemma:parent_lt}.
+\end{definition}
+
+\begin{lemma}\label{lemma:mem_digits32_lt_three}\lean{CollatzMapBasics.Base3div2.mem_digits₃₂_lt_three}\uses{def:digits32}\leanok
+Every digit in $\operatorname{digits}_{3/2}(n)$ is less than $3$.
+\end{lemma}
+\begin{proof}\leanok
+By strong induction on $n$.  If $n = 0$ the digit list is empty.
+Otherwise the first digit is $\operatorname{lsd}(n) < 3$
+(Lemma~\ref{lemma:lsd_lt_three}), and the remaining digits belong to
+$\operatorname{digits}_{3/2}(\operatorname{parent}(n))$, which satisfy
+the bound by the induction hypothesis (since $\operatorname{parent}(n) < n$).
+\end{proof}
+
+\begin{lemma}\label{lemma:digits32_length_eq_zero_iff}\lean{CollatzMapBasics.Base3div2.digits₃₂_length_eq_zero_iff}\uses{def:digits32}\leanok
+$|\operatorname{digits}_{3/2}(n)| = 0$ if and only if $n = 0$.
+\end{lemma}
+\begin{proof}\leanok
+If $n = 0$ the list is empty.  Conversely, if $n \ge 1$ the list has the
+form $\operatorname{lsd}(n) :: (\cdots)$, whose length is at least $1$.
+\end{proof}
+
+% ============================================================
+% Evaluation
+% ============================================================
+
+\begin{definition}\label{def:eval32}\lean{CollatzMapBasics.Base3div2.eval₃₂}\leanok
+The \emph{evaluation} of a list of base-$3/2$ digits (least-significant first) is
+\[
+  \operatorname{eval}_{3/2}([]) = 0, \qquad
+  \operatorname{eval}_{3/2}(a :: \mathit{rest}) = \frac{a + 3 \cdot \operatorname{eval}_{3/2}(\mathit{rest})}{2}.
+\]
+For admissible digit lists (those produced by $\operatorname{digits}_{3/2}$), the
+division is always exact.
+\end{definition}
+
+\begin{lemma}\label{lemma:eval32_digits32}\lean{CollatzMapBasics.Base3div2.eval₃₂_digits₃₂}\uses{def:eval32,def:digits32}\leanok
+For all $n \in \mathbb{N}$,
+\[
+  \operatorname{eval}_{3/2}(\operatorname{digits}_{3/2}(n)) = n.
+\]
+\end{lemma}
+\begin{proof}\leanok
+By strong induction on $n$.  For $n = 0$ both sides are $0$.  For $n \ge 1$:
+\begin{align*}
+  \operatorname{eval}_{3/2}(\operatorname{lsd}(n) :: \operatorname{digits}_{3/2}(\operatorname{parent}(n)))
+  &= \frac{\operatorname{lsd}(n) + 3 \cdot \operatorname{parent}(n)}{2}
+    \tag{by the induction hypothesis} \\
+  &= \frac{2n}{2} = n,
+    \tag{by Lemma~\ref{lemma:two_mul_eq}}
+\end{align*}
+where the division is exact since $\operatorname{lsd}(n) + 3 \cdot \operatorname{parent}(n) = 2n$.
+\end{proof}
+
+% ============================================================
+% The function U (Notation 3.7)
+% ============================================================
+
+\begin{definition}\label{def:U}\lean{CollatzMapBasics.Base3div2.U}\leanok
+The function $U : \mathbb{N} \to \mathbb{N}$ (Notation~3.7 of~\cite{eli25}) is defined by
+\[
+  U(n) =
+  \begin{cases}
+    (3n + 2)/2 & \text{if } n \text{ is even}, \\
+    (3n + 1)/2 & \text{if } n \text{ is odd}.
+  \end{cases}
+\]
+Equivalently, $U(n) = (3n + 2 - (n \bmod 2))/2$.
+\end{definition}
+
+\begin{lemma}\label{lemma:U_odd_eq_T}\lean{CollatzMapBasics.Base3div2.U_odd_eq_T}\uses{def:U,def:T}\leanok
+When $n$ is odd, $U(n) = T(n)$.
+\end{lemma}
+\begin{proof}\leanok
+Both evaluate to $(3n + 1)/2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:U_mod_two}\lean{CollatzMapBasics.Base3div2.U_mod_two}\uses{def:U,def:T}\leanok
+For all $n \in \mathbb{N}$,
+\[
+  U(n) \equiv T(n) + n + 1 \pmod{2}.
+\]
+This is Remark~3.8 of~\cite{eli25}.
+\end{lemma}
+\begin{proof}\leanok
+Split into cases according to the parity of $n$ and verify by direct computation:
+\begin{itemize}
+  \item If $n = 2k$, then $U(n) = 3k+1$ and $T(n) = k$, so $U(n) \bmod 2 = (k+1) \bmod 2 = (k + 2k + 1) \bmod 2 = (T(n) + n + 1) \bmod 2$.
+  \item If $n = 2k+1$, then $U(n) = 3k+2$ and $T(n) = 3k+2$, and again both sides match modulo~$2$.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}\label{lemma:parent_U}\lean{CollatzMapBasics.Base3div2.parent_U}\uses{def:parent,def:U}\leanok
+For all $n \in \mathbb{N}$,
+\[
+  \operatorname{parent}(U(n)) = n.
+\]
+This is Proposition~3.9 of~\cite{eli25}.
+\end{lemma}
+\begin{proof}\leanok
+Split by parity of $n$ and verify the integer arithmetic:
+\begin{itemize}
+  \item If $n$ is even: $U(n) = (3n+2)/2$, so $\operatorname{parent}(U(n)) = \lfloor 2 \cdot (3n+2)/2 \,/\, 3 \rfloor = \lfloor (3n+2)/3 \rfloor = n$.
+  \item If $n$ is odd: $U(n) = (3n+1)/2$, so $\operatorname{parent}(U(n)) = \lfloor (3n+1)/3 \rfloor = n$.
+\end{itemize}
+\end{proof}
+
+\begin{lemma}\label{lemma:lsd_U_odd}\lean{CollatzMapBasics.Base3div2.lsd_U_odd}\uses{def:lsd,def:U}\leanok
+When $n$ is odd, $\operatorname{lsd}(U(n)) = 1$.
+\end{lemma}
+\begin{proof}\leanok
+$U(n) = (3n+1)/2$, so $\operatorname{lsd}(U(n)) = (2 \cdot (3n+1)/2) \bmod 3 = (3n+1) \bmod 3 = 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:lsd_U_even}\lean{CollatzMapBasics.Base3div2.lsd_U_even}\uses{def:lsd,def:U}\leanok
+When $n$ is even, $\operatorname{lsd}(U(n)) = 2$.
+\end{lemma}
+\begin{proof}\leanok
+$U(n) = (3n+2)/2$, so $\operatorname{lsd}(U(n)) = (3n+2) \bmod 3 = 2$.
+\end{proof}
+
+\begin{lemma}\label{lemma:U_pos}\lean{CollatzMapBasics.Base3div2.U_pos}\uses{def:U}\leanok
+For all $n \in \mathbb{N}$, $U(n) \ge 1$.
+\end{lemma}
+\begin{proof}\leanok
+In both cases $(3n+2)/2 \ge 1$ and $(3n+1)/2 \ge 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:digits32_U}\lean{CollatzMapBasics.Base3div2.digits₃₂_U}\uses{def:digits32,def:U,lemma:parent_U,lemma:lsd_U_odd,lemma:lsd_U_even}\leanok
+For all $n \in \mathbb{N}$, the base-$3/2$ digits of $U(n)$ are obtained by prepending
+$1$ (if $n$ is odd) or $2$ (if $n$ is even) to $\langle n \rangle$:
+\[
+  \langle U(n) \rangle =
+  \begin{cases}
+    1 :: \langle n \rangle & \text{if } n \text{ is odd}, \\
+    2 :: \langle n \rangle & \text{if } n \text{ is even}.
+  \end{cases}
+\]
+This is Proposition~3.9 of~\cite{eli25} (combined form).
+\end{lemma}
+\begin{proof}\leanok
+Since $U(n) \ge 1$ (Lemma~\ref{lemma:U_pos}), we can unfold the recursive definition
+to get $\langle U(n) \rangle = \operatorname{lsd}(U(n)) :: \langle \operatorname{parent}(U(n)) \rangle$.
+By Lemma~\ref{lemma:parent_U}, $\operatorname{parent}(U(n)) = n$.
+The digit is $1$ when $n$ is odd (Lemma~\ref{lemma:lsd_U_odd})
+and $2$ when $n$ is even (Lemma~\ref{lemma:lsd_U_even}).
+\end{proof}
+
+% ============================================================
+% Proposition 3.1: Extending admissible words
+% ============================================================
+
+\begin{lemma}\label{lemma:digits32_T_odd}\lean{CollatzMapBasics.Base3div2.digits₃₂_T_odd}\uses{def:digits32,def:T}\leanok
+For odd $n$ (Corollary~3.2 of~\cite{eli25}),
+\[
+  \langle T(n) \rangle = 1 :: \langle n \rangle.
+\]
+That is, the base-$3/2$ representation of $T(n) = (3n+1)/2$ is obtained by
+prepending digit~$1$ to $\langle n \rangle$.
+\end{lemma}
+\begin{proof}\leanok
+Since $n$ is odd, $T(n) = (3n+1)/2 \ge 1$.  We verify that
+$\operatorname{lsd}(T(n)) = 1$ and $\operatorname{parent}(T(n)) = n$
+by direct arithmetic.
+\end{proof}
+
+\begin{lemma}\label{lemma:digits32_extend_zero}\lean{CollatzMapBasics.Base3div2.digits₃₂_extend_zero}\uses{def:digits32}\leanok
+For even $n \ge 1$ (Proposition~3.1, digit~$0$),
+\[
+  \langle 3n/2 \rangle = 0 :: \langle n \rangle.
+\]
+\end{lemma}
+\begin{proof}\leanok
+We verify $\operatorname{lsd}(3n/2) = 0$ and $\operatorname{parent}(3n/2) = n$
+by the arithmetic of even~$n$: since $n$ is even, $3n/2$ is an integer
+and $2 \cdot (3n/2) = 3n$, whose remainder modulo $3$ is $0$ and
+whose quotient by $3$ is $n$.
+\end{proof}
+
+\begin{lemma}\label{lemma:digits32_extend_two}\lean{CollatzMapBasics.Base3div2.digits₃₂_extend_two}\uses{def:digits32}\leanok
+For even $n$ (Proposition~3.1, digit~$2$),
+\[
+  \langle (3n+2)/2 \rangle = 2 :: \langle n \rangle.
+\]
+\end{lemma}
+\begin{proof}\leanok
+Since $n$ is even, $(3n+2)/2$ is a positive integer.  We verify
+$\operatorname{lsd}((3n+2)/2) = 2$ and $\operatorname{parent}((3n+2)/2) = n$
+by computing $2 \cdot (3n+2)/2 = 3n + 2$, which gives remainder $2$
+and quotient $n$ upon division by $3$.
+\end{proof}
+
+\begin{lemma}\label{lemma:odd_of_lsd_one}\lean{CollatzMapBasics.Base3div2.odd_of_lsd_one}\uses{def:lsd,def:parent,lemma:lsd_mod_two_eq_parent}\leanok
+If $\operatorname{lsd}(n) = 1$, then $\operatorname{parent}(n)$ is odd.
+\end{lemma}
+\begin{proof}\leanok
+Since $\operatorname{lsd}(n) \equiv \operatorname{parent}(n) \pmod{2}$
+(Lemma~\ref{lemma:lsd_mod_two_eq_parent}) and $\operatorname{lsd}(n) = 1$,
+we have $\operatorname{parent}(n) \bmod 2 = 1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:even_of_lsd_zero}\lean{CollatzMapBasics.Base3div2.even_of_lsd_zero}\uses{def:lsd,def:parent,lemma:lsd_mod_two_eq_parent}\leanok
+If $\operatorname{lsd}(n) = 0$, then $\operatorname{parent}(n)$ is even.
+\end{lemma}
+\begin{proof}\leanok
+Same reasoning: $\operatorname{lsd}(n) = 0$ and the parity congruence give
+$\operatorname{parent}(n) \bmod 2 = 0$.
+\end{proof}
+
+\begin{lemma}\label{lemma:even_of_lsd_two}\lean{CollatzMapBasics.Base3div2.even_of_lsd_two}\uses{def:lsd,def:parent,lemma:lsd_mod_two_eq_parent}\leanok
+If $\operatorname{lsd}(n) = 2$, then $\operatorname{parent}(n)$ is even.
+\end{lemma}
+\begin{proof}\leanok
+Since $2 \bmod 2 = 0$, the parity congruence gives
+$\operatorname{parent}(n) \bmod 2 = 0$.
+\end{proof}
+
+% ============================================================
+% Iterated U and saturated numbers
+% ============================================================
+
+\begin{definition}\label{def:U_iter}\lean{CollatzMapBasics.Base3div2.U_iter}\uses{def:U}\leanok
+The $k$-fold iteration of $U$ is defined by $U^0(n) = n$ and $U^{k+1}(n) = U(U^k(n))$.
+\end{definition}
+
+\begin{definition}\label{def:sat}\lean{CollatzMapBasics.Base3div2.sat}\uses{def:U_iter}\leanok
+The \emph{saturated number} $\operatorname{sat}(k) = U^k(0)$ is the largest
+natural number whose base-$3/2$ representation has length~$k$
+(Proposition~3.10 of~\cite{eli25}).
+\end{definition}
+
+The first few values are $\operatorname{sat}(0)=0$, $\operatorname{sat}(1)=1$,
+$\operatorname{sat}(2)=2$, $\operatorname{sat}(3)=4$, $\operatorname{sat}(4)=7$,
+$\operatorname{sat}(5)=11$, $\operatorname{sat}(6)=17$, $\operatorname{sat}(7)=26$.
+
+\begin{lemma}\label{lemma:digits32_sat_no_zero}\lean{CollatzMapBasics.Base3div2.digits₃₂_sat_no_zero}\uses{def:digits32,def:sat,lemma:digits32_U}\leanok
+For $k \ge 1$, every digit in $\langle \operatorname{sat}(k) \rangle$ is
+either $1$ or $2$ (no digit $0$ appears).
+This is Proposition~3.5 of~\cite{eli25}.
+\end{lemma}
+\begin{proof}\leanok
+By induction on $k$.  For $k = 0$ the claim is vacuously true (the list is empty).
+For $k + 1$, we have $\operatorname{sat}(k+1) = U(\operatorname{sat}(k))$, so by
+Lemma~\ref{lemma:digits32_U}, $\langle \operatorname{sat}(k+1) \rangle$
+is $\langle \operatorname{sat}(k) \rangle$ with either $1$ or $2$
+prepended.  The prepended digit is in $\{1,2\}$ by construction, and the
+remaining digits are in $\{1,2\}$ by the induction hypothesis (or are
+empty when $k = 0$).
+\end{proof}
+
+\begin{lemma}\label{lemma:sat_digits_prefix}\lean{CollatzMapBasics.Base3div2.sat_digits_prefix}\uses{def:sat,lemma:digits32_U}\leanok
+For all $k \in \mathbb{N}$ (Proposition~3.6 of~\cite{eli25}),
+\[
+  \langle \operatorname{sat}(k+1) \rangle =
+  \begin{cases}
+    1 :: \langle \operatorname{sat}(k) \rangle & \text{if } \operatorname{sat}(k) \text{ is odd}, \\
+    2 :: \langle \operatorname{sat}(k) \rangle & \text{if } \operatorname{sat}(k) \text{ is even}.
+  \end{cases}
+\]
+\end{lemma}
+\begin{proof}\leanok
+This is a direct application of Lemma~\ref{lemma:digits32_U} to
+$n = \operatorname{sat}(k)$.
+\end{proof}
+
+% ============================================================
+% The odometer (Proposition 2.3)
+% ============================================================
+
+\begin{definition}\label{def:sigma}\lean{CollatzMapBasics.Base3div2.σ}\leanok
+The \emph{cyclic permutation} $\sigma = (2\;1\;0)$ on the digit set $\{0,1,2\}$:
+\[
+  \sigma(0) = 2, \quad \sigma(1) = 0, \quad \sigma(2) = 1.
+\]
+Formally, $\sigma(d) = (d + 2) \bmod 3$.
+\end{definition}
+
+\begin{definition}\label{def:splitAtFirstZero}\lean{CollatzMapBasics.Base3div2.splitAtFirstZero}\leanok
+Given a digit list (least-significant first),
+$\operatorname{splitAtFirstZero}$ returns the pair
+$(\mathit{prefix}, \mathit{suffix})$ where $\mathit{prefix}$ consists of
+all nonzero digits before the first $0$, and $\mathit{suffix}$ consists
+of the digits after the first $0$.  If no $0$ is present, the suffix is
+empty.
+\end{definition}
+
+\begin{lemma}\label{lemma:lsd_succ}\lean{CollatzMapBasics.Base3div2.lsd_succ}\uses{def:lsd,def:sigma}\leanok
+For all $n \ge 1$,
+\[
+  \operatorname{lsd}(n+1) = \sigma(\operatorname{lsd}(n)).
+\]
+\end{lemma}
+\begin{proof}\leanok
+Direct arithmetic: $\operatorname{lsd}(n+1) = (2(n+1)) \bmod 3 = (2n + 2) \bmod 3 = ((2n) \bmod 3 + 2) \bmod 3 = \sigma(\operatorname{lsd}(n))$.
+\end{proof}
+
+\begin{lemma}\label{lemma:parent_succ_of_lsd_zero}\lean{CollatzMapBasics.Base3div2.parent_succ_of_lsd_zero}\uses{def:parent,def:lsd}\leanok
+If $n \ge 1$ and $\operatorname{lsd}(n) = 0$, then
+$\operatorname{parent}(n+1) = \operatorname{parent}(n)$ (no carry).
+\end{lemma}
+\begin{proof}\leanok
+When $\operatorname{lsd}(n) = 0$, we have $2n \equiv 0 \pmod{3}$, so
+$\lfloor 2(n+1)/3 \rfloor = \lfloor (2n+2)/3 \rfloor = \lfloor 2n/3 \rfloor$
+since the remainder goes from $0$ to $2$ without crossing $3$.
+\end{proof}
+
+\begin{lemma}\label{lemma:parent_succ_of_lsd_pos}\lean{CollatzMapBasics.Base3div2.parent_succ_of_lsd_pos}\uses{def:parent,def:lsd}\leanok
+If $n \ge 1$ and $\operatorname{lsd}(n) \ne 0$, then
+$\operatorname{parent}(n+1) = \operatorname{parent}(n) + 1$ (carry propagates).
+\end{lemma}
+\begin{proof}\leanok
+When $\operatorname{lsd}(n) \in \{1, 2\}$, we have $2n \bmod 3 \ge 1$, so adding $2$
+causes the quotient $\lfloor 2n/3 \rfloor$ to increase by $1$.
+\end{proof}
+
+\begin{lemma}\label{lemma:odometer}\lean{CollatzMapBasics.Base3div2.odometer}\uses{def:digits32,def:sigma,def:splitAtFirstZero,lemma:lsd_succ,lemma:parent_succ_of_lsd_zero,lemma:parent_succ_of_lsd_pos}\leanok
+\textbf{(Proposition~2.3, Odometer.)}
+Let $\langle n \rangle = u\, 0\, v$ where $v \in \{1,2\}^*$
+(i.e.\ $v$ is the block of nonzero digits before the first~$0$, reading
+from the least-significant end, and $u$ is the part after the~$0$).
+Then
+\[
+  \langle n + 1 \rangle = u\; 2\; v^\sigma,
+\]
+where $v^\sigma$ denotes the list obtained by applying $\sigma$ to each
+digit of $v$.  In other words, incrementing by one applies $\sigma$ to
+all leading nonzero digits (carrying), replaces the first $0$ with $2$,
+and leaves the remaining digits unchanged.
+\end{lemma}
+\begin{proof}\leanok
+By strong induction on $n$.
+
+\emph{Base case ($n = 0$):}
+$\langle 0 \rangle = []$ splits trivially, and $\langle 1 \rangle = [2]$
+(since $\operatorname{lsd}(1) = 2$ and $\operatorname{parent}(1) = 0$).
+The formula gives $[] \cdot 2 \cdot [] = [2]$.
+
+\emph{Inductive step ($n \ge 1$):}
+Write $\langle n \rangle = \operatorname{lsd}(n) :: \langle \operatorname{parent}(n) \rangle$.
+
+\emph{Case $\operatorname{lsd}(n) = 0$ (no carry):}
+The split gives prefix $= []$ and suffix $= \langle \operatorname{parent}(n) \rangle$.
+By Lemma~\ref{lemma:lsd_succ}, $\operatorname{lsd}(n+1) = \sigma(0) = 2$.
+By Lemma~\ref{lemma:parent_succ_of_lsd_zero}, $\operatorname{parent}(n+1) = \operatorname{parent}(n)$.
+So $\langle n+1 \rangle = 2 :: \langle \operatorname{parent}(n) \rangle$,
+which matches the formula.
+
+\emph{Case $\operatorname{lsd}(n) \ne 0$ (carry):}
+The split prefix is $\operatorname{lsd}(n) :: (\text{prefix from rest})$.
+By Lemma~\ref{lemma:lsd_succ}, the first digit becomes $\sigma(\operatorname{lsd}(n))$.
+By Lemma~\ref{lemma:parent_succ_of_lsd_pos}, $\operatorname{parent}(n+1) = \operatorname{parent}(n) + 1$.
+The induction hypothesis (applied to $\operatorname{parent}(n) < n$) handles
+the remaining digits.
+\end{proof}
+
+% ============================================================
+% Scaled evaluation and parity criterion (Proposition 4.5)
+% ============================================================
+
+\begin{definition}\label{def:scaledEval}\lean{CollatzMapBasics.Base3div2.scaledEval}\leanok
+The \emph{scaled evaluation} of a digit list $[a_0, \ldots, a_k]$ is
+\[
+  \operatorname{scaledEval}([a_0, \ldots, a_k])
+  = \sum_{i=0}^{k} 2^{k-i} \cdot 3^i \cdot a_i.
+\]
+Recursively: $\operatorname{scaledEval}([]) = 0$ and
+$\operatorname{scaledEval}(a :: \mathit{rest}) = 2^{|\mathit{rest}|} \cdot a + 3 \cdot \operatorname{scaledEval}(\mathit{rest})$.
+\end{definition}
+
+\begin{lemma}\label{lemma:scaledEval_digits32}\lean{CollatzMapBasics.Base3div2.scaledEval_digits₃₂}\uses{def:scaledEval,def:digits32,lemma:two_mul_eq}\leanok
+For all $n \in \mathbb{N}$,
+\[
+  \operatorname{scaledEval}(\operatorname{digits}_{3/2}(n))
+  = 2^{|\operatorname{digits}_{3/2}(n)|} \cdot n.
+\]
+\end{lemma}
+\begin{proof}\leanok
+By strong induction on $n$.  For $n = 0$, both sides are $0$.
+For $n \ge 1$, let $L = |\operatorname{digits}_{3/2}(\operatorname{parent}(n))|$.
+Then $|\operatorname{digits}_{3/2}(n)| = L + 1$ and:
+\begin{align*}
+  \operatorname{scaledEval}(\langle n \rangle)
+  &= 2^L \cdot \operatorname{lsd}(n) + 3 \cdot \operatorname{scaledEval}(\langle \operatorname{parent}(n) \rangle) \\
+  &= 2^L \cdot \operatorname{lsd}(n) + 3 \cdot 2^L \cdot \operatorname{parent}(n)
+    \tag{by IH} \\
+  &= 2^L \cdot (\operatorname{lsd}(n) + 3 \cdot \operatorname{parent}(n)) \\
+  &= 2^L \cdot 2n
+    \tag{by Lemma~\ref{lemma:two_mul_eq}} \\
+  &= 2^{L+1} \cdot n. \qedhere
+\end{align*}
+\end{proof}
+
+\begin{lemma}\label{lemma:parity_criterion}\lean{CollatzMapBasics.Base3div2.parity_criterion}\uses{def:scaledEval,def:digits32,lemma:scaledEval_digits32}\leanok
+\textbf{(Proposition~4.5 of~\cite{eli25}.)}
+Let $n \ge 1$ with $\langle n \rangle = a_k \cdots a_0$ having $k+1$ digits.
+Then $n$ is even if and only if
+\[
+  \sum_{i=0}^{k} 2^{k-i} \cdot 3^i \cdot a_i \equiv 0 \pmod{2^{k+2}}.
+\]
+Equivalently, using the scaled evaluation:
+\[
+  n \bmod 2 = 0 \quad \iff \quad
+  \operatorname{scaledEval}(\langle n \rangle) \bmod 2^{L+1} = 0,
+\]
+where $L = |\langle n \rangle|$.
+\end{lemma}
+\begin{proof}\leanok
+By Lemma~\ref{lemma:scaledEval_digits32},
+$\operatorname{scaledEval}(\langle n \rangle) = 2^L \cdot n$,
+so modulo $2^{L+1} = 2^L \cdot 2$:
+\[
+  2^L \cdot n \bmod (2^L \cdot 2) = 2^L \cdot (n \bmod 2).
+\]
+The left-hand side is $0$ if and only if $n \bmod 2 = 0$
+(since $2^L \ge 1$, so $2^L \cdot (n \bmod 2) = 0$ implies $n \bmod 2 = 0$).
+\end{proof}
+
+% ============================================================
+% U-orbit density
+% ============================================================
+
+\begin{definition}\label{def:numOddU}\lean{CollatzMapBasics.numOddU}\leanok
+The number of odd values among the first $k$ terms of the $U$-orbit starting
+from $n_0$ is
+\[
+  \operatorname{numOddU}(k, n_0)
+  = \#\bigl\{j \in \{0, \ldots, k-1\} : U^j(n_0) \text{ is odd}\bigr\}.
+\]
+\end{definition}
+
+\begin{definition}\label{def:U_orbit_density}\lean{CollatzMapBasics.U_orbit_density}\uses{def:numOddU,def:U_iter}\leanok
+The \emph{$U$-orbit density conjecture} for a fixed starting point $n_0$
+asserts that
+\[
+  \lim_{k \to \infty} \frac{\operatorname{numOddU}(k, n_0)}{k}
+  = \frac{1}{2}.
+\]
+\end{definition}
+
+\begin{definition}\label{def:conjecture_U_orbit_density}\lean{CollatzMapBasics.conjecture_U_orbit_density}\uses{def:U_orbit_density}\leanok
+The \emph{universal $U$-orbit density conjecture} asserts that
+$U\text{-orbit density}(n_0)$ holds for every $n_0 \in \mathbb{N}$.
+\end{definition}
+
+\begin{lemma}\label{lemma:conjecture_4_2_eq_U_orbit_zero}\lean{CollatzMapBasics.conjecture_4_2_eq_U_orbit_zero}\uses{def:U_orbit_density}\leanok
+Conjecture~4.2 (Definition~\ref{def:conjecture_4_2}) is equivalent to the
+$U$-orbit density conjecture for $n_0 = 0$.
+\end{lemma}
+\begin{proof}\leanok
+Since $\operatorname{sat}(j) = U^j(0)$, the count of odd values
+$\operatorname{numOnesSat}(k)$ is exactly $\operatorname{numOddU}(k, 0)$.
+The two statements are definitionally equal.
+\end{proof}

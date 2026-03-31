@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1773748953.54012 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1773748954.37302 0
+["pdflatex"] 1774944567.56315 "print.tex" "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.pdf" "print" 1774944568.54772 0
   "/etc/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1773748954.33059 14724 323cafd1370deca70e7f7b3a15254267 "pdflatex"
-  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1773748954.33059 3986 322c6186ee703097744350fb9ee46338 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux" 1774944568.49297 17658 19d1bed0dd80ff34ea8818a3a6f54909 "pdflatex"
+  "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.out" 1774944568.49397 4256 9d692b5b6f52959a6a3c9fff156cb06f "pdflatex"
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -84,7 +84,7 @@
   "/usr/share/texmf/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1679560553 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1771858310 10663260 0e83f00fad4e17610da4ad9f49b5cd24 ""
-  "content.tex" 1773742557.38711 1968 9bd77e59c042f11e1dd307a5c0c34405 ""
+  "content.tex" 1774944145.77064 2002 e54d12ba111abeb2042059dc21ae10aa ""
   "macros/common.tex" 1771787663.61047 826 2468ad0b6614f40a29d7ec803ebc006e ""
   "macros/print.tex" 1771787663.61047 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1771787663.61247 1133 4fae2f63dc1d7fe374dbc5fc881a291e ""
@@ -98,6 +98,7 @@
   "sections/croz-lemma-32.tex" 1773058051.74711 6561 8d7df0588c41aa1a9182b1a7f8715b38 ""
   "sections/decomposition.tex" 1773058195.42938 4171 1ca2c0de6664e3b7edf6c5808ce1789d ""
   "sections/elementary-number-theory.tex" 1773057627.64954 6476 f9009378e26c9d3f08b868309ca8e3d2 ""
+  "sections/eliahou-base3div.tex" 1774944448.36918 23244 e1955ab5c399ffcb658b3bc2d163a85e ""
   "sections/graph.tex" 1773078783.89525 3031 9bb9e7ddae37432ce1041ff82481f753 ""
   "sections/log2div3.tex" 1773058128.7574 4411 a6f017a6704bb2ed1ac4fe172b3818a9 ""
   "sections/more-paradoxical.tex" 1773058080.01395 8644 cc56c2717c901511858aab6c7dd327c6 ""
@@ -106,7 +107,7 @@
   "sections/primitives-of-reduced.tex" 1773058130.76746 7813 6e3b61e29760aed808929814ed0317be ""
   "sections/reduced-map.tex" 1773079496.96615 10810 60af34a4098b45566d85dd4b579ac78e ""
   "sections/terras-def.tex" 1773057970.5587 3270 26affe84882c29c5213fc4e66410785a ""
-  "sections/uniform-distribution-correspondence.tex" 1773748938.05311 13752 1d96f5b53235994c013307a4d85e0f02 ""
+  "sections/uniform-distribution-correspondence.tex" 1773749508.30988 13752 1d96f5b53235994c013307a4d85e0f02 ""
   (generated)
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.aux"
   "/home/ralf/math/Collatz-Map-Basics/blueprint/print/print.log"

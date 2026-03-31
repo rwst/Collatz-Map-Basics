@@ -127,7 +127,7 @@ lemma lemma32_case_1 (n a b j : ℕ) (hn : stopping_time n = ⊤)
     (h_j_ge_b : j ≥ b) :
     IsParadoxical j n := by
   have hj_pos : j ≥ 1 := by
-    by_contra h0; push_neg at h0
+    by_contra h0; push Not at h0
     have : j = 0 := by omega
     subst this
     have hb0 : b = 0 := by omega
@@ -140,7 +140,7 @@ lemma lemma32_case_1 (n a b j : ℕ) (hn : stopping_time n = ⊤)
   · have h_not_drop : ¬ ∃ k, k ≥ 1 ∧ T_iter k n < n := by
       rw [← stopping_time_ne_top_iff n]
       exact hn ▸ by simp
-    push_neg at h_not_drop
+    push Not at h_not_drop
     exact h_not_drop j hj_pos
   · unfold C
     rw [h_j]
@@ -192,7 +192,7 @@ lemma lemma32_case_2 (n a b j : ℕ) (hn : stopping_time n = ⊤)
     · simp at h_S; linarith [h_S.1, h_S.2]
     · exact h
   have ha_pos : a ≥ 1 := by
-    by_contra h0; push_neg at h0; interval_cases a
+    by_contra h0; push Not at h0; interval_cases a
     simp only [pow_zero] at h_S
     have h2b : (1 : ℚ) / 2 ^ b ≤ 1 / 2 := by
       apply div_le_div_of_nonneg_left one_pos.le (by positivity : (0:ℚ) < 2)
@@ -208,7 +208,7 @@ lemma lemma32_case_2 (n a b j : ℕ) (hn : stopping_time n = ⊤)
     · simp [num_odd_steps] at h_j; omega
     · exact hj
   have hb_ge_a1 : b ≥ a + 1 := by
-    by_contra h0; push_neg at h0
+    by_contra h0; push Not at h0
     have : (1 : ℚ) ≤ (3 : ℚ) ^ a / 2 ^ b := by
       rw [le_div_iff₀ (by positivity : (0 : ℚ) < 2 ^ b)]
       calc 1 * (2 : ℚ) ^ b = (2 : ℚ) ^ b := one_mul _
@@ -274,7 +274,7 @@ private lemma even_run_exact (J n : ℕ) :
 lemma num_odd_steps_unbounded (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥ 1) :
     ∀ M, ∃ j, num_odd_steps j n ≥ M := by
   by_contra h
-  push_neg at h
+  push Not at h
   obtain ⟨M, hM⟩ := h
   -- num_odd_steps bounded by M-1, non-decreasing, step ≤ 1
   -- So eventually constant → eventually all even → contradiction
@@ -293,7 +293,7 @@ lemma num_odd_steps_unbounded (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n �
     -- num_odd_steps (i_M + 1) ≥ M, contradicting hM.
     -- So there are < M such indices. Let J = max of them + 1.
     by_contra h_no_stable
-    push_neg at h_no_stable
+    push Not at h_no_stable
     -- For each J, ∃ j ≥ J with X(T_iter j n) ≠ 0
     -- Build M indices where X = 1
     have : ∀ k ≤ M, ∃ j, num_odd_steps j n ≥ k := by
@@ -324,7 +324,7 @@ lemma num_odd_steps_unbounded (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n �
     · simp [T_iter]; exact hn1
     · have h_not_drop : ¬ ∃ k, k ≥ 1 ∧ T_iter k n < n := by
         rw [← stopping_time_ne_top_iff n]; exact hn ▸ by simp
-      push_neg at h_not_drop
+      push Not at h_not_drop
       linarith [h_not_drop J hJ_pos]
   -- No positive natural is divisible by all powers of 2
   have h2 := h_dvd (T_iter J n + 1)
@@ -352,7 +352,7 @@ lemma num_odd_steps_hits_all (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥
       obtain ⟨j₀, hj₀⟩ := ih
       obtain ⟨j₁, hj₁⟩ := hub (a + 1)
       have hlt : j₀ < j₁ := by
-        by_contra hle; push_neg at hle
+        by_contra hle; push Not at hle
         have := num_odd_steps_mono hle n; omega
       -- Find first index after j₀ where num_odd_steps ≥ a + 1
       have hex : ∃ d, num_odd_steps (j₀ + 1 + d) n ≥ a + 1 :=
@@ -364,7 +364,7 @@ lemma num_odd_steps_hits_all (n : ℕ) (hn : stopping_time n = ⊤) (hn1 : n ≥
         rcases Nat.eq_zero_or_pos d with hd0 | hd_pos
         · rw [hd0]; simp; omega
         · have := Nat.find_min hex (show d - 1 < d from by omega)
-          push_neg at this
+          push Not at this
           rw [show j₀ + 1 + (d - 1) = j₀ + d from by omega] at this
           omega
       -- Also ≥ a by monotonicity
@@ -475,7 +475,7 @@ lemma CRoz_lemma_32 (n : ℕ) (hn : stopping_time n = ⊤) :
       simp only [Set.mem_setOf_eq, f]
       split
       · exact lemma32_case_2 n a b (j_of a) hn h_Q (hj_spec a) ‹_›
-      · push_neg at *
+      · push Not at *
         have h_para := lemma32_case_1 n a b (j_of a) hn h_Q (hj_spec a) ‹_›
         simp only [pow_zero, one_mul]; exact h_para
     -- f is injective on S

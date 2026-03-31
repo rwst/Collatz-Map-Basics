@@ -281,6 +281,11 @@ INPUT ./sections/uniform-distribution-correspondence.tex
 INPUT ./sections/uniform-distribution-correspondence.tex
 INPUT ./sections/uniform-distribution-correspondence.tex
 INPUT sections/uniform-distribution-correspondence.tex
+INPUT ./sections/eliahou-base3div.tex
+INPUT ./sections/eliahou-base3div.tex
+INPUT ./sections/eliahou-base3div.tex
+INPUT ./sections/eliahou-base3div.tex
+INPUT sections/eliahou-base3div.tex
 INPUT ./ref.tex
 INPUT ./ref.tex
 INPUT ./ref.tex

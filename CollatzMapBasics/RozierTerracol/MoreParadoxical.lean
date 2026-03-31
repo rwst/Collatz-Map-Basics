@@ -241,7 +241,7 @@ lemma strict_floor_log_ratio (j : ℕ) (hj_ge_2 : j ≥ 2) :
       have h1 : (0 : ℝ) < (j : ℝ) * Real.log 2 / Real.log 3 := by positivity
       have h2 : ((k_int : ℤ) : ℝ) < 0 := by exact_mod_cast hpos
       linarith
-    · push_neg at hpos
+    · push Not at hpos
       have h_nat : ∃ k : ℕ, (k : ℤ) = k_int := ⟨k_int.toNat, Int.toNat_of_nonneg hpos⟩
       obtain ⟨k, hk⟩ := h_nat
       rw [← hk]

@@ -20,7 +20,7 @@ lemma num_odd_steps_split (a b n : ℕ) :
 
 /-- T applied 2j times to 1 gives 1. -/
 lemma T_iter_one_even (j : ℕ) : T_iter (2 * j) 1 = 1 := by
-  induction j <;> simp_all [mul_add, T_iter, T_one, T_two]
+  induction j <;> simp_all [T_iter, T_one, T_two]
 
 /-- T applied 2j+1 times to 1 gives 2. -/
 lemma T_iter_one_odd (j : ℕ) : T_iter (2 * j + 1) 1 = 2 := by
@@ -203,7 +203,7 @@ lemma orbit_lower_bound (m : ℕ) (hm : m ≥ 1)
     (h_never : ∀ k, k ≥ 1 → T_iter k m ≠ 1)
     (h_min : ∀ n, n < m → n ≥ 1 → ∃ k, k ≥ 1 ∧ T_iter k n = 1) :
     ∀ j, T_iter j m ≥ m := by
-  intro j; by_contra hlt; push_neg at hlt
+  intro j; by_contra hlt; push Not at hlt
   cases j with
   | zero => simp [T_iter] at hlt
   | succ j =>
@@ -247,7 +247,7 @@ lemma conjecture_2_4_iff_2_5 :
   · -- Backward: even density → 1/2 implies reaching 1
     intro h25
     by_contra h_neg
-    push_neg at h_neg
+    push Not at h_neg
     obtain ⟨n₀, hn₀, h_never₀⟩ := h_neg
     -- Minimal counterexample
     let P : ℕ → Prop := fun n => n ≥ 1 ∧ ∀ k, k ≥ 1 → T_iter k n ≠ 1
@@ -257,13 +257,13 @@ lemma conjecture_2_4_iff_2_5 :
     have hm_min : ∀ n, n < m → ¬P n := fun n hn => Nat.find_min hP_exists hn
     -- m ≥ 10 by small_cases
     have hm_ge_10 : m ≥ 10 := by
-      by_contra hlt; push_neg at hlt
+      by_contra hlt; push Not at hlt
       obtain ⟨k, hk, hreach⟩ := small_cases m hm.1 (by omega)
       exact hm.2 k hk hreach
     -- T_iter j m ≥ m for all j, by minimality
     have h_orbit : ∀ j, T_iter j m ≥ m :=
       orbit_lower_bound m hm.1 hm.2 (fun n hn hn1 => by
-        by_contra h_neg2; push_neg at h_neg2
+        by_contra h_neg2; push Not at h_neg2
         exact hm_min n hn ⟨hn1, h_neg2⟩)
     -- Tendsto for m
     have h_tend := h25 m hm.1
@@ -276,7 +276,7 @@ lemma conjecture_2_4_iff_2_5 :
     have h_bound := T_iter_bound k m h_ge_10
     have h_ratio := ratio_bound (num_odd_steps k m) k hk_bound
     have h_lt : T_iter k m < m := by
-      by_contra hge; push_neg at hge
+      by_contra hge; push Not at hge
       have h10 : 0 < 10 ^ num_odd_steps k m := Nat.pos_of_ne_zero (by positivity)
       have : 31 ^ num_odd_steps k m * m
           < 10 ^ num_odd_steps k m * (2 ^ k * m) := by
@@ -322,12 +322,34 @@ def conjecture_4_3 : Prop :=
 theorem conjecture_4_3_implies_4_2 : conjecture_4_3 → conjecture_4_2 := by
   intro h43
   have h := h43 [1] (by simp)
-  simp only [List.length_cons, List.length_nil, pow_one] at h
+  simp only [List.length_cons, List.length_nil] at h
   suffices heq : ∀ n, subwordCount [1] n = numOnesSat n by
     simp only [heq] at h; exact h
   intro n
-  simp only [subwordCount, numOnesSat, satWord, List.range_one, List.map_cons,
-    List.map_nil, Nat.add_zero]
+  simp only [subwordCount, numOnesSat, satWord]
   congr 1; ext j; simp [List.cons.injEq]
+
+-- ============================================================
+-- U-orbit density (option B): density along U-orbits
+-- ============================================================
+
+/-- Count of odd values among the first `k` iterates `U_iter 0 n₀, …, U_iter (k-1) n₀`. -/
+def numOddU (k n₀ : ℕ) : ℕ :=
+  ((Finset.range k).filter (fun j => U_iter j n₀ % 2 = 1)).card
+
+/-- The U-orbit density conjecture for a fixed starting point `n₀`:
+    the proportion of odd values in `U_iter j n₀` tends to 1/2. -/
+def U_orbit_density (n₀ : ℕ) : Prop :=
+  Tendsto (fun k => (numOddU k n₀ : ℚ) / ↑k) atTop (nhds (1 / 2 : ℚ))
+
+/-- The universal U-orbit density conjecture: for every starting point,
+    the odd-density of the U-orbit tends to 1/2. -/
+def conjecture_U_orbit_density : Prop := ∀ n₀ : ℕ, U_orbit_density n₀
+
+/-- Conjecture 4.2 is exactly the U-orbit density for `n₀ = 0`:
+    `sat j = U_iter j 0`, so counting odd `sat j` is counting odd `U_iter j 0`. -/
+theorem conjecture_4_2_eq_U_orbit_zero : conjecture_4_2 ↔ U_orbit_density 0 := by
+  unfold conjecture_4_2 U_orbit_density numOddU numOnesSat sat
+  rfl
 
 end CollatzMapBasics

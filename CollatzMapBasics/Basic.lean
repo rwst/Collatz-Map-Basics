@@ -128,7 +128,6 @@ lemma collatz_step_closed_form (n : ℕ) :
       obtain ⟨k, hk⟩ : ∃ k, n = 2 * k := ⟨n / 2, by omega⟩
       rw [hk, pow_mul]
       norm_num
-      exact one_pow k
     unfold collatz_step
     simp [h, h_pow]
     omega
@@ -136,7 +135,6 @@ lemma collatz_step_closed_form (n : ℕ) :
       obtain ⟨k, hk⟩ : ∃ k, n = 2 * k + 1 := ⟨n / 2, by omega⟩
       rw [hk, pow_add, pow_mul]
       norm_num
-      exact one_pow k
     unfold collatz_step
     simp [h, h_pow]
     omega

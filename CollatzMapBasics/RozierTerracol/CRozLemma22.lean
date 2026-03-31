@@ -96,7 +96,7 @@ theorem E_bounds (j n : ℕ) (hj : 0 < j) :
           have hv0 : v = 0 := by rw [hv_def]; exact hX
           rw [hv0, add_zero, E_succ, hX]
           have hE := hih.2; have hR := R_nonneg q
-          field_simp at *; nlinarith
+          linarith
         · have hX : X (T_iter j n) = 1 := by rw [X_eq_mod, Nat.odd_iff.mp h]
           have hv1 : v = 1 := by rw [hv_def]; exact hX
           have hE := hih.2

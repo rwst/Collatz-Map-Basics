@@ -1,4 +1,5 @@
 import CollatzMapBasics.Approximation
+import CollatzMapBasics.Base3div2.Base3div2Basics
 import CollatzMapBasics.Basic
 import CollatzMapBasics.Decomposition
 import CollatzMapBasics.Elementary
